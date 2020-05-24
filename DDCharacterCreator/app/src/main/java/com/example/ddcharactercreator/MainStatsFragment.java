@@ -181,6 +181,26 @@ public class MainStatsFragment extends Fragment {
                 dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Rogue":
+                hitDieTextView.setText("d8");
+                maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
+                dexterityLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                intelligenceLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                intelligenceValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                intelligenceModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
+            case "Sorcerer":
+                hitDieTextView.setText("d6");
+                maxHitPoints.setText(String.valueOf(6 + calculateModifier(character.getStatValues().get(2))));
+                constitutionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                constitutionValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
             case "Wizard":
                 hitDieTextView.setText("d6");
                 maxHitPoints.setText(String.valueOf(6 + calculateModifier(character.getStatValues().get(2))));
@@ -297,9 +317,6 @@ public class MainStatsFragment extends Fragment {
                 bonusStats.add(getString(R.string.bard_other_proficiencies));
                 break;
             case "Druid":
-                bonusStats.add("Wild Shape: You may assume the form of a beast twice per short or Long rest");
-                bonusStats.add("Wild Shape time limit: 1 hour");
-                bonusStats.add("Wild Shape CR Max: 1/4, no swimming or flying speed");
                 bonusStats.add(getString(R.string.druid_other_proficiencies));
                 break;
             case "Monk":
@@ -307,6 +324,14 @@ public class MainStatsFragment extends Fragment {
                 bonusStats.add("While unarmed, you can use DEX instead of STR for attack and damage rolls");
                 bonusStats.add("While unarmed, if you take the attack action, you can make another unarmed strike as a bonus action");
                 bonusStats.add(getString(R.string.monk_other_proficiencies));
+                break;
+            case "Rogue":
+                bonusStats.add("Sneak Attack: Once per turn, you deal extra damage to an enemy if you have advantage on the attack roll or if an ally is within 5ft and you don't have disadvantage");
+                bonusStats.add("Sneak Attack Damage: 1d6");
+                bonusStats.add(getString(R.string.rogue_other_proficiencies));
+                break;
+            case "Sorcerer":
+                bonusStats.add(getString(R.string.sorcerer_other_proficiencies));
                 break;
             case "Wizard":
                 bonusStats.add("Arcane Recovery: While taking a Short Rest, you can choose expended spell slots to recover. They must equal half your level, rounded up");
