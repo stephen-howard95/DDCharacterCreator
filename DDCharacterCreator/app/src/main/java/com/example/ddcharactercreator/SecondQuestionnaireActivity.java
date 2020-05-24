@@ -192,6 +192,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     if(skillProficiencySpinner3.getVisibility() == View.VISIBLE){
                         proficiencyChoices.add(skillProficiencySpinner3.getSelectedItem().toString());
                     }
+                    if(skillProficiencySpinner4.getVisibility() == View.VISIBLE){
+                        proficiencyChoices.add(skillProficiencySpinner4.getSelectedItem().toString());
+                    }
                     String race = character.getRace();
                     String characterClass = character.getCharacterClass();
                     String alignment = character.getAlignment();
