@@ -109,6 +109,9 @@ public class CharacterFragment extends Fragment {
         if(character.getCharacterClass().equals("Druid")){
             languages.append("Druidic, ");
         }
+        if(character.getCharacterClass().equals("Rogue")){
+            languages.append("Thieve's Cant, ")
+        }
         languagesKnown.setText(languages.toString());
 
         return rootView;
