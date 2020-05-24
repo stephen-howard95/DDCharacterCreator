@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="4dp"
+    tools:ignore="RtlSymmetry"
+    android:paddingStart="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/character_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:paddingRight="4dp"
+            android:layout_below="@+id/character_name"
+            android:textSize="16sp"
+            android:paddingEnd="4dp"
+            tools:ignore="RtlSymmetry" />
+        <TextView
+            android:id="@+id/character_race"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:paddingRight="4dp"
+            android:layout_toRightOf="@+id/character_level"
+            android:layout_below="@+id/character_name"
+            android:textSize="16sp"
+            android:paddingEnd="4dp"
+            android:layout_toEndOf="@+id/character_level"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/character_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/character_name"
+            android:layout_toRightOf="@+id/character_race"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:textSize="16sp"
+            android:layout_toEndOf="@+id/character_race" />
+    </RelativeLayout>
+
+    <ImageView
+        android:contentDescription="@string/delete_character"
+        android:id="@+id/delete_character_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/delete_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp" />
+</RelativeLayout>

@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/physical_stats_modifiers_layout"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="4dp"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/strength_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/str_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/strength_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/strength_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/str_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/character_screen_strength"
+                android:layout_marginRight="24dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/character_screen_strength"
+                android:layout_marginEnd="24dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/dexterity_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/dex_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_dexterity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/dexterity_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@+id/dexterity_label" />
+            <TextView
+                android:id="@+id/dex_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character_screen_dexterity"
+                android:layout_marginRight="24dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/character_screen_dexterity"
+                android:layout_marginEnd="24dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/constitution_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/con_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_constitution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/constitution_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/constitution_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/con_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character_screen_constitution"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/character_screen_constitution" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mental_stats_modifiers_layout"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_below="@id/physical_stats_modifiers_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="8dp"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/intelligence_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/int_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_intelligence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/intelligence_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/intelligence_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/int_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character_screen_intelligence"
+                android:layout_marginRight="24dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/character_screen_intelligence"
+                android:layout_marginEnd="24dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/wisdom_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/wis_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_wisdom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/wisdom_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@+id/wisdom_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/wis_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character_screen_wisdom"
+                android:layout_marginRight="24dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/character_screen_wisdom"
+                android:layout_marginEnd="24dp" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/charisma_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/cha_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/character_screen_charisma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/charisma_label"
+                android:layout_marginRight="8dp"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/charisma_label"
+                android:layout_marginEnd="8dp" />
+            <TextView
+                android:id="@+id/cha_modifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/character_screen_charisma"
+                android:textSize="20sp"
+                android:layout_toEndOf="@id/character_screen_charisma" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/miscellaneous_stats_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="8dp"
+        android:layout_below="@id/mental_stats_modifiers_layout"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/proficiency_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/proficiency_blue"
+            android:textSize="16sp"
+            android:text="@string/proficiency_bonus_label"/>
+        <TextView
+            android:id="@+id/armor_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/proficiency_bonus"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/armor_class"/>
+        <EditText
+            android:id="@+id/armor_class_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/armor_class"
+            android:layout_below="@id/proficiency_bonus"
+            android:layout_marginBottom="8dp"
+            android:inputType="number"
+            android:hint="@string/armor_class_label"
+            android:text="@string/armor_class_label"
+            android:layout_toEndOf="@+id/armor_class"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/passive_perception"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/armor_class_value"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/passive_perception_label"/>
+        <TextView
+            android:id="@+id/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passive_perception"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:text="@string/speed_label"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/death_saves_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/miscellaneous_stats_layout"
+        android:layout_below="@id/mental_stats_modifiers_layout"
+        android:layout_toEndOf="@id/miscellaneous_stats_layout">
+
+        <TextView
+            android:id="@+id/death_saves_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:text="@string/death_saves_label"/>
+
+        <CheckBox
+            android:id="@+id/success_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/death_saves_text"
+            android:text="@string/death_saves_success_1"/>
+        <CheckBox
+            android:id="@+id/success_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@+id/success_1"
+            android:text="@string/death_saves_success_2"/>
+        <CheckBox
+            android:id="@+id/success_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/success_2"
+            android:text="@string/death_saves_stabilized"/>
+        <CheckBox
+            android:id="@+id/failure_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/death_saves_text"
+            android:layout_toRightOf="@id/success_1"
+            android:text="@string/death_saves_failure_1"
+            android:layout_toEndOf="@id/success_1" />
+        <CheckBox
+            android:id="@+id/failure_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/failure_1"
+            android:layout_toRightOf="@id/success_1"
+            android:text="@string/death_saves_failure_2"
+            android:layout_toEndOf="@id/success_1" />
+        <CheckBox
+            android:id="@+id/failure_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@id/failure_2"
+            android:layout_toRightOf="@id/success_1"
+            android:text="@string/death_saves_death"
+            android:layout_toEndOf="@id/success_1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/health_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/miscellaneous_stats_layout"
+        android:layout_below="@+id/death_saves_layout"
+        android:layout_toEndOf="@+id/miscellaneous_stats_layout">
+
+        <TextView
+            android:id="@+id/hit_die"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/hit_die_label"/>
+        <TextView
+            android:id="@+id/hp_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/hit_die"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:text="@string/current_max_hp"
+            android:layout_toEndOf="@id/hit_die"
+            android:layout_marginStart="8dp" />
+        <EditText
+            android:id="@+id/current_hit_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/hp_label"
+            android:inputType="number"
+            android:hint="@string/current_hit_points_label"
+            android:text="@string/current_hit_points_label"
+            android:layout_toEndOf="@id/hp_label"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/max_hit_points"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/current_hit_points"
+            android:layout_toRightOf="@id/hp_label"
+            android:textStyle="bold"
+            android:text="@string/max_hit_points_label"
+            android:layout_toEndOf="@id/hp_label" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/skill_modifiers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:layout_below="@id/health_layout"
+        android:text="@string/skill_modifiers"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"/>
+
+    <ListView
+        android:id="@+id/bonus_stats_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/skill_modifiers"/>
+</RelativeLayout>

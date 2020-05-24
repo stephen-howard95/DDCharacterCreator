@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="4dp"
+    android:layout_marginLeft="4dp">
+
+    <LinearLayout
+        android:id="@+id/currency_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/copper_piece_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/copper"
+            android:text="@string/cp_label"/>
+        <EditText
+            android:id="@+id/copper_piece_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/copper"
+            android:hint="@string/cp_label"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/silver_piece_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/silver"
+            android:text="@string/sp_label"/>
+        <EditText
+            android:id="@+id/silver_piece_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/silver"
+            android:hint="@string/sp_label"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/electrum_piece_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/electrum"
+            android:text="@string/ep_label"/>
+        <EditText
+            android:id="@+id/electrum_piece_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/electrum"
+            android:hint="@string/ep_label"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/gold_piece_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/gold"
+            android:text="@string/gp_label"/>
+        <EditText
+            android:id="@+id/gold_piece_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gold"
+            android:hint="@string/gp_label"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no" />
+        <TextView
+            android:id="@+id/platinum_piece_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="@color/platinum"
+            android:text="@string/pp_label"/>
+        <EditText
+            android:id="@+id/platinum_piece_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/platinum"
+            android:hint="@string/pp_label"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/add_to_inventory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:hint="@string/add_to_inventory"
+            android:inputType="text"
+            android:importantForAutofill="no" />
+
+        <Button
+            android:id="@+id/add_item_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/add_item"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/inventory_rules"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/inventory_rules"
+        style="text-decoration: underline;"/>
+
+    <ListView
+        android:id="@+id/inventory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

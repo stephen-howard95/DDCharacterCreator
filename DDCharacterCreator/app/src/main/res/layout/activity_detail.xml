@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            style="@style/CategoryTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/main_stats_tab"
+                style="@style/CategoryStyle"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="@string/main_stats_tab_label" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/inventory_tab"
+                android:background="?android:attr/selectableItemBackground"
+                style="@style/CategoryStyle"
+                android:text="@string/inventory_tab_label"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/spellcasting_tab"
+                style="@style/CategoryStyle"
+                android:text="@string/spellcasting_tab_label"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/character_tab"
+                style="@style/CategoryStyle"
+                android:text="@string/character_tab_label"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/long_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="256dp"
+        android:layout_marginEnd="88dp"
+        android:layout_gravity="bottom|end"
+        android:background="#212121"
+        android:padding="8dp"
+        android:text="@string/long_rest"
+        android:textColor="#ffffff"
+        android:visibility="invisible"
+        android:layout_marginRight="88dp"
+        android:layout_alignParentRight="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/long_rest"
+        android:id="@+id/fab_long_rest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="246dp"
+        android:layout_marginEnd="24dp"
+        android:layout_gravity="bottom|end"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/long_rest_icon"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:id="@+id/save_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="186dp"
+        android:layout_marginEnd="88dp"
+        android:layout_gravity="bottom|end"
+        android:background="#212121"
+        android:padding="8dp"
+        android:text="@string/save_character"
+        android:textColor="#ffffff"
+        android:visibility="invisible"
+        android:layout_marginRight="88dp"
+        android:layout_alignParentRight="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/save_character"
+        android:id="@+id/fab_save_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="176dp"
+        android:layout_marginEnd="24dp"
+        android:layout_gravity="bottom|end"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/save_icon"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:id="@+id/delete_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="116dp"
+        android:layout_marginEnd="88dp"
+        android:layout_gravity="bottom|end"
+        android:background="#212121"
+        android:padding="8dp"
+        android:text="@string/delete_character"
+        android:textColor="#ffffff"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="88dp" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/delete_character"
+        android:id="@+id/fab_delete_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="106dp"
+        android:layout_marginEnd="24dp"
+        android:layout_gravity="bottom|end"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/delete_icon"
+        android:layout_marginRight="24dp"
+        android:layout_alignParentRight="true"
+        tools:targetApi="lollipop" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/display_options"
+        android:id="@+id/fab_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:elevation="4dp"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:targetApi="lollipop" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

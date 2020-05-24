@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1075996611702",
+    "firebase_url": "https://dd-character-creator.firebaseio.com",
+    "project_id": "dd-character-creator",
+    "storage_bucket": "dd-character-creator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075996611702:android:7eff81f4b1b52e27d43b57",
+        "android_client_info": {
+          "package_name": "com.example.ddcharactercreator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075996611702-l3r96ptlodekq000u68j8iqi55ts86vd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRROYRFWaIl2E4ja6V3FXlX6Fh4Wx5qZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075996611702-l3r96ptlodekq000u68j8iqi55ts86vd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

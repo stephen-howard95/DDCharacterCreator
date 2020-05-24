@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    //Health color changes
+    <color name="green">#13E600</color>
+    <color name="yellow">#FADB10</color>
+    <color name="orange">#FC6A0D</color>
+    <color name="red">#E50B00</color>
+
+    //stat saving throws/skill proficiencies
+    <color name="proficiency_blue">#310CE8</color>
+
+    //currency colors
+    <color name="copper">#b87333</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="electrum">#e6c799</color>
+    <color name="gold">#D4AF37</color>
+    <color name="platinum">#e5e4e2</color>
+
+</resources>

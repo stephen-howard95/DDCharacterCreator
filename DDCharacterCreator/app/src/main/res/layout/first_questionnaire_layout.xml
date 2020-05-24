@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress ALL -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/character_creation_introduction"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"/>
+
+        <Spinner
+            android:id="@+id/race_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:entries="@array/race_array"/>
+        <Spinner
+            android:id="@+id/class_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:entries="@array/class_array"/>
+        <Spinner
+            android:id="@+id/alignment_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:entries="@array/alignment_array" />
+        <EditText
+            android:id="@+id/character_name_edit_text"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:hint="@string/choose_your_characters_name"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stat_rolls_options"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:paddingBottom="16dp"
+            android:gravity="center_horizontal"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/strength_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/strength_label"
+                android:layout_marginStart="26dp"
+                android:layout_marginEnd="20dp" />
+            <TextView
+                android:id="@+id/dexterity_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/strength_text"
+                android:text="@string/dexterity_label"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/strength_text" />
+            <TextView
+                android:id="@+id/constitution_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/dexterity_text"
+                android:text="@string/constitution_label"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/dexterity_text" />
+            <TextView
+                android:id="@+id/intelligence_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/constitution_text"
+                android:text="@string/intelligence_label"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/constitution_text" />
+            <TextView
+                android:id="@+id/wisdom_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/intelligence_text"
+                android:text="@string/wisdom_label"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/intelligence_text" />
+            <TextView
+                android:id="@+id/charisma_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/wisdom_text"
+                android:text="@string/charisma_label"
+                android:layout_toEndOf="@+id/wisdom_text"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="18dp" />
+
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/strength_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/strength_text"
+                min="3"
+                max="18"/>
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/dexterity_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/strength_level"
+                android:layout_below="@id/dexterity_text"
+                min="3"
+                max="18"
+                android:layout_toEndOf="@+id/strength_level" />
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/constitution_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/constitution_text"
+                android:layout_toRightOf="@+id/dexterity_level"
+                min="3"
+                max="18"
+                android:layout_toEndOf="@+id/dexterity_level" />
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/intelligence_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/intelligence_text"
+                android:layout_toRightOf="@+id/constitution_level"
+                min="3"
+                max="18"
+                android:layout_toEndOf="@+id/constitution_level" />
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/wisdom_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/wisdom_text"
+                android:layout_toRightOf="@+id/intelligence_level"
+                min="3"
+                max="18"
+                android:layout_toEndOf="@+id/intelligence_level" />
+            <com.example.ddcharactercreator.StatNumberPicker
+                android:id="@+id/charisma_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/charisma_text"
+                android:layout_toRightOf="@+id/wisdom_level"
+                min="3"
+                max="18"
+                android:layout_toEndOf="@+id/wisdom_level" />
+        </RelativeLayout>
+
+        <Button
+            android:contentDescription="@string/next_questionnaire_button_label"
+            android:id="@+id/next_questionnaire_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:text="@string/next_questionnaire_button_label"
+            android:layout_marginEnd="16dp" />
+
+    </LinearLayout>
+</ScrollView>

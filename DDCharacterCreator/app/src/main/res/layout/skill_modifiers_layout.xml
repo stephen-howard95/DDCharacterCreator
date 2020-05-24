@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="4dp"
+    android:paddingStart="4dp">
+
+    <TextView
+        android:id="@+id/skills_modifiers_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:text="@string/skill_modifiers"/>
+
+    <RelativeLayout
+        android:id="@+id/strength_skills_layout"
+        android:layout_below="@+id/skills_modifiers_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/strength_skills_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/strength_skills"/>
+        <TextView
+            android:id="@+id/athletics_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/strength_skills_label"
+            android:text="@string/athletics_label"/>
+        <TextView
+            android:id="@+id/athletics_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_toRightOf="@+id/athletics_label"
+            android:layout_below="@+id/strength_skills_label"
+            android:layout_toEndOf="@+id/athletics_label" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/dexterity_skills_layout"
+        android:layout_below="@+id/strength_skills_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dexterity_skills_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/dexterity_skills"/>
+
+        <TextView
+            android:id="@+id/acrobatics_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/dexterity_skills_label"
+            android:text="@string/acrobatics_label"/>
+        <TextView
+            android:id="@+id/acrobatics_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/dexterity_skills_label"
+            android:layout_toRightOf="@+id/acrobatics_label"
+            android:layout_toEndOf="@+id/acrobatics_label" />
+        <TextView
+            android:id="@+id/sleight_of_hand_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/acrobatics_label"
+            android:text="@string/sleight_of_hand_label"/>
+        <TextView
+            android:id="@+id/sleight_of_hand_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/acrobatics_modifier"
+            android:layout_toRightOf="@id/sleight_of_hand_label"
+            android:layout_toEndOf="@id/sleight_of_hand_label" />
+        <TextView
+            android:id="@+id/stealth_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/sleight_of_hand_label"
+            android:text="@string/stealth_label"/>
+        <TextView
+            android:id="@+id/stealth_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/sleight_of_hand_modifier"
+            android:layout_toRightOf="@+id/stealth_label"
+            android:layout_toEndOf="@+id/stealth_label" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/intelligence_skills_layout"
+        android:layout_below="@+id/dexterity_skills_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/intelligence_skills_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/intelligence_skills"/>
+
+        <TextView
+            android:id="@+id/arcana_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@id/intelligence_skills_label"
+            android:text="@string/arcana_label"/>
+        <TextView
+            android:id="@+id/arcana_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@id/intelligence_skills_label"
+            android:layout_toRightOf="@id/arcana_label"
+            android:layout_toEndOf="@id/arcana_label" />
+        <TextView
+            android:id="@+id/history_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/arcana_label"
+            android:text="@string/history_label"/>
+        <TextView
+            android:id="@+id/history_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/arcana_modifier"
+            android:layout_toRightOf="@+id/history_label"
+            android:layout_toEndOf="@+id/history_label" />
+        <TextView
+            android:id="@+id/investigation_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/history_label"
+            android:text="@string/investigation_label"/>
+        <TextView
+            android:id="@+id/investigation_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/history_modifier"
+            android:layout_toRightOf="@+id/investigation_label"
+            android:layout_toEndOf="@+id/investigation_label" />
+        <TextView
+            android:id="@+id/nature_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/investigation_label"
+            android:text="@string/nature_label"/>
+        <TextView
+            android:id="@+id/nature_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/investigation_modifier"
+            android:layout_toRightOf="@+id/nature_label"
+            android:layout_toEndOf="@+id/nature_label" />
+        <TextView
+            android:id="@+id/religion_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/nature_label"
+            android:text="@string/religion_label"/>
+        <TextView
+            android:id="@+id/religion_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/nature_modifier"
+            android:layout_toRightOf="@+id/religion_label"
+            android:layout_toEndOf="@+id/religion_label" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/wisdom_skills_layout"
+        android:layout_toRightOf="@+id/dexterity_skills_layout"
+        android:layout_below="@+id/skills_modifiers_label"
+        android:layout_marginLeft="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/dexterity_skills_layout"
+        android:layout_marginStart="32dp">
+
+        <TextView
+            android:id="@+id/wisdom_skills_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/wisdom_skills"/>
+
+        <TextView
+            android:id="@+id/animal_handling_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/wisdom_skills_label"
+            android:text="@string/animal_handling_label"/>
+        <TextView
+            android:id="@+id/animal_handling_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@id/wisdom_skills_label"
+            android:layout_toRightOf="@+id/animal_handling_label"
+            android:layout_toEndOf="@+id/animal_handling_label" />
+        <TextView
+            android:id="@+id/insight_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@id/animal_handling_label"
+            android:text="@string/insight_label"/>
+        <TextView
+            android:id="@+id/insight_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/animal_handling_modifier"
+            android:layout_toRightOf="@+id/insight_label"
+            android:layout_toEndOf="@+id/insight_label" />
+        <TextView
+            android:id="@+id/medicine_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/insight_label"
+            android:text="@string/medicine_label"/>
+        <TextView
+            android:id="@+id/medicine_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/insight_modifier"
+            android:layout_toRightOf="@+id/medicine_label"
+            android:layout_toEndOf="@+id/medicine_label" />
+        <TextView
+            android:id="@+id/perception_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/medicine_label"
+            android:text="@string/perception_label"/>
+        <TextView
+            android:id="@+id/perception_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/medicine_modifier"
+            android:layout_toRightOf="@+id/perception_label"
+            android:layout_toEndOf="@+id/perception_label" />
+        <TextView
+            android:id="@+id/survival_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/perception_label"
+            android:text="@string/survival_label"/>
+        <TextView
+            android:id="@+id/survival_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/perception_modifier"
+            android:layout_toRightOf="@+id/survival_label"
+            android:layout_toEndOf="@+id/survival_label" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/charisma_skills_layout"
+        android:layout_toRightOf="@+id/dexterity_skills_layout"
+        android:layout_below="@+id/wisdom_skills_layout"
+        android:layout_marginLeft="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/dexterity_skills_layout"
+        android:layout_marginStart="32dp">
+
+        <TextView
+            android:id="@+id/charisma_skills_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/charisma_skills"/>
+
+        <TextView
+            android:id="@+id/deception_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/charisma_skills_label"
+            android:text="@string/deception_label"/>
+        <TextView
+            android:id="@+id/deception_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/charisma_skills_label"
+            android:layout_toRightOf="@+id/deception_label"
+            android:layout_toEndOf="@+id/deception_label" />
+        <TextView
+            android:id="@+id/intimidation_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@id/deception_label"
+            android:text="@string/intimidation_label"/>
+        <TextView
+            android:id="@+id/intimidation_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/deception_modifier"
+            android:layout_toRightOf="@+id/intimidation_label"
+            android:layout_toEndOf="@+id/intimidation_label" />
+        <TextView
+            android:id="@+id/performance_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/intimidation_label"
+            android:text="@string/performance_label"/>
+        <TextView
+            android:id="@+id/performance_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/intimidation_modifier"
+            android:layout_toRightOf="@+id/performance_label"
+            android:layout_toEndOf="@+id/performance_label" />
+        <TextView
+            android:id="@+id/persuasion_label"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/performance_label"
+            android:text="@string/persuasion_label"/>
+        <TextView
+            android:id="@+id/persuasion_modifier"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/performance_modifier"
+            android:layout_toRightOf="@+id/persuasion_label"
+            android:layout_toEndOf="@+id/persuasion_label" />
+    </RelativeLayout>
+</RelativeLayout>

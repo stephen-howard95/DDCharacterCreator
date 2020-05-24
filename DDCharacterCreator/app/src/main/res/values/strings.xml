@@ -1,0 +1,209 @@
+<resources>
+    <string name="app_name">D&amp;D Character Creator</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="race_array">
+        <item name="Dwarf">Dwarf</item>
+        <item name="Elf">Elf</item>
+        <item name="Halfling">Halfling</item>
+        <item name="Human">Human</item>
+        <item name="Gnome">Gnome</item>
+        <item name="Half-Elf">Half-Elf</item>
+        <item name="Half-Orc">Half-Orc</item>
+        <item name="Tiefling">Tiefling</item>
+    </string-array>
+
+    <string-array name="class_array">
+        <item name="Barbarian">Barbarian</item>
+        <item name="Bard">Bard</item>
+        <item name="Druid">Druid</item>
+        <item name="Monk">Monk</item>
+        <item name="Wizard">Wizard</item>
+    </string-array>
+
+    <string-array name="alignment_array">
+        <item name="lg">Lawful Good</item>
+        <item name="ln">Lawful Neutral</item>
+        <item name="le">Lawful Evil</item>
+        <item name="ng">Neutral Good</item>
+        <item name="tn">True Neutral</item>
+        <item name="ne">Neutral Evil</item>
+        <item name="cg">Chaotic Good</item>
+        <item name="cn">Chaotic Neutral</item>
+        <item name="ce">Chaotic Evil</item>
+    </string-array>
+
+    <string-array name="skill_proficiencies_array">
+        <item name="acrobatics">Acrobatics</item>
+        <item name="animal_handling">Animal Handling</item>
+        <item name="arcana">Arcana</item>
+        <item name="athletics">Athletics</item>
+        <item name="deception">Deception</item>
+        <item name="history">History</item>
+        <item name="insight">Insight</item>
+        <item name="intimidation">Intimidation</item>
+        <item name="investigation">Investigation</item>
+        <item name="medicine">Medicine</item>
+        <item name="nature">Nature</item>
+        <item name="perception">Perception</item>
+        <item name="performance">Performance</item>
+        <item name="persuasion">Persuasion</item>
+        <item name="religion">Religion</item>
+        <item name="sleight_of_hand">Sleight of Hand</item>
+        <item name="stealth">Stealth</item>
+        <item name="survival">Survival</item>
+    </string-array>
+
+    <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
+
+    // Questionnaire 1 strings
+    <string name="strength_label">STR</string>
+    <string name="dexterity_label">DEX</string>
+    <string name="constitution_label">CON</string>
+    <string name="intelligence_label">INT</string>
+    <string name="wisdom_label">WIS</string>
+    <string name="charisma_label">CHA</string>
+    <string name="choose_your_characters_name">Choose Your Character\'s Name</string>
+    <string name="next_questionnaire_button_label">Next Questionnaire</string>
+    <string name="character_creation_introduction">When creating a character in the world of Dungeons and Dragons, the first questions you should ask yourself is what you want your character\'s race, class, and alignment to be. These questions will determine many things such as certain stat bonuses, starting equipment, hit die, and more!</string>
+    <string name="stat_rolls_options">The two most common ways to choose your stat values are as follows: Option 1 is to roll 4d6, drop the lowest number, then record the total. Do this 6 times for 6 totals and choose which number to put for each stat. Option 2 is to use the numbers 15, 14, 13, 12, 10, and 8 on whichever stat you choose. The numbers MUST be between 3 and 18. Consult your DM for more options.</string>
+
+    // Questionnaire 2 strings
+    <string name="starting_hp_and_hit_die">Your Starting HP will be X. Your Hit die is a dX</string>
+    <string name="starting_gp_roll">For your starting gold, roll </string>
+    <string name="proficiency_text">Choose from the following Skills to be proficient in</string>
+    <string name="starting_equipment">Choose your starting equipment below</string>
+    <string name="starting_equipment_info">In addition to your above choices, you also start with X, Y, and Z</string>
+    <string name="other_proficiency_beginning">You also have proficiency with </string>
+    <string name="final_warning">Once you are sure your character is set the way you want them, click the Finished button below. Be sure to check out the \"Character\" tab to describe their looks, personality, and backstory. And if your character class has Spellcasting capabilities, go to the \"Spellcasting\" tab to set up their list of known spells.</string>
+    <string name="finished_button_label">Finished</string>
+
+    // Stats screen miscellaneous stats strings
+    <string name="str_label">STR: </string>
+    <string name="dex_label">DEX: </string>
+    <string name="con_label">CON: </string>
+    <string name="int_label">INT: </string>
+    <string name="wis_label">WIS: </string>
+    <string name="cha_label">CHA: </string>
+    <string name="proficiency_bonus_label">Proficiency Bonus: </string>
+    <string name="armor_class_label">AC: </string>
+    <string name="hit_die_label">Hit Die: </string>
+    <string name="current_hit_points_label">Current Hit Points: </string>
+    <string name="max_hit_points_label">Max Hit Points: </string>
+    <string name="passive_perception_label">Passive Perception: </string>
+    <string name="speed_label">Speed: </string>
+    <string name="armor_class">Armor Class:</string>
+    <string name="current_max_hp">current/max HP:</string>
+    <string name="skill_modifiers">Skill Modifiers</string>
+
+    // Stats screen death saves strings
+    <string name="death_saves_label">Death Saves</string>
+    <string name="death_saves_success_1">Success 1</string>
+    <string name="death_saves_success_2">Success 2</string>
+    <string name="death_saves_stabilized">Stabilized</string>
+    <string name="death_saves_failure_1">Failure 1</string>
+    <string name="death_saves_failure_2">Failure 2</string>
+    <string name="death_saves_death">Death</string>
+
+    // Stats screen skills strings
+    <string name="strength_skills">Strength Skills</string>
+    <string name="dexterity_skills">Dexterity Skills</string>
+    <string name="intelligence_skills">Intelligence Skills</string>
+    <string name="wisdom_skills">Wisdom Skills</string>
+    <string name="charisma_skills">Charisma Skills</string>
+    <string name="acrobatics_label">Acrobatics</string>
+    <string name="animal_handling_label">Animal Handling</string>
+    <string name="arcana_label">Arcana</string>
+    <string name="athletics_label">Athletics</string>
+    <string name="deception_label">Deception</string>
+    <string name="history_label">History</string>
+    <string name="insight_label">Insight</string>
+    <string name="intimidation_label">Intimidation</string>
+    <string name="investigation_label">Investigation</string>
+    <string name="medicine_label">Medicine</string>
+    <string name="nature_label">Nature</string>
+    <string name="perception_label">Perception</string>
+    <string name="performance_label">Performance</string>
+    <string name="persuasion_label">Persuasion</string>
+    <string name="religion_label">Religion</string>
+    <string name="sleight_of_hand_label">Sleight of Hand</string>
+    <string name="stealth_label">Stealth</string>
+    <string name="survival_label">Survival</string>
+
+    // Spellcasting screen strings
+    <string name="first_level_spell">1st Level</string>
+    <string name="second_level_spell">2nd Level</string>
+    <string name="third_level_spell">3rd Level</string>
+    <string name="fourth_level_spell">4th Level</string>
+    <string name="fifth_level_spell">5th Level</string>
+    <string name="sixth_level_spell">6th Level</string>
+    <string name="seventh_level_spell">7th Level</string>
+    <string name="eighth_level_spell">8th Level</string>
+    <string name="ninth_level_spell">9th Level</string>
+    <string name="spells_known_label">Spells Known (Click here to add more):</string>
+    <string name="spellcasting_ability_label">Spellcasting Ability:</string>
+    <string name="spell_save_dc_label">Spell Save DC:</string>
+    <string name="spell_attack_bonus_label">Spell Attack Bonus:</string>
+
+    // Inventory screen strings
+    <string name="cp_label">CP:</string>
+    <string name="sp_label">SP:</string>
+    <string name="ep_label">EP:</string>
+    <string name="gp_label">GP:</string>
+    <string name="pp_label">PP:</string>
+    <string name="add_item">Add Item</string>
+    <string name="inventory_rules">Inventory List (Hold an Item to delete it)</string>
+    <string name="add_to_inventory">Add to Inventory</string>
+
+    //Character screen strings
+    <string name="character_name">Character Name</string>
+    <string name="level">Level</string>
+    <string name="race">Race</string>
+    <string name="character_class">Class</string>
+    <string name="alignment">Alignment</string>
+    <string name="height"><u>Height</u></string>
+    <string name="weight"><u>Weight</u></string>
+    <string name="age"><u>Age</u></string>
+    <string name="skin_color"><u>Skin Color</u></string>
+    <string name="eye_color"><u>Eye Color</u></string>
+    <string name="hair"><u>Hair</u></string>
+    <string name="personality_traits"><u>Personality Traits</u></string>
+    <string name="ideals"><u>Ideals</u></string>
+    <string name="bonds"><u>Bonds</u></string>
+    <string name="flaws"><u>Flaws</u></string>
+    <string name="languages_known">Languages Known: </string>
+    <string name="backstory_label"><u>Backstory</u></string>
+    <string name="character_backstory">Fill in your character\'s backstory here.</string>
+
+    //DetailActivity tab labels
+    <string name="main_stats_tab_label">Main Stats</string>
+    <string name="inventory_tab_label">Inventory</string>
+    <string name="spellcasting_tab_label">Spell Casting</string>
+    <string name="character_tab_label">Character</string>
+
+    //Class-based other proficiences
+    <string name="barbarian_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons,
+        and Strength/Constitution saving throws</string>
+    <string name="bard_other_proficiencies">Light armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords,
+        Musical instruments, and Dexterity/Charisma saving throws</string>
+    <string name="druid_other_proficiencies">Light armor, Medium armor, Shields, Clubs, Daggers, Darts, Javelins, Maces,
+        Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
+    <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument,
+        and Strength/Dexterity saving throws</string>
+    <string name="wizard_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Intelligence/Wisdom saving throws</string>
+
+    //Other miscellaneous strings
+    <string name="select_a_character">Select a Character</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="long_rest">Long Rest</string>
+    <string name="save_character">Save Character</string>
+    <string name="delete_character">Delete Character</string>
+    <string name="display_options">Display Options</string>
+    <string name="add_new_character">Add New Character</string>
+    <string name="finish_character">Finish Character</string>
+    <string name="barbarian_hit_die">As a Barbarian, your hit die is a D12</string>
+    <string name="bard_hit_die">As a Bard, your hit die is a D8</string>
+    <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
+    <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
+    <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
+    <string name="concentration">\"Concentration, \"</string>
+</resources>
