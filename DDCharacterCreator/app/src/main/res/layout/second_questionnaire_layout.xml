@@ -23,6 +23,10 @@
         android:id="@+id/skill_proficiency_choices_spinner_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/skill_proficiency_choices_spinner_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/other_proficiencies"
@@ -50,6 +54,10 @@
         android:layout_height="wrap_content"/>
     <Spinner
         android:id="@+id/starting_equipment_spinner_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/starting_equipment_spinner_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
