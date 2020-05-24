@@ -79,7 +79,7 @@ public class SpellcastingFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
-        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Monk")){
+        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
@@ -90,11 +90,12 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setTextSize(48);
         }else {
             switch (character.getCharacterClass()) {
-                case "Wizard":
-                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
-                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
-                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
+                case "Bard":
+                case "Sorcerer":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(5));
                     break;
                 case "Druid":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
@@ -102,11 +103,11 @@ public class SpellcastingFragment extends Fragment {
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
                     break;
-                case "Bard":
-                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
-                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(5));
+                case "Wizard":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
                     break;
             }
             if(spellCount<1){
