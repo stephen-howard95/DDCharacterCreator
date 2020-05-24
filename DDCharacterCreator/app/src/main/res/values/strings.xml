@@ -17,6 +17,8 @@
         <item name="Bard">Bard</item>
         <item name="Druid">Druid</item>
         <item name="Monk">Monk</item>
+        <item name="Rogue">Rogue</item>
+        <item name="Sorcerer">Sorcerer</item>
         <item name="Wizard">Wizard</item>
     </string-array>
 
@@ -53,8 +55,6 @@
         <item name="survival">Survival</item>
     </string-array>
 
-    <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
-
     // Questionnaire 1 strings
     <string name="strength_label">STR</string>
     <string name="dexterity_label">DEX</string>
@@ -68,6 +68,13 @@
     <string name="stat_rolls_options">The two most common ways to choose your stat values are as follows: Option 1 is to roll 4d6, drop the lowest number, then record the total. Do this 6 times for 6 totals and choose which number to put for each stat. Option 2 is to use the numbers 15, 14, 13, 12, 10, and 8 on whichever stat you choose. The numbers MUST be between 3 and 18. Consult your DM for more options.</string>
 
     // Questionnaire 2 strings
+    <string name="barbarian_hit_die">As a Barbarian, your hit die is a D12</string>
+    <string name="bard_hit_die">As a Bard, your hit die is a D8</string>
+    <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
+    <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
+    <string name="rogue_hit_die">As a Rogue, your hit die is a D8</string>
+    <string name="sorcerer_hit_die">As a Sorcerer, your hit die is a D6</string>
+    <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
     <string name="starting_hp_and_hit_die">Your Starting HP will be X. Your Hit die is a dX</string>
     <string name="starting_gp_roll">For your starting gold, roll </string>
     <string name="proficiency_text">Choose from the following Skills to be proficient in</string>
@@ -189,6 +196,9 @@
         Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
     <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument,
         and Strength/Dexterity saving throws</string>
+    <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords
+        , Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
+    <string name="sorcerer_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Constitution/Charisma saving throws</string>
     <string name="wizard_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Intelligence/Wisdom saving throws</string>
 
     //Other miscellaneous strings
@@ -200,10 +210,6 @@
     <string name="display_options">Display Options</string>
     <string name="add_new_character">Add New Character</string>
     <string name="finish_character">Finish Character</string>
-    <string name="barbarian_hit_die">As a Barbarian, your hit die is a D12</string>
-    <string name="bard_hit_die">As a Bard, your hit die is a D8</string>
-    <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
-    <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
-    <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
     <string name="concentration">\"Concentration, \"</string>
+    <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
 </resources>
