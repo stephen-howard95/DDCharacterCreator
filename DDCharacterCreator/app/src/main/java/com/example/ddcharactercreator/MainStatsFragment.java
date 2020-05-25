@@ -181,6 +181,16 @@ public class MainStatsFragment extends Fragment {
                 dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Paladin":
+                hitDieTextView.setText("d10");
+                maxHitPoints.setText(String.valueOf(10 + calculateModifier(character.getStatValues().get(2))));
+                wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
             case "Rogue":
                 hitDieTextView.setText("d8");
                 maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
@@ -324,6 +334,18 @@ public class MainStatsFragment extends Fragment {
                 bonusStats.add("While unarmed, you can use DEX instead of STR for attack and damage rolls");
                 bonusStats.add("While unarmed, if you take the attack action, you can make another unarmed strike as a bonus action");
                 bonusStats.add(getString(R.string.monk_other_proficiencies));
+                break;
+            case "Paladin":
+                bonusStats.add("Divine Sense: As an action, you can detect the presence of any celestial, fiend, or undead within 60ft of you.");
+                if(calculateModifier(character.getStatValues().get(5)) < 1){
+                    bonusStats.add("Divine Sense uses: 1/Long Rest");
+                }else {
+                    bonusStats.add("Divine Sense uses: " + calculateModifier(character.getStatValues().get(5)) +"/Long Rest");
+                }
+                bonusStats.add("Lay on Hands: You have a pool of healing power that, when you touch a creature, you can spend 5 points to neutralize one poison/disease affecting it, or spend any amount to heal them");
+                bonusStats.add("Lay on Hands pool: " + 5*character.getLevel());
+                bonusStats.add("Lay on Hands pool fully replenishes on a Long Rest");
+                bonusStats.add(getString(R.string.paladin_other_proficiencies));
                 break;
             case "Rogue":
                 bonusStats.add("Sneak Attack: Once per turn, you deal extra damage to an enemy if you have advantage on the attack roll or if an ally is within 5ft and you don't have disadvantage");
