@@ -91,6 +91,7 @@ public class SpellcastingFragment extends Fragment {
         }else {
             switch (character.getCharacterClass()) {
                 case "Bard":
+                case "Paladin":
                 case "Sorcerer":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
@@ -118,7 +119,9 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (spellsList.size() >= spellCount) {
+                    if(character.getCharacterClass().equals("Paladin") && character.getLevel() < 2){
+                        Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
+                    } else if (spellsList.size() >= spellCount) {
                         Toast.makeText(getContext(), "You are at your max spell count", Toast.LENGTH_SHORT).show();
                     } else {
                         addSpellToList();
