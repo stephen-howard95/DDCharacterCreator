@@ -73,11 +73,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         List<String> equipmentSpinnerArray3 = new ArrayList<String>();
 
         switch (character.getCharacterClass()){
+            //TODO: Change the skill spinner's arrays to reflect their learnable skills
             case "Barbarian":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Greataxe");
                 equipmentSpinnerArray1.add("Battleaxe");
                 equipmentSpinnerArray2.add("Handaxe x2");
@@ -89,7 +89,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Bard":
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Longsword");
                 equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
@@ -103,7 +102,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Wooden Shield");
                 equipmentSpinnerArray1.add("Shortbow with Arrows x20");
                 equipmentSpinnerArray2.add("Scimitar");
@@ -116,7 +114,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Shortsword");
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray2.add("Dungeoneer's Pack");
@@ -125,8 +122,20 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 otherProficiencies.append(getString(R.string.monk_other_proficiencies));
                 startingGoldHint.append("5d4");
                 break;
+            case "Paladin":
+                skillProficiencySpinner3.setVisibility(View.GONE);
+                skillProficiencySpinner4.setVisibility(View.GONE);
+                equipmentSpinnerArray1.add("Longsword and Shield");
+                equipmentSpinnerArray1.add("Shortsword x2");
+                equipmentSpinnerArray2.add("Javelin x5");
+                equipmentSpinnerArray2.add("Mace");
+                equipmentSpinnerArray3.add("Priest's Pack");
+                equipmentSpinnerArray3.add("Explorer's Pack");
+                startingHPAndHitDieTextView.setText(R.string.paladin_hit_die);
+                otherProficiencies.append(getString(R.string.paladin_other_proficiencies));
+                startingGoldHint.append("5d4 x10");
+                break;
             case "Rogue":
-                //alter the skill spinners
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
                 equipmentSpinnerArray2.add("Shortbow with arrows x20");
@@ -141,7 +150,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Sorcerer":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray2.add("Component Pouch");
@@ -156,7 +164,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
-                //alter the remaining spinners
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray1.add("Dagger");
                 equipmentSpinnerArray2.add("Scholar's Pack");
@@ -222,6 +229,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                         case "Monk":
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(4)));
+                            break;
+                        case "Paladin":
+                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            break;
                         case "Sorcerer":
                         case "Wizard":
                             currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
@@ -326,6 +337,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 break;
             case "Monk":
                 inventory.add("Dart x10");
+                break;
+            case "Paladin":
+                inventory.add("Chain Mail");
+                inventory.add("Holy Symbol");
                 break;
             case "Rogue":
                 inventory.add("Leather Armor");
