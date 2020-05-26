@@ -135,6 +135,18 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 otherProficiencies.append(getString(R.string.paladin_other_proficiencies));
                 startingGoldHint.append("5d4 x10");
                 break;
+            case "Ranger":
+                skillProficiencySpinner4.setVisibility(View.GONE);
+                equipmentSpinnerArray1.add("Scale Mail");
+                equipmentSpinnerArray1.add("Leather Armor");
+                equipmentSpinnerArray2.add("Shortsword x2");
+                equipmentSpinnerArray2.add("Handaxe x2");
+                equipmentSpinnerArray3.add("Dungeoneer's Pack");
+                equipmentSpinnerArray3.add("Explorer's Pack");
+                startingHPAndHitDieTextView.setText(R.string.ranger_hit_die);
+                otherProficiencies.append(getString(R.string.ranger_other_proficiencies));
+                startingGoldHint.append("5d4 x10");
+                break;
             case "Rogue":
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
@@ -231,6 +243,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                     + calculateModifier(character.getStatValues().get(4)));
                             break;
                         case "Paladin":
+                        case "Ranger":
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Sorcerer":
@@ -341,6 +354,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Paladin":
                 inventory.add("Chain Mail");
                 inventory.add("Holy Symbol");
+                break;
+            case "Ranger":
+                inventory.add("Longbow");
+                inventory.add("Quiver w/ Arrows x20");
                 break;
             case "Rogue":
                 inventory.add("Leather Armor");
