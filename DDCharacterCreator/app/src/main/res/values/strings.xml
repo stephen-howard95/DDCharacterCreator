@@ -18,6 +18,7 @@
         <item name="Druid">Druid</item>
         <item name="Monk">Monk</item>
         <item name="Paladin">Paladin</item>
+        <item name="Ranger">Ranger</item>
         <item name="Rogue">Rogue</item>
         <item name="Sorcerer">Sorcerer</item>
         <item name="Wizard">Wizard</item>
@@ -74,6 +75,7 @@
     <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
     <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
     <string name="paladin_hit_die">As a Paladin, your hit die is a D10</string>
+    <string name="ranger_hit_die">As a Ranger, your hit die is a D10</string>
     <string name="rogue_hit_die">As a Rogue, your hit die is a D8</string>
     <string name="sorcerer_hit_die">As a Sorcerer, your hit die is a D6</string>
     <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
@@ -199,6 +201,7 @@
     <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument,
         and Strength/Dexterity saving throws</string>
     <string name="paladin_other_proficiencies">All armor, Shields, Simple weapons, Martial weapons, and Wisdom/Charisma saving throws</string>
+    <string name="ranger_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons, and Strength/Dexterity saving throws</string>
     <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords
         , Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
     <string name="sorcerer_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Constitution/Charisma saving throws</string>
