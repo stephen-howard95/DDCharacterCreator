@@ -191,6 +191,16 @@ public class MainStatsFragment extends Fragment {
                 charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Ranger":
+                hitDieTextView.setText("d10");
+                maxHitPoints.setText(String.valueOf(10 + calculateModifier(character.getStatValues().get(2))));
+                strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                dexterityLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
             case "Rogue":
                 hitDieTextView.setText("d8");
                 maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
@@ -346,6 +356,10 @@ public class MainStatsFragment extends Fragment {
                 bonusStats.add("Lay on Hands pool: " + 5*character.getLevel());
                 bonusStats.add("Lay on Hands pool fully replenishes on a Long Rest");
                 bonusStats.add(getString(R.string.paladin_other_proficiencies));
+                break;
+            case "Ranger":
+                bonusStats.add("Choose one type of enemy. You have significant experience tracking and hunting and talking to them.");
+                bonusStats.add("Choose one type of terrain. You are an expert at traveling and traversing this type of terrain.");
                 break;
             case "Rogue":
                 bonusStats.add("Sneak Attack: Once per turn, you deal extra damage to an enemy if you have advantage on the attack roll or if an ally is within 5ft and you don't have disadvantage");
