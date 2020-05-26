@@ -99,6 +99,7 @@ public class SpellcastingFragment extends Fragment {
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(5));
                     break;
                 case "Druid":
+                case "Ranger":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
@@ -120,6 +121,8 @@ public class SpellcastingFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(character.getCharacterClass().equals("Paladin") && character.getLevel() < 2){
+                        Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
+                    } else if(character.getCharacterClass().equals("Ranger") && character.getLevel() < 2){
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
                     } else if (spellsList.size() >= spellCount) {
                         Toast.makeText(getContext(), "You are at your max spell count", Toast.LENGTH_SHORT).show();
