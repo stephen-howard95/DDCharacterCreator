@@ -90,6 +90,8 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setTextSize(48);
         }else {
             switch (character.getCharacterClass()) {
+                case "Warlock":
+                    spellSlot2.setVisibility(View.GONE);
                 case "Bard":
                 case "Paladin":
                 case "Sorcerer":
