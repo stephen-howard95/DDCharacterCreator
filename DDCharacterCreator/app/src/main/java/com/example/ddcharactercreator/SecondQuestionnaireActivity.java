@@ -172,6 +172,19 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 otherProficiencies.append(getString(R.string.sorcerer_other_proficiencies));
                 startingGoldHint.append("3d4 x10");
                 break;
+            case "Warlock":
+                skillProficiencySpinner3.setVisibility(View.GONE);
+                skillProficiencySpinner4.setVisibility(View.GONE);
+                equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
+                equipmentSpinnerArray1.add("Mace");
+                equipmentSpinnerArray2.add("Component Pouch");
+                equipmentSpinnerArray2.add("Arcane Focus");
+                equipmentSpinnerArray3.add("Scholar's Pack");
+                equipmentSpinnerArray3.add("Dungeoneer's Pack");
+                startingHPAndHitDieTextView.setText(R.string.warlock_hit_die);
+                otherProficiencies.append(getString(R.string.warlock_other_proficiencies));
+                startingGoldHint.append("4d4 x10");
+                break;
             case "Wizard":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
@@ -366,6 +379,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 break;
             case "Sorcerer":
                 inventory.add("Dagger x2");
+                break;
+            case "Warlock":
+                inventory.add("Leather Armor");
+                inventory.add("Dagger x2");
+                inventory.add("Handaxe");
                 break;
             case "Wizard":
                 inventory.add("Spellbook");
