@@ -221,6 +221,16 @@ public class MainStatsFragment extends Fragment {
                 charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Warlock":
+                hitDieTextView.setText("d8");
+                maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
+                wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
             case "Wizard":
                 hitDieTextView.setText("d6");
                 maxHitPoints.setText(String.valueOf(6 + calculateModifier(character.getStatValues().get(2))));
@@ -368,6 +378,9 @@ public class MainStatsFragment extends Fragment {
                 break;
             case "Sorcerer":
                 bonusStats.add(getString(R.string.sorcerer_other_proficiencies));
+                break;
+            case "Warlock":
+                bonusStats.add(getString(R.string.warlock_other_proficiencies));
                 break;
             case "Wizard":
                 bonusStats.add("Arcane Recovery: While taking a Short Rest, you can choose expended spell slots to recover. They must equal half your level, rounded up");
