@@ -21,6 +21,7 @@
         <item name="Ranger">Ranger</item>
         <item name="Rogue">Rogue</item>
         <item name="Sorcerer">Sorcerer</item>
+        <item name="Warlock">Warlock</item>
         <item name="Wizard">Wizard</item>
     </string-array>
 
@@ -78,6 +79,7 @@
     <string name="ranger_hit_die">As a Ranger, your hit die is a D10</string>
     <string name="rogue_hit_die">As a Rogue, your hit die is a D8</string>
     <string name="sorcerer_hit_die">As a Sorcerer, your hit die is a D6</string>
+    <string name="warlock_hit_die">As a Warlock, your hit die is a D8</string>
     <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
     <string name="starting_hp_and_hit_die">Your Starting HP will be X. Your Hit die is a dX</string>
     <string name="starting_gp_roll">For your starting gold, roll </string>
@@ -205,6 +207,7 @@
     <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords
         , Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
     <string name="sorcerer_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Constitution/Charisma saving throws</string>
+    <string name="warlock_other_proficiencies">Light armor, Simple weapons, and Wisdom/Charisma saving throws</string>
     <string name="wizard_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Intelligence/Wisdom saving throws</string>
 
     //Other miscellaneous strings
