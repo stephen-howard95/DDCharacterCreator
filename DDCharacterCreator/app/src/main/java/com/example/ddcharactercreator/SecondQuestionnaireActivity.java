@@ -29,6 +29,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
     @BindView(R.id.starting_equipment_spinner_1) Spinner startingEquipmentSpinner1;
     @BindView(R.id.starting_equipment_spinner_2) Spinner startingEquipmentSpinner2;
     @BindView(R.id.starting_equipment_spinner_3) Spinner startingEquipmentSpinner3;
+    @BindView(R.id.starting_equipment_spinner_4) Spinner startingEquipmentSpinner4;
 
     public SecondQuestionnaireActivity(){
     }
@@ -71,6 +72,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         List<String> equipmentSpinnerArray1 = new ArrayList<String>();
         List<String> equipmentSpinnerArray2 = new ArrayList<String>();
         List<String> equipmentSpinnerArray3 = new ArrayList<String>();
+        List<String> equipmentSpinnerArray4 = new ArrayList<String>();
 
         switch (character.getCharacterClass()){
             //TODO: Change the skill spinner's arrays to reflect their learnable skills
@@ -78,6 +80,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Greataxe");
                 equipmentSpinnerArray1.add("Battleaxe");
                 equipmentSpinnerArray2.add("Handaxe x2");
@@ -89,6 +92,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Bard":
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Longsword");
                 equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
@@ -98,10 +102,25 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 otherProficiencies.append(getString(R.string.bard_other_proficiencies));
                 startingGoldHint.append("5d4 x10");
                 break;
+            case "Cleric":
+                skillProficiencySpinner3.setVisibility(View.GONE);
+                skillProficiencySpinner4.setVisibility(View.GONE);
+                equipmentSpinnerArray1.add("Mace");
+                equipmentSpinnerArray1.add("Warhammer");
+                equipmentSpinnerArray2.add("Scale Mail");
+                equipmentSpinnerArray2.add("Leather Armor");
+                equipmentSpinnerArray2.add("Chain Mail");
+                equipmentSpinnerArray3.add("Light Crossbow with bolts x20");
+                equipmentSpinnerArray3.add("Greatclub");
+                startingHPAndHitDieTextView.setText(R.string.cleric_hit_die);
+                otherProficiencies.append(getString(R.string.cleric_other_proficiencies));
+                startingGoldHint.append("5d4 x10");
+                break;
             case "Druid":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Wooden Shield");
                 equipmentSpinnerArray1.add("Shortbow with Arrows x20");
                 equipmentSpinnerArray2.add("Scimitar");
@@ -114,6 +133,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Shortsword");
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray2.add("Dungeoneer's Pack");
@@ -125,6 +145,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Paladin":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Longsword and Shield");
                 equipmentSpinnerArray1.add("Shortsword x2");
                 equipmentSpinnerArray2.add("Javelin x5");
@@ -137,6 +158,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 break;
             case "Ranger":
                 skillProficiencySpinner4.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Scale Mail");
                 equipmentSpinnerArray1.add("Leather Armor");
                 equipmentSpinnerArray2.add("Shortsword x2");
@@ -148,6 +170,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Rogue":
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
                 equipmentSpinnerArray2.add("Shortbow with arrows x20");
@@ -162,6 +185,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Sorcerer":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray2.add("Component Pouch");
@@ -175,6 +199,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
             case "Warlock":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Light Crossbow with bolts x20");
                 equipmentSpinnerArray1.add("Mace");
                 equipmentSpinnerArray2.add("Component Pouch");
@@ -189,6 +214,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Quarterstaff");
                 equipmentSpinnerArray1.add("Dagger");
                 equipmentSpinnerArray2.add("Scholar's Pack");
@@ -207,10 +233,13 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item, equipmentSpinnerArray2);
         ArrayAdapter<String> equipmentArrayAdapter3 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, equipmentSpinnerArray3);
+        ArrayAdapter<String> equipmentArrayAdapter4 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, equipmentSpinnerArray4);
 
         startingEquipmentSpinner1.setAdapter(equipmentArrayAdapter1);
         startingEquipmentSpinner2.setAdapter(equipmentArrayAdapter2);
         startingEquipmentSpinner3.setAdapter(equipmentArrayAdapter3);
+        startingEquipmentSpinner4.setAdapter(equipmentArrayAdapter4);
 
         Button finishButton = findViewById(R.id.button_finished_character_creation);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -355,6 +384,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 inventory.add("Leather Armor");
                 inventory.add("Dagger");
                 inventory.add("Lute");
+                break;
+            case "Cleric":
+                inventory.add("Shield");
+                inventory.add("Holy Symbol");
                 break;
             case "Druid":
                 inventory.add("Leather Armor");
