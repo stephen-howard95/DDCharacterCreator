@@ -15,6 +15,7 @@
     <string-array name="class_array">
         <item name="Barbarian">Barbarian</item>
         <item name="Bard">Bard</item>
+        <item name="Cleric">Cleric</item>
         <item name="Druid">Druid</item>
         <item name="Monk">Monk</item>
         <item name="Paladin">Paladin</item>
@@ -73,6 +74,7 @@
     // Questionnaire 2 strings
     <string name="barbarian_hit_die">As a Barbarian, your hit die is a D12</string>
     <string name="bard_hit_die">As a Bard, your hit die is a D8</string>
+    <string name="cleric_hit_die">As a Cleric, your hit die is a D8</string>
     <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
     <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
     <string name="paladin_hit_die">As a Paladin, your hit die is a D10</string>
@@ -198,6 +200,7 @@
         and Strength/Constitution saving throws</string>
     <string name="bard_other_proficiencies">Light armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords,
         Musical instruments, and Dexterity/Charisma saving throws</string>
+    <string name="cleric_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, and Wisdom/Charisma saving throws</string>
     <string name="druid_other_proficiencies">Light armor, Medium armor, Shields, Clubs, Daggers, Darts, Javelins, Maces,
         Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
     <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument,
