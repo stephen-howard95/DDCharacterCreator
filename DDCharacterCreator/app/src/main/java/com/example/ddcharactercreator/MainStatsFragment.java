@@ -221,6 +221,7 @@ public class MainStatsFragment extends Fragment {
                 charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Cleric":
             case "Warlock":
                 hitDieTextView.setText("d8");
                 maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
@@ -345,6 +346,9 @@ public class MainStatsFragment extends Fragment {
                 bonusStats.add("Bardic Inspiration gives an ally an extra die to add to an attack, ability check, or saving throw");
                 bonusStats.add("All uses of Bardic Inspiration will return once you complete a Long Rest");
                 bonusStats.add(getString(R.string.bard_other_proficiencies));
+                break;
+            case "Cleric":
+                bonusStats.add(getString(R.string.cleric_other_proficiencies));
                 break;
             case "Druid":
                 bonusStats.add(getString(R.string.druid_other_proficiencies));
