@@ -100,6 +100,7 @@ public class SpellcastingFragment extends Fragment {
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(5));
                     break;
+                case "Cleric":
                 case "Druid":
                 case "Ranger":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
