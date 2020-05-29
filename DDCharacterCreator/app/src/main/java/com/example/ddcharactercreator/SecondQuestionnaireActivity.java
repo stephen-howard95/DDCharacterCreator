@@ -129,6 +129,21 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 otherProficiencies.append(getString(R.string.druid_other_proficiencies));
                 startingGoldHint.append("2d4 x10");
                 break;
+            case "Fighter":
+                skillProficiencySpinner3.setVisibility(View.GONE);
+                skillProficiencySpinner4.setVisibility(View.GONE);
+                equipmentSpinnerArray1.add("Chain Mail");
+                equipmentSpinnerArray1.add("Leather Armor & Longbow with arrows x20");
+                equipmentSpinnerArray2.add("Battleaxe and a shield");
+                equipmentSpinnerArray2.add("Shortsword x2");
+                equipmentSpinnerArray3.add("Light Crossbow with bolts x20");
+                equipmentSpinnerArray3.add("Handaxe x2");
+                equipmentSpinnerArray4.add("Dungeoneer's Pack");
+                equipmentSpinnerArray4.add("Explorer's Pack");
+                startingHPAndHitDieTextView.setText(R.string.fighter_hit_die);
+                otherProficiencies.append(getString(R.string.fighter_other_proficiencies));
+                startingGoldHint.append("5d4 x10");
+                break;
             case "Monk":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
@@ -284,6 +299,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(4)));
                             break;
+                        case "Fighter":
                         case "Paladin":
                         case "Ranger":
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
