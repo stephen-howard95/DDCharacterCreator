@@ -79,7 +79,7 @@ public class SpellcastingFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
-        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
+        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Fighter") ||character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
