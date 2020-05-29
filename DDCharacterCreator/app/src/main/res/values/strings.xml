@@ -17,6 +17,7 @@
         <item name="Bard">Bard</item>
         <item name="Cleric">Cleric</item>
         <item name="Druid">Druid</item>
+        <item name="Fighter">Fighter</item>
         <item name="Monk">Monk</item>
         <item name="Paladin">Paladin</item>
         <item name="Ranger">Ranger</item>
@@ -76,6 +77,7 @@
     <string name="bard_hit_die">As a Bard, your hit die is a D8</string>
     <string name="cleric_hit_die">As a Cleric, your hit die is a D8</string>
     <string name="druid_hit_die">As a Druid, your hit die is a D8</string>
+    <string name="fighter_hit_die">As a Fighter, your hit die is a D10</string>
     <string name="monk_hit_die">As a Monk, your hit die is a D8</string>
     <string name="paladin_hit_die">As a Paladin, your hit die is a D10</string>
     <string name="ranger_hit_die">As a Ranger, your hit die is a D10</string>
@@ -196,19 +198,15 @@
     <string name="character_tab_label">Character</string>
 
     //Class-based other proficiences
-    <string name="barbarian_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons,
-        and Strength/Constitution saving throws</string>
-    <string name="bard_other_proficiencies">Light armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords,
-        Musical instruments, and Dexterity/Charisma saving throws</string>
+    <string name="barbarian_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons, and Strength/Constitution saving throws</string>
+    <string name="bard_other_proficiencies">Light armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords, Musical instruments, and Dexterity/Charisma saving throws</string>
     <string name="cleric_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, and Wisdom/Charisma saving throws</string>
-    <string name="druid_other_proficiencies">Light armor, Medium armor, Shields, Clubs, Daggers, Darts, Javelins, Maces,
-        Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
-    <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument,
-        and Strength/Dexterity saving throws</string>
+    <string name="druid_other_proficiencies">Light armor, Medium armor, Shields, Clubs, Daggers, Darts, Javelins, Maces, Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
+    <string name="fighter_other_proficiencies">All armor, Shields, Simple weapons, Martial weapons, and Strength/Constitution saving throws</string>
+    <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instruments and Strength/Dexterity saving throws</string>
     <string name="paladin_other_proficiencies">All armor, Shields, Simple weapons, Martial weapons, and Wisdom/Charisma saving throws</string>
     <string name="ranger_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons, and Strength/Dexterity saving throws</string>
-    <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords
-        , Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
+    <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords, Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
     <string name="sorcerer_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Constitution/Charisma saving throws</string>
     <string name="warlock_other_proficiencies">Light armor, Simple weapons, and Wisdom/Charisma saving throws</string>
     <string name="wizard_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Intelligence/Wisdom saving throws</string>
