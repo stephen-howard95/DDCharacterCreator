@@ -171,6 +171,16 @@ public class MainStatsFragment extends Fragment {
                 wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Fighter":
+                hitDieTextView.setText("d10");
+                maxHitPoints.setText(String.valueOf(10 + calculateModifier(character.getStatValues().get(2))));
+                strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                constitutionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                constitutionValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
             case "Monk":
                 hitDieTextView.setText("d8");
                 maxHitPoints.setText(String.valueOf(8 + calculateModifier(character.getStatValues().get(2))));
@@ -352,6 +362,10 @@ public class MainStatsFragment extends Fragment {
                 break;
             case "Druid":
                 bonusStats.add(getString(R.string.druid_other_proficiencies));
+                break;
+            case "Fighter":
+                bonusStats.add("Second Wind: Once per long rest, as a bonus action, you can regain HP equal to 1d10 + your fighter level.");
+                bonusStats.add(getString(R.string.fighter_other_proficiencies));
                 break;
             case "Monk":
                 bonusStats.add("Unarmed Strike damage die: d4");
