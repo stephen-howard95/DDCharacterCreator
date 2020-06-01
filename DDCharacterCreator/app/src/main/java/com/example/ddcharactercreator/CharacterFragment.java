@@ -16,27 +16,45 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CharacterFragment extends Fragment {
-
-    private ArrayList<String> characterDescription;
-
+    
     @BindView(R.id.character_name) TextView characterName;
     @BindView(R.id.character_level) TextView characterLevel;
     @BindView(R.id.character_class) TextView characterClass;
     @BindView(R.id.character_race) TextView characterRace;
     @BindView(R.id.character_alignment) TextView characterAlignment;
-
-    @BindView(R.id.height) EditText height;
-    @BindView(R.id.weight) EditText weight;
-    @BindView(R.id.age) EditText age;
-    @BindView(R.id.skin_color) EditText skinColor;
-    @BindView(R.id.eye_color) EditText eyeColor;
-    @BindView(R.id.hair) EditText hair;
-    @BindView(R.id.personality_traits) EditText personalityTraits;
-    @BindView(R.id.ideals) EditText ideals;
-    @BindView(R.id.bonds) EditText bonds;
-    @BindView(R.id.flaws) EditText flaws;
-    @BindView(R.id.backstory) EditText backstory;
     @BindView(R.id.languages) EditText languagesKnown;
+
+    @BindView(R.id.subclass_info_textview_1) TextView subclassInfoTextView1;
+    @BindView(R.id.subclass_info_textview_2) TextView subclassInfoTextView2;
+    @BindView(R.id.subclass_info_textview_3) TextView subclassInfoTextView3;
+    @BindView(R.id.checkboxes_textview_1) TextView checkBoxes1;
+    @BindView(R.id.checkboxes_textview_2) TextView checkBoxes2;
+    @BindView(R.id.checkboxes_textview_3) TextView checkBoxes3;
+    @BindView(R.id.checkboxes_textview_4) TextView checkBoxes4;
+    @BindView(R.id.checkboxes_textview_5) TextView checkBoxes5;
+    @BindView(R.id.checkbox_1_1) CheckBox checkBox1_1;
+    @BindView(R.id.checkbox_1_2) CheckBox checkBox1_2;
+    @BindView(R.id.checkbox_1_3) CheckBox checkBox1_3;
+    @BindView(R.id.checkbox_1_4) CheckBox checkBox1_4;
+    @BindView(R.id.checkbox_1_5) CheckBox checkBox1_5;
+    @BindView(R.id.checkbox_1_6) CheckBox checkBox1_6;
+    @BindView(R.id.checkbox_2_1) CheckBox checkBox2_1;
+    @BindView(R.id.checkbox_2_2) CheckBox checkBox2_2;
+    @BindView(R.id.checkbox_2_3) CheckBox checkBox2_3;
+    @BindView(R.id.checkbox_2_4) CheckBox checkBox2_4;
+    @BindView(R.id.checkbox_2_5) CheckBox checkBox2_5;
+    @BindView(R.id.checkbox_2_6) CheckBox checkBox2_6;
+    @BindView(R.id.checkbox_3_1) CheckBox checkBox3_1;
+    @BindView(R.id.checkbox_3_2) CheckBox checkBox3_2;
+    @BindView(R.id.checkbox_3_3) CheckBox checkBox3_3;
+    @BindView(R.id.checkbox_4_1) CheckBox checkBox4_1;
+    @BindView(R.id.checkbox_5_1) CheckBox checkBox5_1;
+    @BindView(R.id.subclass_info_edittext_textview) TextView editTextTextView;
+    @BindView(R.id.subclass_info_edittext) EditText subclassInfoEditText;
+    @BindView(R.id.subclass_info_listview_header) TextView subclassInfoHeader;
+    @BindView(R.id.subclass_info_listview) ListView subclassInfoListView;
+    @BindView(R.id.extra_info_listview_header) TextView extraInfoHeader;
+    @BindView(R.id.extra_info_listview) ListView bonusStatsList;
 
     public CharacterFragment(){
     }
@@ -57,23 +75,6 @@ public class CharacterFragment extends Fragment {
         characterClass.setText(character.getCharacterClass());
         characterRace.setText(character.getRace());
         characterAlignment.setText(character.getAlignment());
-
-        //Setting the character description.
-        characterDescription = character.getCharacterDescription();
-
-        if(characterDescription.isEmpty()){
-            characterDescription.add(height.getText().toString());
-            characterDescription.add(weight.getText().toString());
-            characterDescription.add(age.getText().toString());
-            characterDescription.add(skinColor.getText().toString());
-            characterDescription.add(eyeColor.getText().toString());
-            characterDescription.add(hair.getText().toString());
-            characterDescription.add(personalityTraits.getText().toString());
-            characterDescription.add(ideals.getText().toString());
-            characterDescription.add(bonds.getText().toString());
-            characterDescription.add(flaws.getText().toString());
-            characterDescription.add(backstory.getText().toString());
-        }
 
         //Setting languages known
         StringBuilder languages = new StringBuilder();
@@ -110,9 +111,115 @@ public class CharacterFragment extends Fragment {
             languages.append("Druidic, ");
         }
         if(character.getCharacterClass().equals("Rogue")){
-            languages.append("Thieve's Cant, ")
+            languages.append("Thieve's Cant, ");
         }
         languagesKnown.setText(languages.toString());
+
+        ArrayList<String> bonusStats = new ArrayList<String>();
+
+        //Adding class info when applicable
+        switch(character.getCharacterClass()){
+            case "Barbarian":
+                //if level >= x, set certain views visible and set the text to the proper string resource
+                //if character.getSubclass().equals("Path of the Berzerker"(create string resources for each one)), do the above for the subclass
+                subclassInfoTextView1.setText(R.string.rage_damage);
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(R.string.rage_uses);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                checkBox1_2.setVisibility(View.VISIBLE);
+                bonusStats.add(getString(R.string.rage_description));
+                break;
+            case "Bard":
+                subclassInfoTextView1.setText(R.string.bardic_inspiration_die);
+                bonusStats.add(getString(R.string.bardic_inspiration_description));
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(R.string.bardic_inspiration_uses);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                if(calculateModifier(character.getStatValues().get(5)) >= 2){
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 3){
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 4){
+                    checkBox1_4.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 5){
+                    checkBox1_5.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 6){
+                    checkBox1_6.setVisibility(View.VISIBLE);
+                }
+                break;
+            case "Cleric":
+                //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
+                // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
+                break;
+            case "Druid":
+                //Literally have nothing to add here at level 1.
+                break;
+            case "Fighter":
+                subclassInfoTextView1.setText(R.string.fighting_style);
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(R.string.second_wind_amount);
+                bonusStats.add(getString(R.string.second_wind));
+                break;
+            case "Monk":
+                subclassInfoTextView1.setText(R.string.unarmed_strike_damage);
+                bonusStats.add(getString(R.string.martial_arts));
+                break;
+            case "Paladin":
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(R.string.divine_sense_uses);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                if(calculateModifier(character.getStatValues().get(5)) >= 1){
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 2){
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 3){
+                    checkBox1_4.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 4){
+                    checkBox1_5.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 5){
+                    checkBox1_6.setVisibility(View.VISIBLE);
+                }
+                editTextTextView.setVisibility(View.VISIBLE);
+                editTextTextView.setText(R.string.lay_on_hands_pool);
+                subclassInfoEditText.setText(String.valueOf(character.getLevel()*5));
+                bonusStats.add(getString(R.string.divine_sense));
+                bonusStats.add(getString(R.string.lay_on_hands));
+                break;
+            case "Ranger":
+                subclassInfoTextView1.setText(R.string.favored_enemy);
+                subclassInfoTextView2.setVisibility(View.VISIBLE);
+                subclassInfoTextView2.setText(R.string.favored_terrain);
+                bonusStats.add(getString(R.string.favored_enemy_description));
+                bonusStats.add(getString(R.string.favored_terrain_description));
+                break;
+            case "Rogue":
+                subclassInfoTextView1.setText(R.string.sneak_attack_damage);
+                bonusStats.add(getString(R.string.sneak_attack_description));
+                break;
+            case "Sorcerer":
+                //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
+                // HP/AC, or a checkbox(tides of chaos, wild magic)
+                break;
+            case "Warlock":
+                //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
+                // list, and bonusStats info.
+                break;
+            case "Wizard":
+                subclassInfoTextView1.setText(R.string.arcane_recovery_amount);
+                bonusStats.add(getString(R.string.arcane_recovery));
+                break;
+        }
+        ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
+        bonusStatsList.setAdapter(adapter);
 
         return rootView;
     }
@@ -121,33 +228,5 @@ public class CharacterFragment extends Fragment {
     public void onResume(){
         super.onResume();
         DetailActivity.canLongRest = false;
-
-        height.setText(characterDescription.get(0));
-        weight.setText(characterDescription.get(1));
-        age.setText(characterDescription.get(2));
-        skinColor.setText(characterDescription.get(3));
-        eyeColor.setText(characterDescription.get(4));
-        hair.setText(characterDescription.get(5));
-        personalityTraits.setText(characterDescription.get(6));
-        ideals.setText(characterDescription.get(7));
-        bonds.setText(characterDescription.get(8));
-        flaws.setText(characterDescription.get(9));
-        backstory.setText(characterDescription.get(10));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        characterDescription.set(0, height.getText().toString());
-        characterDescription.set(1, weight.getText().toString());
-        characterDescription.set(2, age.getText().toString());
-        characterDescription.set(3, skinColor.getText().toString());
-        characterDescription.set(4, eyeColor.getText().toString());
-        characterDescription.set(5, hair.getText().toString());
-        characterDescription.set(6, personalityTraits.getText().toString());
-        characterDescription.set(7, ideals.getText().toString());
-        characterDescription.set(8, bonds.getText().toString());
-        characterDescription.set(9, flaws.getText().toString());
-        characterDescription.set(10, backstory.getText().toString());
     }
 }
