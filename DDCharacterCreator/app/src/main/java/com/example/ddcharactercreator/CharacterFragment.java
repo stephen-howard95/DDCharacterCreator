@@ -117,11 +117,53 @@ public class CharacterFragment extends Fragment {
 
         ArrayList<String> bonusStats = new ArrayList<String>();
 
+        //Adding in Racial Benefits
+        switch(character.getRace()){
+            case "Dwarf":
+                //Mountain Dwarf is chosen for this
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("Advantage on saving throws against poison");
+                bonusStats.add("Resistance to poison damage");
+                bonusStats.add("Add double your proficiency bonus to INT History checks relating to stonework");
+                break;
+            case "Elf":
+                //Wood Elf is chosen for this
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("Advantage on saving throws against being charmed");
+                bonusStats.add("Magic effects cannot put you to sleep");
+                bonusStats.add("You can get a full Long Rest by only meditating for 4 hours");
+                break;
+            case "Halfling":
+                //Stout Halfling is chosen for this
+                bonusStats.add("When you roll a 1 on a D20, you can choose to re-roll and use the new roll");
+                bonusStats.add("Advantage on saving throws against being frightened");
+                bonusStats.add("Advantage on saving throws against poison");
+                bonusStats.add("Resistance to poison damage");
+                break;
+            case "Gnome":
+                //Forest Gnome is chosen for this
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("Advantage on INT, WIS, and CHA saving throws against magic");
+                bonusStats.add("Through sounds and gestures, you can communicate simple ideas with small animals");
+                break;
+            case "Half-Elf":
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("Advantage on saving throws against being charmed");
+                bonusStats.add("Magic effects cannot put you to sleep");
+                break;
+            case "Half-Orc":
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
+                bonusStats.add("When you score a critical hit, you can roll an extra of the weapon's damage die");
+                break;
+            case "Tiefling":
+                bonusStats.add("Darkvision: 60 ft");
+                bonusStats.add("You are resistant to Fire damage");
+                break;
+        }
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
-                //if level >= x, set certain views visible and set the text to the proper string resource
-                //if character.getSubclass().equals("Path of the Berzerker"(create string resources for each one)), do the above for the subclass
                 subclassInfoTextView1.setText(R.string.rage_damage);
                 checkBoxes1.setVisibility(View.VISIBLE);
                 checkBoxes1.setText(R.string.rage_uses);
