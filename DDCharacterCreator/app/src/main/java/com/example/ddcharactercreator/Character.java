@@ -21,7 +21,8 @@ public class Character implements Serializable {
     private ArrayList<String> mProficiencyChoices;
     private ArrayList<String> mInventoryList;
     private ArrayList<Integer> mCurrency;
-    private ArrayList<String> mCharacterDescription;
+    //add subclass to MainActivity character list?? (Level 4 school of Evocation Elf Wizard?)
+    private String mSubclass;
     private ArrayList<Spell> mSpellsKnown;
     private ArrayList<String> mSpellSlotsClicked;
 
@@ -54,7 +55,7 @@ public class Character implements Serializable {
 
     public Character(int level, String race, String characterClass, String alignment, String name, ArrayList<Integer> statValues,
                      ArrayList<String> proficiencyChoices, ArrayList<String> inventoryList, ArrayList<Integer> currency,
-                     ArrayList<String> characterDescription, ArrayList<Spell> spellsKnown, ArrayList<String> spellSlotsClicked){
+                     String subclass, ArrayList<Spell> spellsKnown, ArrayList<String> spellSlotsClicked){
         mLevel = level;
         mRace = race;
         mCharacterClass = characterClass;
@@ -64,7 +65,7 @@ public class Character implements Serializable {
         mProficiencyChoices = proficiencyChoices;
         mInventoryList = inventoryList;
         mCurrency = currency;
-        mCharacterDescription = characterDescription;
+        mSubclass = subclass;
         mSpellsKnown = spellsKnown;
         mSpellSlotsClicked = spellSlotsClicked;
     }
@@ -96,8 +97,8 @@ public class Character implements Serializable {
     public ArrayList getCurrency(){
         return mCurrency;
     }
-    public ArrayList<String> getCharacterDescription(){
-        return mCharacterDescription;
+    public String getSubclass(){
+        return mSubclass;
     }
     public ArrayList<Spell> getSpellsKnown(){
         return mSpellsKnown;
