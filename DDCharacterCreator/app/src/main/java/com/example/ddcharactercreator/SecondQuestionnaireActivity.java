@@ -315,7 +315,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     }
                     launchDetailActivity(new Character(1, race, characterClass, alignment, name,
                             statValuesList, proficiencyChoices, instantiateInventory(startingEquipmentChoices),
-                            currency, new ArrayList<String>(), new ArrayList<Spell>(), spellSlotsClicked));
+                            currency, new String(), new ArrayList<Spell>(), spellSlotsClicked));
                 }
             }
         });
