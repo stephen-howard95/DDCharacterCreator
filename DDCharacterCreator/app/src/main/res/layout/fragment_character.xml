@@ -245,36 +245,33 @@
                 android:inputType="number"
                 android:text="20"/>
         </LinearLayout>
+       <TextView
+            android:id="@+id/subclass_info_listview_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Subclass info header"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:visibility="gone"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/subclass_info_listview_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Subclass info header"/>
+            android:layout_height="100dp">
             <ListView
                 android:id="@+id/subclass_info_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/subclass_info_listview_header"/>
+                android:visibility="gone"/>
         </RelativeLayout>
+        <TextView
+            android:id="@+id/extra_info_listview_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/racial_class_based_stats"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-            <TextView
-                android:id="@+id/extra_info_listview_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Extra info header"/>
+            android:layout_height="200dp">
             <ListView
                 android:id="@+id/extra_info_listview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/extra_info_listview_header"/>
+                android:layout_height="wrap_content"/>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>
