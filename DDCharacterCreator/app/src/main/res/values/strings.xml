@@ -178,19 +178,8 @@
     <string name="race">Race</string>
     <string name="character_class">Class</string>
     <string name="alignment">Alignment</string>
-    <string name="height"><u>Height</u></string>
-    <string name="weight"><u>Weight</u></string>
-    <string name="age"><u>Age</u></string>
-    <string name="skin_color"><u>Skin Color</u></string>
-    <string name="eye_color"><u>Eye Color</u></string>
-    <string name="hair"><u>Hair</u></string>
-    <string name="personality_traits"><u>Personality Traits</u></string>
-    <string name="ideals"><u>Ideals</u></string>
-    <string name="bonds"><u>Bonds</u></string>
-    <string name="flaws"><u>Flaws</u></string>
     <string name="languages_known">Languages Known: </string>
-    <string name="backstory_label"><u>Backstory</u></string>
-    <string name="character_backstory">Fill in your character\'s backstory here.</string>
+    <string name="racial_class_based_stats">Racial/Class-Based Stats</string>
 
     //DetailActivity tab labels
     <string name="main_stats_tab_label">Main Stats</string>
