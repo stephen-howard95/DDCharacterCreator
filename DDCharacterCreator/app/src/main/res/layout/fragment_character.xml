@@ -69,6 +69,18 @@
         <!-- The below TextView is the only one guaranteed to be visible.
         everything else should start invisible. Except for the bonusStats listView-->
         <TextView
+            android:id="@+id/subrace_textview_1"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subrace Info 1:"/>
+        <TextView
+            android:id="@+id/subrace_textview_2"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subrace Info 2:"/>
+        <TextView
             android:id="@+id/subclass_info_textview_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,6 +97,21 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:text="TextView 3:"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/subrace_checkboxes_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subrace Checkbox: "/>
+            <CheckBox
+                android:id="@+id/subrace_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
         <LinearLayout
             android:id="@+id/subclass_info_checkboxes_1"
             android:layout_width="wrap_content"
@@ -245,7 +272,7 @@
                 android:inputType="number"
                 android:text="20"/>
         </LinearLayout>
-       <TextView
+        <TextView
             android:id="@+id/subclass_info_listview_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
