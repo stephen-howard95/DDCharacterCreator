@@ -31,6 +31,14 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
     @BindView(R.id.starting_equipment_spinner_3) Spinner startingEquipmentSpinner3;
     @BindView(R.id.starting_equipment_spinner_4) Spinner startingEquipmentSpinner4;
 
+    @BindView(R.id.level_one_choice_text_1) TextView levelOneChoiceHeader1;
+    @BindView(R.id.level_one_choice_text_2) TextView levelOneChoiceHeader2;
+    @BindView(R.id.level_one_choice_text_3) TextView levelOneChoiceHeader3;
+    @BindView(R.id.level_one_choice_spinner_1) Spinner levelOneChoiceSpinner1;
+    @BindView(R.id.level_one_choice_spinner_2) Spinner levelOneChoiceSpinner2;
+    @BindView(R.id.level_one_choice_spinner_3) Spinner levelOneChoiceSpinner3;
+
+
     public SecondQuestionnaireActivity(){
     }
 
@@ -48,6 +56,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
+        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -73,6 +82,13 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         List<String> equipmentSpinnerArray2 = new ArrayList<String>();
         List<String> equipmentSpinnerArray3 = new ArrayList<String>();
         List<String> equipmentSpinnerArray4 = new ArrayList<String>();
+
+        List<String> levelOneChoices1 = new ArrayList<String>();
+        List<String> levelOneChoices2 = new ArrayList<String>();
+
+        //TODO: extra choice to make: sub-race, dragonborn color, Cleric divine domains, Fighter fighting styles, Ranger favored enemy/terrain, rogue expertise, Sorcerous Origin(subclass), Warlock Otherworldly Patron(subclass)
+        //if(Spinner.getSelectedItem().toString().equals("draconic Ancestry")) --> If the spinner is set to "Draconic Ancestry", the dragon colors spinner will be set to visible. Can I do this on the flow?
+        //Could I have a textview that changes based on which option is currently selected in the spinner/radiobutton?
 
         switch (character.getCharacterClass()){
             //TODO: Change the skill spinner's arrays to reflect their learnable skills
@@ -103,6 +119,16 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Cleric":
+                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader2.setText("Choose a Divine Domain");
+                levelOneChoices1.add("Knowledge");
+                levelOneChoices1.add("Life");
+                levelOneChoices1.add("Light");
+                levelOneChoices1.add("Nature");
+                levelOneChoices1.add("Tempest");
+                levelOneChoices1.add("Trickery");
+                levelOneChoices1.add("War");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Mace");
@@ -198,6 +224,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("4d4 x10");
                 break;
             case "Sorcerer":
+                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader2.setText("Choose a Sorcerous Origin");
+                levelOneChoices1.add("Draconic Bloodline");
+                levelOneChoices1.add("Wild Magic");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -212,6 +243,12 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("3d4 x10");
                 break;
             case "Warlock":
+                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader2.setText("Choose an Otherworldly Patron");
+                levelOneChoices1.add("The Archfey");
+                levelOneChoices1.add("The Fiend");
+                levelOneChoices1.add("The Great Old One");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -256,6 +293,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         startingEquipmentSpinner3.setAdapter(equipmentArrayAdapter3);
         startingEquipmentSpinner4.setAdapter(equipmentArrayAdapter4);
 
+        ArrayAdapter<String> levelOneChoicesAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, levelOneChoices1);
+        levelOneChoiceSpinner2.setAdapter(levelOneChoicesAdapter);
+
         Button finishButton = findViewById(R.id.button_finished_character_creation);
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,6 +317,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     String alignment = character.getAlignment();
                     String name = character.getName();
                     ArrayList<Integer> statValuesList = getStatBonuses(character, character.getStatValues());
+                    String characterSubclass = new String();
                     ArrayList<Integer> currency = new ArrayList<>();
                     int startingGold = Integer.parseInt(startingGoldEditText.getText().toString());
                     //Initial Current HP
@@ -295,6 +337,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(2)));
                             break;
+                        case "Cleric":
+                        case "Warlock":
+                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            break;
                         case "Monk":
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(4)));
@@ -305,6 +351,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Sorcerer":
+                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
                         case "Wizard":
                             currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
                             break;
@@ -315,7 +362,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     }
                     launchDetailActivity(new Character(1, race, characterClass, alignment, name,
                             statValuesList, proficiencyChoices, instantiateInventory(startingEquipmentChoices),
-                            currency, new String(), new ArrayList<Spell>(), spellSlotsClicked));
+                            currency, characterSubclass, new ArrayList<Spell>(), spellSlotsClicked));
                 }
             }
         });
@@ -355,6 +402,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 constitution += 1;
                 intelligence += 1;
                 wisdom += 1;
+                charisma += 1;
+                break;
+            case "Dragonborn":
+                //Red Dragonborn is chosen for this
+                strength += 2;
                 charisma += 1;
                 break;
             case "Gnome":
