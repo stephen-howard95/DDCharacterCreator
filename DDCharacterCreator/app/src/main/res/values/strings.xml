@@ -212,4 +212,130 @@
     <string name="finish_character">Finish Character</string>
     <string name="concentration">\"Concentration, \"</string>
     <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
+    
+    //leveling up/subclass bonuses
+    <string name="primal_path">Primal Path: </string>
+    <string name="rage_description">As a bonus action, you can enter a rage. While raging and not wearing heavy armor, you have advantage on STR checks and saving throws, you deal bonus damage(listed above) on all STR-based melee attacks, and you have resistance to bludgeoning, piercing and slashing damage. The rage lasts for 1 minute or can end early if you end your turn without having dealt or taken damage since your previous turn, if you are knocked unconscious, or if you choose to end it as a bonus action.</string>
+    <string name="rage_uses">Rage Uses:</string>
+    <string name="rage_damage">Rage Damage:</string>
+    <string name="reckless_attack">Reckless Attack: When you make a melee attack, you may choose to make it reckless, giving you advantage on any attack rolls this turn, but until the start of your next turn, attacks against you have advantage</string>
+    <string name="extra_attack">Extra Attack: When you take the attack action on your turn, you may attack twice</string>
+    <string name="feral_instinct">Feral Instinct: You have advantage on Initiative rolls</string>
+    <string name="brutal_critical">Brutal Critical: When you score a critical hit with a melee attack, you can roll ONE more of your weapon\'s damage die</string>
+    <string name="relentless_rage">Relentless Rage: While raging, if you drop to 0HP you can make a DC10 CON saving throw. On a success, you drop to 1HP instead. The DC increases by 5 every time you use this feature until you take a long rest.</string>
+    <string name="relentless_rage_DC">Relentless Rage DC:</string>
+    <string name="persistent_rage">Persistent Rage: Your rage only ends early if you fall unconscious or if you choose to end it.</string>
+    <string name="indomitable_might">Indomitable Might: If your total for a STR check is less than your STR score, you can use that score instead.</string>
+
+    <string name="bard_college">Bard College: </string>
+    <string name="bardic_inspiration_description">Bardic Inspiration: As a bonus action, choose another creature within 60ft of you to inspire. Within the next 10 minutes, that creature can add your Bardic Inspiration die to one ability check, attack roll, or saving throw they make</string>
+    <string name="bardic_inspiration_die">Bardic Inspiration Die: d6</string>
+    <string name="bardic_inspiration_uses">Bardic Inspiration Uses:</string>
+    <string name="song_of_rest">Song of Rest: If you or allies take a short rest and heal using one or more of their hit dice, they regain extra HP based on your Song of Rest die below</string>
+    <string name="song_of_rest_die">Song of Rest Die: 1d6</string>
+    <string name="font_of_inspiration">Font of Inspiration: You regain all uses of Bardic Inspiration after a short or long rest</string>
+    <string name="countercharm">Countercharm: As an action, you can start a performance that will last until the end of your next turn. During that time, you and any friendly creatures within 30ft of you have advantage on saving throws against being frightened or charmed</string>
+    <string name="superior_inspiration">Superior Inspiration: When you roll initiative and have no uses of Bardic Inspiration left, you regain one use</string>
+
+    <string name="divine_domain">Divine Domain: </string>
+    <string name="channel_divinity_uses">Channel Divinity Uses:</string>
+    <string name="channel_divinity_turn_undead">Channel Divinity: Turn Undead: As an action, you present your holy symbol and speak a prayer. Each undead within 30ft must succeed at a wisdom saving throw or, for 1 minute, spend its turns moving as far away from you as possible. They can only use their action to dash or dodge, if they cannot move further form you.</string>
+    <string name="destroy_undead">If an undead fails the saving throw against Turn Undead and has a CR less than or equal to the following, it is immediately destroyed</string>
+    <string name="destroy_undead_threshold">Destroy Undead Threshold:</string>
+    <string name="divine_intervention">Divine Intervention: As an action, you can call on your Deity for aid. Describe the assistance you require, then roll a percentile die. If you roll within the range listed below, your deity will come to your aid. If it succeeds, you cannot use this ability for another 7 days. If it fails, you can attempt it again after a long rest</string>
+    <string name="divine_intervention_success_range">Divine Intervention Success Range:</string>
+
+    <string name="druid_circle">Druid Circle: </string>
+    <string name="wild_shape">Wild Shape: As an action, you can magically transform into a beast within the parameters listed below. You can revert early if you choose. Your statistics are replaced by the beast\'s statistics, but you retain your alignment, personality, and your INT, WIS, and CHA scores. You cannot speak or cast spells when in beast form.</string>
+    <string name="wild_shape_uses">Wild Shape Uses:</string>
+    <string name="wild_shape_limits">Wild Shape Limits: Max CR = 1/4, No Flying/Swimming Speed</string>
+    <string name="timeless_body_druid">Timeless Body: Due to druidic magic forces, your body only ages 1 year for every 10 years that pass.</string>
+    <string name="beast_spells">Beast Spells: You can now perform the Somatic and Verbal aspects of a spell while in beast form, but cannot provide material components.</string>
+
+    <string name="martial_archetype">Martial Archetype: </string>
+    <string name="fighting_style">Fighting Style:</string>
+    <string name="second_wind">Second Wind: As a bonus action, you can heal yourself. You can do this once per long rest.</string>
+    <string name="second_wind_amount">"Second Wind amount: "</string>
+    <string name="action_surge">Action Surge: You may use this ability to take an additional action on your turn. You must take a long rest before you can use this ability again</string>
+    <string name="action_surge_uses">Action Surge Uses:</string>
+    <string name="indomitable">Indomitable: You can use this ability to reroll a failed saving throw. You must use the new roll. You must take a long rest before you can use this ability again</string>
+    <string name="indomitable_uses">Indomitable Uses:</string>
+
+    <string name="monastic_tradition">Monastic Tradition: </string>
+    <string name="martial_arts">Martial Arts: While you are not wearing armor, and unarmed or wielding only monk weapons (Shortswords or any simple weapon that isn\'t two-handed or heavy), you can use your DEX modifier instead of STR for attack and damage rolls with unarmed strikes and monk weapons, your unarmed strikes deal more damage(listed above), and when you take the attack action, you can make 1 unarmed strike as a bonus action.</string>
+    <string name="unarmed_strike_damage">Unarmed Strike Damage:</string>
+    <string name="unarmored_movement_description">Unarmored Movement: If you are not wearing armor or wielding a shield, your speed increases by the below amount</string>
+    <string name="unarmored_movement">Unarmored Movement:</string>
+    <string name="ki_points_description">You now have access to a pool of Ki points which have various uses</string>
+    <string name="ki_points">Ki points:</string>
+    <string name="flurry_of_blows">Flurry Of Blows: You can spend 1 Ki point to make 2 unarmed strikes as a bonus action, immediately after taking the attack action</string>
+    <string name="patient_defense">Patient Defense: You can spend 1 Ki point to take the Dodge action on your turn as a bonus action</string>
+    <string name="step_of_the_wind">Step Of The Wind: You can spend 1 Ki point to take the Disengage or Dash action as a bonus action, and your jump distance is doubled for the turn</string>
+    <string name="deflect_missiles_ki">Deflect Missiles: If you use your Deflect Missiles ability and reduce the damage to 0, you can spend 1 Ki point and, as part of the same reaction, make a ranged attack with that weapon, using your proficiency bonus.</string>
+    <string name="diamond_soul_ki">Diamond Soul: If you fail a saving throw, you can spend 1 Ki point to re-roll it. You must take the second result.</string>
+    <string name="empty_body">Empty Body: As an action, you can spend 4 Ki points to become invisible for 1 minute. During this time, you are resistant to all damage except force damage</string>
+    <string name="empty_body_2">Empty Body: You can spend 8 Ki points to cast Astral Projection without needing material components. You cannot take anyone with you.</string>
+    <string name="slow_fall">Slow Fall: you can use your reaction when you fall to reduce your falling damage by 5*your Monk level</string>
+    <string name="deflect_missiles">Deflect Missiles: If you are hit by a ranged attack, you can use your reaction to deflect or catch it. Doing this, will reduce the damage by 1d10 + your DEX modifier + your Monk level.</string>
+    <string name="ki_empowered_strikes">Ki-Empowered Strikes: Your unarmed strikes now count as magical for the purpose of overcoming resistance to non-magical attacks and damage</string>
+    <string name="evasion">Evasion: When making a DEX saving throw that allows you to take half damage on a success, you instead take no damage on a success and half damage on a failure</string>
+    <string name="stillness_of_mind">Stillness Of Mind: As an action, you can end one effect on yourself that is causing you to be frightened or charmed.</string>
+    <string name="purity_of_body">Purity Of Body: You are now immune to disease and poison</string>
+    <string name="tongue_of_the_sun_and_moon">Tongue Of The Sun And Moon: You can now understand any spoken language and any creature that understands a language can understand what you say.</string>
+    <string name="diamond_soul">Diamond Soul: You have proficiency in all saving throws</string>
+    <string name="timeless_body_monk">Timeless Body: Your Ki sustains you and you no longer need food or water and suffer none of the frailty of old age. You cannot be aged magically, but you can still die of old age.</string>
+    <string name="perfect_self">When you roll for initiative and have no Ki points remaining, you regain 4 Ki points.</string>
+
+    <string name="sacred_oath">Sacred Oath: </string>
+    <string name="divine_sense">Divine Sense: As an action, you can detect the location of any Celestial, Fiend, or Undead within 60 ft of you. You can use this ability a number of times equal to 1 + you CHA modifier</string>
+    <string name="divine_sense_uses">Divine Sense Uses:</string>
+    <string name="lay_on_hands">Lay On Hands: You have a healing pool equal to 5*your Paladin Level. As an action, you can touch a creature and expend 5 points to heal a disease or poison affecting them, or heal them for up to as many points as you have left in the pool. This healing pool will refill after a long rest</string>
+    <string name="lay_on_hands_pool">Lay On Hands pool:</string>
+    <string name="divine_smite">Divine Smite: When you hit a creature with a melee attack, you can expend a Spell Slot to deal an extra 2d8 radiant damage to it for a level 1 spell slot, and an extra d8 for every spell slot above first level, for a maximum of 5d8. The damage is increased by an extra d8 if the creature is undead.</string>
+    <string name="divine_health">Divine Health: You are now immune to disease</string>
+    <string name="aura_of_protection">Aura Of Protection: Whenever you or a friendly creature within 10ft of you must make a saving throw, they gain a bonus equal to your CHA modifier, if you are conscious.</string>
+    <string name="aura_of_courage">Aura Of Courage: You and friendly creatures within 10ft of you cannot be frightened.</string>
+    <string name="improved_divine_smite">Improved Divine Smite: All of your melee weapon attacks deal an extra 1d8 radiant damage</string>
+    <string name="cleansing_touch">Cleansing Touch: As an action, you can end one spell effect on yourself or a creature that you touch. You may use this a number of times equal to your CHA modifier. expended uses are regained after a long rest</string>
+    <string name="cleansing_touch_uses">Cleansing Touch Uses:</string>
+
+    <string name="ranger_archetype">Ranger Archetype: </string>
+    <string name="favored_enemy_description">Favored Enemy: You have significant experience tracking and hunting certain types of enemies. You have advantage on WIS(survival) checks on hunting them and INT checks on recalling information about them. You also learn one language that they speak.</string>
+    <string name="favored_enemy">Favored Enemy:</string>
+    <string name="favored_terrain_description">Favored Terrain: You have significant experience traveling through certain types of terrain. While traveling through your favored terrain, your group cannot get lost except for magical means, difficult terrain doesn\'t slow your group down, You forage more food than normal, and you know more about tracking creatures in the area.</string>
+    <string name="favored_terrain">Favored Terrain:</string>
+    <string name="primeval_awareness">Primeval Awareness: As an action, you can expend a spell slot and detect whether any of the following creatures (Aberrations, Celestials, Dragons, Elementals, Fey, Fiends, or Undead) are within 1 mile of you. The range is 6 miles if you are in your favored terrain</string>
+    <string name="lands_stride">Land\'s Stride: You can now move through non-magical difficult terrain at no extra cost to your movement speed. You can also move through nonmagical plants without being slowed or taking damage from them. You also have advantage on saving throws against plants that are magically created to impede movement.</string>
+    <string name="hide_in_plain_sight">Hide In Plain Sight: You can spend 1 minute creating the perfect camouflage. While disguised in this way, you have a +10 to any Stealth checks you make, as long as you do not move or take any actions.</string>
+    <string name="vanish">Vanish: You can now take the Hide action as a bonus action on your turn. You also cannot be tracked by nonmagical means, unless you allow it.</string>
+    <string name="feral_senses">Feral Senses: When you attack a creature you cannot see, that does not impose disadvantage on your attack rolls. You are also aware of any invisible creatures within 30ft of you, as long as it isn\'t hidden, and you aren\'t blinded or deafened.</string>
+    <string name="foe_slayer">Foe Slayer: Once oer turn, you can choose to add your WIS modifier to an attack or damage roll you make against one of your favored enemies.</string>
+
+    <string name="rouguish_archetype">Roguish Archetype: </string>
+    <string name="sneak_attack_description">Sneak Attack: Once per turn, you can deal extra damage(listed above) to an enemy you hit with a finesse or ranged weapon, provided you have advantage on the attack. You do not need advantage if another enemy of the target is within 5ft of it and not incapacitated, and you don\'t have disadvantage on the attack roll</string>
+    <string name="sneak_attack_damage">Sneak Attack Damage: </string>
+    <string name="cunning_action">Cunning Action: You can now take the Dash, Disengage, or Hide actions as a bonus action</string>
+    <string name="uncanny_dodge">Uncanny Dodge: When an attacker you can see hits you with an attack, you can use your reaction to halve the attack\'s damage</string>
+    <string name="reliable_talent">Reliable Talent: Whenever you make an ability check that allows you to add your proficiency bonus, you can treat a roll of 9 or lower as a 10</string>
+    <string name="blindsense">Blindsense: If you can hear, you are aware of any invisible creatures within 10ft of you.</string>
+    <string name="slippery_mind">Slippery Mind: You now have proficiency in WIS saving throws</string>
+    <string name="elusive">Elusive: While you are not incapacitated, no attack roll against you has advantage</string>
+    <string name="stroke_of_luck">Stroke of Luck: Once per short or long rest, if your attack misses a target within range, you can force it to hit. Alternatively, if you fail an ability check, you can treat the D20 roll as though you rolled a 20</string>
+
+    <string name="sorcerous_origin">Sorcerous Origin: </string>
+    <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points(amount listed above) that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
+    <string name="sorcery_points">Sorcery Points: </string>
+    <string name="metamagic_options">Metamagic Options: </string>
+    <string name="sorcerous_restoration">Sorcerous Restoration: When you finish a short rest, you regain 4 expended sorcery points.</string>
+
+    <string name="otherworldly_patron">Otherworldly Patron: </string>
+    <string name="eldritch_invocations_known">Eldritch Invocations Known: </string>
+    <string name="eldritch_master">Eldritch Master: Once per long rest, you can spend 1 minute entreating your patron to regain all your expended spell slots.</string>
+
+    <string name="arcane_tradition">Arcane Tradition: </string>
+    <string name="arcane_recovery">Arcane Recovery: Once per day, when you finish a short rest, you can regain spell slots that have a combined level of half your wizard level(listed above). These slots cannot be 6th level or above.</string>
+    <string name="arcane_recovery_amount">Arcane Recovery Amount: </string>
+    <string name="spell_mastery">Spell Mastery: Choose a 1st and a 2nd level spell from your spellbook. When you have these spells prepared, you can cast them at their lowest level without expending a spell slot. By spending 8 hours studying, you can exchange these spells for different ones of the same level.</string>
+    <string name="signature_spells">Signature Spells: Choose two 3rd level spells from your spellbook. You always have these spells prepared, and they don\'t count against the number of spells you have prepared. You can cast each of them once at 3rd level without expending a spell slot per short or long rest.</string>
+    <string name="signature_spells_choices">Signature Spells: </string>
 </resources>
