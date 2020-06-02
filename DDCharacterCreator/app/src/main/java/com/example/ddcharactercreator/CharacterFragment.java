@@ -80,47 +80,11 @@ public class CharacterFragment extends Fragment {
         characterRace.setText(character.getRace());
         characterAlignment.setText(character.getAlignment());
 
-        //Setting languages known
+        //Adding in Racial Benefits and languages
         StringBuilder languages = new StringBuilder();
         languages.append(getString(R.string.languages_known));
-
-        switch(character.getRace()){
-            case "Dwarf":
-                languages.append(" Common, Dwarvish, ");
-                break;
-            case "Elf":
-            case "Half-Elf":
-                languages.append(" Common, Elvish, ");
-                break;
-            case "Halfling":
-                languages.append(" Common, Halfling, ");
-                break;
-            case "Human":
-                languages.append(" Common, ");
-                break;
-            case "Dragonborn":
-                languages.append(" Common, Draconic, ");
-                break;
-            case "Gnome":
-                languages.append(" Common, Gnomish, ");
-                break;
-            case "Half-Orc":
-                languages.append(" Common, Orcish, ");
-                break;
-            case "Tiefling":
-                languages.append(" Common, Infernal, ");
-                break;
-        }
-        if(character.getCharacterClass().equals("Druid")){
-            languages.append("Druidic, ");
-        }
-        if(character.getCharacterClass().equals("Rogue")){
-            languages.append("Thieve's Cant, ");
-        }
-
         ArrayList<String> bonusStats = new ArrayList<String>();
 
-        //Adding in Racial Benefits
         switch(character.getRace()){
             case "Dwarf":
                 //Mountain Dwarf is chosen for this
@@ -128,6 +92,7 @@ public class CharacterFragment extends Fragment {
                 bonusStats.add("Advantage on saving throws against poison");
                 bonusStats.add("Resistance to poison damage");
                 bonusStats.add("Add double your proficiency bonus to INT History checks relating to stonework");
+                languages.append(" Common, Dwarvish, ");
                 break;
             case "Elf":
                 //Wood Elf is chosen for this
@@ -135,6 +100,7 @@ public class CharacterFragment extends Fragment {
                 bonusStats.add("Advantage on saving throws against being charmed");
                 bonusStats.add("Magic effects cannot put you to sleep");
                 bonusStats.add("You can get a full Long Rest by only meditating for 4 hours");
+                languages.append(" Common, Elvish, ");
                 break;
             case "Halfling":
                 //Stout Halfling is chosen for this
@@ -142,6 +108,10 @@ public class CharacterFragment extends Fragment {
                 bonusStats.add("Advantage on saving throws against being frightened");
                 bonusStats.add("Advantage on saving throws against poison");
                 bonusStats.add("Resistance to poison damage");
+                languages.append(" Common, Halfling, ");
+                break;
+            case "Human":
+                languages.append(" Common, ");
                 break;
             case "Dragonborn":
                 //Red Dragonborn is chosen for this
@@ -154,28 +124,40 @@ public class CharacterFragment extends Fragment {
                 subraceInfoTextView1.setText("Breath Weapon Damage: 2d6");
                 subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
                 subraceCheckboxTextView.setText("Breath Weapon");
+                languages.append(" Common, Draconic, ");
                 break;
             case "Gnome":
                 //Forest Gnome is chosen for this
                 bonusStats.add("Darkvision: 60 ft");
                 bonusStats.add("Advantage on INT, WIS, and CHA saving throws against magic");
                 bonusStats.add("Through sounds and gestures, you can communicate simple ideas with small animals");
+                languages.append(" Common, Gnomish, ");
                 break;
             case "Half-Elf":
                 bonusStats.add("Darkvision: 60 ft");
                 bonusStats.add("Advantage on saving throws against being charmed");
                 bonusStats.add("Magic effects cannot put you to sleep");
+                languages.append(" Common, Elvish, ");
                 break;
             case "Half-Orc":
                 bonusStats.add("Darkvision: 60 ft");
                 bonusStats.add("When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
                 bonusStats.add("When you score a critical hit, you can roll an extra of the weapon's damage die");
+                languages.append(" Common, Orcish, ");
                 break;
             case "Tiefling":
                 bonusStats.add("Darkvision: 60 ft");
                 bonusStats.add("You are resistant to Fire damage");
+                languages.append(" Common, Infernal, ");
                 break;
         }
+        if(character.getCharacterClass().equals("Druid")){
+            languages.append("Druidic, ");
+        }
+        if(character.getCharacterClass().equals("Rogue")){
+            languages.append("Thieve's Cant, ");
+        }
+        
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
