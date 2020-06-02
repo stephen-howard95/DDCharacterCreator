@@ -16,7 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CharacterFragment extends Fragment {
-    
+
     @BindView(R.id.character_name) TextView characterName;
     @BindView(R.id.character_level) TextView characterLevel;
     @BindView(R.id.character_class) TextView characterClass;
@@ -27,11 +27,15 @@ public class CharacterFragment extends Fragment {
     @BindView(R.id.subclass_info_textview_1) TextView subclassInfoTextView1;
     @BindView(R.id.subclass_info_textview_2) TextView subclassInfoTextView2;
     @BindView(R.id.subclass_info_textview_3) TextView subclassInfoTextView3;
+    @BindView(R.id.subrace_textview_1) TextView subraceInfoTextView1;
+    @BindView(R.id.subrace_textview_2) TextView subraceInfoTextView2;
     @BindView(R.id.checkboxes_textview_1) TextView checkBoxes1;
     @BindView(R.id.checkboxes_textview_2) TextView checkBoxes2;
     @BindView(R.id.checkboxes_textview_3) TextView checkBoxes3;
     @BindView(R.id.checkboxes_textview_4) TextView checkBoxes4;
     @BindView(R.id.checkboxes_textview_5) TextView checkBoxes5;
+    @BindView(R.id.subrace_checkboxes_textview) TextView subraceCheckboxTextView;
+    @BindView(R.id.subrace_checkbox) CheckBox subraceCheckBox;
     @BindView(R.id.checkbox_1_1) CheckBox checkBox1_1;
     @BindView(R.id.checkbox_1_2) CheckBox checkBox1_2;
     @BindView(R.id.checkbox_1_3) CheckBox checkBox1_3;
@@ -113,7 +117,6 @@ public class CharacterFragment extends Fragment {
         if(character.getCharacterClass().equals("Rogue")){
             languages.append("Thieve's Cant, ");
         }
-        languagesKnown.setText(languages.toString());
 
         ArrayList<String> bonusStats = new ArrayList<String>();
 
@@ -140,6 +143,18 @@ public class CharacterFragment extends Fragment {
                 bonusStats.add("Advantage on saving throws against poison");
                 bonusStats.add("Resistance to poison damage");
                 break;
+            case "Dragonborn":
+                //Red Dragonborn is chosen for this
+                bonusStats.add("Once per short or long rest, you can use your breath attack as an action. 15ft. cone of fire" /*+ depends on which color is chosen*/);
+                bonusStats.add("You have resistance to fire damage" /*damage type depends on color chosen*/);
+                subraceInfoTextView1.setVisibility(View.VISIBLE);
+                subraceInfoTextView2.setVisibility(View.VISIBLE);
+                subraceCheckboxTextView.setVisibility(View.VISIBLE);
+                subraceCheckBox.setVisibility(View.VISIBLE);
+                subraceInfoTextView1.setText("Breath Weapon Damage: 2d6");
+                subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
+                subraceCheckboxTextView.setText("Breath Weapon");
+                break;
             case "Gnome":
                 //Forest Gnome is chosen for this
                 bonusStats.add("Darkvision: 60 ft");
@@ -164,6 +179,8 @@ public class CharacterFragment extends Fragment {
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
+                //if level >= x, set certain views visible and set the text to the proper string resource
+                //if character.getSubclass().equals("Path of the Berzerker"(create string resources for each one)), do the above for the subclass
                 subclassInfoTextView1.setText(R.string.rage_damage);
                 checkBoxes1.setVisibility(View.VISIBLE);
                 checkBoxes1.setText(R.string.rage_uses);
@@ -194,6 +211,7 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Cleric":
+                subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
                 //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
                 // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
                 break;
@@ -248,10 +266,12 @@ public class CharacterFragment extends Fragment {
                 bonusStats.add(getString(R.string.sneak_attack_description));
                 break;
             case "Sorcerer":
+                subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
                 //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
                 // HP/AC, or a checkbox(tides of chaos, wild magic)
                 break;
             case "Warlock":
+                subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
                 //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
                 // list, and bonusStats info.
                 break;
@@ -263,6 +283,7 @@ public class CharacterFragment extends Fragment {
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
         bonusStatsList.setAdapter(adapter);
 
+        languagesKnown.setText(languages.toString());
         return rootView;
     }
 
