@@ -1,6 +1,5 @@
 package com.example.ddcharactercreator;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +12,7 @@ import java.util.List;
 public interface SpellDao {
 
     @Query("SELECT * FROM spellsList")
-    LiveData<List<Spell>> loadAllSpells();
+    List<Spell> loadAllSpells();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertSpell(Spell spell);
