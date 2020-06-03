@@ -4,12 +4,11 @@ import android.app.Application;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class SpellViewModel extends AndroidViewModel {
 
-    private LiveData<List<Spell>> spells;
+    private List<Spell> spells;
     private static final String TAG = SpellViewModel.class.getSimpleName();
 
     public SpellViewModel(@NonNull Application application) {
@@ -19,7 +18,7 @@ public class SpellViewModel extends AndroidViewModel {
         spells = database.spellDao().loadAllSpells();
     }
 
-    public LiveData<List<Spell>> getSpells(){
+    public List<Spell> getSpells(){
         return spells;
     }
 }
