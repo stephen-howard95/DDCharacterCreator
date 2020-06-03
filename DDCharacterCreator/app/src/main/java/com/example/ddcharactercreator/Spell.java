@@ -1,9 +1,16 @@
 package com.example.ddcharactercreator;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
+@Entity(tableName = "spellsList")
 public class Spell implements Serializable {
 
+    @PrimaryKey
+    @NonNull
     private String mSpellName;
     private String mDescription;
     private String mRange;
@@ -12,9 +19,11 @@ public class Spell implements Serializable {
     private String mCastingTime;
     private int mLevel;
 
+    @Ignore
     public Spell(){
     }
 
+    @Ignore
     public Spell(String name, int level){
         mSpellName = name;
         mLevel = level;
