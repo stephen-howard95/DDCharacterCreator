@@ -1,5 +1,3 @@
-package com.example.ddcharactercreator;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
@@ -52,8 +50,10 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
         mAdView.loadAd(adRequest);
 
         mSpellDb = SpellDatabase.getInstance(getApplicationContext());
+        List<Spell> spellsList = mSpellDb.spellDao().loadAllSpells();
         mSpellAdapter = new SpellAdapter(this, new ArrayList<Spell>());
-        if(mSpellDb.spellDao().loadAllSpells().getValue() == null){
+        
+        if(spellsList.size() == 0){
             ConnectivityManager connMgr = (ConnectivityManager)
                     getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
                 createNewCharacter();
             }
         });
-
         retrieveCharacters();
     }
 
