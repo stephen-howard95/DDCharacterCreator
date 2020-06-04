@@ -28,8 +28,8 @@ public class SpellChooserActivity extends AppCompatActivity{
         ListView spellListView = findViewById(R.id.list);
 
         spellListView.setAdapter(mAdapter);
-
-        if(spellsList != null && !spellsList.isEmpty()){
+        //Lmits spells available based on character level and character class
+        if(spellsList != null && !spellsList.isEmpty() || !spellsList.get(i).getClassList().contains(character.getCharacterClass())){
             for(int i = 0; i< spellsList.size(); i++){
                 if(2* spellsList.get(i).getLevel()-1 > character.getLevel()){
                     spellsList.remove(i);
