@@ -71,8 +71,10 @@ public class JsonUtils {
                 descriptionStringBuilder.append(description);
                 descriptionStringBuilder.append("\n");
                 descriptionStringBuilder.append(higherLevel);
+                
+                String spellClassList = currentSpell.getString("dnd_class");
 
-                Spell spell = new Spell(spellName, descriptionStringBuilder.toString(), spellRange, spellDuration, spellConcentration, spellCastingTime, spellLevel);
+                Spell spell = new Spell(spellName, descriptionStringBuilder.toString(), spellRange, spellDuration, spellConcentration, spellCastingTime, spellLevel, spellClassList);
 
                 spells.add(spell);
             }
