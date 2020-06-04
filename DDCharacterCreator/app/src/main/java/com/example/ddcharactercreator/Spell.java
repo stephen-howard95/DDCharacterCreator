@@ -18,6 +18,7 @@ public class Spell implements Serializable {
     private String mConcentration;
     private String mCastingTime;
     private int mLevel;
+    private String mClassList;
 
     @Ignore
     public Spell(){
@@ -29,7 +30,7 @@ public class Spell implements Serializable {
         mLevel = level;
     }
 
-    public Spell(String spellName, String description, String range, String duration, String concentration, String castingTime, int level){
+    public Spell(String spellName, String description, String range, String duration, String concentration, String castingTime, int level, String classList){
         mSpellName = spellName;
         mDescription = description;
         mRange = range;
@@ -37,6 +38,7 @@ public class Spell implements Serializable {
         mConcentration = concentration;
         mCastingTime = castingTime;
         mLevel = level;
+        mClassList = classList;
     }
 
     public String getSpellName(){
@@ -59,5 +61,8 @@ public class Spell implements Serializable {
     }
     public int getLevel(){
         return mLevel;
+    }
+    public String getClassList(){
+        return mClassList;
     }
 }
