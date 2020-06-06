@@ -28,11 +28,6 @@ import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
 
 public class SpellcastingFragment extends Fragment {
 
-    //TODO: All is well. Now I just have to figure out a way to keep the spell/cantrip limits set 
-    // as they are, but still be able to get one or the other. As of right now, once I max out my 
-    // spellsList, I can no longer launchSpellChooserActivity to get cantrips. I need to put
-    // something there to launch it, but only display cantrips instead. and vice versa.
-
     private SpellAdapter spellsAdapter;
     private SpellAdapter cantripsAdapter;
     private final ArrayList<Spell> fullSpellsList = DetailActivity.character.getSpellsKnown();
