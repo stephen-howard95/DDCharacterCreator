@@ -28,6 +28,11 @@ import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
 
 public class SpellcastingFragment extends Fragment {
 
+    //TODO: All is well. Now I just have to figure out a way to keep the spell/cantrip limits set 
+    // as they are, but still be able to get one or the other. As of right now, once I max out my 
+    // spellsList, I can no longer launchSpellChooserActivity to get cantrips. I need to put
+    // something there to launch it, but only display cantrips instead. and vice versa.
+
     private SpellAdapter spellsAdapter;
     private SpellAdapter cantripsAdapter;
     private final ArrayList<Spell> fullSpellsList = DetailActivity.character.getSpellsKnown();
@@ -88,7 +93,7 @@ public class SpellcastingFragment extends Fragment {
             Spell spell = fullSpellsList.get(i);
             if(spell.getLevel() == 0 && !cantripsList.contains(spell)){
                 cantripsList.add(spell);
-            } else if(!spellsList.contains(spell)){
+            } else if(!cantripsList.contains(spell) && !spellsList.contains(spell)){
                 spellsList.add(spell);
             }
         }
@@ -168,6 +173,7 @@ public class SpellcastingFragment extends Fragment {
                     adb.setNegativeButton("Cancel", null);
                     adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            fullSpellsList.remove(spellsList.get(positionToRemove));
                             spellsList.remove(positionToRemove);
                             spellsAdapter.notifyDataSetChanged();
                         }});
@@ -191,6 +197,7 @@ public class SpellcastingFragment extends Fragment {
                     adb.setNegativeButton("Cancel", null);
                     adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            fullSpellsList.remove(cantripsList.get(positionToRemove));
                             cantripsList.remove(positionToRemove);
                             cantripsAdapter.notifyDataSetChanged();
                         }});
@@ -471,6 +478,8 @@ public class SpellcastingFragment extends Fragment {
                 Spell spell = fullSpellsList.get(i);
                 if(spell.getLevel() == 0 && !cantripsList.contains(spell)){
                     cantripsList.add(spell);
+                } else if(!cantripsList.contains(spell) && !spellsList.contains(spell)){
+                    spellsList.add(spell);
                 }
             }
             spellsAdapter.notifyDataSetChanged();
