@@ -157,7 +157,8 @@
     <string name="seventh_level_spell">7th Level</string>
     <string name="eighth_level_spell">8th Level</string>
     <string name="ninth_level_spell">9th Level</string>
-    <string name="spells_known_label">Spells Known (Click here to add more):</string>
+    <string name="spells_known">Spells</string>
+    <string name="cantrips_known">Cantrips</string>
     <string name="spellcasting_ability_label">Spellcasting Ability:</string>
     <string name="spell_save_dc_label">Spell Save DC:</string>
     <string name="spell_attack_bonus_label">Spell Attack Bonus:</string>
