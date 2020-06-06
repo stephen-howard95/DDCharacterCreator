@@ -24,8 +24,10 @@ public class SpellAdapter extends ArrayAdapter<Spell> {
         TextView spellNameTextView = spellView.findViewById(R.id.spell_name);
         spellNameTextView.setText(spell.getSpellName());
 
-        TextView spellLevelTextView = spellView.findViewById(R.id.spell_level);
-        spellLevelTextView.setText(String.valueOf(spell.getLevel()));
+       if(spell.getLevel() != 0){
+            TextView spellLevelTextView = spellView.findViewById(R.id.spell_level);
+            spellLevelTextView.setText(String.valueOf(spell.getLevel()));
+        }
 
         return spellView;
     }
