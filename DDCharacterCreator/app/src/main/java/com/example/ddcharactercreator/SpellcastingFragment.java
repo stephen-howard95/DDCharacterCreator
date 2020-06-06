@@ -19,7 +19,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,8 +28,11 @@ import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
 
 public class SpellcastingFragment extends Fragment {
 
-    private SpellAdapter adapter;
-    private final ArrayList<Spell> spellsList = DetailActivity.character.getSpellsKnown();
+    private SpellAdapter spellsAdapter;
+    private SpellAdapter cantripsAdapter;
+    private final ArrayList<Spell> fullSpellsList = DetailActivity.character.getSpellsKnown();
+    private ArrayList<Spell> spellsList = new ArrayList<Spell>();
+    private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
     private int spellCount;
     private ArrayList<String> spellSlotsClicked = DetailActivity.character.getSpellSlotsClicked();
 
@@ -41,6 +43,9 @@ public class SpellcastingFragment extends Fragment {
     @BindView(R.id.spell_slots) ScrollView spellSlots;
     @BindView(R.id.add_spells_to_list) TextView addSpellsTextView;
     @BindView(R.id.spells_known) ListView spellsKnown;
+    @BindView(R.id.spells_known_label) TextView spellsKnownLabel;
+    @BindView(R.id.cantrips_known) ListView cantripsKnown;
+    @BindView(R.id.cantrips_known_label) TextView cantripsKnownLabel;
 
     @BindView(R.id.spell_slot_1) CheckBox spellSlot1;
     @BindView(R.id.spell_slot_2) CheckBox spellSlot2;
@@ -79,13 +84,24 @@ public class SpellcastingFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
-        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Fighter") ||character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
+        for(int i=0; i<fullSpellsList.size(); i++){
+            Spell spell = fullSpellsList.get(i);
+            if(spell.getLevel() == 0 && !cantripsList.contains(spell)){
+                cantripsList.add(spell);
+            } else if(!spellsList.contains(spell)){
+                spellsList.add(spell);
+            }
+        }
+
+        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Fighter") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
             spellSlots.setVisibility(View.GONE);
             spellsKnown.setVisibility(View.GONE);
-
+            spellsKnownLabel.setVisibility(View.GONE);
+            cantripsKnown.setVisibility(View.GONE);
+            cantripsKnownLabel.setVisibility(View.GONE);
             addSpellsTextView.setText("This character class does not have access to Spellcasting features");
             addSpellsTextView.setTextSize(48);
         }else {
@@ -119,7 +135,8 @@ public class SpellcastingFragment extends Fragment {
                 spellCount = 1;
             }
 
-            adapter = new SpellAdapter(getContext(), spellsList);
+            spellsAdapter = new SpellAdapter(getContext(), spellsList);
+            cantripsAdapter = new SpellAdapter(getContext(), cantripsList);
             addSpellsTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -152,13 +169,37 @@ public class SpellcastingFragment extends Fragment {
                     adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             spellsList.remove(positionToRemove);
-                            adapter.notifyDataSetChanged();
+                            spellsAdapter.notifyDataSetChanged();
                         }});
                     adb.show();
                     return true;
                 }
             });
-            spellsKnown.setAdapter(adapter);
+            cantripsKnown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    launchSpellDetailActivity((Spell) parent.getItemAtPosition(position));
+                }
+            });
+            cantripsKnown.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
+                    adb.setTitle("Delete?");
+                    adb.setMessage("Are you sure you want to delete " + cantripsList.get(position).getSpellName());
+                    final int positionToRemove = position;
+                    adb.setNegativeButton("Cancel", null);
+                    adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            cantripsList.remove(positionToRemove);
+                            cantripsAdapter.notifyDataSetChanged();
+                        }});
+                    adb.show();
+                    return true;
+                }
+            });
+            spellsKnown.setAdapter(spellsAdapter);
+            cantripsKnown.setAdapter(cantripsAdapter);
 
             //Spell Slots
             spellSlot1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -425,8 +466,15 @@ public class SpellcastingFragment extends Fragment {
         super.onResume();
         DetailActivity.canLongRest = true;
 
-        if(spellsList.size() > 0){
-            adapter.notifyDataSetChanged();
+        if(fullSpellsList.size() > 0){
+            for(int i=0; i<fullSpellsList.size(); i++){
+                Spell spell = fullSpellsList.get(i);
+                if(spell.getLevel() == 0 && !cantripsList.contains(spell)){
+                    cantripsList.add(spell);
+                }
+            }
+            spellsAdapter.notifyDataSetChanged();
+            cantripsAdapter.notifyDataSetChanged();
         }
         if(character.getSpellSlotsClicked().get(0).equals("yes")){
             spellSlot1.setChecked(true);
