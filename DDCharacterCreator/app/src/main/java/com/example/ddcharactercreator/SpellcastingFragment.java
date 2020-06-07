@@ -34,6 +34,7 @@ public class SpellcastingFragment extends Fragment {
     private ArrayList<Spell> spellsList = new ArrayList<Spell>();
     private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
     private int spellCount;
+    private int cantripCount;
     private ArrayList<String> spellSlotsClicked = DetailActivity.character.getSpellSlotsClicked();
 
     @BindView(R.id.spellcasting_ability) TextView spellcastingAbility;
@@ -84,6 +85,7 @@ public class SpellcastingFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
+        //Separates Spells and Cantrips
         for(int i=0; i<fullSpellsList.size(); i++){
             Spell spell = fullSpellsList.get(i);
             if(spell.getLevel() == 0 && !cantripsList.contains(spell)){
@@ -106,29 +108,61 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setTextSize(48);
         }else {
             switch (character.getCharacterClass()) {
-                case "Warlock":
-                    spellSlot2.setVisibility(View.GONE);
                 case "Bard":
-                case "Paladin":
-                case "Sorcerer":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(5));
+                    spellCount = 4;
+                    cantripCount = 2;
                     break;
                 case "Cleric":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
+                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                    cantripCount = 3;
+                    break;
                 case "Druid":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
+                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                    cantripCount = 2;
+                    break;
+                case "Paladin":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellCount = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
+                    cantripCount = -2;
+                    break;
                 case "Ranger":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                    cantripCount = -2;
                     break;
+                case "Sorcerer":
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellCount = 2;
+                    cantripCount = 4;
+                    break;
+                case "Warlock":
+                    spellSlot2.setVisibility(View.GONE);
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
+                    spellCount = 2;
+                    cantripCount = 2;
                 case "Wizard":
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
+                    cantripCount = 3;
                     break;
             }
             if(spellCount<1){
@@ -144,8 +178,8 @@ public class SpellcastingFragment extends Fragment {
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
                     } else if(character.getCharacterClass().equals("Ranger") && character.getLevel() < 2){
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
-                    } else if (spellsList.size() >= spellCount) {
-                        Toast.makeText(getContext(), "You are at your max spell count", Toast.LENGTH_SHORT).show();
+                    } else if (spellsList.size() >= spellCount && cantripsList.size() >= cantripCount) {
+                        Toast.makeText(getContext(), "You cannot learn any more spells or cantrips", Toast.LENGTH_SHORT).show();
                     } else {
                         addSpellToList();
                     }
