@@ -63,7 +63,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/long_rest"
+        android:id="@+id/level_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -73,15 +73,15 @@
         android:layout_gravity="bottom|end"
         android:background="#212121"
         android:padding="8dp"
-        android:text="@string/long_rest"
+        android:text="@string/level_up"
         android:textColor="#ffffff"
         android:visibility="invisible"
         android:layout_marginRight="88dp"
         android:layout_alignParentRight="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:contentDescription="@string/long_rest"
-        android:id="@+id/fab_long_rest"
+        android:contentDescription="@string/level_up"
+        android:id="@+id/fab_level_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
