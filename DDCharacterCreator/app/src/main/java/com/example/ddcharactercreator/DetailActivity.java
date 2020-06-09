@@ -9,14 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
-
-import java.util.List;
 
 public class DetailActivity extends AppCompatActivity{
 
@@ -52,10 +51,10 @@ public class DetailActivity extends AppCompatActivity{
         tabLayout.setupWithViewPager(viewPager);
 
         FloatingActionButton fab = findViewById(R.id.fab_main);
-        final FloatingActionButton longRestFab = findViewById(R.id.fab_long_rest);
+        final FloatingActionButton levelUpFab = findViewById(R.id.fab_level_up);
         final FloatingActionButton saveCharacterFab = findViewById(R.id.fab_save_character);
         final FloatingActionButton deleteCharacterFab = findViewById(R.id.fab_delete_character);
-        final TextView longRestTextView = findViewById(R.id.long_rest);
+        final TextView longRestTextView = findViewById(R.id.level_up);
         final TextView saveCharacterTextView = findViewById(R.id.save_character);
         final TextView deleteCharacterTextView = findViewById(R.id.delete_character);
 
@@ -64,10 +63,10 @@ public class DetailActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 if(isOpen){
-                    longRestFab.setVisibility(View.INVISIBLE);
+                    levelUpFab.setVisibility(View.INVISIBLE);
                     saveCharacterFab.setVisibility(View.INVISIBLE);
                     deleteCharacterFab.setVisibility(View.INVISIBLE);
-                    longRestFab.setClickable(false);
+                    levelUpFab.setClickable(false);
                     saveCharacterFab.setClickable(false);
                     deleteCharacterFab.setClickable(false);
                     longRestTextView.setVisibility(View.INVISIBLE);
@@ -75,20 +74,15 @@ public class DetailActivity extends AppCompatActivity{
                     deleteCharacterTextView.setVisibility(View.INVISIBLE);
                     isOpen = false;
                 } else{
-                    longRestFab.setVisibility(View.VISIBLE);
+                    levelUpFab.setVisibility(View.VISIBLE);
                     saveCharacterFab.setVisibility(View.VISIBLE);
                     deleteCharacterFab.setVisibility(View.VISIBLE);
-                    longRestFab.setClickable(true);
+                    levelUpFab.setClickable(true);
                     saveCharacterFab.setClickable(true);
                     deleteCharacterFab.setClickable(true);
                     longRestTextView.setVisibility(View.VISIBLE);
                     saveCharacterTextView.setVisibility(View.VISIBLE);
                     deleteCharacterTextView.setVisibility(View.VISIBLE);
-                    if(!canLongRest){
-                        longRestFab.setVisibility(View.INVISIBLE);
-                        longRestTextView.setVisibility(View.INVISIBLE);
-                        longRestFab.setClickable(false);
-                    }
                     isOpen = true;
                 }
             }
@@ -112,15 +106,16 @@ public class DetailActivity extends AppCompatActivity{
                 onDeleteButtonClicked();
             }
         });
-        longRestFab.setOnClickListener(new View.OnClickListener() {
+        levelUpFab.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
-                onLongRestButtonClicked();
-                longRestFab.setVisibility(View.INVISIBLE);
+                //onLongRestButtonClicked();
+                onLevelUpButtonClicked();
+                levelUpFab.setVisibility(View.INVISIBLE);
                 saveCharacterFab.setVisibility(View.INVISIBLE);
                 deleteCharacterFab.setVisibility(View.INVISIBLE);
-                longRestFab.setClickable(false);
+                levelUpFab.setClickable(false);
                 saveCharacterFab.setClickable(false);
                 deleteCharacterFab.setClickable(false);
                 longRestTextView.setVisibility(View.INVISIBLE);
@@ -161,6 +156,7 @@ public class DetailActivity extends AppCompatActivity{
     private void onSaveButtonClicked(){
         Character thisCharacter = DetailActivity.character;
         mDb.characterDao().insertCharacter(thisCharacter);
+        Toast.makeText(getApplicationContext(), "Character saved", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
@@ -174,6 +170,7 @@ public class DetailActivity extends AppCompatActivity{
             public void onClick(DialogInterface dialog, int which) {
                 Character thisCharacter = DetailActivity.character;
                 mDb.characterDao().deleteCharacter(thisCharacter);
+                Toast.makeText(getApplicationContext(), "Character deleted", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -181,7 +178,12 @@ public class DetailActivity extends AppCompatActivity{
         adb.show();
     }
 
-    private void onLongRestButtonClicked(){
+    private void onLevelUpButtonClicked(){
+        Intent intent = new Intent(this, LevelUpActivity.class);
+        startActivity(intent);
+    }
+
+    /*private void onLongRestButtonClicked(){
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle("Long Rest");
         adb.setMessage("Taking a Long Rest will set your health back to maximum and reset your spell slots");
@@ -190,12 +192,12 @@ public class DetailActivity extends AppCompatActivity{
             public void onClick(DialogInterface dialog, int which) {
                 MainStatsFragment mainStatsFragment = (MainStatsFragment) getSupportFragmentManager().getFragments().get(0);
                 mainStatsFragment.resetHealth();
-                if(!character.getCharacterClass().equals("Barbarian") && !character.getCharacterClass().equals("Monk")){
+                if(!character.getCharacterClass().equals("Barbarian") && !character.getCharacterClass().equals("Monk") && !character.getCharacterClass().equals("Fighter") && !character.getCharacterClass().equals("Rogue")){
                     SpellcastingFragment spellcastingFragment = (SpellcastingFragment) getSupportFragmentManager().getFragments().get(1);
                     spellcastingFragment.resetSpellSlots();
                 }
             }
         });
         adb.show();
-    }
+    }*/
 }
