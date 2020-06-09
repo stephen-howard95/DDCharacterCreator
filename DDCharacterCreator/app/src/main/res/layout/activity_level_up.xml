@@ -20,13 +20,16 @@
         android:id="@+id/ability_score_improvement_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/ability_score_improvement"/>
     <Spinner
         android:id="@+id/ability_score_improvement_1"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <Spinner
         android:id="@+id/ability_score_improvement_2"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -41,6 +44,7 @@
         android:id="@+id/new_spell_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/new_spell_level"/>
    <!-- <TextView
         android:id="@+id/more_spells"
@@ -56,50 +60,60 @@
         android:id="@+id/proficiency_bonus_improvement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="@string/proficiency_bonus_improvement"/>
 
     <TextView
         android:id="@+id/bonus_stats_addition_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reckless Attack"/>
+        android:visibility="gone"
+        android:text="Bonus Stats Addition"/>
     <TextView
         android:id="@+id/bonus_stats_addition_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Danger Sense"/>
+        android:visibility="gone"
+        android:text="Bonus Stats Addition"/>
     <TextView
         android:id="@+id/bonus_stats_addition_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ki point usage 1"/>
+        android:visibility="gone"
+        android:text="Bonus Stats Addition"/>
     <TextView
         android:id="@+id/bonus_stats_addition_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ki point usage 2"/>
+        android:visibility="gone"
+        android:text="Bonus Stats Addition"/>
     <TextView
         android:id="@+id/bonus_stats_addition_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ki point usage 3"/>
+        android:visibility="gone"
+        android:text="Bonus Stats Addition"/>
 
     <TextView
         android:id="@+id/character_choice_1_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Make a choice here"/>
     <Spinner
         android:id="@+id/character_choice_1"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/character_choice_2_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Make a choice here"/>
     <Spinner
         android:id="@+id/character_choice_2"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
