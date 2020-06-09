@@ -45,5 +45,6 @@
         <activity android:name=".SkillModifiersActivity"/>
         <activity android:name=".SpellChooserActivity"/>
         <activity android:name=".SpellDetailActivity"/>
+        <activity android:name=".LevelUpActivity"/>
     </application>
 </manifest>
