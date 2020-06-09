@@ -1,11 +1,6 @@
 package com.example.ddcharactercreator;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.Loader;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,12 +15,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements android.app.LoaderManager.LoaderCallbacks<List<Spell>> {
+public class MainActivity extends AppCompatActivity{
 
     private CharacterAdapter mCharacterAdapter;
     private MutableLiveData<List<Character>> listOfCharacters = new MutableLiveData<List<Character>>();
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private static final String SPELL_API_BASE_URL = "https://api.open5e.com/spells/";
-    private static final int SPELL_LOADER_ID = 1;
     private SpellAdapter mSpellAdapter;
     private SpellDatabase mSpellDb;
 
@@ -54,24 +54,35 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
         mSpellDb = SpellDatabase.getInstance(getApplicationContext());
         List<Spell> spellsList = mSpellDb.spellDao().loadAllSpells();
         mSpellAdapter = new SpellAdapter(this, new ArrayList<Spell>());
-        
         if(spellsList.size() == 0){
-            ConnectivityManager connMgr = (ConnectivityManager)
-                    getSystemService(Context.CONNECTIVITY_SERVICE);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(SPELL_API_BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-            // Get details on the currently active default data network
-            NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+            JsonPlaceholderApi jsonPlaceholderApi = retrofit.create(JsonPlaceholderApi.class);
 
-            // If there is a network connection, fetch data
-            if (networkInfo != null && networkInfo.isConnected()) {
-                // Get a reference to the LoaderManager, in order to interact with loaders.
-                android.app.LoaderManager loaderManager = getLoaderManager();
+            Call<List<Spell>> call = jsonPlaceholderApi.getSpells();
 
-                // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-                // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-                // because this activity implements the LoaderCallbacks interface).
-                loaderManager.initLoader(SPELL_LOADER_ID, null, this);
-            }
+            call.enqueue(new Callback<List<Spell>>() {
+                @Override
+                public void onResponse(Call<List<Spell>> call, Response<List<Spell>> response) {
+                    if(!response.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                    } else{
+                        if(response.body() != null && !response.body().isEmpty()){
+                            for(int i=0; i<response.body().size(); i++){
+                                mSpellDb.spellDao().insertSpell(response.body().get(i));
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Spell>> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         mCharacterAdapter = new CharacterAdapter(this, new ArrayList<Character>());
@@ -154,27 +165,5 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public Loader<List<Spell>> onCreateLoader(int id, Bundle args) {
-        Uri baseUri = Uri.parse(SPELL_API_BASE_URL);
-        return new SpellLoader(this, baseUri.toString());
-    }
-
-    @Override
-    public void onLoadFinished(Loader<List<Spell>> loader, List<Spell> spells) {
-        mSpellAdapter.clear();
-        if(spells != null && !spells.isEmpty()){
-            for(int i=0; i<spells.size(); i++){
-                mSpellDb.spellDao().insertSpell(spells.get(i));
-            }
-        }
-        getLoaderManager().destroyLoader(loader.getId());
-    }
-
-    @Override
-    public void onLoaderReset(Loader<List<Spell>> loader) {
-        mSpellAdapter.clear();
     }
 }
