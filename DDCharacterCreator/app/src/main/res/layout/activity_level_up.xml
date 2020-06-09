@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/new_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_level"/>
+    <TextView
+        android:id="@+id/level_up_bonuses_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/level_up_bonuses"/>
+
+    <TextView
+        android:id="@+id/ability_score_improvement_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ability_score_improvement"/>
+    <Spinner
+        android:id="@+id/ability_score_improvement_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/ability_score_improvement_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/more_hp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Roll for more HP"/>
+
+    <TextView
+        android:id="@+id/new_spell_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_spell_level"/>
+   <!-- <TextView
+        android:id="@+id/more_spells"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more_spells"/>
+    <TextView
+        android:id="@+id/more_cantrips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more_cantrips"/> -->
+    <TextView
+        android:id="@+id/proficiency_bonus_improvement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/proficiency_bonus_improvement"/>
+
+    <TextView
+        android:id="@+id/bonus_stats_addition_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reckless Attack"/>
+    <TextView
+        android:id="@+id/bonus_stats_addition_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Danger Sense"/>
+    <TextView
+        android:id="@+id/bonus_stats_addition_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ki point usage 1"/>
+    <TextView
+        android:id="@+id/bonus_stats_addition_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ki point usage 2"/>
+    <TextView
+        android:id="@+id/bonus_stats_addition_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ki point usage 3"/>
+
+    <TextView
+        android:id="@+id/character_choice_1_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a choice here"/>
+    <Spinner
+        android:id="@+id/character_choice_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/character_choice_2_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make a choice here"/>
+    <Spinner
+        android:id="@+id/character_choice_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/finish_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finished_button_label"/>
+
+</LinearLayout>
