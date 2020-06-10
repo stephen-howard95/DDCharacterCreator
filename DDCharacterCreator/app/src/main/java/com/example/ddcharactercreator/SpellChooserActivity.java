@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
@@ -26,6 +27,8 @@ public class SpellChooserActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spell);
+
+        //TODO: order by spell name alphabetical order Array.sort()???
 
         switch(character.getCharacterClass()){
             case "Bard":
@@ -78,6 +81,7 @@ public class SpellChooserActivity extends AppCompatActivity{
 
         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
         List<Spell> completeSpellsList = mDb.spellDao().loadAllSpells();
+        Collections.sort(completeSpellsList, Spell.spellNameComparator);
 
         SpellAdapter mAdapter = new SpellAdapter(this, new ArrayList<Spell>());
 
