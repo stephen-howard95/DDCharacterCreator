@@ -1,5 +1,6 @@
 package com.example.ddcharactercreator;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ public class SpellDetailActivity extends AppCompatActivity{
     public static final String SPELL = "spell";
     private static Spell spell;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class SpellDetailActivity extends AppCompatActivity{
         durationTextView.setText(spell.getDuration());
         castingTimeTextView.setText(spell.getCastingTime());
         rangeTextView.setText(spell.getRange());
-        descriptionTextView.setText(spell.getDescription());
+        descriptionTextView.setText(spell.getDescription() + "\n" + spell.getHigherLevel());
         if(spell.getConcentration().equals("yes")){
             concentrationTextView.setText(R.string.concentration);
         }
