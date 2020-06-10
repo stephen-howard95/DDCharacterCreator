@@ -110,18 +110,24 @@ public class DetailActivity extends AppCompatActivity{
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View v) {
-                //onLongRestButtonClicked();
-                onLevelUpButtonClicked();
-                levelUpFab.setVisibility(View.INVISIBLE);
-                saveCharacterFab.setVisibility(View.INVISIBLE);
-                deleteCharacterFab.setVisibility(View.INVISIBLE);
-                levelUpFab.setClickable(false);
-                saveCharacterFab.setClickable(false);
-                deleteCharacterFab.setClickable(false);
-                longRestTextView.setVisibility(View.INVISIBLE);
-                saveCharacterTextView.setVisibility(View.INVISIBLE);
-                deleteCharacterTextView.setVisibility(View.INVISIBLE);
-                isOpen = false;
+                if(character.getLevel() < 20){
+                    Bundle bundle = new Bundle();
+                    bundle.putString("level_up", character.getName());
+                    mFirebaseAnalytics.logEvent("level_up", bundle);
+                    onLevelUpButtonClicked();
+                } else{
+                    Toast.makeText(getApplicationContext(), "You are at Max Level", Toast.LENGTH_SHORT).show();
+                    levelUpFab.setVisibility(View.INVISIBLE);
+                    saveCharacterFab.setVisibility(View.INVISIBLE);
+                    deleteCharacterFab.setVisibility(View.INVISIBLE);
+                    levelUpFab.setClickable(false);
+                    saveCharacterFab.setClickable(false);
+                    deleteCharacterFab.setClickable(false);
+                    longRestTextView.setVisibility(View.INVISIBLE);
+                    saveCharacterTextView.setVisibility(View.INVISIBLE);
+                    deleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    isOpen = false;
+                }
             }
         });
 
