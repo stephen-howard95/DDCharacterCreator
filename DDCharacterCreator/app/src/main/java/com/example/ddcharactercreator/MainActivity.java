@@ -26,15 +26,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private CharacterAdapter mCharacterAdapter;
     private MutableLiveData<List<Character>> listOfCharacters = new MutableLiveData<List<Character>>();
-
     private static final String TAG = MainActivity.class.getSimpleName();
-
-    private static final String SPELL_API_BASE_URL = "https://api.open5e.com/spells/";
-    private SpellAdapter mSpellAdapter;
+    private static final String SPELL_API_BASE_URL = "https://api.open5e.com/";
     private SpellDatabase mSpellDb;
 
     @Override
@@ -53,7 +50,6 @@ public class MainActivity extends AppCompatActivity{
 
         mSpellDb = SpellDatabase.getInstance(getApplicationContext());
         List<Spell> spellsList = mSpellDb.spellDao().loadAllSpells();
-        mSpellAdapter = new SpellAdapter(this, new ArrayList<Spell>());
         if(spellsList.size() == 0){
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(SPELL_API_BASE_URL)
@@ -61,28 +57,28 @@ public class MainActivity extends AppCompatActivity{
                     .build();
 
             JsonPlaceholderApi jsonPlaceholderApi = retrofit.create(JsonPlaceholderApi.class);
-
-            Call<List<Spell>> call = jsonPlaceholderApi.getSpells();
-
-            call.enqueue(new Callback<List<Spell>>() {
-                @Override
-                public void onResponse(Call<List<Spell>> call, Response<List<Spell>> response) {
-                    if(!response.isSuccessful()){
-                        Toast.makeText(getApplicationContext(), "Code: " + response.code(), Toast.LENGTH_SHORT).show();
-                    } else{
-                        if(response.body() != null && !response.body().isEmpty()){
-                            for(int i=0; i<response.body().size(); i++){
-                                mSpellDb.spellDao().insertSpell(response.body().get(i));
+            for(int i=1; i<7; i++){
+                Call<SpellContainer> call = jsonPlaceholderApi.getSpellContainer(i);
+                call.enqueue(new Callback<SpellContainer>() {
+                    @Override
+                    public void onResponse(Call<SpellContainer> call, Response<SpellContainer> response) {
+                        if(!response.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                        } else{
+                            if(response.body() != null && !response.body().getResults().isEmpty()){
+                                for(int i=0; i<response.body().getResults().size(); i++){
+                                    mSpellDb.spellDao().insertSpell(response.body().getResults().get(i));
+                                }
                             }
                         }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<List<Spell>> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<SpellContainer> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
 
         mCharacterAdapter = new CharacterAdapter(this, new ArrayList<Character>());
