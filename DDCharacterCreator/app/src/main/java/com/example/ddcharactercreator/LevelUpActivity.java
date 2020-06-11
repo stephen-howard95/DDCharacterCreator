@@ -8,10 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 
 public class LevelUpActivity extends AppCompatActivity {
 
@@ -78,7 +81,7 @@ public class LevelUpActivity extends AppCompatActivity {
             //Set ability scores to be the spinner options
         }
 
-        //Spellcasting bonuses
+       /* //Spellcasting bonuses
         if(character.getCharacterClass().equals("Ranger") || character.getCharacterClass().equals("Paladin")){
             switch (level){
                 case 2:
@@ -165,20 +168,33 @@ public class LevelUpActivity extends AppCompatActivity {
                     }
                     break;
             }
-        }
+        }*/
 
         int finalLevel = level;
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //possibly save the character??
-                returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
-                        character.getAlignment(), character.getName(), character.getStatValues(),
-                        character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
-                        character.getSubclass(), character.getSpellsKnown(), character.getSpellSlotsClicked()));
+                if(moreHP.getText().toString() == null || moreHP.getText().toString().equals("")){
+                    Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
+                } else{
+                    ArrayList<Integer> newStatValues = character.getStatValues();
+                    if(abilityScoreImprovementHeader.getVisibility() == View.VISIBLE){
+                        improveAbilityScore(abilityScoreImprovement1.getSelectedItem().toString(), newStatValues);
+                        improveAbilityScore(abilityScoreImprovement2.getSelectedItem().toString(), newStatValues);
+                    }
+                    Integer addToHP = Integer.parseInt(moreHP.getText().toString());
+                    character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
+                            + calculateModifier(character.getStatValues().get(2)));
+                    returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
+                            character.getAlignment(), character.getName(), newStatValues,
+                            character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
+                            character.getSubclass(), character.getSpellsKnown(), character.getSpellSlotsClicked()));
+                }
             }
         });
         //Class-specific bonuses
+        //TODO: Before you do this, make sure the rest of the info is saving properly, including spellsKnown, inventory list, currency, etc.
         /*switch(character.getCharacterClass()){
             case "Barbarian":
                 switch (level){
@@ -691,5 +707,28 @@ public class LevelUpActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(DetailActivity.CHARACTER, character);
         startActivity(intent);
+    }
+
+    private void improveAbilityScore(String abilityScore, ArrayList<Integer> abilityScoreList){
+        switch(abilityScore){
+            case "Strength":
+                abilityScoreList.set(0, abilityScoreList.get(0) +1);
+                break;
+            case "Dexterity":
+                abilityScoreList.set(1, abilityScoreList.get(1) +1);
+                break;
+            case "Constitution":
+                abilityScoreList.set(2, abilityScoreList.get(2) +1);
+                break;
+            case "Intelligence":
+                abilityScoreList.set(3, abilityScoreList.get(3) +1);
+                break;
+            case "Wisdom":
+                abilityScoreList.set(4, abilityScoreList.get(4) +1);
+                break;
+            case "Charisma":
+                abilityScoreList.set(5, abilityScoreList.get(5) +1);
+                break;
+        }
     }
 }
