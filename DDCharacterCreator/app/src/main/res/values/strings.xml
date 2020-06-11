@@ -60,6 +60,15 @@
         <item name="stealth">Stealth</item>
         <item name="survival">Survival</item>
     </string-array>
+    
+    <string-array name="ability_scores_array">
+        <item name="strength">Strength</item>
+        <item name="dexterity">Dexterity</item>
+        <item name="constitution">Constitution</item>
+        <item name="intelligence">Intelligence</item>
+        <item name="wisdom">Wisdom</item>
+        <item name="charisma">Charisma</item>
+    </string-array>
 
     // Questionnaire 1 strings
     <string name="strength_label">STR</string>
