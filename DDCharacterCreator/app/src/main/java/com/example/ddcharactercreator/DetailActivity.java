@@ -21,7 +21,7 @@ public class DetailActivity extends AppCompatActivity{
 
     public static final String CHARACTER = "character";
     public static Character character;
-    public static int proficiencyBonus = 2;
+    public static int proficiencyBonus;
 
     public static Boolean canLongRest;
 
@@ -35,6 +35,18 @@ public class DetailActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        
+         if(character.getLevel() <= 4){
+            proficiencyBonus = 2;
+        } else if(character.getLevel() <= 8){
+            proficiencyBonus = 3;
+        } else if(character.getLevel() <= 12){
+            proficiencyBonus = 4;
+        } else if(character.getLevel() <= 16){
+            proficiencyBonus = 5;
+        } else{
+            proficiencyBonus = 6;
+        }
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
