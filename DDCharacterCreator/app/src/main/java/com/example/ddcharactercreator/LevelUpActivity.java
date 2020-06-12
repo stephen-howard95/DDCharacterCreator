@@ -41,6 +41,8 @@ public class LevelUpActivity extends AppCompatActivity {
     @BindView(R.id.character_choice_1) Spinner choice1;
     @BindView(R.id.character_choice_2) Spinner choice2;
     @BindView(R.id.finish_button) Button finishButton;
+    
+    private int hitPointMax;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -64,7 +66,6 @@ public class LevelUpActivity extends AppCompatActivity {
                 abilityScoreImprovementHeader.setVisibility(View.VISIBLE);
                 abilityScoreImprovement1.setVisibility(View.VISIBLE);
                 abilityScoreImprovement2.setVisibility(View.VISIBLE);
-                //Set ability scores to be the spinner options
                 break;
             case 5:
             case 9:
@@ -78,8 +79,77 @@ public class LevelUpActivity extends AppCompatActivity {
             abilityScoreImprovementHeader.setVisibility(View.VISIBLE);
             abilityScoreImprovement1.setVisibility(View.VISIBLE);
             abilityScoreImprovement2.setVisibility(View.VISIBLE);
-            //Set ability scores to be the spinner options
         }
+        
+         // Health restrictions
+        switch (character.getCharacterClass()){
+            case "Barbarian":
+                moreHPHeader.setText(getString(R.string.barbarian_hit_die));
+                hitPointMax = 12;
+                break;
+            case "Bard":
+                moreHPHeader.setText(getString(R.string.bard_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Cleric":
+                moreHPHeader.setText(getString(R.string.cleric_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Druid":
+                moreHPHeader.setText(getString(R.string.druid_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Fighter":
+                moreHPHeader.setText(getString(R.string.fighter_hit_die));
+                hitPointMax = 10;
+                break;
+            case "Monk":
+                moreHPHeader.setText(getString(R.string.monk_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Paladin":
+                moreHPHeader.setText(getString(R.string.paladin_hit_die));
+                hitPointMax = 10;
+                break;
+            case "Ranger":
+                moreHPHeader.setText(getString(R.string.ranger_hit_die));
+                hitPointMax = 10;
+                break;
+            case "Rogue":
+                moreHPHeader.setText(getString(R.string.rogue_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Sorcerer":
+                moreHPHeader.setText(getString(R.string.sorcerer_hit_die));
+                hitPointMax = 6;
+                break;
+            case "Warlock":
+                moreHPHeader.setText(getString(R.string.warlock_hit_die));
+                hitPointMax = 8;
+                break;
+            case "Wizard":
+                moreHPHeader.setText(getString(R.string.wizard_hit_die));
+                hitPointMax = 6;
+                break;
+        }
+        moreHP.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!moreHP.getText().toString().equals("") && Integer.parseInt(moreHP.getText().toString()) > hitPointMax){
+                    moreHP.setText(String.valueOf(hitPointMax));
+                }
+            }
+        });
 
        /* //Spellcasting bonuses
         if(character.getCharacterClass().equals("Ranger") || character.getCharacterClass().equals("Paladin")){
@@ -194,7 +264,6 @@ public class LevelUpActivity extends AppCompatActivity {
             }
         });
         //Class-specific bonuses
-        //TODO: Before you do this, make sure the rest of the info is saving properly, including spellsKnown, inventory list, currency, etc.
         /*switch(character.getCharacterClass()){
             case "Barbarian":
                 switch (level){
