@@ -35,8 +35,12 @@ public class DetailActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        character = (Character) getIntent().getExtras().getSerializable(CHARACTER);
         
-         if(character.getLevel() <= 4){
+        if(character.getLevel() <= 4){
             proficiencyBonus = 2;
         } else if(character.getLevel() <= 8){
             proficiencyBonus = 3;
@@ -47,10 +51,6 @@ public class DetailActivity extends AppCompatActivity{
         } else{
             proficiencyBonus = 6;
         }
-
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-
-        character = (Character) getIntent().getExtras().getSerializable(CHARACTER);
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, CharacterWidgetProvider.class));
