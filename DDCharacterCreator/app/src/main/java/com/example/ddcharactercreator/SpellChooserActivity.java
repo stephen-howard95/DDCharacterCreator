@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 
 public class SpellChooserActivity extends AppCompatActivity{
@@ -28,11 +27,21 @@ public class SpellChooserActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spell);
 
-        //TODO: order by spell name alphabetical order Array.sort()???
-
         switch(character.getCharacterClass()){
             case "Bard":
-                spellMax = 4;
+                if(character.getLevel() <= 9){
+                    spellMax = character.getLevel() + 3;
+                } else if(character.getLevel() <= 11){
+                    spellMax = character.getLevel() + 4;
+                } else if(character.getLevel() <= 13){
+                    spellMax = character.getLevel() + 3;
+                } else if(character.getLevel() <= 15){
+                    spellMax = character.getLevel() + 4;
+                } else if(character.getLevel() <= 17){
+                    spellMax = character.getLevel() + 3;
+                } else if(character.getLevel() <= 20){
+                    spellMax = 22;
+                }
                 cantripMax = 2;
                 break;
             case "Cleric":
@@ -48,15 +57,39 @@ public class SpellChooserActivity extends AppCompatActivity{
                 cantripMax = -2;
                 break;
             case "Ranger":
-                spellMax = 2;
+                spellMax = (character.getLevel()/2) + 1;
                 cantripMax = -2;
                 break;
             case "Sorcerer":
-                spellMax = 2;
+                if(character.getLevel() <= 11){
+                    spellMax = character.getLevel() + 1;
+                } else if(character.getLevel() <= 13){
+                    spellMax = character.getLevel();
+                } else if(character.getLevel() <= 15){
+                    spellMax = character.getLevel() - 1;
+                } else if(character.getLevel() <= 17){
+                    spellMax = character.getLevel() - 2;
+                } else if(character.getLevel() <= 20){
+                    spellMax = 15;
+                }
                 cantripMax = 4;
                 break;
             case "Warlock":
-                spellMax = 2;
+                if(character.getLevel() <= 9){
+                    spellMax = character.getLevel() + 1;
+                } else if(character.getLevel() <= 11){
+                    spellMax = character.getLevel();
+                } else if(character.getLevel() <= 13){
+                    spellMax = character.getLevel() - 1;
+                } else if(character.getLevel() <= 15){
+                    spellMax = character.getLevel() - 2;
+                } else if(character.getLevel() <= 17){
+                    spellMax = character.getLevel() - 3;
+                } else if(character.getLevel() == 18){
+                    spellMax = 14;
+                } else if(character.getLevel() <= 20){
+                    spellMax = 15;
+                }
                 cantripMax = 2;
                 break;
             case "Wizard":
@@ -65,6 +98,11 @@ public class SpellChooserActivity extends AppCompatActivity{
         }
         if(spellMax < 1){
             spellMax = 1;
+        }
+        if(character.getLevel() >= 10){
+            cantripMax += 2;
+        } else if(character.getLevel() >= 4){
+            cantripMax += 1;
         }
 
         ArrayList<Spell> characterSpellsList = character.getSpellsKnown();
