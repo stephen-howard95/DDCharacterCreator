@@ -35,6 +35,11 @@
         android:layout_height="wrap_content"
         android:entries="@array/ability_scores_array"/>
 
+    <TextView
+        android:id="@+id/more_hp_header"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Your hit die is a d8"/>
     <EditText
         android:id="@+id/more_hp"
         android:layout_width="wrap_content"
