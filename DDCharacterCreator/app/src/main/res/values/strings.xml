@@ -238,6 +238,7 @@
     <string name="relentless_rage_DC">Relentless Rage DC:</string>
     <string name="persistent_rage">Persistent Rage: Your rage only ends early if you fall unconscious or if you choose to end it.</string>
     <string name="indomitable_might">Indomitable Might: If your total for a STR check is less than your STR score, you can use that score instead.</string>
+    <string name="primal_champion">Primal Champion: Your Strength and Constitution scores have both increased by 4.</string>
 
     <string name="bard_college">Bard College: </string>
     <string name="bardic_inspiration_description">Bardic Inspiration: As a bonus action, choose another creature within 60ft of you to inspire. Within the next 10 minutes, that creature can add your Bardic Inspiration die to one ability check, attack roll, or saving throw they make</string>
