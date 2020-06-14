@@ -230,6 +230,7 @@
     <string name="rage_uses">Rage Uses:</string>
     <string name="rage_damage">Rage Damage:</string>
     <string name="reckless_attack">Reckless Attack: When you make a melee attack, you may choose to make it reckless, giving you advantage on any attack rolls this turn, but until the start of your next turn, attacks against you have advantage</string>
+    <string name="danger_sense">Danger Sense: You have advantage on Dexterity saving throws against effects you can see such as traps and spells, provided you are not blinded, deafened, or incapacitated</string>
     <string name="extra_attack">Extra Attack: When you take the attack action on your turn, you may attack twice</string>
     <string name="feral_instinct">Feral Instinct: You have advantage on Initiative rolls</string>
     <string name="brutal_critical">Brutal Critical: When you score a critical hit with a melee attack, you can roll ONE more of your weapon\'s damage die</string>
