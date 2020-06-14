@@ -112,7 +112,19 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellCount = 4;
+                    if(character.getLevel() <= 9){
+                        spellCount = character.getLevel() + 3;
+                    } else if(character.getLevel() <= 11){
+                        spellCount = character.getLevel() + 4;
+                    } else if(character.getLevel() <= 13){
+                        spellCount = character.getLevel() + 3;
+                    } else if(character.getLevel() <= 15){
+                        spellCount = character.getLevel() + 4;
+                    } else if(character.getLevel() <= 17){
+                        spellCount = character.getLevel() + 3;
+                    } else if(character.getLevel() <= 20){
+                        spellCount = 22;
+                    }
                     cantripCount = 2;
                     break;
                 case "Cleric":
@@ -144,7 +156,7 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                    spellCount = (character.getLevel()/2) + 1;
                     cantripCount = -2;
                     break;
                 case "Sorcerer":
@@ -152,7 +164,17 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellCount = 2;
+                    if(character.getLevel() <= 11){
+                        spellCount = character.getLevel() + 1;
+                    } else if(character.getLevel() <= 13){
+                        spellCount = character.getLevel();
+                    } else if(character.getLevel() <= 15){
+                        spellCount = character.getLevel() - 1;
+                    } else if(character.getLevel() <= 17){
+                        spellCount = character.getLevel() - 2;
+                    } else if(character.getLevel() <= 20){
+                        spellCount = 15;
+                    }
                     cantripCount = 4;
                     break;
                 case "Warlock":
@@ -161,7 +183,21 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
-                    spellCount = 2;
+                    if(character.getLevel() <= 9){
+                        spellCount = character.getLevel() + 1;
+                    } else if(character.getLevel() <= 11){
+                        spellCount = character.getLevel();
+                    } else if(character.getLevel() <= 13){
+                        spellCount = character.getLevel() - 1;
+                    } else if(character.getLevel() <= 15){
+                        spellCount = character.getLevel() - 2;
+                    } else if(character.getLevel() <= 17){
+                        spellCount = character.getLevel() - 3;
+                    } else if(character.getLevel() == 18){
+                        spellCount = 14;
+                    } else if(character.getLevel() <= 20){
+                        spellCount = 15;
+                    }
                     cantripCount = 2;
                 case "Wizard":
                     primarySpellcasterSlotsPerLevel();
@@ -174,6 +210,11 @@ public class SpellcastingFragment extends Fragment {
             }
             if(spellCount<1){
                 spellCount = 1;
+            }
+            if(character.getLevel() >= 10){
+                cantripCount += 2;
+            } else if(character.getLevel() >= 4){
+                cantripCount += 1;
             }
 
             spellsAdapter = new SpellAdapter(getContext(), spellsList);
