@@ -157,25 +157,59 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Bard":
-                subclassInfoTextView1.setText(R.string.bardic_inspiration_die);
-                bonusStats.add(getString(R.string.bardic_inspiration_description));
-                checkBoxes1.setVisibility(View.VISIBLE);
-                checkBoxes1.setText(R.string.bardic_inspiration_uses);
-                checkBox1_1.setVisibility(View.VISIBLE);
-                if(calculateModifier(character.getStatValues().get(5)) >= 2){
-                    checkBox1_2.setVisibility(View.VISIBLE);
+                 if(level >= 1){
+                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d6");
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.bardic_inspiration_uses));
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    if(calculateModifier(character.getStatValues().get(5)) >= 2){
+                        checkBox1_2.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 3){
+                        checkBox1_3.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 4){
+                        checkBox1_4.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 5){
+                        checkBox1_5.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 6){
+                        checkBox1_6.setVisibility(View.VISIBLE);
+                    }
                 }
-                if(calculateModifier(character.getStatValues().get(5)) >= 3){
-                    checkBox1_3.setVisibility(View.VISIBLE);
+                if(level >= 2){
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d6");
                 }
-                if(calculateModifier(character.getStatValues().get(5)) >= 4){
-                    checkBox1_4.setVisibility(View.VISIBLE);
+                if(level >= 3){
+                    //TODO: Bards choose 2 proficient skills. They double their proficiency bonus for these choices.
                 }
-                if(calculateModifier(character.getStatValues().get(5)) >= 5){
-                    checkBox1_5.setVisibility(View.VISIBLE);
+                if(level >= 5){
+                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d8");
                 }
-                if(calculateModifier(character.getStatValues().get(5)) >= 6){
-                    checkBox1_6.setVisibility(View.VISIBLE);
+                if(level >= 9){
+                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d8");
+                }
+                if(level >= 10){
+                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d10");
+                    //TODO: Bards choose 2 more proficient skills. They double their proficiency bonus for these choices.
+                    //TODO: Bards get 2 spells that count toward their spells known from any class.
+                }
+                if(level >= 13){
+                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d10");
+                }
+                if(level >= 14){
+                    //TODO: Bards get 2 spells that count toward their spells known from any class.
+                }
+                if(level >= 15){
+                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d12");
+                }
+                if(level >= 17){
+                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d12");
+                }
+                if(level >= 18){
+                    //TODO: Bards get 2 spells that count toward their spells known from any class.
                 }
                 break;
             case "Cleric":
