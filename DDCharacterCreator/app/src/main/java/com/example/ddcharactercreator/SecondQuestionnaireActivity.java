@@ -13,10 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 
 public class SecondQuestionnaireActivity extends AppCompatActivity {
@@ -56,7 +54,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
-        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -85,10 +82,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
 
         List<String> levelOneChoices1 = new ArrayList<String>();
         List<String> levelOneChoices2 = new ArrayList<String>();
-
-        //TODO: extra choice to make: sub-race, dragonborn color, Cleric divine domains, Fighter fighting styles, Ranger favored enemy/terrain, rogue expertise, Sorcerous Origin(subclass), Warlock Otherworldly Patron(subclass)
-        //if(Spinner.getSelectedItem().toString().equals("draconic Ancestry")) --> If the spinner is set to "Draconic Ancestry", the dragon colors spinner will be set to visible. Can I do this on the flow?
-        //Could I have a textview that changes based on which option is currently selected in the spinner/radiobutton?
 
         switch (character.getCharacterClass()){
             //TODO: Change the skill spinner's arrays to reflect their learnable skills
@@ -330,29 +323,128 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     currency.add(0);
                     //Initial Armor Class
                     currency.add(10 + calculateModifier(character.getStatValues().get(1)));
-                    //Any class-specific changes to HP and/or AC
+                    //Any class-specific changes to HP and/or AC, as well as raceAndClassBonusStats
+                    ArrayList<String> bonusStats = new ArrayList<String>();
+                    StringBuilder languages = new StringBuilder();
+                    languages.append(getString(R.string.languages_known));
+                    if(character.getCharacterClass().equals("Druid")){
+                        languages.append("Druidic, ");
+                    }else if(character.getCharacterClass().equals("Rogue")){
+                        languages.append("Thieve's Cant, ");
+                    }
+                    switch (character.getRace()){
+                        case "Dwarf":
+                            //Mountain Dwarf is chosen for this
+                            languages.append(" Common, Dwarvish, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("Advantage on saving throws against poison");
+                            bonusStats.add("Resistance to poison damage");
+                            bonusStats.add("Add double your proficiency bonus to INT History checks relating to stonework");
+                            break;
+                        case "Elf":
+                            //Wood Elf is chosen for this
+                            languages.append(" Common, Elvish, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("Advantage on saving throws against being charmed");
+                            bonusStats.add("Magic effects cannot put you to sleep");
+                            bonusStats.add("You can get a full Long Rest by only meditating for 4 hours");
+                            break;
+                        case "Halfling":
+                            //Stout Halfling is chosen for this
+                            languages.append(" Common, Halfling, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("When you roll a 1 on a D20, you can choose to re-roll and use the new roll");
+                            bonusStats.add("Advantage on saving throws against being frightened");
+                            bonusStats.add("Advantage on saving throws against poison");
+                            bonusStats.add("Resistance to poison damage");
+                            break;
+                        case "Human":
+                            languages.append(" Common, ");
+                            bonusStats.add(languages.toString());
+                            break;
+                        case "Dragonborn":
+                            //Red Dragonborn is chosen for this
+                            languages.append(" Common, Draconic, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Once per short or long rest, you can use your breath attack as an action. 15ft. cone of fire" /*+ depends on which color is chosen*/);
+                            bonusStats.add("You have resistance to fire damage" /*damage type depends on color chosen*/);
+                            break;
+                        case "Gnome":
+                            //Forest Gnome is chosen for this
+                            languages.append(" Common, Gnomish, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("Advantage on INT, WIS, and CHA saving throws against magic");
+                            bonusStats.add("Through sounds and gestures, you can communicate simple ideas with small animals");
+                            break;
+                        case "Half-Elf":
+                            languages.append(" Common, Elvish, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("Advantage on saving throws against being charmed");
+                            bonusStats.add("Magic effects cannot put you to sleep");
+                            break;
+                        case "Half-Orc":
+                            languages.append(" Common, Orcish, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
+                            bonusStats.add("When you score a critical hit, you can roll an extra of the weapon's damage die");
+                            break;
+                        case "Tiefling":
+                            languages.append(" Common, Infernal, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("You are resistant to Fire damage");
+                            break;
+                    }
                     switch (character.getCharacterClass()){
                         case "Barbarian":
+                            bonusStats.add(getString(R.string.rage_description));
                             currency.set(0, 12 + calculateModifier(character.getStatValues().get(2)));
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(2)));
                             break;
+                        case "Bard":
+                            bonusStats.add(getString(R.string.bardic_inspiration_description));
+                            break;
                         case "Cleric":
-                        case "Warlock":
                             characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
                             break;
+                        case "Druid":
+                            break;
+                        case "Fighter":
+                            bonusStats.add(getString(R.string.second_wind));
+                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            break;
                         case "Monk":
+                            bonusStats.add(getString(R.string.martial_arts));
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(4)));
                             break;
-                        case "Fighter":
                         case "Paladin":
-                        case "Ranger":
+                            bonusStats.add(getString(R.string.divine_sense));
+                            bonusStats.add(getString(R.string.lay_on_hands));
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            break;
+                        case "Ranger":
+                            bonusStats.add(getString(R.string.favored_enemy_description));
+                            bonusStats.add(getString(R.string.favored_terrain_description));
+                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            break;
+                        case "Rogue":
+                            bonusStats.add(getString(R.string.sneak_attack_description));
                             break;
                         case "Sorcerer":
                             characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            break;
+                        case "Warlock":
+                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            break;
                         case "Wizard":
+                            bonusStats.add(getString(R.string.arcane_recovery));
                             currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
                             break;
                     }
@@ -362,7 +454,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     }
                     launchDetailActivity(new Character(1, race, characterClass, alignment, name,
                             statValuesList, proficiencyChoices, instantiateInventory(startingEquipmentChoices),
-                            currency, characterSubclass, new ArrayList<Spell>(), spellSlotsClicked));
+                            currency, characterSubclass, new ArrayList<Spell>(), spellSlotsClicked, bonusStats));
                 }
             }
         });
