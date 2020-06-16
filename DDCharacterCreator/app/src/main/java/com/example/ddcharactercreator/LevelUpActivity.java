@@ -3,6 +3,8 @@ package com.example.ddcharactercreator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ public class LevelUpActivity extends AppCompatActivity {
     @BindView(R.id.ability_score_improvement_header) TextView abilityScoreImprovementHeader;
     @BindView(R.id.ability_score_improvement_1) Spinner abilityScoreImprovement1;
     @BindView(R.id.ability_score_improvement_2) Spinner abilityScoreImprovement2;
+    @BindView(R.id.more_hp_header) TextView moreHPHeader;
     @BindView(R.id.more_hp) EditText moreHP;
 
     @BindView(R.id.bonus_stats_addition_1) TextView bonusStats1;
@@ -41,7 +44,7 @@ public class LevelUpActivity extends AppCompatActivity {
     @BindView(R.id.character_choice_1) Spinner choice1;
     @BindView(R.id.character_choice_2) Spinner choice2;
     @BindView(R.id.finish_button) Button finishButton;
-    
+
     private int hitPointMax;
 
     @SuppressLint("SetTextI18n")
@@ -80,8 +83,8 @@ public class LevelUpActivity extends AppCompatActivity {
             abilityScoreImprovement1.setVisibility(View.VISIBLE);
             abilityScoreImprovement2.setVisibility(View.VISIBLE);
         }
-        
-         // Health restrictions
+
+        // Health restrictions
         switch (character.getCharacterClass()){
             case "Barbarian":
                 moreHPHeader.setText(getString(R.string.barbarian_hit_die));
@@ -151,28 +154,28 @@ public class LevelUpActivity extends AppCompatActivity {
             }
         });
 
-       /* //Spellcasting bonuses
+        //Spellcasting bonuses
         if(character.getCharacterClass().equals("Ranger") || character.getCharacterClass().equals("Paladin")){
             switch (level){
                 case 2:
                     newSpellLevel.setVisibility(View.VISIBLE);
-                    newSpellLevel.setText(getString(R.string.new_spell_level) + "1");
+                    newSpellLevel.setText(getString(R.string.new_spell_level) + " 1");
                     break;
                 case 5:
                     newSpellLevel.setVisibility(View.VISIBLE);
-                    newSpellLevel.setText(getString(R.string.new_spell_level) + "2");
+                    newSpellLevel.setText(getString(R.string.new_spell_level) + " 2");
                     break;
                 case 9:
                     newSpellLevel.setVisibility(View.VISIBLE);
-                    newSpellLevel.setText(getString(R.string.new_spell_level) + "3");
+                    newSpellLevel.setText(getString(R.string.new_spell_level) + " 3");
                     break;
                 case 13:
                     newSpellLevel.setVisibility(View.VISIBLE);
-                    newSpellLevel.setText(getString(R.string.new_spell_level) + "4");
+                    newSpellLevel.setText(getString(R.string.new_spell_level) + " 4");
                     break;
                 case 17:
                     newSpellLevel.setVisibility(View.VISIBLE);
-                    newSpellLevel.setText(getString(R.string.new_spell_level) + "5");
+                    newSpellLevel.setText(getString(R.string.new_spell_level) + " 5");
                     break;
             }
         } else{
@@ -185,35 +188,35 @@ public class LevelUpActivity extends AppCompatActivity {
                     switch(level){
                         case 3:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "2");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 2");
                             break;
                         case 5:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "3");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 3");
                             break;
                         case 7:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "4");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 4");
                             break;
                         case 9:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "5");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 5");
                             break;
                         case 11:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "6");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 6");
                             break;
                         case 13:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "7");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 7");
                             break;
                         case 15:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "8");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 8");
                             break;
                         case 17:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.new_spell_level) + "9");
+                            newSpellLevel.setText(getString(R.string.new_spell_level) + " 9");
                             break;
                     }
                     break;
@@ -221,31 +224,31 @@ public class LevelUpActivity extends AppCompatActivity {
                     switch (level){
                         case 3:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + "2");
+                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + " 2");
                             break;
                         case 5:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + "3");
+                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + " 3");
                             break;
                         case 7:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + "4");
+                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + " 4");
                             break;
                         case 9:
                             newSpellLevel.setVisibility(View.VISIBLE);
-                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + "5");
+                            newSpellLevel.setText(getString(R.string.warlock_spell_slot_improvement) + " 5");
                             break;
                     }
                     break;
             }
-        }*/
+        }
 
         int finalLevel = level;
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //possibly save the character??
-                if(moreHP.getText().toString() == null || moreHP.getText().toString().equals("")){
+                if(moreHP.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
                 } else{
                     ArrayList<Integer> newStatValues = character.getStatValues();
@@ -259,51 +262,102 @@ public class LevelUpActivity extends AppCompatActivity {
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                             character.getAlignment(), character.getName(), newStatValues,
                             character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
-                            character.getSubclass(), character.getSpellsKnown(), character.getSpellSlotsClicked()));
+                            character.getSubclass(), character.getSpellsKnown(), character.getSpellSlotsClicked(), character.getRaceAndClassBonusStats()));
                 }
             }
         });
         //Class-specific bonuses
-        /*switch(character.getCharacterClass()){
+        switch(character.getCharacterClass()){
             case "Barbarian":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.reckless_attack);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(R.string.danger_sense);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.reckless_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.danger_sense));
                         break;
                     case 3:
+                        //Choose a primal path. That choice will change a TextView, as you earn a bonus from your choice at level 3
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You have an extra usage of Rage");
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.extra_attack);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
+                        //primal path upgrade
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You have an extra usage of Rage");
                         break;
                     case 7:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.feral_instinct);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.feral_instinct));
                         break;
                     case 8:
                         break;
                     case 9:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.brutal_critical);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Your rage now deals extra damage");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.brutal_critical));
                         break;
                     case 10:
+                        //primal path upgrade
                         break;
                     case 11:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.relentless_rage);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.relentless_rage));
                         break;
                     case 12:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You have an extra usage of Rage");
                         break;
                     case 13:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Brutal critical is now 2 extra damage dice");
                         break;
                     case 14:
+                        //primal path upgrade
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.persistent_rage);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.persistent_rage));
                         break;
                     case 16:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your rage now deals extra damage");
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You have an extra usage of Rage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Brutal critical is now 3 extra damage dice");
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.indomitable_might);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.indomitable_might));
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You can now use rage an unlimited amount of times.");
+                        character.getStatValues().set(0, character.getStatValues().get(0) + 4);
+                        character.getStatValues().set(2, character.getStatValues().get(2) + 4);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(R.string.primal_champion);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.primal_champion));
                         break;
                 }
                 break;
@@ -769,7 +823,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                 }
                 break;
-        }*/
+        }
     }
 
     private void returnToDetailActivity(Character character){
