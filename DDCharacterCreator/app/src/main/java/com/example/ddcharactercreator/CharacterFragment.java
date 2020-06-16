@@ -5,13 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
-
+import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
+import static com.example.ddcharactercreator.DetailActivity.character;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -70,105 +73,88 @@ public class CharacterFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_character, container, false);
 
         Character character = DetailActivity.character;
+        int level = character.getLevel();
 
         ButterKnife.bind(this, rootView);
 
         //Setting Character name, level, character class, race, and alignment
         characterName.setText(character.getName());
-        characterLevel.setText("Level " + character.getLevel());
+        characterLevel.setText("Level " + level);
         characterClass.setText(character.getCharacterClass());
         characterRace.setText(character.getRace());
         characterAlignment.setText(character.getAlignment());
 
-        //Adding in Racial Benefits and languages
-        StringBuilder languages = new StringBuilder();
-        languages.append(getString(R.string.languages_known));
-        ArrayList<String> bonusStats = new ArrayList<String>();
-
-        switch(character.getRace()){
-            case "Dwarf":
-                //Mountain Dwarf is chosen for this
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("Advantage on saving throws against poison");
-                bonusStats.add("Resistance to poison damage");
-                bonusStats.add("Add double your proficiency bonus to INT History checks relating to stonework");
-                languages.append(" Common, Dwarvish, ");
-                break;
-            case "Elf":
-                //Wood Elf is chosen for this
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("Advantage on saving throws against being charmed");
-                bonusStats.add("Magic effects cannot put you to sleep");
-                bonusStats.add("You can get a full Long Rest by only meditating for 4 hours");
-                languages.append(" Common, Elvish, ");
-                break;
-            case "Halfling":
-                //Stout Halfling is chosen for this
-                bonusStats.add("When you roll a 1 on a D20, you can choose to re-roll and use the new roll");
-                bonusStats.add("Advantage on saving throws against being frightened");
-                bonusStats.add("Advantage on saving throws against poison");
-                bonusStats.add("Resistance to poison damage");
-                languages.append(" Common, Halfling, ");
-                break;
-            case "Human":
-                languages.append(" Common, ");
-                break;
-            case "Dragonborn":
-                //Red Dragonborn is chosen for this
-                bonusStats.add("Once per short or long rest, you can use your breath attack as an action. 15ft. cone of fire" /*+ depends on which color is chosen*/);
-                bonusStats.add("You have resistance to fire damage" /*damage type depends on color chosen*/);
-                subraceInfoTextView1.setVisibility(View.VISIBLE);
-                subraceInfoTextView2.setVisibility(View.VISIBLE);
-                subraceCheckboxTextView.setVisibility(View.VISIBLE);
-                subraceCheckBox.setVisibility(View.VISIBLE);
+        //Adding in Racial Benefits
+        ArrayList<String> bonusStats = character.getRaceAndClassBonusStats();
+        languagesKnown.setText(bonusStats.get(0));
+        if(character.getRace().equals("Dragonborn")) {
+            subraceInfoTextView1.setVisibility(View.VISIBLE);
+            subraceInfoTextView2.setVisibility(View.VISIBLE);
+            subraceCheckboxTextView.setVisibility(View.VISIBLE);
+            subraceCheckBox.setVisibility(View.VISIBLE);
+            if(character.getLevel() < 6){
                 subraceInfoTextView1.setText("Breath Weapon Damage: 2d6");
-                subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
-                subraceCheckboxTextView.setText("Breath Weapon");
-                languages.append(" Common, Draconic, ");
-                break;
-            case "Gnome":
-                //Forest Gnome is chosen for this
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("Advantage on INT, WIS, and CHA saving throws against magic");
-                bonusStats.add("Through sounds and gestures, you can communicate simple ideas with small animals");
-                languages.append(" Common, Gnomish, ");
-                break;
-            case "Half-Elf":
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("Advantage on saving throws against being charmed");
-                bonusStats.add("Magic effects cannot put you to sleep");
-                languages.append(" Common, Elvish, ");
-                break;
-            case "Half-Orc":
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
-                bonusStats.add("When you score a critical hit, you can roll an extra of the weapon's damage die");
-                languages.append(" Common, Orcish, ");
-                break;
-            case "Tiefling":
-                bonusStats.add("Darkvision: 60 ft");
-                bonusStats.add("You are resistant to Fire damage");
-                languages.append(" Common, Infernal, ");
-                break;
+            } else if(character.getLevel() < 11){
+                subraceInfoTextView1.setText("Breath Weapon Damage: 3d6");
+            } else if(character.getLevel() < 16){
+                subraceInfoTextView1.setText("Breath Weapon Damage: 4d6");
+            } else {
+                subraceInfoTextView1.setText("Breath Weapon Damage: 5d6");
+            }
+            subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
+            subraceCheckboxTextView.setText("Breath Weapon");
         }
-        if(character.getCharacterClass().equals("Druid")){
-            languages.append("Druidic, ");
-        }
-        if(character.getCharacterClass().equals("Rogue")){
-            languages.append("Thieve's Cant, ");
-        }
-        
+
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
-                //if level >= x, set certain views visible and set the text to the proper string resource
-                //if character.getSubclass().equals("Path of the Berzerker"(create string resources for each one)), do the above for the subclass
-                subclassInfoTextView1.setText(R.string.rage_damage);
-                checkBoxes1.setVisibility(View.VISIBLE);
-                checkBoxes1.setText(R.string.rage_uses);
-                checkBox1_1.setVisibility(View.VISIBLE);
-                checkBox1_2.setVisibility(View.VISIBLE);
-                bonusStats.add(getString(R.string.rage_description));
+                if(level >= 1){
+                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+2");
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(R.string.rage_uses);
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                }
+                if(level >= 3){
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                }
+                if(level >= 6){
+                    checkBox1_4.setVisibility(View.VISIBLE);
+                }
+                if(level >= 9){
+                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+3");
+                }
+                if(level >= 11){
+                    final int[] relentlessRage = {10};
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(getString(R.string.relentless_rage_DC) + String.valueOf(relentlessRage[0]));
+                    subclassInfoTextView2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            relentlessRage[0] += 5;
+                            subclassInfoTextView2.setText(getString(R.string.relentless_rage_DC) + String.valueOf(relentlessRage[0]));
+                            //TODO: reset via long rest
+                        }
+                    });
+                }
+                if(level >= 12){
+                    checkBox1_5.setVisibility(View.VISIBLE);
+                }
+                if(level >= 16){
+                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+4");
+                }
+                if(level >= 17){
+                    checkBox1_6.setVisibility(View.VISIBLE);
+                }
+                if(level == 20){
+                    checkBox1_1.setVisibility(View.INVISIBLE);
+                    checkBox1_2.setVisibility(View.INVISIBLE);
+                    checkBox1_3.setVisibility(View.INVISIBLE);
+                    checkBox1_4.setVisibility(View.INVISIBLE);
+                    checkBox1_5.setVisibility(View.INVISIBLE);
+                    checkBox1_6.setVisibility(View.INVISIBLE);
+                    checkBoxes1.setText(getString(R.string.rage_uses) + "infinite");
+                }
                 break;
             case "Bard":
                 subclassInfoTextView1.setText(R.string.bardic_inspiration_die);
@@ -198,18 +184,16 @@ public class CharacterFragment extends Fragment {
                 // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
                 break;
             case "Druid":
-                //Literally have nothing to add here at level 1.
+                //Nothing at level 1.
                 break;
             case "Fighter":
                 subclassInfoTextView1.setText(R.string.fighting_style);
                 checkBoxes1.setVisibility(View.VISIBLE);
                 checkBox1_1.setVisibility(View.VISIBLE);
                 checkBoxes1.setText(R.string.second_wind_amount);
-                bonusStats.add(getString(R.string.second_wind));
                 break;
             case "Monk":
                 subclassInfoTextView1.setText(R.string.unarmed_strike_damage);
-                bonusStats.add(getString(R.string.martial_arts));
                 break;
             case "Paladin":
                 checkBoxes1.setVisibility(View.VISIBLE);
@@ -233,39 +217,30 @@ public class CharacterFragment extends Fragment {
                 editTextTextView.setVisibility(View.VISIBLE);
                 editTextTextView.setText(R.string.lay_on_hands_pool);
                 subclassInfoEditText.setText(String.valueOf(character.getLevel()*5));
-                bonusStats.add(getString(R.string.divine_sense));
-                bonusStats.add(getString(R.string.lay_on_hands));
                 break;
             case "Ranger":
                 subclassInfoTextView1.setText(R.string.favored_enemy);
                 subclassInfoTextView2.setVisibility(View.VISIBLE);
                 subclassInfoTextView2.setText(R.string.favored_terrain);
-                bonusStats.add(getString(R.string.favored_enemy_description));
-                bonusStats.add(getString(R.string.favored_terrain_description));
                 break;
             case "Rogue":
                 subclassInfoTextView1.setText(R.string.sneak_attack_damage);
-                bonusStats.add(getString(R.string.sneak_attack_description));
                 break;
             case "Sorcerer":
                 subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
-                //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
-                // HP/AC, or a checkbox(tides of chaos, wild magic)
+                //Only subclass stuff at level 1.
                 break;
             case "Warlock":
                 subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
-                //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
-                // list, and bonusStats info.
+                //Only subclass stuff at level 1.
                 break;
             case "Wizard":
                 subclassInfoTextView1.setText(R.string.arcane_recovery_amount);
-                bonusStats.add(getString(R.string.arcane_recovery));
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
         bonusStatsList.setAdapter(adapter);
 
-        languagesKnown.setText(languages.toString());
         return rootView;
     }
 
@@ -273,5 +248,11 @@ public class CharacterFragment extends Fragment {
     public void onResume(){
         super.onResume();
         DetailActivity.canLongRest = false;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        character.getRaceAndClassBonusStats().set(0, languagesKnown.getText().toString());
     }
 }
