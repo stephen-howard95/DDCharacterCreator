@@ -242,10 +242,11 @@
 
     <string name="bard_college">Bard College: </string>
     <string name="bardic_inspiration_description">Bardic Inspiration: As a bonus action, choose another creature within 60ft of you to inspire. Within the next 10 minutes, that creature can add your Bardic Inspiration die to one ability check, attack roll, or saving throw they make</string>
-    <string name="bardic_inspiration_die">Bardic Inspiration Die: d6</string>
+    <string name="bardic_inspiration_die">Bardic Inspiration Die: </string>
     <string name="bardic_inspiration_uses">Bardic Inspiration Uses:</string>
     <string name="song_of_rest">Song of Rest: If you or allies take a short rest and heal using one or more of their hit dice, they regain extra HP based on your Song of Rest die below</string>
-    <string name="song_of_rest_die">Song of Rest Die: 1d6</string>
+    <string name="song_of_rest_die">Song of Rest Die: </string>
+    <string name="jack_of_all_trades">Jack of All Trades: Any skill check you make that doesn\'t already add your proficiency bonus, you can now add half your proficiency bonus (rounded down)</string>
     <string name="font_of_inspiration">Font of Inspiration: You regain all uses of Bardic Inspiration after a short or long rest</string>
     <string name="countercharm">Countercharm: As an action, you can start a performance that will last until the end of your next turn. During that time, you and any friendly creatures within 30ft of you have advantage on saving throws against being frightened or charmed</string>
     <string name="superior_inspiration">Superior Inspiration: When you roll initiative and have no uses of Bardic Inspiration left, you regain one use</string>
