@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.Arrays;
+import java.util.List;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
 
 public class SkillModifiersActivity extends AppCompatActivity {
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -181,7 +184,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                     religionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     religionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     break;
-                case "Sleight of hand":
+                case "Sleight of Hand":
                     sleightOfHandModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus));
                     sleightOfHandLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     sleightOfHandModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -196,6 +199,70 @@ public class SkillModifiersActivity extends AppCompatActivity {
                     survivalLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     survivalModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     break;
+            }
+        }
+        //Bard's Jack of All Trades
+        if(character.getCharacterClass().equals("Bard") && character.getLevel() >= 2){
+            List<String> skillsList = Arrays.asList(getResources().getStringArray(R.array.skill_proficiencies_array));
+            for(int i=0; i<skillsList.size(); i++){
+                if(!character.getProficiencyChoices().contains(skillsList.get(i))){
+                    switch(skillsList.get(i)){
+                        case "Acrobatics":
+                            acrobaticsModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            break;
+                        case "Animal Handling":
+                            animalHandlingModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            break;
+                        case "Arcana":
+                            arcanaModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            break;
+                        case "Athletics":
+                            athleticsModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(0)) + (proficiencyBonus/2))));
+                            break;
+                        case "Deception":
+                            deceptionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            break;
+                        case "History":
+                            historyModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            break;
+                        case "Insight":
+                            insightModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            break;
+                        case "Intimidation":
+                            intimidationModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            break;
+                        case "Investigation":
+                            investigationModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            break;
+                        case "Medicine":
+                            medicineModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            break;
+                        case "Nature":
+                            natureModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            break;
+                        case "Perception":
+                            perceptionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            break;
+                        case "Performance":
+                            performanceModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            break;
+                        case "Persuasion":
+                            persuasionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            break;
+                        case "Religion":
+                            religionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            break;
+                        case "Sleight of Hand":
+                            sleightOfHandModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            break;
+                        case "Stealth":
+                            stealthModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            break;
+                        case "Survival":
+                            survivalModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            break;
+                    }
+                }
             }
         }
     }
