@@ -75,7 +75,7 @@ public class LevelUpActivity extends AppCompatActivity {
             case 13:
             case 17:
                 proficiencyBonusImprovement.setVisibility(View.VISIBLE);
-                proficiencyBonusImprovement.setText(getString(R.string.proficiency_bonus_improvement) + " +" + DetailActivity.proficiencyBonus);
+                proficiencyBonusImprovement.setText(getString(R.string.proficiency_bonus_improvement) + " +" + String.valueOf(DetailActivity.proficiencyBonus + 1));
                 break;
         }
         if(character.getCharacterClass().equals("Fighter") && (character.getLevel() == 6 || character.getLevel() == 14)){
@@ -364,42 +364,74 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Bard":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.song_of_rest);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(R.string.jack_of_all_trades);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.song_of_rest));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.jack_of_all_trades));
                         break;
                     case 3:
+                        //choose a bard college, gives you bonuses at levels 3, 6, and 14.
+                        //expertise choices
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.font_of_inspiration);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Your Bardic Inspiration die is now a d8");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.font_of_inspiration));
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.countercharm);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.countercharm));
                         break;
                     case 7:
                         break;
                     case 8:
                         break;
                     case 9:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Song of Rest die is now a d8");
                         break;
                     case 10:
+                        //magical secrets
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Bardic Inspiration die is now a d10");
                         break;
                     case 11:
                         break;
                     case 12:
                         break;
                     case 13:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Song of Rest die is now a d10");
                         break;
                     case 14:
+                        //magical secrets
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Bardic Inspiration die is now a d12");
                         break;
                     case 16:
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Song of Rest die is now a d12");
                         break;
                     case 18:
+                        //magical secrets
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(R.string.superior_inspiration);
+                        character.getRaceAndClassBonusStats().add(getString(R.string.superior_inspiration));
                         break;
                 }
                 break;
