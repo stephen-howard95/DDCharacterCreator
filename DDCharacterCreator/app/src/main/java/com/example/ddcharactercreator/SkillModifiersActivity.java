@@ -74,7 +74,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
         athleticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(0))));
         deceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5))));
         historyModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3))));
-        insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5))));
+        insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4))));
         intimidationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5))));
         investigationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3))));
         medicineModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4))));
