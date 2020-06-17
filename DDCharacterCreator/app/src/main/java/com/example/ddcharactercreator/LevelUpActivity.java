@@ -74,6 +74,7 @@ public class LevelUpActivity extends AppCompatActivity {
             case 9:
             case 13:
             case 17:
+                //TODO: LevelUpActivity is displaying proficiency bonus as one behind.
                 proficiencyBonusImprovement.setVisibility(View.VISIBLE);
                 proficiencyBonusImprovement.setText(getString(R.string.proficiency_bonus_improvement) + " +" + String.valueOf(DetailActivity.proficiencyBonus + 1));
                 break;
@@ -438,42 +439,67 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Cleric":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.channel_divinity));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.channel_divinity_turn_undead));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.channel_divinity));
                         break;
                     case 3:
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.destroy_undead));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.destroy_undead));
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You can now use Channel Divinity twice per short/long rest");
                         break;
                     case 7:
                         break;
                     case 8:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Destroy undead now destroys undead of CR 1 or lower");
                         break;
                     case 9:
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.divine_intervention));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.divine_intervention));
                         break;
                     case 11:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Destroy undead now destroys undead of CR 2 or lower");
                         break;
                     case 12:
                         break;
                     case 13:
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Destroy undead now destroys undead of CR 3 or lower");
                         break;
                     case 15:
                         break;
                     case 16:
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Destroy undead now destroys undead of CR 4 or lower");
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You can now use Channel Divinity three times per short/long rest");
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Divine Intervention ability now automatically succeeds");
                         break;
                 }
                 break;
