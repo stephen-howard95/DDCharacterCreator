@@ -213,9 +213,54 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Cleric":
-                subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
-                //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
-                // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
+                ArrayList<String> channelDivinityUses = new ArrayList<String>();
+                ListAdapter adapter = new ListAdapter(getContext(), channelDivinityUses);
+                if(level >= 1){
+                    subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
+                }
+                if(level >= 2){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.channel_divinity_uses));
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
+                    subclassInfoListView.setVisibility(View.VISIBLE);
+                    channelDivinityUses.add(getString(R.string.channel_divinity_turn_undead));
+                    //TODO: Other options added to Channel divinity uses depending on cleric subclass.
+                }
+                if(level >= 5){
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "1/2 or lower");
+                }
+                if(level >= 6){
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                }
+                if(level >= 8){
+                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "1 or lower");
+                }
+                if(level >= 10){
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBox2_1.setVisibility(View.VISIBLE);
+                    checkBoxes2.setText(getString(R.string.divine_intervention_use));
+                    subclassInfoTextView3.setVisibility(View.VISIBLE);
+                    subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + character.getLevel() + " or lower");
+                }
+                if(level >= 11){
+                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "2 or lower");
+                }
+                if(level >= 14){
+                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "3 or lower");
+                }
+                if(level >= 17){
+                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "4 or lower");
+                }
+                if(level >= 18){
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                }
+                if(level == 20){
+                    subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + "Guaranteed Success");
+                }
+                subclassInfoListView.setAdapter(adapter);
                 break;
             case "Druid":
                 //Nothing at level 1.
