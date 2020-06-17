@@ -140,7 +140,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                     historyModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     break;
                 case "Insight":
-                    insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
+                    insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
                     insightLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     insightModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                     break;
