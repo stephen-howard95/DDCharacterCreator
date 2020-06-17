@@ -252,11 +252,12 @@
     <string name="superior_inspiration">Superior Inspiration: When you roll initiative and have no uses of Bardic Inspiration left, you regain one use</string>
 
     <string name="divine_domain">Divine Domain: </string>
+    <string name="channel_divinity">Channel Divinity: You gain the ability to channel divine energy from your deity and use it to produce magical effects. This can be used a number of times per long rest as shown above.</string>
     <string name="channel_divinity_uses">Channel Divinity Uses:</string>
     <string name="channel_divinity_turn_undead">Channel Divinity: Turn Undead: As an action, you present your holy symbol and speak a prayer. Each undead within 30ft must succeed at a wisdom saving throw or, for 1 minute, spend its turns moving as far away from you as possible. They can only use their action to dash or dodge, if they cannot move further form you.</string>
-    <string name="destroy_undead">If an undead fails the saving throw against Turn Undead and has a CR less than or equal to the following, it is immediately destroyed</string>
+    <string name="destroy_undead">If an undead fails the saving throw against Turn Undead and has a CR less than or equal to a certain threshold, it is immediately destroyed</string>
     <string name="destroy_undead_threshold">Destroy Undead Threshold:</string>
-    <string name="divine_intervention">Divine Intervention: As an action, you can call on your Deity for aid. Describe the assistance you require, then roll a percentile die. If you roll within the range listed below, your deity will come to your aid. If it succeeds, you cannot use this ability for another 7 days. If it fails, you can attempt it again after a long rest</string>
+    <string name="divine_intervention">Divine Intervention: As an action, you can call on your Deity for aid. Describe the assistance you require, then roll a percentile die. If you roll less than or equal to your level, your deity will come to your aid. If it succeeds, you cannot use this ability for another 7 days. If it fails, you may attempt it again after a long rest</string>
     <string name="divine_intervention_success_range">Divine Intervention Success Range:</string>
 
     <string name="druid_circle">Druid Circle: </string>
