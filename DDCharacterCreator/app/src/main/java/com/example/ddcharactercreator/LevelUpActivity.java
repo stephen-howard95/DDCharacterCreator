@@ -506,6 +506,11 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Druid":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.wild_shape));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.wild_shape));
                         break;
                     case 3:
                         break;
@@ -538,10 +543,18 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.timeless_body_druid));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.beast_spells));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.timeless_body_druid));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.beast_spells));
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.archdruid));
                         break;
                 }
                 break;
