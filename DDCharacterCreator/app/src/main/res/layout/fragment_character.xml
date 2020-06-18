@@ -66,8 +66,7 @@
             android:hint="@string/languages_known"
             android:text="@string/languages_known"
             android:importantForAutofill="no" />
-        <!-- The below TextView is the only one guaranteed to be visible.
-        everything else should start invisible. Except for the bonusStats listView-->
+        
         <TextView
             android:id="@+id/subrace_textview_1"
             android:visibility="gone"
@@ -84,6 +83,7 @@
             android:id="@+id/subclass_info_textview_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:text="TextView 1:"/>
         <TextView
             android:id="@+id/subclass_info_textview_2"
