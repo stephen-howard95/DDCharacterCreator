@@ -97,7 +97,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
                 perceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 perceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
+                insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
                 insightLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 insightModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
