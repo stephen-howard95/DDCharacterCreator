@@ -263,12 +263,14 @@
     <string name="divine_intervention_success_range">Divine Intervention Success Range:</string>
 
     <string name="druid_circle">Druid Circle: </string>
-    <string name="wild_shape">Wild Shape: As an action, you can magically transform into a beast within the parameters listed below. You can revert early if you choose. Your statistics are replaced by the beast\'s statistics, but you retain your alignment, personality, and your INT, WIS, and CHA scores. You cannot speak or cast spells when in beast form.</string>
-    <string name="wild_shape_uses">Wild Shape Uses:</string>
-    <string name="wild_shape_limits">Wild Shape Limits: Max CR = 1/4, No Flying/Swimming Speed</string>
+    <string name="wild_shape">Wild Shape: As an action, you can magically transform into a beast within certain parameters. You can revert early if you choose. Your statistics are replaced by the beast\'s statistics, but you retain your alignment, personality, and your INT, WIS, and CHA scores. You cannot speak or cast spells when in beast form.</string>
+    <string name="wild_shape_uses">Wild Shape Uses: </string>
+    <string name="wild_shape_time_limit">Wild Shape Time Limit: </string>
+    <string name="wild_shape_limits">Wild Shape Limits: </string>
     <string name="timeless_body_druid">Timeless Body: Due to druidic magic forces, your body only ages 1 year for every 10 years that pass.</string>
     <string name="beast_spells">Beast Spells: You can now perform the Somatic and Verbal aspects of a spell while in beast form, but cannot provide material components.</string>
-
+    <string name="archdruid">Archdruid: You can now use your Wild Shape an unlimited amount of times</string>
+    
     <string name="martial_archetype">Martial Archetype: </string>
     <string name="fighting_style">Fighting Style:</string>
     <string name="second_wind">Second Wind: As a bonus action, you can heal yourself. You can do this once per long rest.</string>
