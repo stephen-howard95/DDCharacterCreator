@@ -84,7 +84,8 @@ public class CharacterFragment extends Fragment {
         characterRace.setText(character.getRace());
         characterAlignment.setText(character.getAlignment());
 
-        //Adding in Racial Benefits
+        //Adding in Racial Benefits and languages
+        //TODO: remove language from bonusStats list. It shouldn't display in the racial/class bonus list. (Maybe languages should go in a different list?)
         ArrayList<String> bonusStats = character.getRaceAndClassBonusStats();
         languagesKnown.setText(bonusStats.get(0));
         if(character.getRace().equals("Dragonborn")) {
@@ -109,6 +110,7 @@ public class CharacterFragment extends Fragment {
         switch(character.getCharacterClass()){
             case "Barbarian":
                 if(level >= 1){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+2");
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(R.string.rage_uses);
@@ -157,7 +159,8 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Bard":
-                 if(level >= 1){
+                if(level >= 1){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d6");
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(getString(R.string.bardic_inspiration_uses));
@@ -216,7 +219,10 @@ public class CharacterFragment extends Fragment {
                 ArrayList<String> channelDivinityUses = new ArrayList<String>();
                 ListAdapter adapter = new ListAdapter(getContext(), channelDivinityUses);
                 if(level >= 1){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
+                    //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
+                    // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
                 }
                 if(level >= 2){
                     checkBoxes1.setVisibility(View.VISIBLE);
@@ -263,7 +269,27 @@ public class CharacterFragment extends Fragment {
                 subclassInfoListView.setAdapter(adapter);
                 break;
             case "Druid":
-                //Nothing at level 1.
+                if(level >= 2){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.wild_shape_uses));
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
+                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(getString(R.string.wild_shape_time_limit) + Math.floor(level/2) + "hours");
+                }
+                if(level >= 4){
+                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/2, No Flying Speed");
+                }
+                if(level >= 8){
+                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1");
+                }
+                if(level == 20){
+                    checkBox1_2.setVisibility(View.GONE);
+                    checkBox1_1.setVisibility(View.GONE);
+                    checkBoxes1.setText(getString(R.string.wild_shape_uses) + "Infinite");
+                }
                 break;
             case "Fighter":
                 subclassInfoTextView1.setText(R.string.fighting_style);
@@ -307,11 +333,13 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Sorcerer":
                 subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
-                //Only subclass stuff at level 1.
+                //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
+                // HP/AC, or a checkbox(tides of chaos, wild magic)
                 break;
             case "Warlock":
                 subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
-                //Only subclass stuff at level 1.
+                //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
+                // list, and bonusStats info.
                 break;
             case "Wizard":
                 subclassInfoTextView1.setText(R.string.arcane_recovery_amount);
