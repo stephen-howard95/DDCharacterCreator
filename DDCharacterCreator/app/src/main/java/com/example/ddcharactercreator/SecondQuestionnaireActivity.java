@@ -535,6 +535,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         if(startingEquipmentSpinner3.getVisibility() == View.VISIBLE){
             inventory.add(startingEquipmentSpinner3.getSelectedItem().toString());
         }
+        if(startingEquipmentSpinner4.getVisibility() == View.VISIBLE){
+            inventory.add(startingEquipmentSpinner4.getSelectedItem().toString());
+        }
         switch (character.getCharacterClass()){
             case "Barbarian":
                 inventory.add("Explorer's Pack");
