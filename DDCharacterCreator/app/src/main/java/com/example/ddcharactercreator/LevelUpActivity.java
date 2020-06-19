@@ -79,7 +79,7 @@ public class LevelUpActivity extends AppCompatActivity {
                 proficiencyBonusImprovement.setText(getString(R.string.proficiency_bonus_improvement) + " +" + String.valueOf(DetailActivity.proficiencyBonus + 1));
                 break;
         }
-        if(character.getCharacterClass().equals("Fighter") && (character.getLevel() == 6 || character.getLevel() == 14)){
+        if(character.getCharacterClass().equals("Fighter") && (level == 6 || level == 14)){
             abilityScoreImprovementHeader.setVisibility(View.VISIBLE);
             abilityScoreImprovement1.setVisibility(View.VISIBLE);
             abilityScoreImprovement2.setVisibility(View.VISIBLE);
@@ -561,12 +561,18 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Fighter":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.action_surge));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.action_surge));
                         break;
                     case 3:
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.extra_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
                         break;
@@ -575,14 +581,22 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 8:
                         break;
                     case 9:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.indomitable));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.indomitable));
                         break;
                     case 10:
                         break;
                     case 11:
+                        //TODO: how to change extra attack amount in the list.
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Extra Attack feature now allows you to attack 3 times in one action");
                         break;
                     case 12:
                         break;
                     case 13:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You have gained another use of Indomitable per long rest");
                         break;
                     case 14:
                         break;
@@ -591,12 +605,18 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 16:
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You now have a second use of Action Surge per long rest");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("You have gained another use of Indomitable per long rest");
                         break;
                     case 18:
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Extra Attack feature now allows you to attack 4 times in one action");
                         break;
                 }
                 break;
