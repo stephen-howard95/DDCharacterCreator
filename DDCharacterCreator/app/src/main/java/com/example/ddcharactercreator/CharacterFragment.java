@@ -291,11 +291,31 @@ public class CharacterFragment extends Fragment {
                     checkBoxes1.setText(getString(R.string.wild_shape_uses) + "Infinite");
                 }
                 break;
-            case "Fighter":
-                subclassInfoTextView1.setText(R.string.fighting_style);
-                checkBoxes1.setVisibility(View.VISIBLE);
-                checkBox1_1.setVisibility(View.VISIBLE);
-                checkBoxes1.setText(R.string.second_wind_amount);
+           case "Fighter":
+                if(level >= 1){
+                    //TODO: how to carry over fighting style??
+                    subclassInfoTextView1.setText(getString(R.string.fighting_style));
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.second_wind_amount) + "1d10 + " + character.getLevel());
+                }
+                if(level >= 2){
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBoxes2.setText(getString(R.string.action_surge_uses));
+                    checkBox2_1.setVisibility(View.VISIBLE);
+                }
+                if(level >= 9){
+                    checkBoxes3.setVisibility(View.VISIBLE);
+                    checkBoxes3.setText(getString(R.string.indomitable_uses));
+                    checkBox3_1.setVisibility(View.VISIBLE);
+                }
+                if(level >= 13){
+                    checkBox3_2.setVisibility(View.VISIBLE);
+                }
+                if(level >= 17){
+                    checkBox2_2.setVisibility(View.VISIBLE);
+                    checkBox3_3.setVisibility(View.VISIBLE);
+                }
                 break;
             case "Monk":
                 subclassInfoTextView1.setText(R.string.unarmed_strike_damage);
