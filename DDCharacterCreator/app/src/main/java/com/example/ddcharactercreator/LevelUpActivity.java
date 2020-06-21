@@ -74,7 +74,6 @@ public class LevelUpActivity extends AppCompatActivity {
             case 9:
             case 13:
             case 17:
-                //TODO: LevelUpActivity is displaying proficiency bonus as one behind.
                 proficiencyBonusImprovement.setVisibility(View.VISIBLE);
                 proficiencyBonusImprovement.setText(getString(R.string.proficiency_bonus_improvement) + " +" + String.valueOf(DetailActivity.proficiencyBonus + 1));
                 break;
@@ -623,42 +622,94 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Monk":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.ki_points_description));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.unarmored_movement_description));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.unarmored_movement_description));
                         break;
                     case 3:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.deflect_missiles));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.deflect_missiles));
                         break;
                     case 4:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.slow_fall));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.slow_fall));
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your unarmed strikes now deal 1d6 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.extra_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Unarmored movement is now +15ft");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.ki_empowered_strikes));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.ki_empowered_strikes));
                         break;
                     case 7:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.evasion));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.stillness_of_mind));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.evasion));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.stillness_of_mind));
                         break;
                     case 8:
                         break;
                     case 9:
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Unarmored movement is now +20ft");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.purity_of_body));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.purity_of_body));
                         break;
                     case 11:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your unarmed strikes now deal 1d8 damage");
                         break;
                     case 12:
                         break;
                     case 13:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.tongue_of_the_sun_and_moon));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.tongue_of_the_sun_and_moon));
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Unarmored movement is now +25ft");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.diamond_soul));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.diamond_soul));
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.timeless_body_monk));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.timeless_body_monk));
                         break;
                     case 16:
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your unarmed strikes now deal 1d10 damage");
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Unarmored movement is now +30ft");
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.perfect_self));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.perfect_self));
                         break;
                 }
                 break;
