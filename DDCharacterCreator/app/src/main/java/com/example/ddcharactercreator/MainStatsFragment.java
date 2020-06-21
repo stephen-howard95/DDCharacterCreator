@@ -185,6 +185,20 @@ public class MainStatsFragment extends Fragment {
                 dexterityLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(character.getLevel() >= 14){
+                    constitutionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    constitutionValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    intelligenceLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    intelligenceValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    intelligenceModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    charismaLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    charismaValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                }
                 break;
             case "Paladin":
                 hitDieTextView.setText("d10");
