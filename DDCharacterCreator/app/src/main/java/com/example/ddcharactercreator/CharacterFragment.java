@@ -292,13 +292,11 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
            case "Fighter":
-                if(level >= 1){
-                    //TODO: how to carry over fighting style??
-                    subclassInfoTextView1.setText(getString(R.string.fighting_style));
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBox1_1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.second_wind_amount) + "1d10 + " + character.getLevel());
-                }
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.fighting_style));
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(getString(R.string.second_wind_amount) + "1d10 + " + character.getLevel());
                 if(level >= 2){
                     checkBoxes2.setVisibility(View.VISIBLE);
                     checkBoxes2.setText(getString(R.string.action_surge_uses));
@@ -318,7 +316,53 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Monk":
-                subclassInfoTextView1.setText(R.string.unarmed_strike_damage);
+                ArrayList<String> kiPointUsages = new ArrayList<String>();
+                ListAdapter kiPointAdapter = new ListAdapter(getContext(), kiPointUsages);
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d4");
+                if(level >= 2){
+                    editTextTextView.setVisibility(View.VISIBLE);
+                    editTextTextView.setText(getString(R.string.ki_points) + " " + character.getLevel());
+                    subclassInfoEditText.setVisibility(View.VISIBLE);
+                    subclassInfoEditText.setText(String.valueOf(character.getLevel()));
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText(getString(R.string.ki_point_abilities));
+                    subclassInfoListView.setVisibility(View.VISIBLE);
+                    kiPointUsages.add(getString(R.string.flurry_of_blows));
+                    kiPointUsages.add(getString(R.string.patient_defense));
+                    kiPointUsages.add(getString(R.string.step_of_the_wind));
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +10ft");
+                }
+                if(level >= 3){
+                    kiPointUsages.add(getString(R.string.deflect_missiles_ki));
+                }
+                if(level >= 5){
+                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d6");
+                    kiPointUsages.add(getString(R.string.stunning_strike));
+                }
+                if(level >= 6){
+                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +15ft");
+                }
+                if(level >= 10){
+                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +20ft");
+                }
+                if(level >= 11){
+                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d8");
+                }
+                if(level >= 14){
+                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +25ft");
+                    kiPointUsages.add(getString(R.string.diamond_soul_ki));
+                }
+                if(level >= 17){
+                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d10");
+                }
+                if(level >= 18){
+                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +30ft");
+                    kiPointUsages.add(getString(R.string.empty_body));
+                    kiPointUsages.add(getString(R.string.empty_body_2));
+                }
+                subclassInfoListView.setAdapter(kiPointAdapter);
                 break;
             case "Paladin":
                 checkBoxes1.setVisibility(View.VISIBLE);
