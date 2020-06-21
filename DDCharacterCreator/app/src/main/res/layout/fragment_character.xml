@@ -258,18 +258,19 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/subclass_info_edittext_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Edit Text: "/>
             <EditText
                 android:id="@+id/subclass_info_edittext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
+                android:visibility="gone"
                 android:text="20"/>
         </LinearLayout>
         <TextView
