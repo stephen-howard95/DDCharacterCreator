@@ -390,8 +390,8 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             languages.append(" Common, Orcish, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
-                            bonusStats.add("When you score a critical hit, you can roll an extra of the weapon's damage die");
+                            bonusStats.add("Relentless Endurance: When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
+                            bonusStats.add("Savage Attacks: When you score a critical hit, you can roll an extra of the weapon's damage die");
                             break;
                         case "Tiefling":
                             languages.append(" Common, Infernal, ");
