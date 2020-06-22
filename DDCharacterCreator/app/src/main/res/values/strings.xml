@@ -211,6 +211,12 @@
     <string name="warlock_other_proficiencies">Light armor, Simple weapons, and Wisdom/Charisma saving throws</string>
     <string name="wizard_other_proficiencies">Daggers, Darts, Slings, Quarterstaffs, Light crossbows, and Intelligence/Wisdom saving throws</string>
 
+    //Fighting Styles
+    <string name="defense">Defense: +1 bonus to AC when you are wearing armor</string>
+    <string name="dueling">Dueling: When wielding a melee weapon in one hand and no other weapon, you gain a +2 bonus to damage rolls with that weapon</string>
+    <string name="great_weapon_fighting">Great Weapon Fighting: When wielding a weapon with two hands (two-handed or versatile), you can re-roll a 1 or 2 on a damage die once per attack with that weapon</string>
+    <string name="protection">Protection: When wielding a shield, if an enemy you can see attacks an ally of yours that is within 5ft of you, you can use your reaction to impose disadvantage on that attack roll</string>
+
     //Other miscellaneous strings
     <string name="select_a_character">Select a Character</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
