@@ -716,14 +716,55 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Paladin":
                 switch (level){
                     case 2:
+                        List<String> fightingStyles = new ArrayList<String>();
+                        ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, fightingStyles);
+                        fightingStyles.add("Defense");
+                        fightingStyles.add("Dueling");
+                        fightingStyles.add("Great Weapon Fighting");
+                        fightingStyles.add("Protection");
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You now have the ability to cast spells");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.divine_smite));
+                        /* TODO: Fighting Style is adding the first option, no matter what is chosen.
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Fighting Style");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(fightingStyleAdapter);
+                        switch(choice1.getSelectedItem().toString()){
+                            case "Defense":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                break;
+                            case "Dueling":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                break;
+                            case "Great Weapon Fighting":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                break;
+                            case "Protection":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                break;
+                        }
+                        */
+                        character.getRaceAndClassBonusStats().add(getString(R.string.divine_smite));
                         break;
                     case 3:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.divine_health));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.divine_health));
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.extra_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.aura_of_protection));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_protection));
                         break;
                     case 7:
                         break;
@@ -732,14 +773,23 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.aura_of_courage));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_courage));
                         break;
                     case 11:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.improved_divine_smite));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.improved_divine_smite));
                         break;
                     case 12:
                         break;
                     case 13:
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.cleansing_touch));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.cleansing_touch));
                         break;
                     case 15:
                         break;
@@ -748,6 +798,8 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your Auras now have a radius of 30 ft.");
                         break;
                     case 19:
                         break;
