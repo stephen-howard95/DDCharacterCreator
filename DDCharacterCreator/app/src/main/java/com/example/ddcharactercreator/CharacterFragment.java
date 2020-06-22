@@ -105,7 +105,11 @@ public class CharacterFragment extends Fragment {
             subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
             subraceCheckboxTextView.setText("Breath Weapon");
         }
-
+        if(character.getRace().equals("Half-Orc")){
+            subraceCheckboxTextView.setVisibility(View.VISIBLE);
+            subraceCheckboxTextView.setText("Relentless Endurance: ");
+            subraceCheckBox.setVisibility(View.VISIBLE);
+        }
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
@@ -385,7 +389,45 @@ public class CharacterFragment extends Fragment {
                 }
                 editTextTextView.setVisibility(View.VISIBLE);
                 editTextTextView.setText(R.string.lay_on_hands_pool);
+                subclassInfoEditText.setVisibility(View.VISIBLE);
                 subclassInfoEditText.setText(String.valueOf(character.getLevel()*5));
+                //ArrayList<String> channelDivinityUsesPaladin = new ArrayList<String>();
+                //ListAdapter channelDivinityAdapterPaladin = new ListAdapter(getContext(), channelDivinityUsesPaladin);
+                if(level >= 3){
+                    //subclassInfoHeader.setVisibility(View.VISIBLE);
+                    //subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
+                    //subclassInfoListView.setVisibility(View.VISIBLE);
+                    //This is where the channel divinity abilities will be added to the list when subclasses are added in.
+                }
+                if(level >= 6){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
+                    subclassInfoTextView1.setText("Aura Radius: 10ft");
+                }
+                if(level >= 14){
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBoxes2.setText(getString(R.string.cleansing_touch_uses));
+                    checkBox2_1.setVisibility(View.VISIBLE);
+                    if(calculateModifier(character.getStatValues().get(5)) >= 2){
+                        checkBox2_2.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 3){
+                        checkBox2_3.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 4){
+                        checkBox2_4.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 5){
+                        checkBox2_5.setVisibility(View.VISIBLE);
+                    }
+                    if(calculateModifier(character.getStatValues().get(5)) >= 6){
+                        checkBox2_6.setVisibility(View.VISIBLE);
+                    }
+                }
+                if(level >= 18){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
+                    subclassInfoTextView1.setText("Aura Radius: 30ft");
+                }
+                //subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
                 break;
             case "Ranger":
                 subclassInfoTextView1.setText(R.string.favored_enemy);
