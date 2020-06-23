@@ -54,6 +54,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
+        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -112,9 +113,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Cleric":
-                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader2.setText("Choose a Divine Domain");
+                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader1.setText("Choose a Divine Domain");
                 levelOneChoices1.add("Knowledge");
                 levelOneChoices1.add("Life");
                 levelOneChoices1.add("Light");
@@ -124,6 +125,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 levelOneChoices1.add("War");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
+                startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Mace");
                 equipmentSpinnerArray1.add("Warhammer");
                 equipmentSpinnerArray2.add("Scale Mail");
@@ -149,6 +151,15 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("2d4 x10");
                 break;
             case "Fighter":
+                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader1.setText("Choose a Fighting Style");
+                levelOneChoices1.add("Archery");
+                levelOneChoices1.add("Defense");
+                levelOneChoices1.add("Dueling");
+                levelOneChoices1.add("Great Weapon Fighting");
+                levelOneChoices1.add("Protection");
+                levelOneChoices1.add("Two-Weapon Fighting");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Chain Mail");
@@ -191,6 +202,33 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Ranger":
+                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader1.setText("Choose a Favored Enemy");
+                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader2.setText("Choose a Favored Terrain");
+                levelOneChoices1.add("Aberrations");
+                levelOneChoices1.add("Beasts");
+                levelOneChoices1.add("Celestials");
+                levelOneChoices1.add("Constructs");
+                levelOneChoices1.add("Dragons");
+                levelOneChoices1.add("Elementals");
+                levelOneChoices1.add("Fey");
+                levelOneChoices1.add("Fiends");
+                levelOneChoices1.add("Giants");
+                levelOneChoices1.add("Monstrosities");
+                levelOneChoices1.add("Oozes");
+                levelOneChoices1.add("Plants");
+                levelOneChoices1.add("Undead");
+                levelOneChoices2.add("Arctic");
+                levelOneChoices2.add("Coast");
+                levelOneChoices2.add("Desert");
+                levelOneChoices2.add("Forest");
+                levelOneChoices2.add("Grassland");
+                levelOneChoices2.add("Mountain");
+                levelOneChoices2.add("Swamp");
+                levelOneChoices2.add("Underdark");
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Scale Mail");
@@ -217,9 +255,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("4d4 x10");
                 break;
             case "Sorcerer":
-                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader2.setText("Choose a Sorcerous Origin");
+                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader1.setText("Choose a Sorcerous Origin");
                 levelOneChoices1.add("Draconic Bloodline");
                 levelOneChoices1.add("Wild Magic");
                 skillProficiencySpinner3.setVisibility(View.GONE);
@@ -236,9 +274,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("3d4 x10");
                 break;
             case "Warlock":
-                levelOneChoiceHeader2.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner2.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader2.setText("Choose an Otherworldly Patron");
+                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
+                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
+                levelOneChoiceHeader1.setText("Choose an Otherworldly Patron");
                 levelOneChoices1.add("The Archfey");
                 levelOneChoices1.add("The Fiend");
                 levelOneChoices1.add("The Great Old One");
@@ -288,7 +326,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
 
         ArrayAdapter<String> levelOneChoicesAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, levelOneChoices1);
-        levelOneChoiceSpinner2.setAdapter(levelOneChoicesAdapter);
+        levelOneChoiceSpinner1.setAdapter(levelOneChoicesAdapter);
+        ArrayAdapter<String> levelOneChoicesAdapter2 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, levelOneChoices2);
+        levelOneChoiceSpinner2.setAdapter(levelOneChoicesAdapter2);
 
         Button finishButton = findViewById(R.id.button_finished_character_creation);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -411,11 +452,31 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add(getString(R.string.bardic_inspiration_description));
                             break;
                         case "Cleric":
-                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             break;
                         case "Druid":
                             break;
                         case "Fighter":
+                            switch(levelOneChoiceSpinner1.getSelectedItem().toString()){
+                                case "Archery":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                    break;
+                                case "Defense":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                    break;
+                                case "Dueling":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                    break;
+                                case "Great Weapon Fighting":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                    break;
+                                case "Protection":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                    break;
+                                case "Two-Weapon Fighting":
+                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
+                                    break;
+                            }
                             bonusStats.add(getString(R.string.second_wind));
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
@@ -431,17 +492,19 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Ranger":
                             bonusStats.add(getString(R.string.favored_enemy_description));
+                            bonusStats.add("Favored Enemy: " + levelOneChoiceSpinner1.getSelectedItem().toString());
                             bonusStats.add(getString(R.string.favored_terrain_description));
+                            bonusStats.add("Favored Terrain: " + levelOneChoiceSpinner2.getSelectedItem().toString());
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
                             bonusStats.add(getString(R.string.sneak_attack_description));
                             break;
                         case "Sorcerer":
-                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             break;
                         case "Warlock":
-                            characterSubclass = levelOneChoiceSpinner2.getSelectedItem().toString();
+                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             break;
                         case "Wizard":
                             bonusStats.add(getString(R.string.arcane_recovery));
