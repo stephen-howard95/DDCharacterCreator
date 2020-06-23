@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
@@ -255,6 +258,22 @@ public class LevelUpActivity extends AppCompatActivity {
                     if(abilityScoreImprovementHeader.getVisibility() == View.VISIBLE){
                         improveAbilityScore(abilityScoreImprovement1.getSelectedItem().toString(), newStatValues);
                         improveAbilityScore(abilityScoreImprovement2.getSelectedItem().toString(), newStatValues);
+                    }
+                    if(character.getCharacterClass().equals("Paladin") && finalLevel == 2){
+                        switch(choice1.getSelectedItem().toString()){
+                            case "Defense":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                break;
+                            case "Dueling":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                break;
+                            case "Great Weapon Fighting":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                break;
+                            case "Protection":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                break;
+                        }
                     }
                     Integer addToHP = Integer.parseInt(moreHP.getText().toString());
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
@@ -727,26 +746,10 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("You now have the ability to cast spells");
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.divine_smite));
-                        /* TODO: Fighting Style is adding the first option, no matter what is chosen.
                         choiceHeader1.setVisibility(View.VISIBLE);
                         choiceHeader1.setText("Choose a Fighting Style");
                         choice1.setVisibility(View.VISIBLE);
                         choice1.setAdapter(fightingStyleAdapter);
-                        switch(choice1.getSelectedItem().toString()){
-                            case "Defense":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
-                                break;
-                            case "Dueling":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
-                                break;
-                            case "Great Weapon Fighting":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
-                                break;
-                            case "Protection":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
-                                break;
-                        }
-                        */
                         character.getRaceAndClassBonusStats().add(getString(R.string.divine_smite));
                         break;
                     case 3:
