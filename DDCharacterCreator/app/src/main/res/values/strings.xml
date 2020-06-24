@@ -99,7 +99,7 @@
     <string name="starting_gp_roll">For your starting gold, roll </string>
     <string name="proficiency_text">Choose from the following Skills to be proficient in</string>
     <string name="starting_equipment">Choose your starting equipment below</string>
-    <string name="starting_equipment_info">In addition to your above choices, you also start with X, Y, and Z</string>
+    <string name="starting_equipment_info">In addition to your above choices, you also start with </string>
     <string name="other_proficiency_beginning">You also have proficiency with </string>
     <string name="final_warning">Once you are sure your character is set the way you want them, click the Finished button below. Be sure to check out the \"Character\" tab to describe their looks, personality, and backstory. And if your character class has Spellcasting capabilities, go to the \"Spellcasting\" tab to set up their list of known spells.</string>
     <string name="finished_button_label">Finished</string>
