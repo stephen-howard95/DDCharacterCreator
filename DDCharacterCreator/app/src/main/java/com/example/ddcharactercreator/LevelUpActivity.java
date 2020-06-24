@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
@@ -259,8 +258,11 @@ public class LevelUpActivity extends AppCompatActivity {
                         improveAbilityScore(abilityScoreImprovement1.getSelectedItem().toString(), newStatValues);
                         improveAbilityScore(abilityScoreImprovement2.getSelectedItem().toString(), newStatValues);
                     }
-                    if(character.getCharacterClass().equals("Paladin") && finalLevel == 2){
+                    if((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2){
                         switch(choice1.getSelectedItem().toString()){
+                            case "Archery":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                break;
                             case "Defense":
                                 character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
                                 break;
@@ -272,6 +274,9 @@ public class LevelUpActivity extends AppCompatActivity {
                                 break;
                             case "Protection":
                                 character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                break;
+                            case "Two-Weapon Fighting":
+                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
                                 break;
                         }
                     }
@@ -813,22 +818,44 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Ranger":
                 switch (level){
                     case 2:
+                        List<String> fightingStyles = new ArrayList<String>();
+                        ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, fightingStyles);
+                        fightingStyles.add("Archery");
+                        fightingStyles.add("Defense");
+                        fightingStyles.add("Dueling");
+                        fightingStyles.add("Two-Weapon Fighting");
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Fighting Style");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(fightingStyleAdapter);
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You now have the ability to cast spells");
                         break;
                     case 3:
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.extra_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
                         break;
                     case 7:
                         break;
                     case 8:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.lands_stride));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.lands_stride));
                         break;
                     case 9:
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.hide_in_plain_sight));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.hide_in_plain_sight));
                         break;
                     case 11:
                         break;
@@ -837,6 +864,9 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 13:
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.vanish));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.vanish));
                         break;
                     case 15:
                         break;
@@ -845,10 +875,16 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.feral_senses));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.feral_senses));
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.foe_slayer));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.foe_slayer));
                         break;
                 }
                 break;
