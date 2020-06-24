@@ -28,6 +28,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
     @BindView(R.id.starting_equipment_spinner_2) Spinner startingEquipmentSpinner2;
     @BindView(R.id.starting_equipment_spinner_3) Spinner startingEquipmentSpinner3;
     @BindView(R.id.starting_equipment_spinner_4) Spinner startingEquipmentSpinner4;
+    @BindView(R.id.extra_starting_equipment) TextView extraStartingEquipmentTextView;
 
     @BindView(R.id.level_one_choice_text_1) TextView levelOneChoiceHeader1;
     @BindView(R.id.level_one_choice_text_2) TextView levelOneChoiceHeader2;
@@ -97,6 +98,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Greatclub");
                 startingHPAndHitDieTextView.setText(R.string.barbarian_hit_die);
                 otherProficiencies.append(getString(R.string.barbarian_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "an explorer's pack and 4 javelins");
                 startingGoldHint.append("2d4 x10");
                 break;
             case "Bard":
@@ -110,6 +112,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Entertainer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.bard_hit_die);
                 otherProficiencies.append(getString(R.string.bard_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor and a dagger");
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Cleric":
@@ -135,6 +138,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Greatclub");
                 startingHPAndHitDieTextView.setText(R.string.cleric_hit_die);
                 otherProficiencies.append(getString(R.string.cleric_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a shield and a holy symbol");
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Druid":
@@ -148,6 +152,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Quarterstaff");
                 startingHPAndHitDieTextView.setText(R.string.druid_hit_die);
                 otherProficiencies.append(getString(R.string.druid_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, an explorer's pack, and a druidic focus");
                 startingGoldHint.append("2d4 x10");
                 break;
             case "Fighter":
@@ -172,6 +177,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray4.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.fighter_hit_die);
                 otherProficiencies.append(getString(R.string.fighter_other_proficiencies));
+                extraStartingEquipmentTextView.setVisibility(View.GONE);
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Monk":
@@ -185,6 +191,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.monk_hit_die);
                 otherProficiencies.append(getString(R.string.monk_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "10 darts");
                 startingGoldHint.append("5d4");
                 break;
             case "Paladin":
@@ -199,6 +206,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.paladin_hit_die);
                 otherProficiencies.append(getString(R.string.paladin_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "chain mail and a holy symbol");
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Ranger":
@@ -239,6 +247,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.ranger_hit_die);
                 otherProficiencies.append(getString(R.string.ranger_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a longbow and a quiver of 20 arrows");
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Rogue":
@@ -252,6 +261,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.rogue_hit_die);
                 otherProficiencies.append(getString(R.string.rogue_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, 2 daggers, and thieves' tools");
                 startingGoldHint.append("4d4 x10");
                 break;
             case "Sorcerer":
@@ -271,6 +281,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.sorcerer_hit_die);
                 otherProficiencies.append(getString(R.string.sorcerer_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "2 daggers");
                 startingGoldHint.append("3d4 x10");
                 break;
             case "Warlock":
@@ -291,6 +302,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Dungeoneer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.warlock_hit_die);
                 otherProficiencies.append(getString(R.string.warlock_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, a handaxe, and 2 daggers");
                 startingGoldHint.append("4d4 x10");
                 break;
             case "Wizard":
@@ -304,6 +316,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.wizard_hit_die);
                 otherProficiencies.append(getString(R.string.wizard_other_proficiencies));
+                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a spellbook");
                 startingGoldHint.append("4d4 x10");
                 break;
         }
