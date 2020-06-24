@@ -19,7 +19,7 @@ public class Spell implements Serializable {
     private String mDescription;
     @SerializedName("higher_level")
     private String mHigherLevel;
-    @SerializedName("rang")
+    @SerializedName("range")
     private String mRange;
     @SerializedName("duration")
     private String mDuration;
