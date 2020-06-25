@@ -85,7 +85,6 @@ public class CharacterFragment extends Fragment {
         characterAlignment.setText(character.getAlignment());
 
         //Adding in Racial Benefits and languages
-        //TODO: remove language from bonusStats list. It shouldn't display in the racial/class bonus list. (Maybe languages should go in a different list?)
         ArrayList<String> bonusStats = character.getRaceAndClassBonusStats();
         languagesKnown.setText(bonusStats.get(0));
         if(character.getRace().equals("Dragonborn")) {
@@ -110,17 +109,16 @@ public class CharacterFragment extends Fragment {
             subraceCheckboxTextView.setText("Relentless Endurance: ");
             subraceCheckBox.setVisibility(View.VISIBLE);
         }
+
         //Adding class info when applicable
         switch(character.getCharacterClass()){
             case "Barbarian":
-                if(level >= 1){
-                    subclassInfoTextView1.setVisibility(View.VISIBLE);
-                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+2");
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(R.string.rage_uses);
-                    checkBox1_1.setVisibility(View.VISIBLE);
-                    checkBox1_2.setVisibility(View.VISIBLE);
-                }
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+2");
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(R.string.rage_uses);
+                checkBox1_1.setVisibility(View.VISIBLE);
+                checkBox1_2.setVisibility(View.VISIBLE);
                 if(level >= 3){
                     checkBox1_3.setVisibility(View.VISIBLE);
                 }
@@ -163,27 +161,25 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Bard":
-                if(level >= 1){
-                    subclassInfoTextView1.setVisibility(View.VISIBLE);
-                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d6");
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.bardic_inspiration_uses));
-                    checkBox1_1.setVisibility(View.VISIBLE);
-                    if(calculateModifier(character.getStatValues().get(5)) >= 2){
-                        checkBox1_2.setVisibility(View.VISIBLE);
-                    }
-                    if(calculateModifier(character.getStatValues().get(5)) >= 3){
-                        checkBox1_3.setVisibility(View.VISIBLE);
-                    }
-                    if(calculateModifier(character.getStatValues().get(5)) >= 4){
-                        checkBox1_4.setVisibility(View.VISIBLE);
-                    }
-                    if(calculateModifier(character.getStatValues().get(5)) >= 5){
-                        checkBox1_5.setVisibility(View.VISIBLE);
-                    }
-                    if(calculateModifier(character.getStatValues().get(5)) >= 6){
-                        checkBox1_6.setVisibility(View.VISIBLE);
-                    }
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d6");
+                checkBoxes1.setVisibility(View.VISIBLE);
+                checkBoxes1.setText(getString(R.string.bardic_inspiration_uses));
+                checkBox1_1.setVisibility(View.VISIBLE);
+                if(calculateModifier(character.getStatValues().get(5)) >= 2){
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 3){
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 4){
+                    checkBox1_4.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 5){
+                    checkBox1_5.setVisibility(View.VISIBLE);
+                }
+                if(calculateModifier(character.getStatValues().get(5)) >= 6){
+                    checkBox1_6.setVisibility(View.VISIBLE);
                 }
                 if(level >= 2){
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
@@ -221,13 +217,11 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Cleric":
                 ArrayList<String> channelDivinityUses = new ArrayList<String>();
-                ListAdapter adapter = new ListAdapter(getContext(), channelDivinityUses);
-                if(level >= 1){
-                    subclassInfoTextView1.setVisibility(View.VISIBLE);
-                    subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
-                    //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
-                    // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
-                }
+                ListAdapter channelDivinityAdapter = new ListAdapter(getContext(), channelDivinityUses);
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
+                //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
+                // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
                 if(level >= 2){
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(getString(R.string.channel_divinity_uses));
@@ -270,7 +264,7 @@ public class CharacterFragment extends Fragment {
                 if(level == 20){
                     subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + "Guaranteed Success");
                 }
-                subclassInfoListView.setAdapter(adapter);
+                subclassInfoListView.setAdapter(channelDivinityAdapter);
                 break;
             case "Druid":
                 if(level >= 2){
@@ -295,7 +289,7 @@ public class CharacterFragment extends Fragment {
                     checkBoxes1.setText(getString(R.string.wild_shape_uses) + "Infinite");
                 }
                 break;
-           case "Fighter":
+            case "Fighter":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.fighting_style));
                 checkBoxes1.setVisibility(View.VISIBLE);
@@ -430,25 +424,35 @@ public class CharacterFragment extends Fragment {
                 //subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
                 break;
             case "Ranger":
-                subclassInfoTextView1.setText(R.string.favored_enemy);
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.favored_enemy));
                 subclassInfoTextView2.setVisibility(View.VISIBLE);
-                subclassInfoTextView2.setText(R.string.favored_terrain);
+                subclassInfoTextView2.setText(getString(R.string.favored_terrain));
                 break;
             case "Rogue":
-                subclassInfoTextView1.setText(R.string.sneak_attack_damage);
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.sneak_attack_damage) + String.valueOf((character.getLevel()+1)/2) + "d6");
+                if(level == 20){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.stroke_of_luck_use));
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                }
                 break;
             case "Sorcerer":
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
                 //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
                 // HP/AC, or a checkbox(tides of chaos, wild magic)
                 break;
             case "Warlock":
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
                 //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
                 // list, and bonusStats info.
                 break;
             case "Wizard":
-                subclassInfoTextView1.setText(R.string.arcane_recovery_amount);
+                subclassInfoTextView1.setVisibility(View.VISIBLE);
+                subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount));
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
