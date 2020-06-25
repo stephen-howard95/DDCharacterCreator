@@ -226,6 +226,11 @@ public class MainStatsFragment extends Fragment {
                 intelligenceLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(character.getLevel() >= 15){
+                    wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                }
                 break;
             case "Sorcerer":
                 hitDieTextView.setText("d6");
