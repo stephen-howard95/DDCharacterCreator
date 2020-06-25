@@ -891,42 +891,83 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Rogue":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.cunning_action));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.cunning_action));
                         break;
                     case 3:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 2d6 damage");
                         break;
                     case 4:
                         break;
                     case 5:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.uncanny_dodge));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Your sneak attack now does 3d6 damage");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
                         break;
                     case 6:
                         break;
                     case 7:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.evasion));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Your sneak attack now does 4d6 damage");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.evasion));
                         break;
                     case 8:
                         break;
                     case 9:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 5d6 damage");
                         break;
                     case 10:
                         break;
                     case 11:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.reliable_talent));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText("Your sneak attack now does 6d6 damage");
+                        character.getRaceAndClassBonusStats().add(getString(R.string.reliable_talent));
                         break;
                     case 12:
                         break;
                     case 13:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 7d6 damage");
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.blindsense));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.blindsense));
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 8d6 damage");
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("You now have proficiency in WIS saving throws");
                         break;
                     case 16:
                         break;
                     case 17:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 9d6 damage");
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.elusive));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.elusive));
                         break;
                     case 19:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText("Your sneak attack now does 10d6 damage");
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.stroke_of_luck));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.stroke_of_luck));
                         break;
                 }
                 break;
