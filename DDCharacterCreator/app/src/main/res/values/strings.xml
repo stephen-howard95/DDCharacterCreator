@@ -349,6 +349,7 @@
     <string name="blindsense">Blindsense: If you can hear, you are aware of any invisible creatures within 10ft of you.</string>
     <string name="slippery_mind">Slippery Mind: You now have proficiency in WIS saving throws</string>
     <string name="elusive">Elusive: While you are not incapacitated, no attack roll against you has advantage</string>
+    <string name="stroke_of_luck_use">Stroke of Luck: </string>
     <string name="stroke_of_luck">Stroke of Luck: Once per short or long rest, if your attack misses a target within range, you can force it to hit. Alternatively, if you fail an ability check, you can treat the D20 roll as though you rolled a 20</string>
 
     <string name="sorcerous_origin">Sorcerous Origin: </string>
