@@ -441,8 +441,23 @@ public class CharacterFragment extends Fragment {
             case "Sorcerer":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
-                //Only subclass stuff at level 1. Can add a TextView(dragon ancestor), affect your
-                // HP/AC, or a checkbox(tides of chaos, wild magic)
+                if(character.getSubclass().equals("Wild Magic")){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.tides_of_chaos_use));
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                }
+                if(level >= 2){
+                    editTextTextView.setVisibility(View.VISIBLE);
+                    subclassInfoEditText.setVisibility(View.VISIBLE);
+                    editTextTextView.setText(getString(R.string.sorcery_points) + " " + character.getLevel());
+                    subclassInfoEditText.setText(character.getLevel());
+                }
+                if(level >= 3){
+                    /* TODO: How to pass in metamagic options?? new ArrayList<String>()
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText(getString(R.string.metamagic_options));
+                    subclassInfoListView.setVisibility(View.VISIBLE); */
+                }
                 break;
             case "Warlock":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
