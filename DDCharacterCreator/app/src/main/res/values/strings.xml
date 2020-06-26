@@ -353,10 +353,19 @@
     <string name="stroke_of_luck">Stroke of Luck: Once per short or long rest, if your attack misses a target within range, you can force it to hit. Alternatively, if you fail an ability check, you can treat the D20 roll as though you rolled a 20</string>
 
     <string name="sorcerous_origin">Sorcerous Origin: </string>
-    <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points(amount listed above) that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
+    <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
     <string name="sorcery_points">Sorcery Points: </string>
     <string name="metamagic_options">Metamagic Options: </string>
     <string name="sorcerous_restoration">Sorcerous Restoration: When you finish a short rest, you regain 4 expended sorcery points.</string>
+    <string name="elemental_affinity">Elemental Affinity: When you cast a spell that deals fire damage, you can add your CHA modifier to one damage roll of the spell. You may also spend 1 sorcery point to gain resistance to fire damage for 1 hr.</string>
+    <string name="dragon_wings">Dragon Wings: As a bonus action, you can create a pair of wings that sprout from your back, giving you a flying speed equal to your current speed. They last until you dismiss them as a bonus action on your turn. If you are wearing armor, you cannot sprout your wings.</string>
+    <string name="draconic_presence">Draconic Presence: As an action, you can spend 5 sorcery points to channel the presence of your dragon ancestor. For one minute, or until you lose concentration, each hostile creature within 60ft must succeed at a wisdom saving throw or be either charmed or frightened (your choice) until the aura ends.</string>
+    <string name="wild_magic_surge">Wild Magic Surge: Once per turn, after you cast a spell of 1st level or higher, the DM can have you roll a D20. If you roll a 1, you must roll on the Wild Magic Surge table in the PHB, creating a random magical effect</string>
+    <string name="tides_of_chaos">Tides of Chaos: Once per long rest, you may choose to gain advantage on one attack roll, ability check, or saving throw. At any time before your next long rest, your DM can have you roll on the Wild Magic Surge table in the PHB after casting a spell of 1st level or higher</string>
+    <string name="tides_of_chaos_use">Tides of Chaos: </string>
+    <string name="bend_luck">Bend Luck: When another creature you can see makes an attack roll, ability check, or a saving throw, you can use your reaction and spend 2 sorcery points to roll 1d4 and give the creature a bonus or penalty to their roll.</string>
+    <string name="controlled_chaos">Controlled Chaos: Whenever you roll on the Wild Magic Surge table, you may roll twice and use either number</string>
+    <string name="spell_bombardment">Spell Bombardment: When you roll damage for a spell and one of the dice land on the highest possible number, roll an extra damage die and add it to the damage of the spell. This ability can be used once per turn.</string>
 
     <string name="warlock_spell_slot_improvement">Your Spell Slots are now level </string>
     <string name="otherworldly_patron">Otherworldly Patron: </string>
