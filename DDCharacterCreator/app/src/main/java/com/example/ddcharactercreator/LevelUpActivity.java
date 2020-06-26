@@ -281,6 +281,9 @@ public class LevelUpActivity extends AppCompatActivity {
                         }
                     }
                     Integer addToHP = Integer.parseInt(moreHP.getText().toString());
+                    if(character.getSubclass().equals("Draconic Bloodline")){
+                        addToHP += 1;
+                    }
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
                             + calculateModifier(character.getStatValues().get(2)));
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
@@ -817,6 +820,7 @@ public class LevelUpActivity extends AppCompatActivity {
                 break;
             case "Ranger":
                 switch (level){
+                    //TODO: How to add more favored enemies/terrain?
                     case 2:
                         List<String> fightingStyles = new ArrayList<String>();
                         ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
@@ -909,6 +913,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
                         break;
                     case 6:
+                        /*bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.expertise));
+                        List<String> expertiseChoices = new ArrayList<String>();
+                        ArrayAdapter<String> expertiseAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, expertiseChoices);
+                        expertiseChoices.addAll(character.getProficiencyChoices());
+                        expertiseChoices.add("Thieve's Tools");
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a skill proficiency.");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(expertiseAdapter);*/
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -974,6 +989,9 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Sorcerer":
                 switch (level){
                     case 2:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.font_of_magic));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.font_of_magic));
                         break;
                     case 3:
                         break;
@@ -982,6 +1000,14 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 5:
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if (character.getSubclass().equals("Wild Magic")){
+                            bonusStats1.setText(getString(R.string.bend_luck));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.bend_luck));
+                        }else if(character.getSubclass().equals("Draconic Bloodline")){
+                            bonusStats1.setText(getString(R.string.elemental_affinity));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.elemental_affinity));
+                        }
                         break;
                     case 7:
                         break;
@@ -990,6 +1016,7 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         break;
                     case 10:
+                        //extra metamagic option
                         break;
                     case 11:
                         break;
@@ -998,18 +1025,38 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 13:
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if (character.getSubclass().equals("Wild Magic")){
+                            bonusStats1.setText(getString(R.string.controlled_chaos));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.controlled_chaos));
+                        }else if(character.getSubclass().equals("Draconic Bloodline")){
+                            bonusStats1.setText(getString(R.string.dragon_wings));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.dragon_wings));
+                        }
                         break;
                     case 15:
                         break;
                     case 16:
                         break;
                     case 17:
+                        //extra metamagic option
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if (character.getSubclass().equals("Wild Magic")){
+                            bonusStats1.setText(getString(R.string.spell_bombardment));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.spell_bombardment));
+                        }else if(character.getSubclass().equals("Draconic Bloodline")){
+                            bonusStats1.setText(getString(R.string.draconic_presence));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.draconic_presence));
+                        }
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.sorcerous_restoration));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.sorcerous_restoration));
                         break;
                 }
                 break;
