@@ -251,6 +251,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Rogue":
+                //TODO: Add in level one expertise choices
                 startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
@@ -515,6 +516,18 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Sorcerer":
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
+                            currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
+                            if(characterSubclass.equals("Draconic Bloodline")){
+                                currency.set(0, (currency.get(0) +1));
+                                currency.set(6, (13 + calculateModifier(character.getStatValues().get(1))));
+                                if(!character.getRace().equals("Dragonborn")){
+                                    languages.append("Draconic");
+                                }
+                            }
+                            if(characterSubclass.equals("Wild Magic")){
+                                bonusStats.add(getString(R.string.wild_magic_surge));
+                                bonusStats.add(getString(R.string.tides_of_chaos));
+                            }
                             break;
                         case "Warlock":
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
