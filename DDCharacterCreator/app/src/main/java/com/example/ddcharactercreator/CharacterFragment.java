@@ -462,8 +462,11 @@ public class CharacterFragment extends Fragment {
             case "Warlock":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
-                //Only subclass stuff at level 1. Can add a checkbox, add spells to the Warlock spell
-                // list, and bonusStats info.
+                if(level == 20){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.eldritch_master_use));
+                }
                 break;
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
