@@ -150,6 +150,7 @@ public class SpellcastingFragment extends Fragment {
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(5))));
                     spellCount = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
                     cantripCount = -2;
+                    cantripsKnown.setVisibility(View.INVISIBLE);
                     break;
                 case "Ranger":
                     secondarySpellcasterSlotsPerLevel();
@@ -157,6 +158,7 @@ public class SpellcastingFragment extends Fragment {
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellCount = (character.getLevel()/2) + 1;
+                    cantripsKnown.setVisibility(View.INVISIBLE);
                     cantripCount = -2;
                     break;
                 case "Sorcerer":
@@ -199,6 +201,7 @@ public class SpellcastingFragment extends Fragment {
                         spellCount = 15;
                     }
                     cantripCount = 2;
+                    break;
                 case "Wizard":
                     primarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
@@ -713,49 +716,44 @@ public class SpellcastingFragment extends Fragment {
         }
     }
     private void warlockSpellSlotsPerLevel(){
-        switch (character.getLevel()){
-            case 20:
-            case 19:
-            case 18:
-            case 17:
-                spellSlot4.setVisibility(View.VISIBLE);
-            case 16:
-            case 15:
-            case 14:
-            case 13:
-            case 12:
-            case 11:
-                spellSlot3.setVisibility(View.VISIBLE);
-            case 10:
-            case 9:
-            case 8:
-            case 7:
-            case 6:
-            case 5:
-            case 4:
-            case 3:
-            case 2:
-                spellSlot2.setVisibility(View.VISIBLE);
-                break;
+        if(character.getLevel() >= 2){
+            spellSlot2.setVisibility(View.VISIBLE);
+        }
+        if(character.getLevel() >= 3){
+            spellSlot1.setText(getString(R.string.second_level_spell));
+            spellSlot2.setText(getString(R.string.second_level_spell));
+        }
+        if(character.getLevel() >= 5){
+            spellSlot1.setText(getString(R.string.third_level_spell));
+            spellSlot2.setText(getString(R.string.third_level_spell));
+        }
+        if(character.getLevel() >= 7){
+            spellSlot1.setText(getString(R.string.fourth_level_spell));
+            spellSlot2.setText(getString(R.string.fourth_level_spell));
         }
         if(character.getLevel() >= 9){
-            if(spellSlot4.getVisibility() == View.VISIBLE){
-                spellSlot4.setText(getString(R.string.fifth_level_spell));
-            }
-            if(spellSlot3.getVisibility() == View.VISIBLE){
-                spellSlot3.setText(getString(R.string.fifth_level_spell));
-            }
-            spellSlot2.setText(getString(R.string.fifth_level_spell));
             spellSlot1.setText(getString(R.string.fifth_level_spell));
-        } else if(character.getLevel() >= 7){
-            spellSlot2.setText(getString(R.string.fourth_level_spell));
-            spellSlot1.setText(getString(R.string.fourth_level_spell));
-        }else if(character.getLevel() >= 5){
-            spellSlot2.setText(getString(R.string.third_level_spell));
-            spellSlot1.setText(getString(R.string.third_level_spell));
-        }else if(character.getLevel() >= 3){
-            spellSlot2.setText(getString(R.string.second_level_spell));
-            spellSlot1.setText(getString(R.string.second_level_spell));
+            spellSlot2.setText(getString(R.string.fifth_level_spell));
+        }
+        if(character.getLevel() >= 11){
+            spellSlot3.setVisibility(View.VISIBLE);
+            spellSlot3.setText(getString(R.string.fifth_level_spell));
+            spellSlot17.setVisibility(View.VISIBLE);
+            //SetText to 6th level mystic arcanum??
+        }
+        if(character.getLevel() >= 13){
+            spellSlot19.setVisibility(View.VISIBLE);
+            //setText to 7th level mystic arcanum??
+        }
+        if(character.getLevel() >= 15){
+            spellSlot21.setVisibility(View.VISIBLE);
+            //setText to 8th level mystic arcanum??
+        }
+        if(character.getLevel() >= 17){
+            spellSlot4.setVisibility(View.VISIBLE);
+            spellSlot4.setText(getString(R.string.fifth_level_spell));
+            spellSlot22.setVisibility(View.VISIBLE);
+            //setText to 9th level mystic arcanum??
         }
     }
 }
