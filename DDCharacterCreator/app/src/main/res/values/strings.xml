@@ -190,6 +190,15 @@
     <string name="alignment">Alignment</string>
     <string name="languages_known">Languages Known: </string>
     <string name="racial_class_based_stats">Racial/Class-Based Stats</string>
+    
+    //Level Up Activity Strings
+    <string name="ability_score_improvement">Choose 2 skills to improve by 1 point, to a maximum of 20. You may choose the same skill for both points.</string>
+    <string name="proficiency_bonus_improvement">Your proficiency bonus has improved to</string>
+    <string name="new_spell_level">You now have access to spells of level</string>
+    <string name="more_spells">You can learn more spells</string>
+    <string name="more_cantrips">You can learn one more cantrip</string>
+    <string name="new_level">You are now level</string>
+    <string name="level_up_bonuses">The following bonuses are applied to your character</string>
 
     //DetailActivity tab labels
     <string name="main_stats_tab_label">Main Stats</string>
@@ -370,20 +379,14 @@
     <string name="warlock_spell_slot_improvement">Your Spell Slots are now level </string>
     <string name="otherworldly_patron">Otherworldly Patron: </string>
     <string name="eldritch_invocations_known">Eldritch Invocations Known: </string>
+    <string name="mystic_arcanum_choice">Choose a Mystic Arcanum spell</string>
     <string name="eldritch_master">Eldritch Master: Once per long rest, you can spend 1 minute entreating your patron to regain all your expended spell slots.</string>
-
+    <string name="eldritch_master_use">Eldritch Master: </string>
+    
     <string name="arcane_tradition">Arcane Tradition: </string>
     <string name="arcane_recovery">Arcane Recovery: Once per day, when you finish a short rest, you can regain spell slots that have a combined level of half your wizard level(listed above). These slots cannot be 6th level or above.</string>
     <string name="arcane_recovery_amount">Arcane Recovery Amount: </string>
     <string name="spell_mastery">Spell Mastery: Choose a 1st and a 2nd level spell from your spellbook. When you have these spells prepared, you can cast them at their lowest level without expending a spell slot. By spending 8 hours studying, you can exchange these spells for different ones of the same level.</string>
     <string name="signature_spells">Signature Spells: Choose two 3rd level spells from your spellbook. You always have these spells prepared, and they don\'t count against the number of spells you have prepared. You can cast each of them once at 3rd level without expending a spell slot per short or long rest.</string>
     <string name="signature_spells_choices">Signature Spells: </string>
-
-    <string name="ability_score_improvement">Choose 2 skills to improve by 1 point, to a maximum of 20. You may choose the same skill for both points.</string>
-    <string name="proficiency_bonus_improvement">Your proficiency bonus has improved to</string>
-    <string name="new_spell_level">You now have access to spells of level</string>
-    <string name="more_spells">You can learn more spells</string>
-    <string name="more_cantrips">You can learn one more cantrip</string>
-    <string name="new_level">You are now level</string>
-    <string name="level_up_bonuses">The following bonuses are applied to your character</string>
 </resources>
