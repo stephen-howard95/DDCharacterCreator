@@ -1061,44 +1061,85 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Warlock":
+                ArrayList<String> mysticArcanumChoices;
+                ArrayAdapter<String> mysticArcanumAdapter;
                 switch (level){
                     case 2:
+                        //choose 2 eldritch invocations
                         break;
                     case 3:
+                        //choose a pact boon
                         break;
                     case 4:
                         break;
                     case 5:
+                        //new eldritch invocation
                         break;
                     case 6:
                         break;
                     case 7:
+                        //new eldritch invocation
                         break;
                     case 8:
                         break;
                     case 9:
+                        //new eldritch invocation
                         break;
                     case 10:
                         break;
                     case 11:
+                        mysticArcanumChoices = getMysticArcanum(6);
+                        mysticArcanumAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.mystic_arcanum_choice));
+                        choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 12:
+                        //new eldritch invocation
                         break;
                     case 13:
+                        mysticArcanumChoices = getMysticArcanum(7);
+                        mysticArcanumAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.mystic_arcanum_choice));
+                        choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 14:
                         break;
                     case 15:
+                        //new eldritch invocation
+                        mysticArcanumChoices = getMysticArcanum(8);
+                        mysticArcanumAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.mystic_arcanum_choice));
+                        choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 16:
                         break;
                     case 17:
+                        mysticArcanumChoices = getMysticArcanum(9);
+                        mysticArcanumAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.mystic_arcanum_choice));
+                        choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 18:
+                        //new eldritch invocation
                         break;
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.eldritch_master));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.eldritch_master));
                         break;
                 }
                 break;
