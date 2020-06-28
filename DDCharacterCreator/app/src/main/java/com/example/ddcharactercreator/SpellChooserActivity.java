@@ -95,6 +95,7 @@ public class SpellChooserActivity extends AppCompatActivity{
             case "Wizard":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(3));
                 cantripMax = 3;
+                break;
         }
         if(spellMax < 1){
             spellMax = 1;
@@ -138,7 +139,7 @@ public class SpellChooserActivity extends AppCompatActivity{
                 }
             }else{
                 for(int i = 0; i< completeSpellsList.size(); i++){
-                    if(2*completeSpellsList.get(i).getLevel()-1 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
+                    if((character.getCharacterClass().equals("Warlock") && completeSpellsList.get(i).getLevel() >= 6) || 2*completeSpellsList.get(i).getLevel()-1 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
                         completeSpellsList.remove(i);
                         i--;
                     }
