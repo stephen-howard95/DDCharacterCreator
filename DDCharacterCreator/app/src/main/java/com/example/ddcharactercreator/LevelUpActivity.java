@@ -1088,7 +1088,7 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 10:
                         break;
                     case 11:
-                        mysticArcanumChoices = getMysticArcanum(6);
+                        mysticArcanumChoices = getSpellsPerLevel(6);
                         mysticArcanumAdapter = new ArrayAdapter<String>(this,
                                 android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
                         choiceHeader1.setVisibility(View.VISIBLE);
@@ -1100,7 +1100,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         //new eldritch invocation
                         break;
                     case 13:
-                        mysticArcanumChoices = getMysticArcanum(7);
+                        mysticArcanumChoices = getSpellsPerLevel(7);
                         mysticArcanumAdapter = new ArrayAdapter<String>(this,
                                 android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
                         choiceHeader1.setVisibility(View.VISIBLE);
@@ -1112,7 +1112,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 15:
                         //new eldritch invocation
-                        mysticArcanumChoices = getMysticArcanum(8);
+                        mysticArcanumChoices = getSpellsPerLevel(8);
                         mysticArcanumAdapter = new ArrayAdapter<String>(this,
                                 android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
                         choiceHeader1.setVisibility(View.VISIBLE);
@@ -1123,7 +1123,7 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 16:
                         break;
                     case 17:
-                        mysticArcanumChoices = getMysticArcanum(9);
+                        mysticArcanumChoices = getSpellsPerLevel(9);
                         mysticArcanumAdapter = new ArrayAdapter<String>(this,
                                 android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
                         choiceHeader1.setVisibility(View.VISIBLE);
@@ -1144,6 +1144,10 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Wizard":
+                ArrayList<String> signatureSpells1;
+                ArrayList<String> signatureSpells2;
+                ArrayAdapter<String> signatureSpellAdapter1;
+                ArrayAdapter<String> signatureSpellAdapter2;
                 switch (level){
                     case 2:
                         break;
@@ -1178,10 +1182,34 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         break;
                     case 18:
+                        signatureSpells1 = getSpellsPerLevel(1);
+                        signatureSpellAdapter1 = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, signatureSpells1);
+                        signatureSpells2 = getSpellsPerLevel(2);
+                        signatureSpellAdapter2 = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, signatureSpells2);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.spell_mastery));
+                        choice1.setAdapter(signatureSpellAdapter1);
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(signatureSpellAdapter2);
                         break;
                     case 19:
                         break;
                     case 20:
+                        signatureSpells1 = getSpellsPerLevel(3);
+                        signatureSpellAdapter1 = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, signatureSpells1);
+                        signatureSpells2 = getSpellsPerLevel(3);
+                        signatureSpellAdapter2 = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, signatureSpells2);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choice1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText(getString(R.string.signature_spells));
+                        choice1.setAdapter(signatureSpellAdapter1);
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(signatureSpellAdapter2);
                         break;
                 }
                 break;
@@ -1215,5 +1243,21 @@ public class LevelUpActivity extends AppCompatActivity {
                 abilityScoreList.set(5, abilityScoreList.get(5) +1);
                 break;
         }
+    }
+
+    private ArrayList<String> getSpellsPerLevel(int spellLevel){
+        ArrayList<String> mysticArcanumSpellChoices = new ArrayList<>();
+        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+
+        for(int i=0; i<spellsList.size(); i++){
+            if(!spellsList.get(i).getClassList().contains(character.getCharacterClass()) || spellsList.get(i).getLevel() != spellLevel){
+                spellsList.remove(i);
+                i--;
+            } else{
+                mysticArcanumSpellChoices.add(spellsList.get(i).getSpellName());
+            }
+        }
+        return mysticArcanumSpellChoices;
     }
 }
