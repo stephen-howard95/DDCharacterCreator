@@ -470,7 +470,7 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount));
+                subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount) + (level+ 1)/2);
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
