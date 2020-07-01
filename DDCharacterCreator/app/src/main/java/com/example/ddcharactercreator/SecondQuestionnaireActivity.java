@@ -55,7 +55,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
-        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,7 +85,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         List<String> levelOneChoices2 = new ArrayList<String>();
 
         switch (character.getCharacterClass()){
-            //TODO: Change the skill spinner's arrays to reflect their learnable skills
+            //TODO: Change the skill spinner's arrays to reflect each class' skills
             case "Barbarian":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
@@ -382,11 +381,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     ArrayList<String> bonusStats = new ArrayList<String>();
                     StringBuilder languages = new StringBuilder();
                     languages.append(getString(R.string.languages_known));
-                    if(character.getCharacterClass().equals("Druid")){
-                        languages.append("Druidic, ");
-                    }else if(character.getCharacterClass().equals("Rogue")){
-                        languages.append("Thieve's Cant, ");
-                    }
                     switch (character.getRace()){
                         case "Dwarf":
                             //Mountain Dwarf is chosen for this
@@ -448,11 +442,27 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add("Relentless Endurance: When you are reduced to 0hp, you can drop to 1 instead. You can do this once per Long Rest");
                             bonusStats.add("Savage Attacks: When you score a critical hit, you can roll an extra of the weapon's damage die");
                             break;
+                        case "Tabaxi":
+                            languages.append(" Common, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Darkvision: 60 ft");
+                            bonusStats.add("Cat's Claws: You have a climbing speed of 20ft. Also, your unarmed strikes deal 1d4 + your STR modifier slashing damage");
+                            bonusStats.add("Feline Agility: During combat, you can double your speed during your turn. Once you use this ability, you cannot use it again until you spend 1 turn not moving.");
+                            break;
                         case "Tiefling":
                             languages.append(" Common, Infernal, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
                             bonusStats.add("You are resistant to Fire damage");
+                            break;
+                        case "Warforged":
+                            languages.append(" Common, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Constructed Resilience: You have resistance to poison damage and advantage on saving throws against being poisoned");
+                            bonusStats.add("You are immune to disease, and you don't need to eat, drink, breathe, or sleep, and magic cannot put you to sleep.");
+                            bonusStats.add("Sentry's Rest: When you take a long rest, you must spend at least 6 hours in an inactive state rather than sleeping. You are not unconscious and you can see/hear as normal");
+                            bonusStats.add("Integrated Protection: To don/doff armor, you must spend 1 hour incorporating/unincorporating it with your armor.");
+                            currency.set(6, currency.get(6) + 1);
                             break;
                     }
                     switch (character.getCharacterClass()){
@@ -469,26 +479,27 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             break;
                         case "Druid":
+                            languages.append("Druidic, ");
                             break;
                         case "Fighter":
                             switch(levelOneChoiceSpinner1.getSelectedItem().toString()){
                                 case "Archery":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.archery));
                                     break;
                                 case "Defense":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.defense));
                                     break;
                                 case "Dueling":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.dueling));
                                     break;
                                 case "Great Weapon Fighting":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.great_weapon_fighting));
                                     break;
                                 case "Protection":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.protection));
                                     break;
                                 case "Two-Weapon Fighting":
-                                    character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
+                                    bonusStats.add("Fighting Style: " + getString(R.string.two_weapon_fighting));
                                     break;
                             }
                             bonusStats.add(getString(R.string.second_wind));
@@ -512,6 +523,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
+                            languages.append("Thieve's Cant, ");
                             bonusStats.add(getString(R.string.sneak_attack_description));
                             break;
                         case "Sorcerer":
@@ -604,9 +616,17 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 strength += 2;
                 constitution += 1;
                 break;
+            case "Tabaxi":
+                dexterity += 2;
+                charisma += 1;
+                break;
             case "Tiefling":
                 intelligence += 1;
                 charisma += 2;
+                break;
+            case "Warforged":
+                constitution += 2;
+                strength += 1;
                 break;
         }
         statArray.set(0, strength);
