@@ -106,6 +106,14 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 intimidationLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intimidationModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
+            case "Tabaxi":
+                perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
+                perceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                perceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                stealthModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus));
+                stealthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                stealthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                break;
         }
         for(int i=0; i<character.getProficiencyChoices().size(); i++){
             switch(character.getProficiencyChoices().get(i)){
