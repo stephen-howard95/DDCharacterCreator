@@ -2,12 +2,14 @@ package com.example.ddcharactercreator;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.List;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
+import static com.example.ddcharactercreator.DetailActivity.character;
 import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
 
 public class SkillModifiersActivity extends AppCompatActivity {
@@ -50,23 +52,131 @@ public class SkillModifiersActivity extends AppCompatActivity {
         TextView survivalModifier = findViewById(R.id.survival_modifier);
 
         TextView acrobaticsLabel = findViewById(R.id.acrobatics_label);
+        acrobaticsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(acrobaticsLabel, acrobaticsModifier, "Acrobatics", 1);
+            }
+        });
         TextView animalHandlingLabel = findViewById(R.id.animal_handling_label);
+        animalHandlingLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(animalHandlingLabel, animalHandlingModifier, "Animal Handling", 4);
+            }
+        });
         TextView arcanaLabel = findViewById(R.id.arcana_label);
+        arcanaLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(arcanaLabel, arcanaModifier, "Arcana", 3);
+            }
+        });
         TextView athleticsLabel = findViewById(R.id.athletics_label);
+        athleticsLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(athleticsLabel, athleticsModifier, "Athletics", 0);
+            }
+        });
         TextView deceptionLabel = findViewById(R.id.deception_label);
+        deceptionLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(deceptionLabel, deceptionModifier, "Deception", 5);
+            }
+        });
         TextView historyLabel = findViewById(R.id.history_label);
+        historyLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(historyLabel, historyModifier, "History", 3);
+            }
+        });
         TextView insightLabel = findViewById(R.id.insight_label);
+        insightLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(insightLabel, insightModifier, "Insight", 4);
+            }
+        });
         TextView intimidationLabel = findViewById(R.id.intimidation_label);
+        intimidationLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(intimidationLabel, intimidationModifier, "Intimidation", 5);
+            }
+        });
         TextView investigationLabel = findViewById(R.id.investigation_label);
+        investigationLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(investigationLabel, investigationModifier, "Investigation", 3);
+            }
+        });
         TextView medicineLabel = findViewById(R.id.medicine_label);
+        medicineLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(medicineLabel, medicineModifier, "Medicine", 4);
+            }
+        });
         TextView natureLabel = findViewById(R.id.nature_label);
+        natureLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(natureLabel, natureModifier, "Nature", 3);
+            }
+        });
         TextView perceptionLabel = findViewById(R.id.perception_label);
+        perceptionLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(perceptionLabel, perceptionModifier, "Perception", 4);
+            }
+        });
         TextView performanceLabel = findViewById(R.id.performance_label);
+        performanceLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(performanceLabel, performanceModifier, "Performance", 5);
+            }
+        });
         TextView persuasionLabel = findViewById(R.id.persuasion_label);
+        persuasionLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(persuasionLabel, persuasionModifier, "Persuasion", 5);
+            }
+        });
         TextView religionLabel = findViewById(R.id.religion_label);
+        religionLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(religionLabel, religionModifier, "Religion", 3);
+            }
+        });
         TextView sleightOfHandLabel = findViewById(R.id.sleight_of_hand_label);
+        sleightOfHandLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(sleightOfHandLabel, sleightOfHandModifier, "Sleight of Hand", 1);
+            }
+        });
         TextView stealthLabel = findViewById(R.id.stealth_label);
+        stealthLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(stealthLabel, stealthModifier, "Stealth", 1);
+            }
+        });
         TextView survivalLabel = findViewById(R.id.survival_label);
+        survivalLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProficiencyStatus(survivalLabel, survivalModifier, "Survival", 4);
+            }
+        });
 
         acrobaticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1))));
         animalHandlingModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4))));
@@ -89,30 +199,30 @@ public class SkillModifiersActivity extends AppCompatActivity {
 
         switch(character.getRace()){
             case "Elf":
-                perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
-                perceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                perceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(!character.getProficiencyChoices().contains("Perception")){
+                    character.getProficiencyChoices().add("Perception");
+                }
                 break;
             case "Half-Elf":
-                perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
-                perceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                perceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
-                insightLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                insightModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(!character.getProficiencyChoices().contains("Perception")){
+                    character.getProficiencyChoices().add("Perception");
+                }
+                if(!character.getProficiencyChoices().contains("Insight")){
+                    character.getProficiencyChoices().add("Insight");
+                }
                 break;
             case "Half-Orc":
-                intimidationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
-                intimidationLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                intimidationModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(!character.getProficiencyChoices().contains("Intimidation")){
+                    character.getProficiencyChoices().add("Intimidation");
+                }
                 break;
             case "Tabaxi":
-                perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
-                perceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                perceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                stealthModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus));
-                stealthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
-                stealthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                if(!character.getProficiencyChoices().contains("Perception")){
+                    character.getProficiencyChoices().add("Perception");
+                }
+                if(!character.getProficiencyChoices().contains("Stealth")){
+                    character.getProficiencyChoices().add("Stealth");
+                }
                 break;
         }
         for(int i=0; i<character.getProficiencyChoices().size(); i++){
@@ -272,6 +382,25 @@ public class SkillModifiersActivity extends AppCompatActivity {
                     }
                 }
             }
+        }
+    }
+
+    //Allows for skill proficiencies to change.
+    public void changeProficiencyStatus(TextView label, TextView modifier, String skill, int statValue) {
+        if(!character.getProficiencyChoices().contains(skill)){
+            label.setTextColor(getResources().getColor(R.color.proficiency_blue));
+            modifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+            modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus));
+            character.getProficiencyChoices().add(skill);
+        }else{
+            label.setTextColor(getResources().getColor(R.color.defaultTextColor));
+            modifier.setTextColor(getResources().getColor(R.color.defaultTextColor));
+            if(character.getCharacterClass().equals("Bard") && character.getLevel() >= 2){
+                modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus/2));
+            }else{
+                modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue))));
+            }
+            character.getProficiencyChoices().remove(skill);
         }
     }
 }
