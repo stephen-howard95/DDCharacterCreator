@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    //Default text color
+    <color name="defaultTextColor">#808080</color>
+    
     //Health color changes
     <color name="green">#13E600</color>
     <color name="yellow">#FADB10</color>
