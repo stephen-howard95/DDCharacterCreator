@@ -71,6 +71,24 @@
         <item name="wisdom">Wisdom</item>
         <item name="charisma">Charisma</item>
     </string-array>
+    
+    <string-array name="languages_array">
+        <item name="dwarvish">Dwarvish</item>
+        <item name="elvish">Elvish</item>
+        <item name="giant">Giant</item>
+        <item name="gnomish">Gnomish</item>
+        <item name="goblin">Goblin</item>
+        <item name="halfling">Halfling</item>
+        <item name="orc">Orc</item>
+        <item name="abyssal">Abyssal</item>
+        <item name="celestial">Celestial</item>
+        <item name="deep_speech">Deep Speech</item>
+        <item name="draconic">Draconic</item>
+        <item name="infernal">Infernal</item>
+        <item name="primordial">Primordial</item>
+        <item name="sylvan">Sylvan</item>
+        <item name="undercommon">Undercommon</item>
+    </string-array>
 
     // Questionnaire 1 strings
     <string name="strength_label">STR</string>
