@@ -10,7 +10,9 @@
         <item name="Gnome">Gnome</item>
         <item name="Half-Elf">Half-Elf</item>
         <item name="Half-Orc">Half-Orc</item>
+        <item name="Tabaxi">Tabaxi</item>
         <item name="Tiefling">Tiefling</item>
+        <item name="Warforged">Warforged</item>
     </string-array>
 
     <string-array name="class_array">
