@@ -30,6 +30,18 @@
             android:id="@+id/skill_proficiency_choices_spinner_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        
+        <TextView
+            android:id="@+id/race_specific_bonus"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="As a (race), you have access to (subrace/extra skill/language)"/>
+        <Spinner
+            android:id="@+id/race_specific_bonus_spinner"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/other_proficiencies"
