@@ -29,6 +29,8 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
     @BindView(R.id.starting_equipment_spinner_3) Spinner startingEquipmentSpinner3;
     @BindView(R.id.starting_equipment_spinner_4) Spinner startingEquipmentSpinner4;
     @BindView(R.id.extra_starting_equipment) TextView extraStartingEquipmentTextView;
+    @BindView(R.id.race_specific_bonus) TextView raceSpecificBonusTextView;
+    @BindView(R.id.race_specific_bonus_spinner) Spinner raceSpecificBonusSpinner;
 
     @BindView(R.id.level_one_choice_text_1) TextView levelOneChoiceHeader1;
     @BindView(R.id.level_one_choice_text_2) TextView levelOneChoiceHeader2;
@@ -55,8 +57,13 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
+        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
+        skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        ArrayAdapter<CharSequence> languageArrayAdapter = ArrayAdapter.createFromResource(this,
+                R.array.languages_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         skillProficiencySpinner1.setAdapter(skillArrayAdapter);
@@ -69,6 +76,28 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         TextView otherProficienciesTextView = findViewById(R.id.other_proficiencies);
         StringBuilder otherProficiencies = new StringBuilder();
         otherProficiencies.append(getString(R.string.other_proficiency_beginning));
+
+        switch(character.getRace()){
+            //TODO: This is where certain sub-races with Dwarf, Elf, Halfling, Gnome, etc. would be added.
+            case "Human":
+                raceSpecificBonusTextView.setVisibility(View.VISIBLE);
+                raceSpecificBonusSpinner.setVisibility(View.VISIBLE);
+                raceSpecificBonusTextView.setText("As a Human, you are able to speak one extra language of your choice");
+                raceSpecificBonusSpinner.setAdapter(languageArrayAdapter);
+                break;
+            case "Half-Elf":
+                raceSpecificBonusTextView.setVisibility(View.VISIBLE);
+                raceSpecificBonusSpinner.setVisibility(View.VISIBLE);
+                raceSpecificBonusTextView.setText("As a Half-Elf, you are able to speak one extra language of your choice");
+                raceSpecificBonusSpinner.setAdapter(languageArrayAdapter);
+                break;
+            case "Warforged":
+                raceSpecificBonusTextView.setVisibility(View.VISIBLE);
+                raceSpecificBonusSpinner.setVisibility(View.VISIBLE);
+                raceSpecificBonusTextView.setText("As a Warforged, you gain an extra skill proficiency of your choice");
+                raceSpecificBonusSpinner.setAdapter(skillArrayAdapter);
+                break;
+        }
 
         TextView startingHPAndHitDieTextView = findViewById(R.id.starting_hp);
 
@@ -85,7 +114,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         List<String> levelOneChoices2 = new ArrayList<String>();
 
         switch (character.getCharacterClass()){
-            //TODO: Change the skill spinner's arrays to reflect each class' skills
+            //TODO: Change the skill spinner's arrays to reflect their learnable skills
             case "Barbarian":
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
@@ -250,7 +279,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldHint.append("5d4 x10");
                 break;
             case "Rogue":
-                //TODO: Add in level one expertise choices
                 startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
@@ -387,53 +415,53 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             languages.append(" Common, Dwarvish, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("Advantage on saving throws against poison");
-                            bonusStats.add("Resistance to poison damage");
-                            bonusStats.add("Add double your proficiency bonus to INT History checks relating to stonework");
+                            bonusStats.add("Dwarven Resilience: Advantage on saving throws against poison and resistance to poison damage");
+                            bonusStats.add("Stonecunning: Add double your proficiency bonus to INT History checks relating to stonework");
                             break;
                         case "Elf":
                             //Wood Elf is chosen for this
                             languages.append(" Common, Elvish, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("Advantage on saving throws against being charmed");
-                            bonusStats.add("Magic effects cannot put you to sleep");
-                            bonusStats.add("You can get a full Long Rest by only meditating for 4 hours");
+                            bonusStats.add("Fey Ancestry: Advantage on saving throws against being charmed");
+                            bonusStats.add("Fey Ancestry: Magic effects cannot put you to sleep");
+                            bonusStats.add("Trance: You can get a full Long Rest by only meditating for 4 hours");
                             break;
                         case "Halfling":
                             //Stout Halfling is chosen for this
                             languages.append(" Common, Halfling, ");
                             bonusStats.add(languages.toString());
-                            bonusStats.add("When you roll a 1 on a D20, you can choose to re-roll and use the new roll");
-                            bonusStats.add("Advantage on saving throws against being frightened");
-                            bonusStats.add("Advantage on saving throws against poison");
-                            bonusStats.add("Resistance to poison damage");
+                            bonusStats.add("Lucky: When you roll a 1 on a D20, you can choose to re-roll and use the new roll");
+                            bonusStats.add("Brave: Advantage on saving throws against being frightened");
+                            bonusStats.add("Stout Resilience: Advantage on saving throws against poison and resistance to poison damage");
                             break;
                         case "Human":
                             languages.append(" Common, ");
+                            languages.append(raceSpecificBonusSpinner.getSelectedItem().toString());
                             bonusStats.add(languages.toString());
                             break;
                         case "Dragonborn":
                             //Red Dragonborn is chosen for this
                             languages.append(" Common, Draconic, ");
                             bonusStats.add(languages.toString());
-                            bonusStats.add("Once per short or long rest, you can use your breath attack as an action. 15ft. cone of fire" /*+ depends on which color is chosen*/);
-                            bonusStats.add("You have resistance to fire damage" /*damage type depends on color chosen*/);
+                            bonusStats.add("Breath Weapon: Once per short or long rest, you can use your breath attack as an action. 15ft. cone of fire" /*+ depends on which color is chosen*/);
+                            bonusStats.add("Draconic Resistance: You have resistance to fire damage" /*damage type depends on color chosen*/);
                             break;
                         case "Gnome":
                             //Forest Gnome is chosen for this
                             languages.append(" Common, Gnomish, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("Advantage on INT, WIS, and CHA saving throws against magic");
-                            bonusStats.add("Through sounds and gestures, you can communicate simple ideas with small animals");
+                            bonusStats.add("Gnome Cunning: Advantage on INT, WIS, and CHA saving throws against magic");
+                            bonusStats.add("Speak With Small Beasts: Through sounds and gestures, you can communicate simple ideas with small animals");
                             break;
                         case "Half-Elf":
                             languages.append(" Common, Elvish, ");
+                            languages.append(raceSpecificBonusSpinner.getSelectedItem().toString());
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("Advantage on saving throws against being charmed");
-                            bonusStats.add("Magic effects cannot put you to sleep");
+                            bonusStats.add("Fey Ancestry: Advantage on saving throws against being charmed");
+                            bonusStats.add("Fey Ancestry: Magic effects cannot put you to sleep");
                             break;
                         case "Half-Orc":
                             languages.append(" Common, Orcish, ");
@@ -453,7 +481,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             languages.append(" Common, Infernal, ");
                             bonusStats.add(languages.toString());
                             bonusStats.add("Darkvision: 60 ft");
-                            bonusStats.add("You are resistant to Fire damage");
+                            bonusStats.add("Hellish Resistance: You are resistant to Fire damage");
                             break;
                         case "Warforged":
                             languages.append(" Common, ");
@@ -463,6 +491,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add("Sentry's Rest: When you take a long rest, you must spend at least 6 hours in an inactive state rather than sleeping. You are not unconscious and you can see/hear as normal");
                             bonusStats.add("Integrated Protection: To don/doff armor, you must spend 1 hour incorporating/unincorporating it with your armor.");
                             currency.set(6, currency.get(6) + 1);
+                            proficiencyChoices.add(raceSpecificBonusSpinner.getSelectedItem().toString());
                             break;
                     }
                     switch (character.getCharacterClass()){
