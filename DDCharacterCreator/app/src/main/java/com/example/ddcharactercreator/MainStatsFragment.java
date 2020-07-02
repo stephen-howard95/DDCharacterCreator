@@ -50,8 +50,6 @@ public class MainStatsFragment extends Fragment {
     @BindView(R.id.max_hit_points) TextView maxHitPoints;
     @BindView(R.id.hit_die) TextView hitDieTextView;
 
-    @BindView(R.id.bonus_stats_list_view) ListView bonusStatsList;
-
     public MainStatsFragment(){
     }
 
