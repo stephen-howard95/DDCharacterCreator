@@ -151,7 +151,8 @@
     <string name="death_saves_failure_2">Failure 2</string>
     <string name="death_saves_death">Death</string>
 
-    // Stats screen skills strings
+    // Proficiency screen strings
+    <string name="skill_modifiers">Skill Modifiers</string>
     <string name="strength_skills">Strength Skills</string>
     <string name="dexterity_skills">Dexterity Skills</string>
     <string name="intelligence_skills">Intelligence Skills</string>
