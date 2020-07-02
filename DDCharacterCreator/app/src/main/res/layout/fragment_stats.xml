@@ -401,15 +401,9 @@
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
         android:layout_below="@id/health_layout"
-        android:text="@string/skill_modifiers"
+        android:text="@string/proficiencies"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"/>
-
-    <ListView
-        android:id="@+id/bonus_stats_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/skill_modifiers"/>
 </RelativeLayout>
