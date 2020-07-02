@@ -140,7 +140,7 @@
     <string name="speed_label">Speed: </string>
     <string name="armor_class">Armor Class:</string>
     <string name="current_max_hp">current/max HP:</string>
-    <string name="skill_modifiers">Skill Modifiers</string>
+    <string name="proficiencies">Proficiencies</string>
 
     // Stats screen death saves strings
     <string name="death_saves_label">Death Saves</string>
