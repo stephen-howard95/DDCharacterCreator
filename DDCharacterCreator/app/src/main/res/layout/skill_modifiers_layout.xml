@@ -299,4 +299,46 @@
             android:layout_toRightOf="@+id/persuasion_label"
             android:layout_toEndOf="@+id/persuasion_label" />
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/tool_proficiency_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intelligence_skills_layout">
+        <TextView
+            android:id="@+id/tool_proficiencies_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:paddingVertical="4dp"
+            android:text="Tool Proficiencies"/>
+        <TextView
+            android:id="@+id/tool_proficiencies"
+            style="@style/SkillModifiersStyle"
+            android:layout_below="@+id/tool_proficiencies_label"
+            android:textColor="@color/proficiency_blue"
+            android:text="Proficient Tools"/>
+        <TextView
+            android:id="@+id/tool_proficiency_modifier"
+            android:layout_below="@+id/tool_proficiencies_label"
+            android:layout_toRightOf="@+id/tool_proficiencies"
+            android:layout_toEndOf="@+id/tool_proficiencies"
+            android:textColor="@color/proficiency_blue"
+            style="@style/SkillModifiersStyle" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/weapon_armor_proficiencies_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tool_proficiency_layout"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:paddingVertical="4dp"
+        android:text="Weapon/Armor Proficiencies"/>
+    <TextView
+        android:id="@+id/weapon_armor_proficiencies"
+        style="@style/SkillModifiersStyle"
+        android:layout_below="@+id/weapon_armor_proficiencies_label"
+        android:textColor="@color/proficiency_blue"
+        android:text="Light Armor, Medium Armor, Longbows, Shortbows, Simple melee weapons"/>
 </RelativeLayout>
