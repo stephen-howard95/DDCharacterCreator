@@ -506,6 +506,17 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Cleric":
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
+                            switch(characterSubclass){
+                                case "Knowledge":
+                                    //learn 2 languages and gain double proficiency in 2 of the following: Arcana, History, Religion or Nature.
+                                    break;
+                                case "Life":
+                                    //Proficiency in Heavy Armor
+                                    bonusStats.add(getString(R.string.disciple_of_life));
+                                    break;
+                                case "Light":
+                                    bonusStats.add(getString(R.string.warding_flare));
+                            }
                             break;
                         case "Druid":
                             languages.append("Druidic, ");
