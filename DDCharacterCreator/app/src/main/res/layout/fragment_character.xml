@@ -228,7 +228,6 @@
             android:id="@+id/subclass_info_checkboxes_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/checkboxes_textview_4"
@@ -244,7 +243,6 @@
             android:id="@+id/subclass_info_checkboxes_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/checkboxes_textview_5"
