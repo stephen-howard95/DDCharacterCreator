@@ -129,6 +129,80 @@ public class SpellcastingFragment extends Fragment {
                     break;
                 case "Cleric":
                     primarySpellcasterSlotsPerLevel();
+                    switch(character.getSubclass()){
+                        case "Knowledge":
+                            switch (character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("command");
+                                    getSubclassSpells("identify");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("augury");
+                                    getSubclassSpells("suggestion");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("nondetection");
+                                    getSubclassSpells("speak with dead");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("arcane eye");
+                                    getSubclassSpells("confusion");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("legend lore");
+                                    getSubclassSpells("scrying");
+                                    break;
+                            }
+                            break;
+                        case "Life":
+                            switch (character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("bless");
+                                    getSubclassSpells("cure wounds");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("lesser restoration");
+                                    getSubclassSpells("spiritual weapon");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("beacon of hope");
+                                    getSubclassSpells("revivify");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("death ward");
+                                    getSubclassSpells("guardian of faith");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("mass cure wounds");
+                                    getSubclassSpells("raise dead");
+                                    break;
+                            }
+                            break;
+                        case "Light":
+                            switch (character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("light");
+                                    getSubclassSpells("burning hands");
+                                    getSubclassSpells("faerie fire");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("flaming sphere");
+                                    getSubclassSpells("scorching ray");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("daylight");
+                                    getSubclassSpells("fireball");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("guardian of faith");
+                                    getSubclassSpells("wall of fire");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("flame strike");
+                                    getSubclassSpells("scrying");
+                            }
+                            break;
+                    }
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
@@ -754,6 +828,19 @@ public class SpellcastingFragment extends Fragment {
             spellSlot4.setText(getString(R.string.fifth_level_spell));
             spellSlot22.setVisibility(View.VISIBLE);
             //setText to 9th level mystic arcanum??
+        }
+    }
+     private void getSubclassSpells(String spellName){
+        for(int i=0; i<completeSpellsList.size(); i++){
+            if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName)){
+                Spell subclassSpell = completeSpellsList.get(i);
+                character.getSpellsKnown().add(subclassSpell);
+                for(int j=0; j<character.getSpellsKnown().size()-1; j++){
+                    if(character.getSpellsKnown().get(j).getSpellName().equals(subclassSpell.getSpellName())){
+                        character.getSpellsKnown().remove(subclassSpell);
+                    }
+                }
+            }
         }
     }
 }
