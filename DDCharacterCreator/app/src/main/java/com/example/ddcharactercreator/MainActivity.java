@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     .build();
 
             JsonPlaceholderApi jsonPlaceholderApi = retrofit.create(JsonPlaceholderApi.class);
-            for(int i=1; i<7; i++){
+            for(int i=1; i<=7; i++){
                 Call<SpellContainer> call = jsonPlaceholderApi.getSpellContainer(i);
                 call.enqueue(new Callback<SpellContainer>() {
                     @Override
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Code: " + response.code(), Toast.LENGTH_SHORT).show();
                         } else{
                             if(response.body() != null && !response.body().getResults().isEmpty()){
-                                for(int i=0; i<response.body().getResults().size(); i++){
-                                    mSpellDb.spellDao().insertSpell(response.body().getResults().get(i));
+                                for(int j=0; j<response.body().getResults().size(); j++){
+                                    mSpellDb.spellDao().insertSpell(response.body().getResults().get(j));
                                 }
                             }
                         }
