@@ -262,7 +262,7 @@
     <string name="concentration">\"Concentration, \"</string>
     <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
     
-    //leveling up/subclass bonuses
+    //Barbarian leveling up/subclass bonuses
     <string name="primal_path">Primal Path: </string>
     <string name="rage_description">As a bonus action, you can enter a rage. While raging and not wearing heavy armor, you have advantage on STR checks and saving throws, you deal bonus damage(listed above) on all STR-based melee attacks, and you have resistance to bludgeoning, piercing and slashing damage. The rage lasts for 1 minute or can end early if you end your turn without having dealt or taken damage since your previous turn, if you are knocked unconscious, or if you choose to end it as a bonus action.</string>
     <string name="rage_uses">Rage Uses:</string>
@@ -278,6 +278,7 @@
     <string name="indomitable_might">Indomitable Might: If your total for a STR check is less than your STR score, you can use that score instead.</string>
     <string name="primal_champion">Primal Champion: Your Strength and Constitution scores have both increased by 4.</string>
 
+    //Bard leveling up/subclass bonuses
     <string name="bard_college">Bard College: </string>
     <string name="bardic_inspiration_description">Bardic Inspiration: As a bonus action, choose another creature within 60ft of you to inspire. Within the next 10 minutes, that creature can add your Bardic Inspiration die to one ability check, attack roll, or saving throw they make</string>
     <string name="bardic_inspiration_die">Bardic Inspiration Die: </string>
@@ -289,17 +290,34 @@
     <string name="countercharm">Countercharm: As an action, you can start a performance that will last until the end of your next turn. During that time, you and any friendly creatures within 30ft of you have advantage on saving throws against being frightened or charmed</string>
     <string name="superior_inspiration">Superior Inspiration: When you roll initiative and have no uses of Bardic Inspiration left, you regain one use</string>
 
+    //Cleric leveling up/subclass bonuses
     <string name="divine_domain">Divine Domain: </string>
     <string name="channel_divinity">Channel Divinity: You gain the ability to channel divine energy from your deity and use it to produce magical effects. This can be used a number of times per long rest as shown above.</string>
     <string name="channel_divinity_uses">Channel Divinity Uses:</string>
     <string name="channel_divinity_abilities">Channel Divinity Abilities: </string>
     <string name="channel_divinity_turn_undead">Channel Divinity: Turn Undead: As an action, you present your holy symbol and speak a prayer. Each undead within 30ft must succeed at a wisdom saving throw or, for 1 minute, spend its turns moving as far away from you as possible. They can only use their action to dash or dodge, if they cannot move further form you.</string>
+    <string name="channel_divinity_knowledge_of_the_ages">Channel Divinity: Knowledge of the Ages: As an action, you can give yourself proficiency in one tool or skill of your choice for 10 minutes</string>
+    <string name="channel_divinity_read_thoughts">Channel Divinity: Read Thoughts: Choose one creature within 60ft of you. If that creature fails a WIS saving throw, you can read it\'s surface thoughts for 1 minute while within range. You may end this effect and cast the suggestion spell on it without expending a spell slot and with a guaranteed failure on it\'s saving throw.</string>
+    <string name="channel_divinity_preserve_life">Channel Divinity: Preserve Life: You evoke healing energy that gives an amount of HP equal to 5 times your level that you can divide out amongst any creatures within 30ft of you. This has no effect on undead or constructs and can heal a creature up to no more than half their HP maximum</string>
+    <string name="channel_divinity_radiance_of_the_dawn">Channel Divinity: Radiance of the Dawn: Magical Darkness within 30ft of you is dispelled and each hostile creature within 30ft must make a CON saving throw. They take radiant damage equal to 2d10 + your level on a failed save or half as much on a successful one.</string>
     <string name="destroy_undead">Destroy Undead: If an undead fails the saving throw against Turn Undead and has a CR less than or equal to a certain threshold, it is immediately destroyed</string>
     <string name="destroy_undead_threshold">Destroy Undead Threshold:</string>
     <string name="divine_intervention_use">Divine Intervention: </string>
     <string name="divine_intervention">Divine Intervention: As an action, you can call on your Deity for aid. Describe the assistance you require, then roll a percentile die. If you roll less than or equal to your level, your deity will come to your aid. If it succeeds, you cannot use this ability for another 7 days. If it fails, you may attempt it again after a long rest</string>
     <string name="divine_intervention_success_range">Divine Intervention Success Range:</string>
+    <string name="potent_spellcasting">Potent Spellcasting: You now add your WIS modifier to the damage you deal with any Cleric cantrip</string>
+    <string name="visions_of_the_past">Vision of the Past: You can spend 1 minute meditating/praying on an object or your surroundings and receive visions of recent events regarding the object\'s previous owners or the area\'s previous events</string>
+    <string name="visions_of_the_past_use">Visions of the Past: </string>
+    <string name="disciple_of_life">Disciple of Life: When you cast a spell to restore HP to a creature, that creature regains additional HP equal to 2 + the spell\'s level</string>
+    <string name="blessed_healer">Blessed Healer: When you cast a spell to restore HP to another creature, you also regain HP equal to 2 + the spell\'s level</string>
+    <string name="divine_strike">Divine Strike: Once per turn, when you hit an enemy with a melee weapon attack, you can cause it to deal an extra 1d8 radiant damage.</string>
+    <string name="supreme_healing">Supreme Healing: When you cast a spell to heal a creature, instead of rolling the dice, you would heal the maximum amount possible.</string>
+    <string name="warding_flare">Warding Flare: When you are attacked by a creature within 30ft of you, you can use your reaction to impose disadvantage on the attack roll by flashing a blinding light between you and the attacker. This does not work if the attacker cannot be blinded</string>
+    <string name="warding_flare_uses">Warding Flare: </string>
+    <string name="improved_flare">Improved Flare: You can use your Warding Flare when a creature within 30ft of you is attacking someone other than you.</string>
+    <string name="corona_of_light">Corona of Light: You can use your action to activate an aura of sunlight that emits bright light within a 60ft radius of you. Enemies within that range have disadvantage on saving throws against any spell that deals fire or radiant damage.</string>
 
+    //Druid leveling up/subclass bonuses
     <string name="druid_circle">Druid Circle: </string>
     <string name="wild_shape">Wild Shape: As an action, you can magically transform into a beast within certain parameters. You can revert early if you choose. Your statistics are replaced by the beast\'s statistics, but you retain your alignment, personality, and your INT, WIS, and CHA scores. You cannot speak or cast spells when in beast form.</string>
     <string name="wild_shape_uses">Wild Shape Uses: </string>
@@ -307,10 +325,11 @@
     <string name="wild_shape_limits">Wild Shape Limits: </string>
     <string name="timeless_body_druid">Timeless Body: Due to druidic magic forces, your body only ages 1 year for every 10 years that pass.</string>
     <string name="beast_spells">Beast Spells: You can now perform the Somatic and Verbal aspects of a spell while in beast form, but cannot provide material components.</string>
-    <string name="archdruid">Archdruid: You can now use your Wild Shape an unlimited amount of times</string>
-    
+    <string name="archdruid">Archdruid: You can now use your Wild Shape an unlimited amount of times.</string>
+
+    //Fighter leveling up/subclass bonuses
     <string name="martial_archetype">Martial Archetype: </string>
-    <string name="fighting_style">Fighting Style:</string>
+    <string name="fighting_style">Fighting Style: </string>
     <string name="second_wind">Second Wind: As a bonus action, you can heal yourself. You can do this once per long rest.</string>
     <string name="second_wind_amount">"Second Wind amount: "</string>
     <string name="action_surge">Action Surge: You may use this ability to take an additional action on your turn. You must take a long rest before you can use this ability again</string>
@@ -318,6 +337,7 @@
     <string name="indomitable">Indomitable: You can use this ability to reroll a failed saving throw. You must use the new roll. You must take a long rest before you can use this ability again</string>
     <string name="indomitable_uses">Indomitable Uses:</string>
 
+    //Monk leveling up/subclass bonuses
     <string name="monastic_tradition">Monastic Tradition: </string>
     <string name="martial_arts">Martial Arts: While you are not wearing armor, and unarmed or wielding only monk weapons (Shortswords or any simple weapon that isn\'t two-handed or heavy), you can use your DEX modifier instead of STR for attack and damage rolls with unarmed strikes and monk weapons, your unarmed strikes deal more damage(listed above), and when you take the attack action, you can make 1 unarmed strike as a bonus action.</string>
     <string name="unarmed_strike_damage">Unarmed Strike Damage:</string>
@@ -345,6 +365,7 @@
     <string name="timeless_body_monk">Timeless Body: Your Ki sustains you and you no longer need food or water and suffer none of the frailty of old age. You cannot be aged magically, but you can still die of old age.</string>
     <string name="perfect_self">When you roll for initiative and have no Ki points remaining, you regain 4 Ki points.</string>
 
+    //Paladin leveling up/subclass bonuses
     <string name="sacred_oath">Sacred Oath: </string>
     <string name="divine_sense">Divine Sense: As an action, you can detect the location of any Celestial, Fiend, or Undead within 60 ft of you. You can use this ability a number of times equal to 1 + you CHA modifier</string>
     <string name="divine_sense_uses">Divine Sense Uses:</string>
@@ -358,6 +379,7 @@
     <string name="cleansing_touch">Cleansing Touch: As an action, you can end one spell effect on yourself or a creature that you touch. You may use this a number of times equal to your CHA modifier. expended uses are regained after a long rest</string>
     <string name="cleansing_touch_uses">Cleansing Touch Uses:</string>
 
+    //Ranger leveling up/subclass bonuses
     <string name="ranger_archetype">Ranger Archetype: </string>
     <string name="favored_enemy_description">Favored Enemy: You have significant experience tracking and hunting certain types of enemies. You have advantage on WIS(survival) checks on hunting them and INT checks on recalling information about them. You also learn one language that they speak.</string>
     <string name="favored_enemy">Favored Enemy:</string>
@@ -370,9 +392,11 @@
     <string name="feral_senses">Feral Senses: When you attack a creature you cannot see, that does not impose disadvantage on your attack rolls. You are also aware of any invisible creatures within 30ft of you, as long as it isn\'t hidden, and you aren\'t blinded or deafened.</string>
     <string name="foe_slayer">Foe Slayer: Once oer turn, you can choose to add your WIS modifier to an attack or damage roll you make against one of your favored enemies.</string>
 
+    //Rogue leveling up/subclass bonuses
     <string name="rouguish_archetype">Roguish Archetype: </string>
     <string name="sneak_attack_description">Sneak Attack: Once per turn, you can deal extra damage(listed above) to an enemy you hit with a finesse or ranged weapon, provided you have advantage on the attack. You do not need advantage if another enemy of the target is within 5ft of it and not incapacitated, and you don\'t have disadvantage on the attack roll</string>
     <string name="sneak_attack_damage">Sneak Attack Damage: </string>
+    <string name="expertise">Expertise: Choose 2 skill proficiencies. Your proficiency bonus is now doubled for any check you make using those skills.</string>
     <string name="cunning_action">Cunning Action: You can now take the Dash, Disengage, or Hide actions as a bonus action</string>
     <string name="uncanny_dodge">Uncanny Dodge: When an attacker you can see hits you with an attack, you can use your reaction to halve the attack\'s damage</string>
     <string name="reliable_talent">Reliable Talent: Whenever you make an ability check that allows you to add your proficiency bonus, you can treat a roll of 9 or lower as a 10</string>
@@ -382,6 +406,7 @@
     <string name="stroke_of_luck_use">Stroke of Luck: </string>
     <string name="stroke_of_luck">Stroke of Luck: Once per short or long rest, if your attack misses a target within range, you can force it to hit. Alternatively, if you fail an ability check, you can treat the D20 roll as though you rolled a 20</string>
 
+    //Sorcerer leveling up/subclass bonuses
     <string name="sorcerous_origin">Sorcerous Origin: </string>
     <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
     <string name="sorcery_points">Sorcery Points: </string>
@@ -397,13 +422,15 @@
     <string name="controlled_chaos">Controlled Chaos: Whenever you roll on the Wild Magic Surge table, you may roll twice and use either number</string>
     <string name="spell_bombardment">Spell Bombardment: When you roll damage for a spell and one of the dice land on the highest possible number, roll an extra damage die and add it to the damage of the spell. This ability can be used once per turn.</string>
 
+    //Warlock leveling up/subclass bonuses
     <string name="warlock_spell_slot_improvement">Your Spell Slots are now level </string>
     <string name="otherworldly_patron">Otherworldly Patron: </string>
     <string name="eldritch_invocations_known">Eldritch Invocations Known: </string>
     <string name="mystic_arcanum_choice">Choose a Mystic Arcanum spell</string>
     <string name="eldritch_master">Eldritch Master: Once per long rest, you can spend 1 minute entreating your patron to regain all your expended spell slots.</string>
     <string name="eldritch_master_use">Eldritch Master: </string>
-    
+
+    //Wizard leveling up/subclass bonuses
     <string name="arcane_tradition">Arcane Tradition: </string>
     <string name="arcane_recovery">Arcane Recovery: Once per day, when you finish a short rest, you can regain spell slots that have a combined level of half your wizard level(listed above). These slots cannot be 6th level or above.</string>
     <string name="arcane_recovery_amount">Arcane Recovery Amount: </string>
