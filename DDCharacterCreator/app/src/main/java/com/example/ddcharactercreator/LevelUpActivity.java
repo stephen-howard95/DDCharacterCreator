@@ -470,6 +470,18 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.channel_divinity_turn_undead));
                         character.getRaceAndClassBonusStats().add(getString(R.string.channel_divinity));
+                        bonusStats3.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Knowledge":
+                                bonusStats3.setText(getString(R.string.channel_divinity_knowledge_of_the_ages));
+                                break;
+                            case "Life":
+                                bonusStats3.setText(getString(R.string.channel_divinity_preserve_life));
+                                break;
+                            case "Light":
+                                bonusStats3.setText(getString(R.string.channel_divinity_radiance_of_the_dawn));
+                                break;
+                        }
                         break;
                     case 3:
                         break;
@@ -483,12 +495,38 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 6:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You can now use Channel Divinity twice per short/long rest");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Knowledge":
+                                bonusStats2.setText(getString(R.string.channel_divinity_read_thoughts));
+                                break;
+                            case "Life":
+                                bonusStats2.setText(getString(R.string.blessed_healer));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.blessed_healer));
+                                break;
+                            case "Light":
+                                bonusStats2.setText(getString(R.string.improved_flare));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_flare));
+                                break;
+                        }
                         break;
                     case 7:
                         break;
                     case 8:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Destroy undead now destroys undead of CR 1 or lower");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Knowledge":
+                            case "Light":
+                                bonusStats2.setText(getString(R.string.potent_spellcasting));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.potent_spellcasting));
+                                break;
+                            case "Life":
+                                bonusStats2.setText(getString(R.string.divine_strike));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.divine_strike));
+                                break;
+                        }
                         break;
                     case 9:
                         break;
@@ -516,6 +554,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Destroy undead now destroys undead of CR 4 or lower");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Knowledge":
+                                bonusStats2.setText(getString(R.string.visions_of_the_past));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.visions_of_the_past));
+                                break;
+                            case "Life":
+                                bonusStats2.setText(R.string.supreme_healing);
+                                character.getRaceAndClassBonusStats().add(getString(R.string.supreme_healing));
+                                break;
+                            case "Light":
+                                bonusStats2.setText(getString(R.string.corona_of_light));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.corona_of_light));
+                                break;
+                        }
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
