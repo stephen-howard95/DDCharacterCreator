@@ -220,8 +220,27 @@ public class CharacterFragment extends Fragment {
                 ListAdapter channelDivinityAdapter = new ListAdapter(getContext(), channelDivinityUses);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
-                //Only subclass stuff. depending on divine domain, level 1 provides extra languages,
-                // skill & weapon/armor proficiencies, spells/cantrips, bonusStats additions, checkBoxes
+                switch(character.getSubclass()){
+                    case "Light":
+                        checkBoxes2.setVisibility(View.VISIBLE);
+                        checkBoxes2.setText(getString(R.string.warding_flare_uses));
+                        checkBox2_1.setVisibility(View.VISIBLE);
+                        if(calculateModifier(character.getStatValues().get(4)) >= 2){
+                            checkBox2_2.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 3){
+                            checkBox2_3.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 4){
+                            checkBox2_4.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 5){
+                            checkBox2_5.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 6){
+                            checkBox2_6.setVisibility(View.VISIBLE);
+                        }
+                }
                 if(level >= 2){
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(getString(R.string.channel_divinity_uses));
@@ -230,7 +249,17 @@ public class CharacterFragment extends Fragment {
                     subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
                     subclassInfoListView.setVisibility(View.VISIBLE);
                     channelDivinityUses.add(getString(R.string.channel_divinity_turn_undead));
-                    //TODO: Other options added to Channel divinity uses depending on cleric subclass.
+                    switch(character.getSubclass()){
+                        case "Knowledge":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_knowledge_of_the_ages));
+                            break;
+                        case "Life":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_preserve_life));
+                            break;
+                        case "Light":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_radiance_of_the_dawn));
+                            break;
+                    }
                 }
                 if(level >= 5){
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
@@ -238,14 +267,19 @@ public class CharacterFragment extends Fragment {
                 }
                 if(level >= 6){
                     checkBox1_2.setVisibility(View.VISIBLE);
+                    switch(character.getSubclass()){
+                        case "Knowledge":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_read_thoughts));
+                            break;
+                    }
                 }
                 if(level >= 8){
                     subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "1 or lower");
                 }
                 if(level >= 10){
-                    checkBoxes2.setVisibility(View.VISIBLE);
-                    checkBox2_1.setVisibility(View.VISIBLE);
-                    checkBoxes2.setText(getString(R.string.divine_intervention_use));
+                    checkBoxes3.setVisibility(View.VISIBLE);
+                    checkBox3_1.setVisibility(View.VISIBLE);
+                    checkBoxes3.setText(getString(R.string.divine_intervention_use));
                     subclassInfoTextView3.setVisibility(View.VISIBLE);
                     subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + character.getLevel() + " or lower");
                 }
@@ -257,6 +291,13 @@ public class CharacterFragment extends Fragment {
                 }
                 if(level >= 17){
                     subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "4 or lower");
+                    switch(character.getSubclass()){
+                        case "Knowledge":
+                            checkBoxes4.setVisibility(View.VISIBLE);
+                            checkBox4_1.setVisibility(View.VISIBLE);
+                            checkBoxes4.setText(getString(R.string.visions_of_the_past_use));
+                            break;
+                    }
                 }
                 if(level >= 18){
                     checkBox1_3.setVisibility(View.VISIBLE);
