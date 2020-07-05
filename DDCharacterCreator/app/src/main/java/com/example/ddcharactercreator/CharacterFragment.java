@@ -240,6 +240,27 @@ public class CharacterFragment extends Fragment {
                         if(calculateModifier(character.getStatValues().get(4)) >= 6){
                             checkBox2_6.setVisibility(View.VISIBLE);
                         }
+                        break;
+                    case "Tempest":
+                        checkBoxes2.setVisibility(View.VISIBLE);
+                        checkBoxes2.setText(getString(R.string.wrath_of_the_storm_uses));
+                        checkBox2_1.setVisibility(View.VISIBLE);
+                        if(calculateModifier(character.getStatValues().get(4)) >= 2){
+                            checkBox2_2.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 3){
+                            checkBox2_3.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 4){
+                            checkBox2_4.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 5){
+                            checkBox2_5.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 6){
+                            checkBox2_6.setVisibility(View.VISIBLE);
+                        }
+                        break;
                 }
                 if(level >= 2){
                     checkBoxes1.setVisibility(View.VISIBLE);
@@ -259,6 +280,15 @@ public class CharacterFragment extends Fragment {
                         case "Light":
                             channelDivinityUses.add(getString(R.string.channel_divinity_radiance_of_the_dawn));
                             break;
+                        case "Nature":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_charm_animals_and_plants));
+                            break;
+                        case "Tempest":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_destructive_wrath));
+                            break;
+                        case "Trickery":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_invoke_duplicity));
+                            break;
                     }
                 }
                 if(level >= 5){
@@ -270,6 +300,9 @@ public class CharacterFragment extends Fragment {
                     switch(character.getSubclass()){
                         case "Knowledge":
                             channelDivinityUses.add(getString(R.string.channel_divinity_read_thoughts));
+                            break;
+                        case "Trickery":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_cloak_of_shadows));
                             break;
                     }
                 }
