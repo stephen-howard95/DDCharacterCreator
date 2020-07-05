@@ -481,6 +481,15 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "Light":
                                 bonusStats3.setText(getString(R.string.channel_divinity_radiance_of_the_dawn));
                                 break;
+                            case "Nature":
+                                bonusStats3.setText(getString(R.string.channel_divinity_charm_animals_and_plants));
+                                break;
+                            case "Tempest":
+                                bonusStats3.setText(getString(R.string.channel_divinity_destructive_wrath));
+                                break;
+                            case "Trickery":
+                                bonusStats3.setText(getString(R.string.channel_divinity_invoke_duplicity));
+                                break;
                         }
                         break;
                     case 3:
@@ -508,6 +517,17 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats2.setText(getString(R.string.improved_flare));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.improved_flare));
                                 break;
+                            case "Nature":
+                                bonusStats2.setText(getString(R.string.dampen_elements));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.dampen_elements));
+                                break;
+                            case "Tempest":
+                                bonusStats2.setText(getString(R.string.thunderbolt_strike));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.thunderbolt_strike));
+                                break;
+                            case "Trickery":
+                                bonusStats2.setText(getString(R.string.channel_divinity_cloak_of_shadows));
+                                break;
                         }
                         break;
                     case 7:
@@ -516,6 +536,8 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Destroy undead now destroys undead of CR 1 or lower");
                         bonusStats2.setVisibility(View.VISIBLE);
+                        StringBuilder divineStrike = new StringBuilder();
+                        divineStrike.append(getString(R.string.divine_strike));
                         switch(character.getSubclass()){
                             case "Knowledge":
                             case "Light":
@@ -523,8 +545,24 @@ public class LevelUpActivity extends AppCompatActivity {
                                 character.getRaceAndClassBonusStats().add(getString(R.string.potent_spellcasting));
                                 break;
                             case "Life":
-                                bonusStats2.setText(getString(R.string.divine_strike));
-                                character.getRaceAndClassBonusStats().add(getString(R.string.divine_strike));
+                                divineStrike.append("Radiant");
+                                bonusStats2.setText(divineStrike.toString());
+                                character.getRaceAndClassBonusStats().add(divineStrike.toString());
+                                break;
+                            case "Nature":
+                                divineStrike.append("either Cold, Fire, or Lightning");
+                                bonusStats2.setText(divineStrike.toString());
+                                character.getRaceAndClassBonusStats().add(divineStrike.toString());
+                                break;
+                            case "Tempest":
+                                divineStrike.append("Thunder");
+                                bonusStats2.setText(divineStrike.toString());
+                                character.getRaceAndClassBonusStats().add(divineStrike.toString());
+                                break;
+                            case "Trickery":
+                                divineStrike.append("Poison");
+                                bonusStats2.setText(divineStrike.toString());
+                                character.getRaceAndClassBonusStats().add(divineStrike.toString());
                                 break;
                         }
                         break;
@@ -546,6 +584,18 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 14:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Destroy undead now destroys undead of CR 3 or lower");
+                        switch(character.getSubclass()){
+                            case "Life":
+                            case "Nature":
+                            case "Tempest":
+                            case "Trickery":
+                            case "War":
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText(getString(R.string.improved_divine_strike));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_divine_strike));
+                        }
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.improved_divine_strike));
                         break;
                     case 15:
                         break;
@@ -567,6 +617,18 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "Light":
                                 bonusStats2.setText(getString(R.string.corona_of_light));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.corona_of_light));
+                                break;
+                            case "Nature":
+                                bonusStats2.setText(getString(R.string.master_of_nature));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.master_of_nature));
+                                break;
+                            case "Tempest":
+                                bonusStats2.setText(getString(R.string.stormborn));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.stormborn));
+                                break;
+                            case "Trickery":
+                                bonusStats2.setText(getString(R.string.improved_duplicity));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_duplicity));
                                 break;
                         }
                         break;
