@@ -202,6 +202,78 @@ public class SpellcastingFragment extends Fragment {
                                     getSubclassSpells("scrying");
                             }
                             break;
+                        case "Nature":
+                            switch(character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("druidcraft");
+                                    getSubclassSpells("animal friendship");
+                                    getSubclassSpells("speak with animals");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("barkskin");
+                                    getSubclassSpells("spike growth");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("plant growth");
+                                    getSubclassSpells("wind wall");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("dominate beast");
+                                    getSubclassSpells("grasping vine");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("insect plague");
+                                    getSubclassSpells("tree stride");
+                                    break;
+                            }
+                            break;
+                        case "Tempest":
+                            switch(character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("fog cloud");
+                                    getSubclassSpells("thunderwave");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("gust of wind");
+                                    getSubclassSpells("shatter");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("call lightning");
+                                    getSubclassSpells("sleet storm");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("control water");
+                                    getSubclassSpells("ice storm");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("destructive wave");
+                                    getSubclassSpells("insect plague");
+                                    break;
+                            }
+                            break;
+                        case "Trickery":
+                            switch(character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("charm person");
+                                    getSubclassSpells("disguise self");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("mirror image");
+                                    getSubclassSpells("pass without trace");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("blink");
+                                    getSubclassSpells("dispel magic");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("dimension door");
+                                    getSubclassSpells("polymorph");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("dominate person");
+                                    getSubclassSpells("modify memory");
+                            }
+                            break;
                     }
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
