@@ -516,6 +516,13 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                     break;
                                 case "Light":
                                     bonusStats.add(getString(R.string.warding_flare));
+                                    break;
+                                case "Nature":
+                                    // Choose a druid cantrip and proficiency in either nature, animal handling, or survival.
+                                    break;
+                                case "Trickery":
+                                    bonusStats.add(getString(R.string.blessing_of_the_trickster));
+                                    break;
                             }
                             break;
                         case "Druid":
