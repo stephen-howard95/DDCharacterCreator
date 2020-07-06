@@ -304,6 +304,8 @@
     <string name="channel_divinity_destructive_wrath">Channel Divinity: Destructive Wrath: When you roll for lightning or thunder damage, you can instead use your Channel Divinity to deal maximum damage instead.</string>
     <string name="channel_divinity_invoke_duplicity">Channel Divinity: Invoke Duplicity: As an action, you can create a perfect illusion of yourself that lasts for 1 minute. You can cast spells through the illusion as though you are there, and if both you and the illusion are within 5ft of a creature, you have advantage on attack rolls against the creature. As a bonus action, you may move the duplicate up to 30ft to a location you can see, but it must remain within 120ft of you.</string>
     <string name="channel_divinity_cloak_of_shadows">Channel Divinity: Cloak of Shadows: As an action, you become invisible until the end of your next turn, or until you attack or cast a spell.</string>
+    <string name="channel_divinity_guided_strike">Channel Divinity: Guided Strike: When you make an attack roll, you may gain a +10 bonus to the roll.</string>
+    <string name="channel_divinity_war_gods_blessing">Channel Divinity: War God\'s Blessing: When a creature within 30ft of you makes an attack roll, you may use your reaction to grant a +10 bonus to the attack roll.</string>
     <string name="destroy_undead">Destroy Undead: If an undead fails the saving throw against Turn Undead and has a CR less than or equal to a certain threshold, it is immediately destroyed</string>
     <string name="destroy_undead_threshold">Destroy Undead Threshold:</string>
     <string name="divine_intervention_use">Divine Intervention: </string>
@@ -329,7 +331,10 @@
     <string name="stormborn">Stormborn: When you are not underground or indoors, you have a flying speed equal to your current walking speed.</string>
     <string name="blessing_of_the_trickster">Blessing of the Trickster: As an action, you can touch another willing creature and give them advantage on Stealth checks for 1 hour or until you use it on a different creature.</string>
     <string name="improved_duplicity">Improved Duplicity: When you use your Invoke Duplicity feature, you now make up to 4 duplicates instead of 1. You can use a bonus action on your turn to move any number of them up to 30ft.</string>
-    
+    <string name="war_priest">War Priest: When you take the attack action, you may make 1 weapon attack as a bonus action on your turn.</string>
+    <string name="war_priest_uses">War Priest: </string>
+    <string name="avatar_of_battle">Avatar of Battle: You now have resistance to bludgeoning, piercing, and slashing damage from nonmagical attacks.</string>
+
     //Druid leveling up/subclass bonuses
     <string name="druid_circle">Druid Circle: </string>
     <string name="wild_shape">Wild Shape: As an action, you can magically transform into a beast within certain parameters. You can revert early if you choose. Your statistics are replaced by the beast\'s statistics, but you retain your alignment, personality, and your INT, WIS, and CHA scores. You cannot speak or cast spells when in beast form.</string>
@@ -434,6 +439,17 @@
     <string name="bend_luck">Bend Luck: When another creature you can see makes an attack roll, ability check, or a saving throw, you can use your reaction and spend 2 sorcery points to roll 1d4 and give the creature a bonus or penalty to their roll.</string>
     <string name="controlled_chaos">Controlled Chaos: Whenever you roll on the Wild Magic Surge table, you may roll twice and use either number</string>
     <string name="spell_bombardment">Spell Bombardment: When you roll damage for a spell and one of the dice land on the highest possible number, roll an extra damage die and add it to the damage of the spell. This ability can be used once per turn.</string>
+    <string name="ignite">Ignite: As an action, you can touch a flammable object such as a torch, papers, or drapes, and ignite them.</string>
+    <string name="mantle_of_flame">Mantle of Flame: As a bonus action, you wreath yourself in flames for 1 minute. While this is happening, you shed bright light out to 30ft, a creature that hits you with a melee attack takes fire damage equal to your CHA modifier, and when you roll for fire damage, you deal extra fire damage equal to your CHA modifier. This can be done once per long rest.</string>
+    <string name="mantle_of_flame_use">Mantle of Flame: </string>
+    <string name="phoenix_spark">Phoenix Spark: If you are reduced to 0hp, you can use your reaction to draw on the spark of the phoenix. You are instead reduced to 1hp and every creature within 10ft of you takes fire damage equal to half your level + your CHA modifier. If you use this ability while using your Mantle of Flame ability, the fire damage is doubled and your Mantle of Flame immediately ends. This can be done once per long rest.</string>
+    <string name="phoenix_spark_use">Phoenix Spark: </string>
+    <string name="nourishing_fire">Nourishing Fire: When you expend a spell slot to cast a spell that includes a fire damage roll, you regain HP equal to the slot\'s level plus your CHA modifier</string>
+    <string name="form_of_the_phoenix">Form of the Phoenix: While under the effect of your Mantle of Flame feature, you also have a flying speed of 40ft and can hover, you have resistance to all damage, and if you use your Phoenix Spark ability, it deals an extra 20 points of fire damage.</string>
+    <string name="stones_durability">Stone\'s Durability: If you are not wearing armor, as an action you may give your skin a stony appearance and give yourself a base AC of 13 + your CON modifier. This effect lasts until you are incapacitated, don armor, or end it as a bonus action</string>
+    <string name="stone_aegis">Stone Aegis: As a bonus action, you can grant 1 ally a dim grey aura of earth magic as a shield. Any bludgeoning, piercing, or slashing damage taken by someone with this aegis is reduced by 2 + your level/4. This effect lasts for 1 minute, or until you use it on another creature. When a creature hits an ally with this aegis, you can use your reaction to teleport within 5ft of the attacker and make 1 melee attack against them. If that attack hits, it deals 1d10 extra force damage.</string>
+    <string name="stones_edge">Stone\'s Edge: When you cast a spell that deals damage, you may choose 1 creature affected by the spell. That creature takes extra force damage equal to half your level.</string>
+    <string name="earth_masters_aegis">Earth Master\'s Aegis: Your Stone Aegis ability can now affect up to 3 creatures at once.</string>
 
     //Warlock leveling up/subclass bonuses
     <string name="warlock_spell_slot_improvement">Your Spell Slots are now level </string>
