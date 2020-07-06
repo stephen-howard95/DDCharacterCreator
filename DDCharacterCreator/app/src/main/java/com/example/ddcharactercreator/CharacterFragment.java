@@ -85,6 +85,7 @@ public class CharacterFragment extends Fragment {
         characterAlignment.setText(character.getAlignment());
 
         //Adding in Racial Benefits and languages
+        //TODO: remove language from bonusStats list. It shouldn't display in the racial/class bonus list. (Maybe languages should go in a different list?)
         ArrayList<String> bonusStats = character.getRaceAndClassBonusStats();
         languagesKnown.setText(bonusStats.get(0));
         if(character.getRace().equals("Dragonborn")) {
@@ -261,6 +262,25 @@ public class CharacterFragment extends Fragment {
                             checkBox2_6.setVisibility(View.VISIBLE);
                         }
                         break;
+                    case "War":
+                        checkBoxes2.setVisibility(View.VISIBLE);
+                        checkBoxes2.setText(getString(R.string.war_priest_uses));
+                        checkBox2_1.setVisibility(View.VISIBLE);
+                        if(calculateModifier(character.getStatValues().get(4)) >= 2){
+                            checkBox2_2.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 3){
+                            checkBox2_3.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 4){
+                            checkBox2_4.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 5){
+                            checkBox2_5.setVisibility(View.VISIBLE);
+                        }
+                        if(calculateModifier(character.getStatValues().get(4)) >= 6){
+                            checkBox2_6.setVisibility(View.VISIBLE);
+                        }
                 }
                 if(level >= 2){
                     checkBoxes1.setVisibility(View.VISIBLE);
@@ -289,6 +309,8 @@ public class CharacterFragment extends Fragment {
                         case "Trickery":
                             channelDivinityUses.add(getString(R.string.channel_divinity_invoke_duplicity));
                             break;
+                        case "War":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_guided_strike));
                     }
                 }
                 if(level >= 5){
@@ -304,6 +326,8 @@ public class CharacterFragment extends Fragment {
                         case "Trickery":
                             channelDivinityUses.add(getString(R.string.channel_divinity_cloak_of_shadows));
                             break;
+                        case "War":
+                            channelDivinityUses.add(getString(R.string.channel_divinity_war_gods_blessing));
                     }
                 }
                 if(level >= 8){
@@ -515,16 +539,23 @@ public class CharacterFragment extends Fragment {
             case "Sorcerer":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
-                if(character.getSubclass().equals("Wild Magic")){
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.tides_of_chaos_use));
-                    checkBox1_1.setVisibility(View.VISIBLE);
+                switch(character.getSubclass()){
+                    case "Wild Magic":
+                        checkBoxes1.setVisibility(View.VISIBLE);
+                        checkBoxes1.setText(getString(R.string.tides_of_chaos_use));
+                        checkBox1_1.setVisibility(View.VISIBLE);
+                        break;
+                    case "Phoenix Sorcery":
+                        checkBoxes1.setVisibility(View.VISIBLE);
+                        checkBoxes1.setText(getString(R.string.mantle_of_flame_use));
+                        checkBox1_1.setVisibility(View.VISIBLE);
+                        break;
                 }
                 if(level >= 2){
                     editTextTextView.setVisibility(View.VISIBLE);
                     subclassInfoEditText.setVisibility(View.VISIBLE);
                     editTextTextView.setText(getString(R.string.sorcery_points) + " " + character.getLevel());
-                    subclassInfoEditText.setText(character.getLevel());
+                    subclassInfoEditText.setText(String.valueOf(character.getLevel()));
                 }
                 if(level >= 3){
                     /* TODO: How to pass in metamagic options?? new ArrayList<String>()
@@ -545,6 +576,19 @@ public class CharacterFragment extends Fragment {
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount) + (level+ 1)/2);
+                /*if(level >= 18){
+                    subclassInfoTextView1.setVisibility(View.VISIBLE);
+                    subclassInfoTextView1.setText(getString(R.string.spell_mastery) + spell mastery choice 1 + ", " + spell mastery choice 2);
+                }
+                if(level == 20){
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBox2_1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(Signature spell choice 1);
+                    checkboxes2.setText(Signature spell choice 2);
+                    set checkbox text to actual spell, set textview to R.string.signature_spell_choice??
+                }*/
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
