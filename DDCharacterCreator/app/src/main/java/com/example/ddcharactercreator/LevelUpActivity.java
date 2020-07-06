@@ -26,8 +26,6 @@ public class LevelUpActivity extends AppCompatActivity {
 
     @BindView(R.id.new_level) TextView newLevel;
     @BindView(R.id.new_spell_level) TextView newSpellLevel;
-    //@BindView(R.id.more_spells) TextView moreSpells;
-    //@BindView(R.id.more_cantrips) TextView moreCantrips;
     @BindView(R.id.proficiency_bonus_improvement) TextView proficiencyBonusImprovement;
     @BindView(R.id.ability_score_improvement_header) TextView abilityScoreImprovementHeader;
     @BindView(R.id.ability_score_improvement_1) Spinner abilityScoreImprovement1;
@@ -281,7 +279,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         }
                     }
                     Integer addToHP = Integer.parseInt(moreHP.getText().toString());
-                    if(character.getSubclass().equals("Draconic Bloodline")){
+                    if(character.getSubclass().equals("Draconic Bloodline") || character.getSubclass().equals("Stone Sorcery")){
                         addToHP += 1;
                     }
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
@@ -306,7 +304,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.danger_sense));
                         break;
                     case 3:
-                        //Choose a primal path. That choice will change a TextView, as you earn a bonus from your choice at level 3
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You have an extra usage of Rage");
                         break;
@@ -425,7 +422,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("Your Song of Rest die is now a d8");
                         break;
                     case 10:
-                        //magical secrets
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your Bardic Inspiration die is now a d10");
                         break;
@@ -490,6 +486,9 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "Trickery":
                                 bonusStats3.setText(getString(R.string.channel_divinity_invoke_duplicity));
                                 break;
+                            case "War":
+                                bonusStats3.setText(getString(R.string.channel_divinity_guided_strike));
+                                break;
                         }
                         break;
                     case 3:
@@ -528,6 +527,9 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "Trickery":
                                 bonusStats2.setText(getString(R.string.channel_divinity_cloak_of_shadows));
                                 break;
+                            case "War":
+                                bonusStats2.setText(getString(R.string.channel_divinity_war_gods_blessing));
+                                break;
                         }
                         break;
                     case 7:
@@ -561,6 +563,11 @@ public class LevelUpActivity extends AppCompatActivity {
                                 break;
                             case "Trickery":
                                 divineStrike.append("Poison");
+                                bonusStats2.setText(divineStrike.toString());
+                                character.getRaceAndClassBonusStats().add(divineStrike.toString());
+                                break;
+                            case "War":
+                                divineStrike.append("the same type of damage dealt by the weapon");
                                 bonusStats2.setText(divineStrike.toString());
                                 character.getRaceAndClassBonusStats().add(divineStrike.toString());
                                 break;
@@ -629,6 +636,10 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "Trickery":
                                 bonusStats2.setText(getString(R.string.improved_duplicity));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.improved_duplicity));
+                                break;
+                            case "War":
+                                bonusStats2.setText(getString(R.string.avatar_of_battle));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.avatar_of_battle));
                                 break;
                         }
                         break;
@@ -729,7 +740,6 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 10:
                         break;
                     case 11:
-                        //TODO: how to change extra attack amount in the list.
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your Extra Attack feature now allows you to attack 3 times in one action");
                         break;
@@ -935,7 +945,6 @@ public class LevelUpActivity extends AppCompatActivity {
                 break;
             case "Ranger":
                 switch (level){
-                    //TODO: How to add more favored enemies/terrain?
                     case 2:
                         List<String> fightingStyles = new ArrayList<String>();
                         ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
@@ -1116,12 +1125,23 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 6:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if (character.getSubclass().equals("Wild Magic")){
-                            bonusStats1.setText(getString(R.string.bend_luck));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.bend_luck));
-                        }else if(character.getSubclass().equals("Draconic Bloodline")){
-                            bonusStats1.setText(getString(R.string.elemental_affinity));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.elemental_affinity));
+                        switch(character.getSubclass()){
+                            case "Wild Magic":
+                                bonusStats1.setText(getString(R.string.bend_luck));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.bend_luck));
+                                break;
+                            case "Draconic Bloodline":
+                                bonusStats1.setText(getString(R.string.elemental_affinity));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.elemental_affinity));
+                                break;
+                            case "Phoenix Sorcery":
+                                bonusStats1.setText(getString(R.string.phoenix_spark));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.phoenix_spark));
+                                break;
+                            case "Stone Sorcery":
+                                bonusStats1.setText(getString(R.string.stone_aegis));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.stone_aegis));
+                                break;
                         }
                         break;
                     case 7:
@@ -1141,12 +1161,23 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 14:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if (character.getSubclass().equals("Wild Magic")){
-                            bonusStats1.setText(getString(R.string.controlled_chaos));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.controlled_chaos));
-                        }else if(character.getSubclass().equals("Draconic Bloodline")){
-                            bonusStats1.setText(getString(R.string.dragon_wings));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.dragon_wings));
+                        switch(character.getSubclass()){
+                            case "Wild Magic":
+                                bonusStats1.setText(getString(R.string.controlled_chaos));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.controlled_chaos));
+                                break;
+                            case "Draconic Bloodline":
+                                bonusStats1.setText(getString(R.string.dragon_wings));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.dragon_wings));
+                                break;
+                            case "Phoenix Sorcery":
+                                bonusStats1.setText(getString(R.string.nourishing_fire));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.nourishing_fire));
+                                break;
+                            case "Stone Sorcery":
+                                bonusStats1.setText(getString(R.string.stones_edge));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.stones_edge));
+                                break;
                         }
                         break;
                     case 15:
@@ -1158,12 +1189,23 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if (character.getSubclass().equals("Wild Magic")){
-                            bonusStats1.setText(getString(R.string.spell_bombardment));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.spell_bombardment));
-                        }else if(character.getSubclass().equals("Draconic Bloodline")){
-                            bonusStats1.setText(getString(R.string.draconic_presence));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.draconic_presence));
+                        switch(character.getSubclass()){
+                            case "Wild Magic":
+                                bonusStats1.setText(getString(R.string.spell_bombardment));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.spell_bombardment));
+                                break;
+                            case "Draconic Bloodline":
+                                bonusStats1.setText(getString(R.string.draconic_presence));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.draconic_presence));
+                                break;
+                            case "Phoenix Sorcery":
+                                bonusStats1.setText(getString(R.string.form_of_the_phoenix));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.form_of_the_phoenix));
+                                break;
+                            case "Stone Sorcery":
+                                bonusStats1.setText(getString(R.string.earth_masters_aegis));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.earth_masters_aegis));
+                                break;
                         }
                         break;
                     case 19:
