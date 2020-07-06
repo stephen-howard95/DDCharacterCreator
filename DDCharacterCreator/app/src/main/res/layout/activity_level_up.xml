@@ -53,16 +53,6 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:text="@string/new_spell_level"/>
-   <!-- <TextView
-        android:id="@+id/more_spells"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more_spells"/>
-    <TextView
-        android:id="@+id/more_cantrips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more_cantrips"/> -->
     <TextView
         android:id="@+id/proficiency_bonus_improvement"
         android:layout_width="wrap_content"
