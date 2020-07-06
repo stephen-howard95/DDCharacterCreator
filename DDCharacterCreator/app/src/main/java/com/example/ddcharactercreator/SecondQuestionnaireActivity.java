@@ -57,7 +57,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
-        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -298,6 +297,8 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 levelOneChoiceHeader1.setText("Choose a Sorcerous Origin");
                 levelOneChoices1.add("Draconic Bloodline");
                 levelOneChoices1.add("Wild Magic");
+                levelOneChoices1.add("Phoenix Sorcery");
+                levelOneChoices1.add("Stone Sorcery");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -523,6 +524,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                 case "Trickery":
                                     bonusStats.add(getString(R.string.blessing_of_the_trickster));
                                     break;
+                                case "War":
+                                    bonusStats.add(getString(R.string.war_priest));
+                                    break;
                             }
                             break;
                         case "Druid":
@@ -576,16 +580,26 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                         case "Sorcerer":
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
-                            if(characterSubclass.equals("Draconic Bloodline")){
-                                currency.set(0, (currency.get(0) +1));
-                                currency.set(6, (13 + calculateModifier(character.getStatValues().get(1))));
-                                if(!character.getRace().equals("Dragonborn")){
-                                    languages.append("Draconic");
-                                }
-                            }
-                            if(characterSubclass.equals("Wild Magic")){
-                                bonusStats.add(getString(R.string.wild_magic_surge));
-                                bonusStats.add(getString(R.string.tides_of_chaos));
+                            switch(characterSubclass){
+                                case "Draconic Bloodline":
+                                    currency.set(0, (currency.get(0) +1));
+                                    currency.set(6, (13 + calculateModifier(character.getStatValues().get(1))));
+                                    if(!character.getRace().equals("Dragonborn")){
+                                        languages.append("Draconic");
+                                    }
+                                    break;
+                                case "Wild Magic":
+                                    bonusStats.add(getString(R.string.wild_magic_surge));
+                                    bonusStats.add(getString(R.string.tides_of_chaos));
+                                    break;
+                                case "Phoenix Sorcery":
+                                    bonusStats.add(getString(R.string.ignite));
+                                    bonusStats.add(getString(R.string.mantle_of_flame));
+                                    break;
+                                case "Stone Sorcery":
+                                    currency.set(0, (currency.get(0) +1));
+                                    bonusStats.add(getString(R.string.stones_durability));
+                                    break;
                             }
                             break;
                         case "Warlock":
