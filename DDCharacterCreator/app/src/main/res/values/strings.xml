@@ -458,6 +458,24 @@
     <string name="mystic_arcanum_choice">Choose a Mystic Arcanum spell</string>
     <string name="eldritch_master">Eldritch Master: Once per long rest, you can spend 1 minute entreating your patron to regain all your expended spell slots.</string>
     <string name="eldritch_master_use">Eldritch Master: </string>
+    <string name="fey_presence">Fey Presence: As an action, you can cause every creature in a 10ft cube centered on you to make a WIS saving throw or be charmed or frightened by you until the end of your next turn. This can be done once per short rest</string>
+    <string name="fey_presence_use">Fey Presence: </string>
+    <string name="misty_escape">Misty Escape: When you take damage, you can use your reaction to turn invisible and teleport up to 60ft away. You remain invisible until the start of your next turn or until you cast a spell. This can be done once per short rest.</string>
+    <string name="misty_escape_use">Misty Escape: </string>
+    <string name="beguiling_defenses">Beguiling Defenses: You are immune to being charmed, and when another creature attempts to charm you, you can use your reaction to turn the charm back on them. They must make a WIS saving throw or be charmed by you for 1 minute or until they take damage.</string>
+    <string name="dark_delirium">Dark Delirium: As an action, choose 1 creature within 60ft of you that you can see. It must make a WIS saving throw or be charmed or frightened by you for 1 minute or until the target takes damage, or you lose concentration. The target is plunged into an illusory realm, the appearance of which you choose. The target can only see and hear themselves, you, and the illusion. This can be done once per short rest.</string>
+    <string name="dark_delirium_use">Dark Delirium: </string>
+    <string name="dark_ones_blessing">Dark One\'s Blessing: When you reduce a hostile creature to 0hp, you gain temporary HP equal to your level + your CHA modifier</string>
+    <string name="dark_ones_own_luck">Dark One\'s Own Luck: Once per short rest, when you make an ability check or saving throw, you may add 1d10 to the roll.</string>
+    <string name="dark_ones_own_luck_use">Dark One\'s Own Luck: </string>
+    <string name="fiendish_resilience">Fiendish Resilience: You gain resistance to 1 damage type of your choice. You may change the type any time you finish a short or long rest. Damage from magical weapons or silvered weapons ignore this resistance.</string>
+    <string name="hurl_through_hell">Hurl Through Hell: When you hit a creature with an attack, you can transport the target through the lower planes until the end of your next turn. The target disappears and hurtles through a nightmare landscape. At the end of your next turn, the target returns to the nearest unoccupied space from where it was last and takes 10d10 psychic damage as it reels from the horrific experience. This can be done once per long rest.</string>
+    <string name="hurl_through_hell_use">Hurl Through Hell: </string>
+    <string name="awakened_mind">Awakened Mind: You can telepathically speak to any creature you can see within 30ft. The creature does not need to share a language with you, but needs to understand some language.</string>
+    <string name="entropic_ward">Entropic Ward: When a creature makes an attack roll against you, you can use your reaction to impose disadvantage on the roll. If the attack misses you, your next attack roll against them has advantage. This can be done once per short rest.</string>
+    <string name="entropic_ward_use">Entropic Ward: </string>
+    <string name="thought_shield">Thought Shield: Your thoughts cannot be read by telepathy or other means unless you allow it. You also have resistance to psychic damage and when a creature deals psychic damage to you, they take the same amount of damage that you do.</string>
+    <string name="create_thrall">Create Thrall: You can use your action to touch an incapacitated humanoid. That creature is then charmed by you until a remove curse spell is cast on them, the charmed condition is removed from them, or until you use this feature on another creature. You can communicate telepathically with the charmed creature as long as you are on the same plane of existence.</string>
 
     //Wizard leveling up/subclass bonuses
     <string name="arcane_tradition">Arcane Tradition: </string>
