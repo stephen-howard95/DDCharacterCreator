@@ -567,10 +567,48 @@ public class CharacterFragment extends Fragment {
             case "Warlock":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
-                if(level == 20){
+                if(character.getSubclass().equals("The Archfey")){
                     checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.fey_presence_use));
                     checkBox1_1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.eldritch_master_use));
+                }
+                if(level >= 6){
+                    switch(character.getSubclass()){
+                        case "The Archfey":
+                            checkBoxes2.setVisibility(View.VISIBLE);
+                            checkBoxes2.setText(getString(R.string.misty_escape_use));
+                            checkBox2_1.setVisibility(View.VISIBLE);
+                            break;
+                        case "The Fiend":
+                            checkBoxes2.setVisibility(View.VISIBLE);
+                            checkBoxes2.setText(getString(R.string.dark_ones_own_luck_use));
+                            checkBox2_1.setVisibility(View.VISIBLE);
+                            break;
+                        case "The Great Old One":
+                            checkBoxes2.setVisibility(View.VISIBLE);
+                            checkBoxes2.setText(getString(R.string.entropic_ward_use));
+                            checkBox2_1.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+                if(level >= 14){
+                    switch(character.getSubclass()){
+                        case "The Archfey":
+                            checkBoxes3.setVisibility(View.VISIBLE);
+                            checkBoxes3.setText(getString(R.string.dark_delirium_use));
+                            checkBox3_1.setVisibility(View.VISIBLE);
+                            break;
+                        case "The Fiend":
+                            checkBoxes3.setVisibility(View.VISIBLE);
+                            checkBoxes3.setText(getString(R.string.hurl_through_hell_use));
+                            checkBox3_1.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+                if(level == 20){
+                    checkBoxes4.setVisibility(View.VISIBLE);
+                    checkBox4_1.setVisibility(View.VISIBLE);
+                    checkBoxes4.setText(getString(R.string.eldritch_master_use));
                 }
                 break;
             case "Wizard":
