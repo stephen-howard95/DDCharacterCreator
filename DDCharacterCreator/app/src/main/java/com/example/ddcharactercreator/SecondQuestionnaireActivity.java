@@ -604,6 +604,17 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Warlock":
                             characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
+                            switch(characterSubclass){
+                                case "The Archfey":
+                                    bonusStats.add(getString(R.string.fey_presence));
+                                    break;
+                                case "The Fiend":
+                                    bonusStats.add(getString(R.string.dark_ones_blessing));
+                                    break;
+                                case "The Great Old One":
+                                    bonusStats.add(getString(R.string.awakened_mind));
+                                    break;
+                            }
                             break;
                         case "Wizard":
                             bonusStats.add(getString(R.string.arcane_recovery));
