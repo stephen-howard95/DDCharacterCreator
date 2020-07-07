@@ -80,6 +80,10 @@ public class Spell implements Serializable {
     public String getClassList(){
         return mClassList;
     }
+    public String setClassList(String newClassList){
+        mClassList = newClassList;
+        return newClassList;
+    }
 
     public static Comparator<Spell> spellNameComparator = new Comparator<Spell>() {
         public int compare(Spell spell1, Spell spell2){
