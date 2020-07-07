@@ -16,6 +16,8 @@ public class SpellChooserActivity extends AppCompatActivity{
 
     private static Spell spell;
     private Character character = DetailActivity.character;
+    SpellDatabase mDb;
+    List<Spell> completeSpellsList;
 
     private ArrayList<Spell> spellsList = new ArrayList<Spell>();
     private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
@@ -26,6 +28,10 @@ public class SpellChooserActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_spell);
+
+        mDb = SpellDatabase.getInstance(getApplicationContext());
+        completeSpellsList = mDb.spellDao().loadAllSpells();
+        Collections.sort(completeSpellsList, Spell.spellNameComparator);
 
         switch(character.getCharacterClass()){
             case "Bard":
@@ -43,6 +49,12 @@ public class SpellChooserActivity extends AppCompatActivity{
                     spellMax = 22;
                 }
                 cantripMax = 2;
+                switch(character.getLevel()){
+                    case 10:
+                    case 14:
+                    case 18:
+                        getMagicalSecrets();
+                }
                 break;
             case "Cleric":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(4));
@@ -73,6 +85,17 @@ public class SpellChooserActivity extends AppCompatActivity{
                     spellMax = 15;
                 }
                 cantripMax = 4;
+                if(character.getSubclass().equals("Stone Sorcery")){
+                    addSpellsToClassList("compelled duel");
+                    addSpellsToClassList("searing smite");
+                    addSpellsToClassList("thunderous smite");
+                    addSpellsToClassList("wrathful smite");
+                    addSpellsToClassList("branding smite");
+                    addSpellsToClassList("magic weapon");
+                    addSpellsToClassList("blinding smite");
+                    addSpellsToClassList("elemental weapon");
+                    addSpellsToClassList("staggering smite");
+                }
                 break;
             case "Warlock":
                 if(character.getLevel() <= 9){
@@ -91,6 +114,44 @@ public class SpellChooserActivity extends AppCompatActivity{
                     spellMax = 15;
                 }
                 cantripMax = 2;
+                switch(character.getSubclass()){
+                    case "The Archfey":
+                        addSpellsToClassList("faerie fire");
+                        addSpellsToClassList("sleep");
+                        addSpellsToClassList("calm emotions");
+                        addSpellsToClassList("phantasmal force");
+                        addSpellsToClassList("blink");
+                        addSpellsToClassList("plant growth");
+                        addSpellsToClassList("dominate beast");
+                        addSpellsToClassList("greater invisibility");
+                        addSpellsToClassList("dominate person");
+                        addSpellsToClassList("seeming");
+                        break;
+                    case "The Fiend":
+                        addSpellsToClassList("burning hands");
+                        addSpellsToClassList("command");
+                        addSpellsToClassList("blindness/deafness");
+                        addSpellsToClassList("scorching ray");
+                        addSpellsToClassList("fireball");
+                        addSpellsToClassList("stinking cloud");
+                        addSpellsToClassList("fire shield");
+                        addSpellsToClassList("wall of fire");
+                        addSpellsToClassList("flame strike");
+                        addSpellsToClassList("hallow");
+                        break;
+                    case "The Great Old One":
+                        addSpellsToClassList("dissonant whispers");
+                        addSpellsToClassList("hideous laughter");
+                        addSpellsToClassList("detect thoughts");
+                        addSpellsToClassList("phantasmal force");
+                        addSpellsToClassList("clairvoyance");
+                        addSpellsToClassList("sending");
+                        addSpellsToClassList("dominate beast");
+                        addSpellsToClassList("black tentacles");
+                        addSpellsToClassList("dominate person");
+                        addSpellsToClassList("telekinesis");
+                        break;
+                }
                 break;
             case "Wizard":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(3));
@@ -117,10 +178,6 @@ public class SpellChooserActivity extends AppCompatActivity{
                 spellsList.add(spell);
             }
         }
-
-        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
-        List<Spell> completeSpellsList = mDb.spellDao().loadAllSpells();
-        Collections.sort(completeSpellsList, Spell.spellNameComparator);
 
         SpellAdapter mAdapter = new SpellAdapter(this, new ArrayList<Spell>());
 
@@ -191,5 +248,21 @@ public class SpellChooserActivity extends AppCompatActivity{
                 }
             }
         });
+    }
+    private void addSpellsToClassList(String spellName){
+        String classList;
+        for(int i=0; i<completeSpellsList.size(); i++){
+            if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName) && !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
+                classList = completeSpellsList.get(i).getClassList();
+                completeSpellsList.get(i).setClassList(classList + character.getCharacterClass());
+            }
+        }
+    }
+    private void getMagicalSecrets(){
+        for(int i=0; i<completeSpellsList.size(); i++){
+            if(!completeSpellsList.get(i).getClassList().contains("Bard")){
+                completeSpellsList.get(i).setClassList(completeSpellsList.get(i).getClassList() + character.getCharacterClass());
+            }
+        }
     }
 }
