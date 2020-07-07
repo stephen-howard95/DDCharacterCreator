@@ -1233,6 +1233,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         //new eldritch invocation
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "The Archfey":
+                                bonusStats1.setText(getString(R.string.misty_escape));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.misty_escape));
+                                break;
+                            case "The Fiend":
+                                bonusStats1.setText(getString(R.string.dark_ones_own_luck));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.dark_ones_own_luck));
+                                break;
+                            case "The Great Old One":
+                                bonusStats1.setText(getString(R.string.entropic_ward));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.entropic_ward));
+                                break;
+                        }
                         break;
                     case 7:
                         //new eldritch invocation
@@ -1243,6 +1258,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         //new eldritch invocation
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "The Archfey":
+                                bonusStats1.setText(getString(R.string.beguiling_defenses));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.beguiling_defenses));
+                                break;
+                            case "The Fiend":
+                                bonusStats1.setText(getString(R.string.fiendish_resilience));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.fiendish_resilience));
+                                break;
+                            case "The Great Old One":
+                                bonusStats1.setText(getString(R.string.thought_shield));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.thought_shield));
+                                break;
+                        }
                         break;
                     case 11:
                         mysticArcanumChoices = getSpellsPerLevel(6);
@@ -1266,6 +1296,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "The Archfey":
+                                bonusStats1.setText(getString(R.string.dark_delirium));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.dark_delirium));
+                                break;
+                            case "The Fiend":
+                                bonusStats1.setText(getString(R.string.hurl_through_hell));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.hurl_through_hell));
+                                break;
+                            case "The Great Old One":
+                                bonusStats1.setText(getString(R.string.create_thrall));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.create_thrall));
+                                break;
+                        }
                         break;
                     case 15:
                         //new eldritch invocation
