@@ -268,7 +268,7 @@ public class SpellChooserActivity extends AppCompatActivity{
     //Allows bards access to spells outside of their character class list per the Magical Secrets Feature
     private void getMagicalSecrets(){
         for(int i=0; i<completeSpellsList.size(); i++){
-            if(!completeSpellsList.get(i).getClassList().contains("Bard")){
+            if(!completeSpellsList.get(i).getClassList().contains("Bard") && completeSpellsList.get(i).getLevel() != 0){
                 completeSpellsList.get(i).setClassList(completeSpellsList.get(i).getClassList() + character.getCharacterClass());
             }
         }
