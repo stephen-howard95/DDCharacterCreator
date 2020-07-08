@@ -50,10 +50,16 @@ public class SpellChooserActivity extends AppCompatActivity{
                 }
                 cantripMax = 2;
                 switch(character.getLevel()){
+                    case 6:
+                        if(character.getSubclass().equals("College of Lore")){
+                            getMagicalSecrets();
+                        }
+                        break;
                     case 10:
                     case 14:
                     case 18:
                         getMagicalSecrets();
+                        break;
                 }
                 break;
             case "Cleric":
@@ -249,6 +255,7 @@ public class SpellChooserActivity extends AppCompatActivity{
             }
         });
     }
+    //Allows certain character classes to add a specific spell to their class list
     private void addSpellsToClassList(String spellName){
         String classList;
         for(int i=0; i<completeSpellsList.size(); i++){
@@ -258,6 +265,7 @@ public class SpellChooserActivity extends AppCompatActivity{
             }
         }
     }
+    //Allows bards access to spells outside of their character class list per the Magical Secrets Feature
     private void getMagicalSecrets(){
         for(int i=0; i<completeSpellsList.size(); i++){
             if(!completeSpellsList.get(i).getClassList().contains("Bard")){
