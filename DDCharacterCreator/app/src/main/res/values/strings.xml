@@ -62,7 +62,7 @@
         <item name="stealth">Stealth</item>
         <item name="survival">Survival</item>
     </string-array>
-    
+
     <string-array name="ability_scores_array">
         <item name="strength">Strength</item>
         <item name="dexterity">Dexterity</item>
@@ -71,7 +71,7 @@
         <item name="wisdom">Wisdom</item>
         <item name="charisma">Charisma</item>
     </string-array>
-    
+
     <string-array name="languages_array">
         <item name="dwarvish">Dwarvish</item>
         <item name="elvish">Elvish</item>
@@ -211,7 +211,7 @@
     <string name="alignment">Alignment</string>
     <string name="languages_known">Languages Known: </string>
     <string name="racial_class_based_stats">Racial/Class-Based Stats</string>
-    
+
     //Level Up Activity Strings
     <string name="ability_score_improvement">Choose 2 skills to improve by 1 point, to a maximum of 20. You may choose the same skill for both points.</string>
     <string name="proficiency_bonus_improvement">Your proficiency bonus has improved to</string>
@@ -233,7 +233,7 @@
     <string name="cleric_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, and Wisdom/Charisma saving throws</string>
     <string name="druid_other_proficiencies">Light armor, Medium armor, Shields, Clubs, Daggers, Darts, Javelins, Maces, Quarterstaffs, Scimitars, Sickles, Slings, Spears, Herbalism kits, and Intelligence/Wisdom saving throws</string>
     <string name="fighter_other_proficiencies">All armor, Shields, Simple weapons, Martial weapons, and Strength/Constitution saving throws</string>
-    <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instruments and Strength/Dexterity saving throws</string>
+    <string name="monk_other_proficiencies">Simple weapons, Shortswords, one type of artisan\'s tools/musical instrument, and Strength/Dexterity saving throws</string>
     <string name="paladin_other_proficiencies">All armor, Shields, Simple weapons, Martial weapons, and Wisdom/Charisma saving throws</string>
     <string name="ranger_other_proficiencies">Light armor, Medium armor, Shields, Simple weapons, Martial weapons, and Strength/Dexterity saving throws</string>
     <string name="rogue_other_proficiencies">Light Armor, Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords, Thieve\'s tools, and Dexterity/Intelligence saving throws</string>
@@ -259,9 +259,9 @@
     <string name="display_options">Display Options</string>
     <string name="add_new_character">Add New Character</string>
     <string name="finish_character">Finish Character</string>
-    <string name="concentration">\"Concentration, \"</string>
+    <string name="concentration">Concentration, </string>
     <string name="character_creation_start">Click the button at the bottom right corner of the screen to create a new character</string>
-    
+
     //Barbarian leveling up/subclass bonuses
     <string name="primal_path">Primal Path: </string>
     <string name="rage_description">As a bonus action, you can enter a rage. While raging and not wearing heavy armor, you have advantage on STR checks and saving throws, you deal bonus damage(listed above) on all STR-based melee attacks, and you have resistance to bludgeoning, piercing and slashing damage. The rage lasts for 1 minute or can end early if you end your turn without having dealt or taken damage since your previous turn, if you are knocked unconscious, or if you choose to end it as a bonus action.</string>
@@ -288,7 +288,12 @@
     <string name="jack_of_all_trades">Jack of All Trades: Any skill check you make that doesn\'t already add your proficiency bonus, you can now add half your proficiency bonus (rounded down)</string>
     <string name="font_of_inspiration">Font of Inspiration: You regain all uses of Bardic Inspiration after a short or long rest</string>
     <string name="countercharm">Countercharm: As an action, you can start a performance that will last until the end of your next turn. During that time, you and any friendly creatures within 30ft of you have advantage on saving throws against being frightened or charmed</string>
+    <string name="magical_secrets">Magical Secrets: You gain access to 2 spells from any other character class list. You may add them from the spellcasting tab.</string>
     <string name="superior_inspiration">Superior Inspiration: When you roll initiative and have no uses of Bardic Inspiration left, you regain one use</string>
+    <string name="cutting_words">Cutting Words: When a creature within 60ft of you makes an attack roll, ability check, or damage roll, you can use your reaction to roll one of your Bardic Inspiration die and subtracting the number from the creatures roll. The creature is immune if it cannot hear you or is immune to being charmed.</string>
+    <string name="peerless_skill">Peerless Skill: When you make an ability check, you can expend one use of your Bardic Inspiration on yourself.</string>
+    <string name="combat_inspiration">Combat Inspiration: A creature that has a Bardic Inspiration die from you can roll it and add to a damage roll they make. They can also use their reaction after being attacked to add the Bardic Inspiration die roll to their AC for that attack.</string>
+    <string name="battle_magic">Battle Magic: When you use your action to cast a Bard spell, you may make 1 weapon attack as a bonus action.</string>
 
     //Cleric leveling up/subclass bonuses
     <string name="divine_domain">Divine Domain: </string>
