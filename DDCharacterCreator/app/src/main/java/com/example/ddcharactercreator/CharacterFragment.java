@@ -85,7 +85,6 @@ public class CharacterFragment extends Fragment {
         characterAlignment.setText(character.getAlignment());
 
         //Adding in Racial Benefits and languages
-        //TODO: remove language from bonusStats list. It shouldn't display in the racial/class bonus list. (Maybe languages should go in a different list?)
         ArrayList<String> bonusStats = character.getRaceAndClassBonusStats();
         languagesKnown.setText(bonusStats.get(0));
         if(character.getRace().equals("Dragonborn")) {
@@ -198,22 +197,15 @@ public class CharacterFragment extends Fragment {
                 if(level >= 10){
                     subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d10");
                     //TODO: Bards choose 2 more proficient skills. They double their proficiency bonus for these choices.
-                    //TODO: Bards get 2 spells that count toward their spells known from any class.
                 }
                 if(level >= 13){
                     subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d10");
-                }
-                if(level >= 14){
-                    //TODO: Bards get 2 spells that count toward their spells known from any class.
                 }
                 if(level >= 15){
                     subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d12");
                 }
                 if(level >= 17){
                     subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d12");
-                }
-                if(level >= 18){
-                    //TODO: Bards get 2 spells that count toward their spells known from any class.
                 }
                 break;
             case "Cleric":
@@ -558,7 +550,7 @@ public class CharacterFragment extends Fragment {
                     subclassInfoEditText.setText(String.valueOf(character.getLevel()));
                 }
                 if(level >= 3){
-                    /* TODO: How to pass in metamagic options?? new ArrayList<String>()
+                    /* 
                     subclassInfoHeader.setVisibility(View.VISIBLE);
                     subclassInfoHeader.setText(getString(R.string.metamagic_options));
                     subclassInfoListView.setVisibility(View.VISIBLE); */
