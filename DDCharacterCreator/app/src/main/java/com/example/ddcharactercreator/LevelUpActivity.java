@@ -256,38 +256,73 @@ public class LevelUpActivity extends AppCompatActivity {
                         improveAbilityScore(abilityScoreImprovement1.getSelectedItem().toString(), newStatValues);
                         improveAbilityScore(abilityScoreImprovement2.getSelectedItem().toString(), newStatValues);
                     }
-                    if((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2){
-                        switch(choice1.getSelectedItem().toString()){
-                            case "Archery":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
-                                break;
-                            case "Defense":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
-                                break;
-                            case "Dueling":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
-                                break;
-                            case "Great Weapon Fighting":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
-                                break;
-                            case "Protection":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
-                                break;
-                            case "Two-Weapon Fighting":
-                                character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
-                                break;
-                        }
-                    }
                     Integer addToHP = Integer.parseInt(moreHP.getText().toString());
                     if(character.getSubclass().equals("Draconic Bloodline") || character.getSubclass().equals("Stone Sorcery")){
                         addToHP += 1;
                     }
+                    String subclass = character.getSubclass();
+                    switch(character.getCharacterClass()){
+                        case "Bard":
+                            if(finalLevel == 3){
+                                subclass = choice1.getSelectedItem().toString();
+                                switch(subclass){
+                                    case "College of Lore":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.cutting_words));
+                                        break;
+                                    case "College of Valor":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.combat_inspiration));
+                                        break;
+                                }
+                            }
+                            break;
+                        case "Paladin":
+                        case "Ranger":
+                            if(finalLevel == 2){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Archery":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                        break;
+                                    case "Defense":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                        break;
+                                    case "Dueling":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                        break;
+                                    case "Great Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                        break;
+                                    case "Protection":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                        break;
+                                    case "Two-Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
+                                        break;
+                                }
+                            }
+
+                    }
+                   /* if(character.getCharacterClass().equals("Warlock") && choice1.getVisibility() == View.VISIBLE){
+                        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+                        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+                        Spell spell = spellsList.get(The spell who's name is the one chosen in choice1);
+
+                        character.getSpellsKnown().add(spell);
+                    }
+                    if(character.getCharacterClass().equals("Wizard") && choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE){
+                        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+                        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+                        Spell spell1 = spellsList.get(The spell who's name is the one chosen in choice1);
+                        Spell spell2 = spellsList.get(The spell who's name is the one chosen in choice2);
+
+                        //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
+                        // as cantrips, at level 20, they can be cast as cantrips once per long rest.
+                    }*/
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
                             + calculateModifier(character.getStatValues().get(2)));
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                             character.getAlignment(), character.getName(), newStatValues,
                             character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
-                            character.getSubclass(), character.getSpellsKnown(), character.getSpellSlotsClicked(), character.getRaceAndClassBonusStats()));
+                            subclass, character.getSpellsKnown(), character.getSpellSlotsClicked(), character.getRaceAndClassBonusStats()));
                 }
             }
         });
@@ -304,6 +339,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.danger_sense));
                         break;
                     case 3:
+                        //Choose a primal path. That choice will change a TextView, as you earn a bonus from your choice at level 3
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You have an extra usage of Rage");
                         break;
@@ -396,7 +432,16 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.jack_of_all_trades));
                         break;
                     case 3:
-                        //choose a bard college, gives you bonuses at levels 3, 6, and 14.
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Bard Subclass");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("College of Lore");
+                        subclassChoices.add("College of Valor");
+                        choice1.setAdapter(subclassAdapter);
+                        //TODO: Display the initial bonuses depending on the chosen subclass.
                         //expertise choices
                         break;
                     case 4:
@@ -412,6 +457,16 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(R.string.countercharm);
                         character.getRaceAndClassBonusStats().add(getString(R.string.countercharm));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "College of Lore":
+                                bonusStats2.setText(getString(R.string.magical_secrets));
+                                break;
+                            case "College of Valor":
+                                bonusStats2.setText(getString(R.string.extra_attack));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
+                                break;
+                        }
                         break;
                     case 7:
                         break;
@@ -424,6 +479,8 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 10:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your Bardic Inspiration die is now a d10");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.magical_secrets));
                         break;
                     case 11:
                         break;
@@ -434,7 +491,19 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("Your Song of Rest die is now a d10");
                         break;
                     case 14:
-                        //magical secrets
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.magical_secrets));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "College of Lore":
+                                bonusStats2.setText(getString(R.string.peerless_skill));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.peerless_skill));
+                                break;
+                            case "College of Valor":
+                                bonusStats2.setText(getString(R.string.battle_magic));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.battle_magic));
+                                break;
+                        }
                         break;
                     case 15:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -447,7 +516,8 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("Your Song of Rest die is now a d12");
                         break;
                     case 18:
-                        //magical secrets
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.magical_secrets));
                         break;
                     case 19:
                         break;
