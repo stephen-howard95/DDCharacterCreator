@@ -35,6 +35,8 @@ public class SpellcastingFragment extends Fragment {
     private int spellCount;
     private int cantripCount;
     private ArrayList<String> spellSlotsClicked = DetailActivity.character.getSpellSlotsClicked();
+    private SpellDatabase mDb;
+    private List<Spell> completeSpellsList;
 
     @BindView(R.id.spellcasting_ability) TextView spellcastingAbility;
     @BindView(R.id.spell_save_dc) TextView spellSaveDC;
@@ -94,7 +96,7 @@ public class SpellcastingFragment extends Fragment {
             }
         }
 
-        if(character.getCharacterClass().equals("Barbarian") || character.getCharacterClass().equals("Fighter") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
+        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || character.getCharacterClass().equals("Fighter") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
@@ -106,7 +108,21 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setText("This character class does not have access to Spellcasting features");
             addSpellsTextView.setTextSize(48);
         }else {
+            mDb = SpellDatabase.getInstance(getContext());
+            completeSpellsList = mDb.spellDao().loadAllSpells();
+            Collections.sort(completeSpellsList, Spell.spellNameComparator);
+
             switch (character.getCharacterClass()) {
+                case "Barbarian":
+                    spellSlot1.setVisibility(View.GONE);
+                    spellSlot2.setVisibility(View.GONE);
+                    //API does not have beast sense as a spell.
+                    getSubclassSpells("beast sense");
+                    getSubclassSpells("speak with animals");
+                    if(character.getLevel() >= 10){
+                        getSubclassSpells("commune with nature");
+                    }
+                    break;
                 case "Bard":
                     primarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
