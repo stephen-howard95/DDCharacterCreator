@@ -368,6 +368,15 @@
     <string name="timeless_body_druid">Timeless Body: Due to druidic magic forces, your body only ages 1 year for every 10 years that pass.</string>
     <string name="beast_spells">Beast Spells: You can now perform the Somatic and Verbal aspects of a spell while in beast form, but cannot provide material components.</string>
     <string name="archdruid">Archdruid: You can now use your Wild Shape an unlimited amount of times.</string>
+    <string name="natural_recovery">Natural Recovery: Once per day, when you finish a short rest, you can regain spell slots that have a combined level of half your level. These slots cannot be 6th level or above.</string>
+    <string name="natural_recovery_amount">Natural Recovery Amount: </string>
+    <string name="natures_ward">Natures Ward: You are immune to poison and disease and can no longer be frightened or charmed by fey or elementals</string>
+    <string name="natures_sanctuary">Nature\'s Sanctuary: When a beast or plant creature attacks you, it must succeed on a WIS saving throw. If it fails, it must either choose a new target or automatically miss the attack. The attacker is aware of this effect before it attacks.</string>
+    <string name="combat_wild_shape">Combat Wild Shape: You can now use your wild shape feature as a bonus action. Also, while transformed by wild shape, you can use a bonus action to expend a spell slot and heal 1d8 for each level of the spell slot expended</string>
+    <string name="circle_forms">Circle Forms: You can now transform into a beast with a challenge rating as high as one third your level rounded down.</string>
+    <string name="primal_strike">Primal Strike: Your attacks in wild shape now count as magical for the purposes of overcoming resistance and immunity to nonmagical attacks</string>
+    <string name="elemental_wild_shape">Elemental Wild Shape: You can expend two uses of your wild shape to transform into a water, earth, fire, or air elemental</string>
+    <string name="thousand_forms">Thousand Forms: You can now cast the Alter Self spell at will.</string>
 
     //Fighter leveling up/subclass bonuses
     <string name="martial_archetype">Martial Archetype: </string>
