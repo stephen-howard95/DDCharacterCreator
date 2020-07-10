@@ -323,6 +323,21 @@ public class LevelUpActivity extends AppCompatActivity {
                                 }
                             }
                             break;
+                        case "Druid":
+                            if(finalLevel == 2){
+                                subclass = choice1.getSelectedItem().toString();
+                            } else if(finalLevel == 3 && character.getSubclass().equals("Circle of the Land")){
+                                subclass = subclass + ", " + choice1.getSelectedItem().toString();
+                            }
+                            switch(subclass){
+                                case "Circle of the Land":
+                                    character.getRaceAndClassBonusStats().add(getString(R.string.natural_recovery));
+                                    break;
+                                case "Circle of the Moon":
+                                    character.getRaceAndClassBonusStats().add(getString(R.string.combat_wild_shape));
+                                    break;
+                            }
+                            break;
                         case "Paladin":
                         case "Ranger":
                             if(finalLevel == 2){
@@ -840,14 +855,49 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
                         character.getRaceAndClassBonusStats().add(getString(R.string.wild_shape));
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Druid Circle");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("Circle of the Land");
+                        subclassChoices.add("Circle of the Moon");
+                        choice1.setAdapter(subclassAdapter);
                         break;
                     case 3:
+                        ArrayList<String> landCircleChoices = new ArrayList<>();
+                        ArrayAdapter<String> landCircleAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, landCircleChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a type of land. This will provide you with more spells");
+                        choice1.setVisibility(View.VISIBLE);
+                        landCircleChoices.add("Arctic");
+                        landCircleChoices.add("Coast");
+                        landCircleChoices.add("Desert");
+                        landCircleChoices.add("Forest");
+                        landCircleChoices.add("Grassland");
+                        landCircleChoices.add("Mountain");
+                        landCircleChoices.add("Swamp");
+                        landCircleChoices.add("Underdark");
+                        choice1.setAdapter(landCircleAdapter);
                         break;
                     case 4:
                         break;
                     case 5:
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().contains("Circle of the Land")){
+                            bonusStats1.setText(getString(R.string.lands_stride));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.lands_stride));
+                        } else if(character.getSubclass().equals("Circle of the Moon")){
+                            bonusStats2.setVisibility(View.VISIBLE);
+                            bonusStats1.setText(getString(R.string.circle_forms));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.circle_forms));
+                            bonusStats2.setText(getString(R.string.primal_strike));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.primal_strike));
+                        }
                         break;
                     case 7:
                         break;
@@ -856,6 +906,14 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         break;
                     case 10:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().contains("Circle of the Land")){
+                            bonusStats1.setText(getString(R.string.natures_ward));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.natures_ward));
+                        } else if(character.getSubclass().equals("Circle of the Moon")){
+                            bonusStats1.setText(getString(R.string.elemental_wild_shape));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.elemental_wild_shape));
+                        }
                         break;
                     case 11:
                         break;
@@ -864,6 +922,14 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 13:
                         break;
                     case 14:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().contains("Circle of the Land")){
+                            bonusStats1.setText(getString(R.string.natures_sanctuary));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.natures_sanctuary));
+                        } else if(character.getSubclass().equals("Circle of the Moon")){
+                            bonusStats1.setText(getString(R.string.thousand_forms));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.thousand_forms));
+                        }
                         break;
                     case 15:
                         break;
