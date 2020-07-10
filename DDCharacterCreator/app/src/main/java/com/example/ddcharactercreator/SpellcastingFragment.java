@@ -290,6 +290,29 @@ public class SpellcastingFragment extends Fragment {
                                     getSubclassSpells("modify memory");
                             }
                             break;
+                        case "War":
+                            switch(character.getLevel()){
+                                case 1:
+                                    getSubclassSpells("divine favor");
+                                    getSubclassSpells("shield of faith");
+                                    break;
+                                case 3:
+                                    getSubclassSpells("magic weapon");
+                                    getSubclassSpells("spiritual weapon");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("crusader's mantle");
+                                    getSubclassSpells("spirit guardians");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("freedom of movement");
+                                    getSubclassSpells("stoneskin");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("flame strike");
+                                    getSubclassSpells("hold monster");
+                                    break;
+                            }
                     }
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
@@ -299,11 +322,176 @@ public class SpellcastingFragment extends Fragment {
                     break;
                 case "Druid":
                     primarySpellcasterSlotsPerLevel();
+                    switch(character.getSubclass()){
+                        case "Circle of the Land, Arctic":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("hold person");
+                                    getSubclassSpells("spike growth");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("sleet storm");
+                                    getSubclassSpells("slow");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("freedom of movement");
+                                    getSubclassSpells("ice storm");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("commune with nature");
+                                    getSubclassSpells("cone of cold");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Coast":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("mirror image");
+                                    getSubclassSpells("misty step");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("water breathing");
+                                    getSubclassSpells("water walk");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("control water");
+                                    getSubclassSpells("freedom of movement");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("conjure elemental");
+                                    getSubclassSpells("scrying");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Desert":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("blur");
+                                    getSubclassSpells("silence");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("create food and water");
+                                    getSubclassSpells("protection from energy");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("blight");
+                                    getSubclassSpells("hallucinatory terrain");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("insect plague");
+                                    getSubclassSpells("wall of stone");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Forest":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("barkskin");
+                                    getSubclassSpells("spider climb");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("call lightning");
+                                    getSubclassSpells("plant growth");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("divination");
+                                    getSubclassSpells("freedom of movement");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("commune with nature");
+                                    getSubclassSpells("tree stride");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Grassland":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("invisibility");
+                                    getSubclassSpells("pass without trace");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("daylight");
+                                    getSubclassSpells("haste");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("divination");
+                                    getSubclassSpells("freedom of movement");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("dream");
+                                    getSubclassSpells("insect plague");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Mountain":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("spider climb");
+                                    getSubclassSpells("spike growth");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("lightning bolt");
+                                    getSubclassSpells("meld into stone");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("stone shape");
+                                    getSubclassSpells("stoneskin");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("passwall");
+                                    getSubclassSpells("wall of stone");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Swamp":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("darkness");
+                                    getSubclassSpells("acid arrow");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("water walk");
+                                    getSubclassSpells("stinking cloud");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("freedom of movement");
+                                    getSubclassSpells("locate creature");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("insect plague");
+                                    getSubclassSpells("scrying");
+                                    break;
+                            }
+                            break;
+                        case "Circle of the Land, Underdark":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("spider climb");
+                                    getSubclassSpells("web");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("gaseous form");
+                                    getSubclassSpells("stinking cloud");
+                                    break;
+                                case 7:
+                                    getSubclassSpells("greater invisibility");
+                                    getSubclassSpells("stone shape");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("cloudkill");
+                                    getSubclassSpells("insect plague");
+                                    break;
+                            }
+                            break;
+                    }
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
                     cantripCount = 2;
+                    if(character.getSubclass().contains("Circle of the Land")){
+                        cantripCount += 1;
+                    }
                     break;
                 case "Paladin":
                     secondarySpellcasterSlotsPerLevel();
