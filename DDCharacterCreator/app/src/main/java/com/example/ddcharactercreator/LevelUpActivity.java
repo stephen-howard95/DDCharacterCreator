@@ -262,10 +262,58 @@ public class LevelUpActivity extends AppCompatActivity {
                     }
                     String subclass = character.getSubclass();
                     switch(character.getCharacterClass()){
+                        case "Barbarian":
+                            if(finalLevel == 6 || finalLevel == 14){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Aspect of the Bear":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.aspect_of_the_bear));
+                                        break;
+                                    case "Aspect of the Eagle":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.aspect_of_the_eagle));
+                                        break;
+                                    case "Aspect of the Wolf":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.aspect_of_the_wolf));
+                                        break;
+                                    case "Aspect of the Tiger":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.aspect_of_the_tiger));
+                                        break;
+                                    case "Totemic Attunement: Bear":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totemic_attunement_bear));
+                                        break;
+                                    case "Totemic Attunement: Eagle":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totemic_attunement_eagle));
+                                        break;
+                                    case "Totemic Attunement: Wolf":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totemic_attunement_wolf));
+                                        break;
+                                    case "Totemic Attunement: Tiger":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totemic_attunement_tiger));
+                                        break;
+                                }
+                            }
                         case "Bard":
                             if(finalLevel == 3){
                                 subclass = choice1.getSelectedItem().toString();
                                 switch(subclass){
+                                    case "Path of the Berserker":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.frenzy));
+                                        break;
+                                    case "Path of the Bear Totem Warrior":
+                                        subclass = "Path of the Totem Warrior";
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_bear));
+                                        break;
+                                    case "Path of the Eagle Totem Warrior":
+                                        subclass = "Path of the Totem Warrior";
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_eagle));
+                                        break;
+                                    case "Path of the Wolf Totem Warrior":
+                                        subclass = "Path of the Totem Warrior";
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_wolf));
+                                        break;
+                                    case "Path of the Tiger Totem Warrior":
+                                        subclass = "Path of the Totem Warrior";
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_tiger));
+                                        break;
                                     case "College of Lore":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.cutting_words));
                                         break;
@@ -339,9 +387,20 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.danger_sense));
                         break;
                     case 3:
-                        //Choose a primal path. That choice will change a TextView, as you earn a bonus from your choice at level 3
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You have an extra usage of Rage");
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Primal Path");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("Path of the Berserker");
+                        subclassChoices.add("Path of the Bear Totem Warrior");
+                        subclassChoices.add("Path of the Eagle Totem Warrior");
+                        subclassChoices.add("Path of the Wolf Totem Warrior");
+                        subclassChoices.add("Path of the Tiger Totem Warrior");
+                        choice1.setAdapter(subclassAdapter);
                         break;
                     case 4:
                         break;
@@ -351,9 +410,28 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
-                        //primal path upgrade
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You have an extra usage of Rage");
+                        switch(character.getSubclass()){
+                            case "Path of the Berserker":
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText(getString(R.string.mindless_rage));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.mindless_rage));
+                                break;
+                            case "Path of the Totem Warrior":
+                                ArrayList<String> totemPathChoices = new ArrayList<>();
+                                ArrayAdapter<String> totemPathAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, totemPathChoices);
+                                totemPathChoices.add("Aspect of the Bear");
+                                totemPathChoices.add("Aspect of the Eagle");
+                                totemPathChoices.add("Aspect of the Wolf");
+                                totemPathChoices.add("Aspect of the Tiger");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText(getString(R.string.totem_spirit));
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(totemPathAdapter);
+                                break;
+                        }
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -370,7 +448,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.brutal_critical));
                         break;
                     case 10:
-                        //primal path upgrade
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Path of the Berserker":
+                                bonusStats1.setText(getString(R.string.intimidating_presence));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.intimidating_presence));
+                                break;
+                            case "Path of the Totem Warrior":
+                                bonusStats1.setText(getString(R.string.spirit_walker));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.spirit_walker));
+                                break;
+                        }
                         break;
                     case 11:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -386,7 +474,26 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("Brutal critical is now 2 extra damage dice");
                         break;
                     case 14:
-                        //primal path upgrade
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Path of the Berserker":
+                                bonusStats1.setText(getString(R.string.retaliation));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.retaliation));
+                                break;
+                            case "Path of the Totem Warrior":
+                                ArrayList<String> totemPathChoices = new ArrayList<>();
+                                ArrayAdapter<String> totemPathAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, totemPathChoices);
+                                totemPathChoices.add("Totemic Attunement: Bear");
+                                totemPathChoices.add("Totemic Attunement: Eagle");
+                                totemPathChoices.add("Totemic Attunement: Wolf");
+                                totemPathChoices.add("Totemic Attunement: Tiger");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText(getString(R.string.totem_spirit));
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(totemPathAdapter);
+                                break;
+                        }
                         break;
                     case 15:
                         bonusStats1.setVisibility(View.VISIBLE);
