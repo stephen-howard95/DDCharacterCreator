@@ -365,13 +365,33 @@ public class CharacterFragment extends Fragment {
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
-                    subclassInfoTextView2.setText(getString(R.string.wild_shape_time_limit) + Math.floor(level/2) + "hours");
+                    subclassInfoTextView2.setText(getString(R.string.wild_shape_time_limit) + level/2 + "hours");
+                    if(character.getSubclass().contains("Circle of the Land")){
+                        subclassInfoTextView3.setVisibility(View.VISIBLE);
+                        subclassInfoTextView3.setText(getString(R.string.natural_recovery_amount) + "<= " + level/2);
+                        checkBoxes2.setVisibility(View.VISIBLE);
+                        checkBoxes2.setText("Natural Recovery: ");
+                        checkBox2_1.setVisibility(View.VISIBLE);
+                    } else if(character.getSubclass().equals("Circle of the Moon")){
+                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1, No Flying/Swimming Speed");
+                    }
                 }
                 if(level >= 4){
                     subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/2, No Flying Speed");
+                    if(character.getSubclass().equals("Circle of the Moon")){
+                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1, No Flying Speed");
+                    }
+                }
+                if(level >= 6){
+                    if(character.getSubclass().equals("Circle of the Moon")){
+                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = " + level/3);
+                    }
                 }
                 if(level >= 8){
                     subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1");
+                    if(character.getSubclass().equals("Circle of the Moon")){
+                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = " + level/3);
+                    }
                 }
                 if(level == 20){
                     checkBox1_2.setVisibility(View.GONE);
