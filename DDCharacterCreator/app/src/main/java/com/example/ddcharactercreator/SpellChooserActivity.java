@@ -69,6 +69,9 @@ public class SpellChooserActivity extends AppCompatActivity{
             case "Druid":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(4));
                 cantripMax = 2;
+                if(character.getSubclass().contains("Circle of the Land")){
+                    cantripMax += 1;
+                }
                 break;
             case "Paladin":
                 spellMax = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
