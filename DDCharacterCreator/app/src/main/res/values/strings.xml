@@ -277,6 +277,25 @@
     <string name="persistent_rage">Persistent Rage: Your rage only ends early if you fall unconscious or if you choose to end it.</string>
     <string name="indomitable_might">Indomitable Might: If your total for a STR check is less than your STR score, you can use that score instead.</string>
     <string name="primal_champion">Primal Champion: Your Strength and Constitution scores have both increased by 4.</string>
+    <string name="frenzy">Frenzy: When you rage, you can go into a frenzied rage. While frenzied, you can you can make 1 melee weapon attack as a bonus action on each of your turns. When your rage ends, you suffer 1 point of exhaustion</string>
+    <string name="mindless_rage">Mindless Rage: You cannot be charmed or frightened while raging. If you are charmed or frightened before you rage, the effect is suspended until you finish raging.</string>
+    <string name="intimidating_presence">Intimidating Presence: As an action, you can frighten a creature within 30ft of you, if they can hear you. They must succeed a WIS saving throw (DC = 8 + your proficiency bonus + your CHA modifier) or be frightened by you until the end of your next turn. You can use an action on each of your turns to extend the duration. This effect ends if you lose line of sight to the creature or it moves 60ft away from you.</string>
+    <string name="retaliation">Retaliation: When you take damage from a creature within 5ft of you, you can use your reaction to make a melee weapon attack against that creature.</string>
+    <string name="spirit_seeker">Spirit Seeker: You can cast the spells "beast sense" and "speak with animals" as rituals.</string>
+    <string name="totem_spirit">You gain a magical benefit based on the totem animal of your choice. It can be the same or different than the totem animal you initially chose.</string>
+    <string name="totem_spirit_bear">Totem Spirit: Bear: While raging, you have resistance to all damage except psychic damage.</string>
+    <string name="totem_spirit_eagle">Totem Spirit: Eagle: While raging, other creatures have disadvantage on opportunity attacks against you. You can also Dash as a bonus action</string>
+    <string name="totem_spirit_wolf">Totem Spirit: Wolf: While raging, Your friends have advantage on melee attack rolls against creatures within 5ft of you that are hostile to you.</string>
+    <string name="totem_spirit_tiger">Totem Spirit: Tiger: While raging, you add 10ft to your long jump and 3ft to your high jump.</string>
+    <string name="aspect_of_the_bear">Aspect of the Bear: Your carrying capacity is doubled and you have advantage on STR checks to push, pull, lift, or break objects.</string>
+    <string name="aspect_of_the_eagle">Aspect of the Eagle: You can see up to 1 mile away with no difficulty and are able to discern fine details at something no more than 100ft away. Dim light no longer imposes disadvantage on Perception checks.</string>
+    <string name="aspect_of_the_wolf">Aspect of the Wolf: You can track other creatures while traveling at a fast pace, and can move stealthily at a normal pace.</string>
+    <string name="aspect_of_the_tiger">Aspect of the Tiger: You gain proficiency in 2 of the following skills: Athletics, Acrobatics, Stealth, or Survival.</string>
+    <string name="spirit_walker">Spirit Walker: You can now cast the spell "Commune with Nature" as a ritual. When you do, a spiritual version of one of the animals you chose for a totem spirit appears to assist you.</string>
+    <string name="totemic_attunement_bear">Totemic Attunement: Bear: While raging, any creature within 5ft of you that is hostile to you has disadvantage on attack rolls against creatures that are not you. An enemy is immune to this effect if they cannot be frightened or cannot see or hear you.</string>
+    <string name="totemic_attunement_eagle">Totemic Attunement: Eagle: While raging, you have a flying speed equal to your walking speed, but it only works in short bursts. If you end your turn in the air, you begin to fall.</string>
+    <string name="totemic_attunement_wolf">Totemic Attunement: Wolf: While raging, you can use a bonus action to knock a Large or smaller creature prone when you hit it with a melee weapon attack.</string>
+    <string name="totemic_attunement_tiger">Totemic Attunement: Tiger: While raging, if you move 20ft toward a large or smaller creature right before making a melee attack against it, you can make 1 more melee attack against it as a bonus action.</string>
 
     //Bard leveling up/subclass bonuses
     <string name="bard_college">Bard College: </string>
