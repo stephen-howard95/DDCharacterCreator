@@ -391,6 +391,8 @@ public class SpellcastingFragment extends Fragment {
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
                     } else if(character.getCharacterClass().equals("Ranger") && character.getLevel() < 2){
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
+                    } else if(character.getSubclass().equals("Path of the Totem Warrior")){
+                        Toast.makeText(getContext(), "Due to your class, you cannot learn any spells", Toast.LENGTH_SHORT).show();
                     } else if (spellsList.size() >= spellCount && cantripsList.size() >= cantripCount) {
                         Toast.makeText(getContext(), "You cannot learn any more spells or cantrips", Toast.LENGTH_SHORT).show();
                     } else {
