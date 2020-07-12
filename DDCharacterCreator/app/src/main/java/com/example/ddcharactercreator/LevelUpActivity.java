@@ -961,6 +961,14 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.action_surge));
                         break;
                     case 3:
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Martial Archetype");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("Champion");
+                        choice1.setAdapter(subclassAdapter);
                         break;
                     case 4:
                         break;
@@ -972,6 +980,11 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 6:
                         break;
                     case 7:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().equals("Champion")){
+                            bonusStats1.setText(getString(R.string.remarkable_athlete));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.remarkable_athlete));
+                        }
                         break;
                     case 8:
                         break;
@@ -984,7 +997,9 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 11:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        bonusStats1.setText("Your Extra Attack feature now allows you to attack 3 times in one action");
+                        bonusStats1.setText(getString(R.string.extra_attack_3));
+                        character.getRaceAndClassBonusStats().remove(getString(R.string.extra_attack));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack_3));
                         break;
                     case 12:
                         break;
@@ -995,6 +1010,12 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 14:
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().equals("Champion")){
+                            bonusStats1.setText(getString(R.string.superior_critical));
+                            character.getRaceAndClassBonusStats().remove(getString(R.string.improved_critical));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.superior_critical));
+                        }
                         break;
                     case 16:
                         break;
@@ -1005,12 +1026,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats2.setText("You have gained another use of Indomitable per long rest");
                         break;
                     case 18:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        if(character.getSubclass().equals("Champion")){
+                            bonusStats1.setText(getString(R.string.survivor));
+                            character.getRaceAndClassBonusStats().add(getString(R.string.survivor));
+                        }
                         break;
                     case 19:
                         break;
                     case 20:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        bonusStats1.setText("Your Extra Attack feature now allows you to attack 4 times in one action");
+                        bonusStats1.setText(getString(R.string.extra_attack_4));
                         break;
                 }
                 break;
