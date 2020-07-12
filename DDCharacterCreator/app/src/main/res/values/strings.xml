@@ -385,8 +385,15 @@
     <string name="second_wind_amount">"Second Wind amount: "</string>
     <string name="action_surge">Action Surge: You may use this ability to take an additional action on your turn. You must take a long rest before you can use this ability again</string>
     <string name="action_surge_uses">Action Surge Uses:</string>
-    <string name="indomitable">Indomitable: You can use this ability to reroll a failed saving throw. You must use the new roll. You must take a long rest before you can use this ability again</string>
+    <string name="indomitable">Indomitable: You can use this ability to re-roll a failed saving throw. You must use the new roll. You must take a long rest before you can use this ability again</string>
     <string name="indomitable_uses">Indomitable Uses:</string>
+    <string name="extra_attack_3">Extra Attack: When you take the attack action on your turn, you may attack three times</string>
+    <string name="extra_attack_4">Extra Attack: When you take the attack action on your turn, you may attack four times</string>
+    <string name="improved_critical">Improved Critical: Your weapon attacks can now score a critical hit on a dice roll of 19 and 20</string>
+    <string name="remarkable_athlete">Remarkable Athlete: You can add half your proficiency bonus to any Strength, Dexterity, or Constitution check you make that doesn\'t already include your proficiency bonus. In addition, When you make a running long jump, the distance you can cover increases by a number of feet equal to your STR modifier</string>
+    <string name="superior_critical">Superior Critical:Your weapon attacks now score a critical hit on a dice roll of 18–20</string>
+    <string name="survivor">Survivor: If you are at half your HP or less (but not at 0) at the start of your turn, your regain HP equal to 5 + your CON modifier</string>
+
 
     //Monk leveling up/subclass bonuses
     <string name="monastic_tradition">Monastic Tradition: </string>
