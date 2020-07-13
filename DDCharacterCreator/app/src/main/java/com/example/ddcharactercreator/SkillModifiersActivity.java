@@ -3,9 +3,11 @@ package com.example.ddcharactercreator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
@@ -35,7 +37,8 @@ public class SkillModifiersActivity extends AppCompatActivity {
         TextView toolProficiencyLabel = findViewById(R.id.tool_proficiencies_label);
         TextView toolProficienciesTextView = findViewById(R.id.tool_proficiencies);
         TextView toolProficienciesModifier = findViewById(R.id.tool_proficiency_modifier);
-        TextView weaponArmorProficiencies = findViewById(R.id.weapon_armor_proficiencies);
+        ListView weaponArmorProficienciesListView = findViewById(R.id.weapon_armor_proficiencies);
+        ArrayList<String> weaponArmorProficiencies = new ArrayList<>();
 
         //Skill Proficiencies
         TextView acrobaticsModifier = findViewById(R.id.acrobatics_modifier);
@@ -389,6 +392,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 }
             }
         }
+        ListAdapter adapter = new ListAdapter(getApplicationContext(), weaponArmorProficiencies);
 
         //Weapon/armor/tool proficiencies
         switch(character.getCharacterClass()){
@@ -396,73 +400,123 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.barbarian_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Medium Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Bard":
                 toolProficienciesTextView.setText("Musical Instruments");
                 toolProficienciesModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
-                weaponArmorProficiencies.setText(getString(R.string.bard_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Hand Crossbows");
+                weaponArmorProficiencies.add("Longswords");
+                weaponArmorProficiencies.add("Rapiers");
+                weaponArmorProficiencies.add("Shortswords");
                 break;
             case "Cleric":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.cleric_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Medium Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Simple Weapons");
                 break;
             case "Druid":
                 toolProficienciesTextView.setText("Herbalism Kit");
                 toolProficienciesModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + proficiencyBonus));
-                weaponArmorProficiencies.setText(getString(R.string.druid_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Medium Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Clubs");
+                weaponArmorProficiencies.add("Daggers");
+                weaponArmorProficiencies.add("Darts");
+                weaponArmorProficiencies.add("Javelins");
+                weaponArmorProficiencies.add("Maces");
+                weaponArmorProficiencies.add("Quarterstaffs");
+                weaponArmorProficiencies.add("Scimitars");
+                weaponArmorProficiencies.add("Sickles");
+                weaponArmorProficiencies.add("Slings");
+                weaponArmorProficiencies.add("Spears");
                 break;
             case "Fighter":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.fighter_other_proficiencies));
+                weaponArmorProficiencies.add("All Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Monk":
                 //TODO: This involves a choice. It's actually one type of musical instrument or artisan's tools
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.monk_other_proficiencies));
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Shortswords");
                 break;
             case "Paladin":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.paladin_other_proficiencies));
+                weaponArmorProficiencies.add("All Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Ranger":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.ranger_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Medium Armor");
+                weaponArmorProficiencies.add("Shields");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Rogue":
                 toolProficienciesTextView.setText("Thieves' Tools");
                 toolProficienciesModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus));
-                weaponArmorProficiencies.setText(getString(R.string.rogue_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Simple Weapons");
+                weaponArmorProficiencies.add("Hand Crossbows");
+                weaponArmorProficiencies.add("Longswords");
+                weaponArmorProficiencies.add("Rapiers");
+                weaponArmorProficiencies.add("Shortswords");
                 break;
             case "Sorcerer":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.sorcerer_other_proficiencies));
+                weaponArmorProficiencies.add("Daggers");
+                weaponArmorProficiencies.add("Darts");
+                weaponArmorProficiencies.add("Slings");
+                weaponArmorProficiencies.add("Quarterstaffs");
+                weaponArmorProficiencies.add("Light Crossbows");
                 break;
             case "Warlock":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.warlock_other_proficiencies));
+                weaponArmorProficiencies.add("Light Armor");
+                weaponArmorProficiencies.add("Simple Weapons");
                 break;
             case "Wizard":
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
-                weaponArmorProficiencies.setText(getString(R.string.wizard_other_proficiencies));
+                weaponArmorProficiencies.add("Daggers");
+                weaponArmorProficiencies.add("Darts");
+                weaponArmorProficiencies.add("Slings");
+                weaponArmorProficiencies.add("Quarterstaffs");
+                weaponArmorProficiencies.add("Light Crossbows");
                 break;
         }
+        weaponArmorProficienciesListView.setAdapter(adapter);
     }
 
     //Allows for skill proficiencies to change.
