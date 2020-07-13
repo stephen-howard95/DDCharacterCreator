@@ -1,5 +1,6 @@
 package com.example.ddcharactercreator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -236,6 +237,13 @@ public class SpellChooserActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 spell = (Spell) parent.getItemAtPosition(position);
+                launchSpellDetailActivity(spell);
+            }
+        });
+        spellListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                spell = (Spell) parent.getItemAtPosition(position);
                 //prevents duplicate spells from being added to the list and warns the user
                 int i=0;
                 boolean spellIsUnique = true;
@@ -255,8 +263,14 @@ public class SpellChooserActivity extends AppCompatActivity{
                     character.getSpellsKnown().add(spell);
                     finish();
                 }
+                return true;
             }
         });
+    }
+    private void launchSpellDetailActivity(Spell spell){
+        Intent intent = new Intent(getApplicationContext(), SpellDetailActivity.class);
+        intent.putExtra(SpellDetailActivity.SPELL, spell);
+        startActivity(intent);
     }
     //Allows certain character classes to add a specific spell to their class list
     private void addSpellsToClassList(String spellName){
