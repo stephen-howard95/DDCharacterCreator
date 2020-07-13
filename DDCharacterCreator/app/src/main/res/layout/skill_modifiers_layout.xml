@@ -335,10 +335,9 @@
         android:textSize="18sp"
         android:paddingVertical="4dp"
         android:text="Weapon/Armor Proficiencies"/>
-    <TextView
+    <ListView
         android:id="@+id/weapon_armor_proficiencies"
         style="@style/SkillModifiersStyle"
         android:layout_below="@+id/weapon_armor_proficiencies_label"
-        android:textColor="@color/proficiency_blue"
-        android:text="Light Armor, Medium Armor, Longbows, Shortbows, Simple melee weapons"/>
+        android:textColor="@color/proficiency_blue" />
 </RelativeLayout>
