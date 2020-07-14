@@ -292,6 +292,7 @@ public class LevelUpActivity extends AppCompatActivity {
                                 }
                             }
                         case "Bard":
+                        case "Fighter":
                             if(finalLevel == 3){
                                 subclass = choice1.getSelectedItem().toString();
                                 switch(subclass){
@@ -319,6 +320,34 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                     case "College of Valor":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.combat_inspiration));
+                                        break;
+                                    case "Champion":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.improved_critical));
+                                        break;
+                                    case "Eldritch Knight":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.weapon_bond));
+                                        break;
+                                }
+                            }
+                            if(character.getSubclass().equals("Champion") && finalLevel == 10){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Archery":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                        break;
+                                    case "Defense":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                        break;
+                                    case "Dueling":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                        break;
+                                    case "Great Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                        break;
+                                    case "Protection":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                        break;
+                                    case "Two-Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
                                         break;
                                 }
                             }
@@ -376,9 +405,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         List<Spell> spellsList = mDb.spellDao().loadAllSpells();
                         Spell spell1 = spellsList.get(The spell who's name is the one chosen in choice1);
                         Spell spell2 = spellsList.get(The spell who's name is the one chosen in choice2);
-
-                        //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
-                        // as cantrips, at level 20, they can be cast as cantrips once per long rest.
                     }*/
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
                             + calculateModifier(character.getStatValues().get(2)));
@@ -563,8 +589,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("College of Lore");
                         subclassChoices.add("College of Valor");
                         choice1.setAdapter(subclassAdapter);
-                        //TODO: Display the initial bonuses depending on the chosen subclass.
-                        //expertise choices
                         break;
                     case 4:
                         break;
@@ -968,6 +992,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         choiceHeader1.setText("Choose a Martial Archetype");
                         choice1.setVisibility(View.VISIBLE);
                         subclassChoices.add("Champion");
+                        subclassChoices.add("Eldritch Knight");
                         choice1.setAdapter(subclassAdapter);
                         break;
                     case 4:
@@ -981,9 +1006,15 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if(character.getSubclass().equals("Champion")){
-                            bonusStats1.setText(getString(R.string.remarkable_athlete));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.remarkable_athlete));
+                        switch(character.getSubclass()){
+                            case "Champion":
+                                bonusStats1.setText(getString(R.string.remarkable_athlete));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.remarkable_athlete));
+                                break;
+                            case "Eldritch Knight":
+                                bonusStats1.setText(getString(R.string.war_magic));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.war_magic));
+                                break;
                         }
                         break;
                     case 8:
@@ -994,6 +1025,33 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.indomitable));
                         break;
                     case 10:
+                        switch(character.getSubclass()){
+                            case "Champion":
+                                List<String> fightingStyles = new ArrayList<String>();
+                                ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, fightingStyles);
+                                fightingStyles.add("Archery");
+                                fightingStyles.add("Defense");
+                                fightingStyles.add("Dueling");
+                                fightingStyles.add("Great Weapon Fighting");
+                                fightingStyles.add("Protection");
+                                fightingStyles.add("Two-Weapon Fighting");
+                                for(int i=0; i<fightingStyles.size(); i++){
+                                    for(int j=0; j<character.getRaceAndClassBonusStats().size(); j++){
+                                        if(character.getRaceAndClassBonusStats().get(j).contains(fightingStyles.get(i))){
+                                            fightingStyles.remove(fightingStyles.get(i));
+                                        }
+                                    }
+                                }
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a Fighting Style");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(fightingStyleAdapter);
+                                break;
+                            case "Eldritch Knight":
+                                bonusStats1.setText(getString(R.string.eldritch_strike));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.eldritch_strike));
+                        }
                         break;
                     case 11:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1011,10 +1069,16 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 15:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if(character.getSubclass().equals("Champion")){
-                            bonusStats1.setText(getString(R.string.superior_critical));
-                            character.getRaceAndClassBonusStats().remove(getString(R.string.improved_critical));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.superior_critical));
+                        switch(character.getSubclass()){
+                            case "Champion":
+                                bonusStats1.setText(getString(R.string.superior_critical));
+                                character.getRaceAndClassBonusStats().remove(getString(R.string.improved_critical));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.superior_critical));
+                                break;
+                            case "Eldritch Knight":
+                                bonusStats1.setText(getString(R.string.arcane_charge));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.arcane_charge));
+                                break;
                         }
                         break;
                     case 16:
@@ -1027,9 +1091,15 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
-                        if(character.getSubclass().equals("Champion")){
-                            bonusStats1.setText(getString(R.string.survivor));
-                            character.getRaceAndClassBonusStats().add(getString(R.string.survivor));
+                        switch(character.getSubclass()){
+                            case "Champion":
+                                bonusStats1.setText(getString(R.string.survivor));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.survivor));
+                                break;
+                            case "Eldritch Knight":
+                                bonusStats1.setText(getString(R.string.improved_war_magic));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_war_magic));
+                                break;
                         }
                         break;
                     case 19:
@@ -1214,6 +1284,7 @@ public class LevelUpActivity extends AppCompatActivity {
                 break;
             case "Ranger":
                 switch (level){
+                    //TODO: How to add more favored enemies/terrain?
                     case 2:
                         List<String> fightingStyles = new ArrayList<String>();
                         ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
