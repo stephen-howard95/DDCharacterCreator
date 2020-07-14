@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
@@ -96,7 +98,7 @@ public class SpellcastingFragment extends Fragment {
             }
         }
 
-        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || character.getCharacterClass().equals("Fighter") || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
+        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || (character.getCharacterClass().equals("Fighter") && !character.getSubclass().equals("Eldritch Knight")) || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
@@ -116,7 +118,6 @@ public class SpellcastingFragment extends Fragment {
                 case "Barbarian":
                     spellSlot1.setVisibility(View.GONE);
                     spellSlot2.setVisibility(View.GONE);
-                    //API does not have beast sense as a spell.
                     getSubclassSpells("beast sense");
                     getSubclassSpells("speak with animals");
                     if(character.getLevel() >= 10){
@@ -313,6 +314,7 @@ public class SpellcastingFragment extends Fragment {
                                     getSubclassSpells("hold monster");
                                     break;
                             }
+                            break;
                     }
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.wisdom_label));
                     spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4))));
@@ -493,6 +495,30 @@ public class SpellcastingFragment extends Fragment {
                         cantripCount += 1;
                     }
                     break;
+                case "Fighter":
+                    tertiarySpellcasterSlotsPerLevel();
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    if(character.getLevel() <= 4){
+                        spellCount = character.getLevel();
+                    } else if(character.getLevel() <= 6){
+                        spellCount = 4;
+                    } else if(character.getLevel() <= 8){
+                        spellCount = character.getLevel()-2;
+                    } else if(character.getLevel() <= 11){
+                        spellCount = character.getLevel()-3;
+                    }else if(character.getLevel() <= 14){
+                        spellCount = character.getLevel()-4;
+                    }else if(character.getLevel() == 15){
+                        spellCount = 10;
+                    } else if(character.getLevel() <= 18){
+                        spellCount = 11;
+                    } else if(character.getLevel() <= 20){
+                        spellCount = character.getLevel()-7;
+                    }
+                    cantripCount = 2;
+                    break;
                 case "Paladin":
                     secondarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.charisma_label));
@@ -564,7 +590,9 @@ public class SpellcastingFragment extends Fragment {
             if(spellCount<1){
                 spellCount = 1;
             }
-            if(character.getLevel() >= 10){
+            if(character.getLevel() >= 10 && (character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster"))){
+                cantripCount += 1;
+            } else if(character.getLevel() >= 10){
                 cantripCount += 2;
             } else if(character.getLevel() >= 4){
                 cantripCount += 1;
@@ -580,7 +608,7 @@ public class SpellcastingFragment extends Fragment {
                     } else if(character.getCharacterClass().equals("Ranger") && character.getLevel() < 2){
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
                     } else if(character.getSubclass().equals("Path of the Totem Warrior")){
-                        Toast.makeText(getContext(), "Due to your class, you cannot learn any spells", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Due to your class, you cannot learn any spells.", Toast.LENGTH_SHORT).show();
                     } else if (spellsList.size() >= spellCount && cantripsList.size() >= cantripCount) {
                         Toast.makeText(getContext(), "You cannot learn any more spells or cantrips", Toast.LENGTH_SHORT).show();
                     } else {
@@ -1067,6 +1095,40 @@ public class SpellcastingFragment extends Fragment {
                 break;
         }
     }
+    private void tertiarySpellcasterSlotsPerLevel(){
+        switch(character.getLevel()){
+            case 20:
+            case 19:
+                spellSlot11.setVisibility(View.VISIBLE);
+            case 18:
+            case 17:
+            case 16:
+                spellSlot10.setVisibility(View.VISIBLE);
+            case 15:
+            case 14:
+            case 13:
+                spellSlot8.setVisibility(View.VISIBLE);
+                spellSlot9.setVisibility(View.VISIBLE);
+            case 12:
+            case 11:
+            case 10:
+                spellSlot7.setVisibility(View.VISIBLE);
+            case 9:
+            case 8:
+            case 7:
+                spellSlot4.setVisibility(View.VISIBLE);
+                spellSlot5.setVisibility(View.VISIBLE);
+                spellSlot6.setVisibility(View.VISIBLE);
+            case 6:
+            case 5:
+            case 4:
+                spellSlot3.setVisibility(View.VISIBLE);
+            case 3:
+                spellSlot1.setVisibility(View.VISIBLE);
+                spellSlot2.setVisibility(View.VISIBLE);
+                break;
+        }
+    }
     private void warlockSpellSlotsPerLevel(){
         if(character.getLevel() >= 2){
             spellSlot2.setVisibility(View.VISIBLE);
@@ -1108,7 +1170,7 @@ public class SpellcastingFragment extends Fragment {
             //setText to 9th level mystic arcanum??
         }
     }
-     private void getSubclassSpells(String spellName){
+    private void getSubclassSpells(String spellName){
         for(int i=0; i<completeSpellsList.size(); i++){
             if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName)){
                 Spell subclassSpell = completeSpellsList.get(i);
