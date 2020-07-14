@@ -393,7 +393,11 @@
     <string name="remarkable_athlete">Remarkable Athlete: You can add half your proficiency bonus to any Strength, Dexterity, or Constitution check you make that doesn\'t already include your proficiency bonus. In addition, When you make a running long jump, the distance you can cover increases by a number of feet equal to your STR modifier</string>
     <string name="superior_critical">Superior Critical:Your weapon attacks now score a critical hit on a dice roll of 18–20</string>
     <string name="survivor">Survivor: If you are at half your HP or less (but not at 0) at the start of your turn, your regain HP equal to 5 + your CON modifier</string>
-
+    <string name="weapon_bond">Weapon Bond: You can perform a 1 hour ritual during a short rest with a weapon that becomes bonded to you. You can have 2 weapons bonded to you at once. You cannot be disarmed of a bonded weapon unless you are incapacitated. If it is on the same plane of existence, you can teleport your bonded weapon to you as a bonus action</string>
+    <string name="war_magic">War Magic: When you use your action to cast a cantrip, you can make 1 weapon attack as a bonus action.</string>
+    <string name="eldritch_strike">Eldritch Strike: When you hit a creature with a weapon attack, that creature has disadvantage on the next saving throw it makes against a spell you cast before the end of your next turn.</string>
+    <string name="arcane_charge">Arcane Charge: When you use an action surge, you can teleport up to 30ft away to an unoccupied space you can see either before or after the action surge</string>
+    <string name="improved_war_magic">Improved War Magic: When you use your action to cast a spell, you can make one weapon attack as a bonus action</string>
 
     //Monk leveling up/subclass bonuses
     <string name="monastic_tradition">Monastic Tradition: </string>
