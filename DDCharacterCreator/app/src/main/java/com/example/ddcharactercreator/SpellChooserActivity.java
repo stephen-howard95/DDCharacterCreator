@@ -24,6 +24,7 @@ public class SpellChooserActivity extends AppCompatActivity{
     private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
     private int spellMax;
     private int cantripMax;
+    private String spellcastingClass = character.getCharacterClass();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +73,27 @@ public class SpellChooserActivity extends AppCompatActivity{
                 cantripMax = 2;
                 if(character.getSubclass().contains("Circle of the Land")){
                     cantripMax += 1;
+                }
+                break;
+            case "Fighter":
+                spellcastingClass = "Wizard";
+                cantripMax = 2;
+                if(character.getLevel() <= 4){
+                    spellMax = character.getLevel();
+                } else if(character.getLevel() <= 6){
+                    spellMax = 4;
+                } else if(character.getLevel() <= 8){
+                    spellMax = character.getLevel()-2;
+                } else if(character.getLevel() <= 11){
+                    spellMax = character.getLevel()-3;
+                }else if(character.getLevel() <= 14){
+                    spellMax = character.getLevel()-4;
+                }else if(character.getLevel() == 15){
+                    spellMax = 10;
+                } else if(character.getLevel() <= 18){
+                    spellMax = 11;
+                } else if(character.getLevel() <= 20){
+                    spellMax = character.getLevel()-7;
                 }
                 break;
             case "Paladin":
@@ -171,7 +193,9 @@ public class SpellChooserActivity extends AppCompatActivity{
         if(spellMax < 1){
             spellMax = 1;
         }
-        if(character.getLevel() >= 10){
+        if(character.getLevel() >= 10 && (character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster"))){
+            cantripMax += 1;
+        } else if(character.getLevel() >= 10){
             cantripMax += 2;
         } else if(character.getLevel() >= 4){
             cantripMax += 1;
@@ -199,14 +223,21 @@ public class SpellChooserActivity extends AppCompatActivity{
         if(completeSpellsList != null && !completeSpellsList.isEmpty()){
             if(character.getCharacterClass().equals("Ranger") || character.getCharacterClass().equals("Paladin")){
                 for(int i = 0; i < completeSpellsList.size(); i++){
-                    if(4*completeSpellsList.get(i).getLevel()-3 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
+                    if(4*completeSpellsList.get(i).getLevel()-3 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(spellcastingClass)){
+                        completeSpellsList.remove(i);
+                        i--;
+                    }
+                }
+            }else if(character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster")){
+                for(int i=0; i<completeSpellsList.size(); i++){
+                    if(6*completeSpellsList.get(i).getLevel()-6 >= character.getLevel() || !completeSpellsList.get(i).getClassList().contains(spellcastingClass)){
                         completeSpellsList.remove(i);
                         i--;
                     }
                 }
             }else{
                 for(int i = 0; i< completeSpellsList.size(); i++){
-                    if((character.getCharacterClass().equals("Warlock") && completeSpellsList.get(i).getLevel() >= 6) || 2*completeSpellsList.get(i).getLevel()-1 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
+                    if((character.getCharacterClass().equals("Warlock") && completeSpellsList.get(i).getLevel() >= 6) || 2*completeSpellsList.get(i).getLevel()-1 > character.getLevel() || !completeSpellsList.get(i).getClassList().contains(spellcastingClass)){
                         completeSpellsList.remove(i);
                         i--;
                     }
@@ -276,9 +307,9 @@ public class SpellChooserActivity extends AppCompatActivity{
     private void addSpellsToClassList(String spellName){
         String classList;
         for(int i=0; i<completeSpellsList.size(); i++){
-            if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName) && !completeSpellsList.get(i).getClassList().contains(character.getCharacterClass())){
+            if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName) && !completeSpellsList.get(i).getClassList().contains(spellcastingClass)){
                 classList = completeSpellsList.get(i).getClassList();
-                completeSpellsList.get(i).setClassList(classList + character.getCharacterClass());
+                completeSpellsList.get(i).setClassList(classList + spellcastingClass);
             }
         }
     }
