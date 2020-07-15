@@ -452,7 +452,6 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Monk":
-                //TODO: This involves a choice. It's actually one type of musical instrument or artisan's tools
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
@@ -480,7 +479,9 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 break;
             case "Rogue":
                 toolProficienciesTextView.setText("Thieves' Tools");
-                toolProficienciesModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus));
+                if(character.getSubclass().equals("Assassin")){
+                    toolProficienciesTextView.setText("Thieve's Tools, Disguise Kit, Poisoner's Kit");
+                }
                 weaponArmorProficiencies.add("Light Armor");
                 weaponArmorProficiencies.add("Simple Weapons");
                 weaponArmorProficiencies.add("Hand Crossbows");
