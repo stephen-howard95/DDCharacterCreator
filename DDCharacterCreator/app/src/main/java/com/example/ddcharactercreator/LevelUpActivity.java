@@ -1366,6 +1366,16 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 3:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your sneak attack now does 2d6 damage");
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a Roguish Archetype");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("Thief");
+                        subclassChoices.add("Assassin");
+                        subclassChoices.add("Arcane Trickster");
+                        choice1.setAdapter(subclassAdapter);
                         break;
                     case 4:
                         break;
@@ -1377,17 +1387,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
                         break;
                     case 6:
-                        /*bonusStats1.setVisibility(View.VISIBLE);
-                        bonusStats1.setText(getString(R.string.expertise));
-                        List<String> expertiseChoices = new ArrayList<String>();
-                        ArrayAdapter<String> expertiseAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, expertiseChoices);
-                        expertiseChoices.addAll(character.getProficiencyChoices());
-                        expertiseChoices.add("Thieve's Tools");
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a skill proficiency.");
-                        choice1.setVisibility(View.VISIBLE);
-                        choice1.setAdapter(expertiseAdapter);*/
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1401,6 +1400,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your sneak attack now does 5d6 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Thief":
+                                bonusStats2.setText(getString(R.string.supreme_sneak));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.supreme_sneak));
+                                break;
+                            case "Assassin":
+                                bonusStats2.setText(getString(R.string.infiltration_expertise));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.infiltration_expertise));
+                                break;
+                            case "Arcane Trickster":
+                                bonusStats2.setText(getString(R.string.magical_ambush));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.magical_ambush));
+                                break;
+                        }
                         break;
                     case 10:
                         break;
@@ -1416,6 +1430,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 13:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your sneak attack now does 7d6 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Thief":
+                                bonusStats2.setText(getString(R.string.use_magic_device));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.use_magic_device));
+                                break;
+                            case "Assassin":
+                                bonusStats2.setText(getString(R.string.imposter));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.imposter));
+                                break;
+                            case "Arcane Trickster":
+                                bonusStats2.setText(getString(R.string.versatile_trickster));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.versatile_trickster));
+                                break;
+                        }
                         break;
                     case 14:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1433,6 +1462,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your sneak attack now does 9d6 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Thief":
+                                bonusStats2.setText(getString(R.string.thiefs_reflexes));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.thiefs_reflexes));
+                                break;
+                            case "Assassin":
+                                bonusStats2.setText(getString(R.string.death_strike));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.death_strike));
+                                break;
+                            case "Arcane Trickster":
+                                bonusStats2.setText(getString(R.string.spell_thief));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.spell_thief));
+                                break;
+                        }
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
