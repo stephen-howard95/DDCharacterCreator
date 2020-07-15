@@ -542,10 +542,17 @@ public class CharacterFragment extends Fragment {
             case "Rogue":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.sneak_attack_damage) + String.valueOf((character.getLevel()+1)/2) + "d6");
+                if(level >= 17){
+                    if(character.getSubclass().equals("Arcane Trickster")){
+                        checkBoxes1.setVisibility(View.VISIBLE);
+                        checkBoxes1.setText(getString(R.string.spell_thief_use));
+                        checkBox1_1.setVisibility(View.VISIBLE);
+                    }
+                }
                 if(level == 20){
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.stroke_of_luck_use));
-                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBoxes2.setText(getString(R.string.stroke_of_luck_use));
+                    checkBox2_1.setVisibility(View.VISIBLE);
                 }
                 break;
             case "Sorcerer":
