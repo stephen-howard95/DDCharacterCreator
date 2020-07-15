@@ -455,7 +455,7 @@
     <string name="foe_slayer">Foe Slayer: Once oer turn, you can choose to add your WIS modifier to an attack or damage roll you make against one of your favored enemies.</string>
 
     //Rogue leveling up/subclass bonuses
-    <string name="rouguish_archetype">Roguish Archetype: </string>
+    <string name="roguish_archetype">Roguish Archetype: </string>
     <string name="sneak_attack_description">Sneak Attack: Once per turn, you can deal extra damage(listed above) to an enemy you hit with a finesse or ranged weapon, provided you have advantage on the attack. You do not need advantage if another enemy of the target is within 5ft of it and not incapacitated, and you don\'t have disadvantage on the attack roll</string>
     <string name="sneak_attack_damage">Sneak Attack Damage: </string>
     <string name="expertise">Expertise: Choose 2 skill proficiencies. Your proficiency bonus is now doubled for any check you make using those skills.</string>
@@ -467,7 +467,21 @@
     <string name="elusive">Elusive: While you are not incapacitated, no attack roll against you has advantage</string>
     <string name="stroke_of_luck_use">Stroke of Luck: </string>
     <string name="stroke_of_luck">Stroke of Luck: Once per short or long rest, if your attack misses a target within range, you can force it to hit. Alternatively, if you fail an ability check, you can treat the D20 roll as though you rolled a 20</string>
-
+    <string name="fast_hands">Fast Hands: You can use your bonus action to make a Sleight of Hand check, take the Use an Object action, or use your thieve\'s tools to opn a lock or disarm a trap.</string>
+    <string name="second_story_work">Second-Story Work: climbing no longer costs you extra movement. In addition, when you make a running jump, the distance you cover increases by a number of feet equal to your DEX modifier.</string>
+    <string name="supreme_sneak">Supreme Sneak: If you move no more than half your movement speed on your turn, you hav advantage on a Stealth check.</string>
+    <string name="use_magic_device">Use Magic Device: you now ignore all class, race, and level requirements on the use of magic items</string>
+    <string name="thiefs_reflexes">Thief\'s Reflexes: You can take 2 turns during the first round of any combat. Your first turn is at your initiative, and your 2nd turn is at your initiative minus 10. This feature does not work if you are surprised.</string>
+    <string name="assassinate">Assassinate: You hav advantage against any creatures that have not yet taken a turn in combat. Any hit you score against a creature who is surprised is an auto-critical hit.</string>
+    <string name="infiltration_expertise">Infiltration Expertise: You can spend 7 days and 25 gold pieces creating a false identity for yourself including things such as clothing, letters of introduction and official-looking certification documents. When you don this disguise, other creatures will believe you to be this person until given a reason not to.</string>
+    <string name="imposter">Imposter: You can spend 3 hours studying a person\'s behavior, mannerisms and speech patterns and unerringly mimic them. If a creature is suspicious of you, you have advantage on Deception checks to avoid detection.</string>
+    <string name="death_strike">Death Strike: When you attack and hit a surprised creature, it must make a CON saving throw (DC 8 + your DEX modifier + your proficiency bonus). On a failed save, double the damage of the attack.</string>
+    <string name="mage_hand_legerdemain">Mage Hand Legerdemain: When you cast Mage Hand, you can make the hand invisible and can do the following with it: You can use your thieve\'s tools to pick locks and disarm traps at range. You can retrieve or store an object in a container worn or carried by another creature. You can perform one of these tasks as a bonus action without being noticed by a creature by making a Sleight of Hand check against the creatures Perception check.</string>
+    <string name="magical_ambush">Magical Ambush: If you are hidden from a creature when you cast a spell on it, it has disadvantage on any saving throws it makes against the spell this turn.</string>
+    <string name="versatile_trickster">Versatile Trickster: As a bonus action on your turn, you can designate a creature within 5ft of your mage hand. Doing so will cause the hand to distract that creature, giving you advantage on any attack rolls against that creature until the end of the turn.</string>
+    <string name="spell_thief">Spell Thief: When a creature attacks you with a spell or you are in the effective radius of the spell, you can use your reaction to force the caster to make a saving throw with it\'s spellcasting ability modifier. The DC is your spell save DC. On a failed save, the spells effects are negated for you and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast. For the next 8 hours, you can cast the spell using your own spell slots and the creature that originally casted the spell cannot. This ability can be done once per long rest.</string>
+    <string name="spell_thief_use">Spell Thief: </string>
+    
     //Sorcerer leveling up/subclass bonuses
     <string name="sorcerous_origin">Sorcerous Origin: </string>
     <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
