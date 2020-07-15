@@ -104,6 +104,27 @@ public class SpellChooserActivity extends AppCompatActivity{
                 spellMax = (character.getLevel()/2) + 1;
                 cantripMax = -2;
                 break;
+            case "Rogue":
+                spellcastingClass = "Wizard";
+                cantripMax = 3;
+                if(character.getLevel() <= 4){
+                    spellMax = character.getLevel();
+                } else if(character.getLevel() <= 6){
+                    spellMax = 4;
+                } else if(character.getLevel() <= 8){
+                    spellMax = character.getLevel()-2;
+                } else if(character.getLevel() <= 11){
+                    spellMax = character.getLevel()-3;
+                }else if(character.getLevel() <= 14){
+                    spellMax = character.getLevel()-4;
+                }else if(character.getLevel() == 15){
+                    spellMax = 10;
+                } else if(character.getLevel() <= 18){
+                    spellMax = 11;
+                } else if(character.getLevel() <= 20){
+                    spellMax = character.getLevel()-7;
+                }
+                break;
             case "Sorcerer":
                 if(character.getLevel() <= 11){
                     spellMax = character.getLevel() + 1;
