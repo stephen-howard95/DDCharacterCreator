@@ -98,7 +98,7 @@ public class SpellcastingFragment extends Fragment {
             }
         }
 
-        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || (character.getCharacterClass().equals("Fighter") && !character.getSubclass().equals("Eldritch Knight")) || character.getCharacterClass().equals("Monk") || character.getCharacterClass().equals("Rogue")){
+        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || (character.getCharacterClass().equals("Fighter") && !character.getSubclass().equals("Eldritch Knight")) || character.getCharacterClass().equals("Monk") || (character.getCharacterClass().equals("Rogue") && !character.getSubclass().equals("Arcane Trickster"))){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
@@ -536,6 +536,31 @@ public class SpellcastingFragment extends Fragment {
                     spellCount = (character.getLevel()/2) + 1;
                     cantripsKnown.setVisibility(View.INVISIBLE);
                     cantripCount = -2;
+                    break;
+                case "Rogue":
+                    tertiarySpellcasterSlotsPerLevel();
+                    getSubclassSpells("Mage Hand");
+                    spellcastingAbility.setText(getString(R.string.spellcasting_ability_label) + getString(R.string.intelligence_label));
+                    spellSaveDC.setText(getString(R.string.spell_save_dc_label) + (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
+                    if(character.getLevel() <= 4){
+                        spellCount = character.getLevel();
+                    } else if(character.getLevel() <= 6){
+                        spellCount = 4;
+                    } else if(character.getLevel() <= 8){
+                        spellCount = character.getLevel()-2;
+                    } else if(character.getLevel() <= 11){
+                        spellCount = character.getLevel()-3;
+                    }else if(character.getLevel() <= 14){
+                        spellCount = character.getLevel()-4;
+                    }else if(character.getLevel() == 15){
+                        spellCount = 10;
+                    } else if(character.getLevel() <= 18){
+                        spellCount = 11;
+                    } else if(character.getLevel() <= 20){
+                        spellCount = character.getLevel()-7;
+                    }
+                    cantripCount = 3;
                     break;
                 case "Sorcerer":
                     primarySpellcasterSlotsPerLevel();
