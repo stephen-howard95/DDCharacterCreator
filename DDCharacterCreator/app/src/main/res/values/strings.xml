@@ -543,4 +543,22 @@
     <string name="spell_mastery_choices">Spell Mastery: </string>
     <string name="signature_spells">Signature Spells: Choose two 3rd level spells from your spellbook. You always have these spells prepared, and they don\'t count against the number of spells you have prepared. You can cast each of them once at 3rd level without expending a spell slot per short or long rest.</string>
     <string name="signature_spells_choice">Signature Spell: </string>
+    <string name="abjuration_savant">Abjuration Savant: The gold and time you must spend to copy an Abjuration spell into your spellbook is halved</string>
+    <string name="arcane_ward">Arcane Ward: When you cast an Abjuration spell of 1st level or higher, you can create a magical ward on yourself that lasts until you finish a long rest. The Ward has a HP maximum of twice your level + your INT modifier. If you take any damage while the ward is active, the ward takes the damage first. While the ward has 0HP, it can\'t absorb damage but it still remains. If you cast an abjuration spell of 1st level or higher, the ward regains HP equal to twice the spell\'s level.</string>
+    <string name="arcane_ward_max_hp">Arcane Ward Max HP: </string>
+    <string name="projected_ward">Projected Ward: When a creature you can see within 30ft of you takes any damage, you can use your reaction to cause your arcane ward to take the damage instead. If this damage reduces the ward to 0HP, the creature takes the remaining damage.</string>
+    <string name="improved_abjuration">Improved Abjuration: When you cast an Abjuration spell that requires you to make an ability check as part of casting, you add your proficiency bonus to it.</string>
+    <string name="spell_resistance">Spell Resistance: You have resistance against the damage of spells and have advantage on saving throws against spells.</string>
+    <string name="conjuration_savant">Conjuration Savant: The gold and time you must spend to copy a Conjuration spell into your spellbook is halved</string>
+    <string name="minor_conjuration">Minor Conjuration: You can use your action to conjure an inanimate object no larger than 3 feet on a side and no heavier than 10 pounds. The object is visibly magical and sheds dim light out to 5ft. The object disappears after 1 hour, if you conjure another object using this feature, or if the object takes or deals any damage.</string>
+    <string name="benign_transposition">Benign Transposition: You can use your action to teleport up to 30ft away or swap places with a Small or Medium willing creature within 30ft. This can be done once per long rest or after you cast a Conjuration spell of 1st level or higher.</string>
+    <string name="benign_transposition_use">Benign Transposition: </string>
+    <string name="focused_conjuration">Focused Conjuration: While concentrating on a Conjuration spell, your concentration cannot be broken as a result of taking damage.</string>
+    <string name="durable_summons">Durable Summons: Any creature you summon or create with a Conjuration spell has 30 temporary HP.</string>
+    <string name="divination_savant">Divination Savant: The gold and time you must spend to copy a Divination spell into your spellbook is halved</string>
+    <string name="portent">Portent: When you finish a long rest, roll 2d20\'s and record the numbers rolled. Before you make an attack roll, saving throw, or ability check, you may use one of these numbers as though you just rolled it. You may only use one of these numbers per turn. When you finish a Long rest, any unused rolls are lost.</string>
+    <string name="portent_uses">Portent: </string>
+    <string name="expert_divination">Expert Divination: When you cast a Divination spell of level 2 or higher, you regain an expended spell slot of a lower level than the spell you cast, and no higher than 5th level.</string>
+    <string name="the_third_eye">The Third Eye: You can use your action to increase your powers of perception, giving you one of the following options until you finish a short or long rest or become incapacitated: \nYou gain darkvision out to 60ft\nYou can see into the ethereal plane out to 60ft\nYou can read any language\nYou can see invisible creatures and objects within 10ft of you.</string>
+    <string name="greater_portent">Greater Portent: You now roll 3d20\'s for your Portent ability</string>
 </resources>
