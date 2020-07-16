@@ -247,7 +247,6 @@ public class LevelUpActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //possibly save the character??
                 if(moreHP.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
                 } else{
@@ -262,6 +261,28 @@ public class LevelUpActivity extends AppCompatActivity {
                     }
                     String subclass = character.getSubclass();
                     switch(character.getCharacterClass()){
+                        case "Wizard":
+                            if(finalLevel == 2){
+                                subclass = choice1.getSelectedItem().toString();
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "School of Abjuration":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.abjuration_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.arcane_ward));
+                                        break;
+                                    case "School of Conjuration":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.conjuration_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.minor_conjuration));
+                                        break;
+                                    case "School of Divination":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.divination_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.portent));
+                                        break;
+                                }
+                            } else if(finalLevel == 20){
+                                getSubclassSpells(choice1.getSelectedItem().toString());
+                                getSubclassSpells(choice2.getSelectedItem().toString());
+                            }
+                            break;
                         case "Barbarian":
                             if(finalLevel == 6 || finalLevel == 14){
                                 switch(choice1.getSelectedItem().toString()){
@@ -293,6 +314,7 @@ public class LevelUpActivity extends AppCompatActivity {
                             }
                         case "Bard":
                         case "Fighter":
+                        case "Rogue":
                             if(finalLevel == 3){
                                 subclass = choice1.getSelectedItem().toString();
                                 switch(subclass){
@@ -326,6 +348,16 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                     case "Eldritch Knight":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.weapon_bond));
+                                        break;
+                                    case "Thief":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.fast_hands));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.second_story_work));
+                                        break;
+                                    case "Assassin":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.assassinate));
+                                        break;
+                                    case "Arcane Trickster":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.mage_hand_legerdemain));
                                         break;
                                 }
                             }
@@ -405,6 +437,9 @@ public class LevelUpActivity extends AppCompatActivity {
                         List<Spell> spellsList = mDb.spellDao().loadAllSpells();
                         Spell spell1 = spellsList.get(The spell who's name is the one chosen in choice1);
                         Spell spell2 = spellsList.get(The spell who's name is the one chosen in choice2);
+
+                        //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
+                        // as cantrips, at level 20, they can be cast as cantrips once per long rest.
                     }*/
                     character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
                             + calculateModifier(character.getStatValues().get(2)));
@@ -589,6 +624,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("College of Lore");
                         subclassChoices.add("College of Valor");
                         choice1.setAdapter(subclassAdapter);
+                        //expertise choices
                         break;
                     case 4:
                         break;
@@ -1284,7 +1320,6 @@ public class LevelUpActivity extends AppCompatActivity {
                 break;
             case "Ranger":
                 switch (level){
-                    //TODO: How to add more favored enemies/terrain?
                     case 2:
                         List<String> fightingStyles = new ArrayList<String>();
                         ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
@@ -1387,6 +1422,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
                         break;
                     case 6:
+                        /*bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats1.setText(getString(R.string.expertise));
+                        List<String> expertiseChoices = new ArrayList<String>();
+                        ArrayAdapter<String> expertiseAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, expertiseChoices);
+                        expertiseChoices.addAll(character.getProficiencyChoices());
+                        expertiseChoices.add("Thieve's Tools");
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a skill proficiency.");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(expertiseAdapter);*/
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1736,6 +1782,16 @@ public class LevelUpActivity extends AppCompatActivity {
                 ArrayAdapter<String> signatureSpellAdapter2;
                 switch (level){
                     case 2:
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a School of Magic");
+                        choice1.setVisibility(View.VISIBLE);
+                        subclassChoices.add("School of Abjuration");
+                        subclassChoices.add("School of Conjuration");
+                        subclassChoices.add("School of Divination");
+                        choice1.setAdapter(subclassAdapter);
                         break;
                     case 3:
                         break;
@@ -1744,6 +1800,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 5:
                         break;
                     case 6:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "School of Abjuration":
+                                bonusStats1.setText(getString(R.string.projected_ward));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.projected_ward));
+                                break;
+                            case "School of Conjuration":
+                                bonusStats1.setText(getString(R.string.benign_transposition));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.benign_transposition));
+                                break;
+                            case "School of Divination":
+                                bonusStats1.setText(getString(R.string.expert_divination));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.expert_divination));
+                                break;
+                        }
                         break;
                     case 7:
                         break;
@@ -1751,7 +1822,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 9:
                         break;
-                    case 10:
+                    case 10:bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "School of Abjuration":
+                                bonusStats1.setText(getString(R.string.improved_abjuration));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_abjuration));
+                                break;
+                            case "School of Conjuration":
+                                bonusStats1.setText(getString(R.string.focused_conjuration));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.focused_conjuration));
+                                break;
+                            case "School of Divination":
+                                bonusStats1.setText(getString(R.string.the_third_eye));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.the_third_eye));
+                                break;
+                        }
                         break;
                     case 11:
                         break;
@@ -1759,7 +1844,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 13:
                         break;
-                    case 14:
+                    case 14:bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "School of Abjuration":
+                                bonusStats1.setText(getString(R.string.spell_resistance));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.spell_resistance));
+                                break;
+                            case "School of Conjuration":
+                                bonusStats1.setText(getString(R.string.durable_summons));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.durable_summons));
+                                break;
+                            case "School of Divination":
+                                bonusStats1.setText(getString(R.string.greater_portent));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.greater_portent));
+                                break;
+                        }
                         break;
                     case 15:
                         break;
@@ -1832,7 +1931,7 @@ public class LevelUpActivity extends AppCompatActivity {
     }
 
     private ArrayList<String> getSpellsPerLevel(int spellLevel){
-        ArrayList<String> mysticArcanumSpellChoices = new ArrayList<>();
+        ArrayList<String> spellChoices = new ArrayList<>();
         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
         List<Spell> spellsList = mDb.spellDao().loadAllSpells();
 
@@ -1841,9 +1940,25 @@ public class LevelUpActivity extends AppCompatActivity {
                 spellsList.remove(i);
                 i--;
             } else{
-                mysticArcanumSpellChoices.add(spellsList.get(i).getSpellName());
+                spellChoices.add(spellsList.get(i).getSpellName());
             }
         }
-        return mysticArcanumSpellChoices;
+        return spellChoices;
+    }
+
+    private void getSubclassSpells(String spellName){
+        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+        for(int i=0; i<spellsList.size(); i++){
+            if(spellsList.get(i).getSpellName().equalsIgnoreCase(spellName)){
+                Spell subclassSpell = spellsList.get(i);
+                character.getSpellsKnown().add(subclassSpell);
+                for(int j=0; j<character.getSpellsKnown().size()-1; j++){
+                    if(character.getSpellsKnown().get(j).getSpellName().equals(subclassSpell.getSpellName())){
+                        character.getSpellsKnown().remove(subclassSpell);
+                    }
+                }
+            }
+        }
     }
 }
