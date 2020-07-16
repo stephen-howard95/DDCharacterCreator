@@ -633,19 +633,42 @@ public class CharacterFragment extends Fragment {
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount) + (level+ 1)/2);
+                switch(character.getSubclass()){
+                    case "School of Abjuration":
+                        editTextTextView.setVisibility(View.VISIBLE);
+                        editTextTextView.setText(getString(R.string.arcane_ward_max_hp) + String.valueOf(2*character.getLevel() + calculateModifier(character.getStatValues().get(3))));
+                        subclassInfoEditText.setVisibility(View.VISIBLE);
+                        subclassInfoEditText.setText(String.valueOf(2*character.getLevel() + calculateModifier(character.getStatValues().get(3))));
+                        break;
+                    case "School of Conjuration":
+                        if(level >= 6){
+                            checkBoxes1.setVisibility(View.VISIBLE);
+                            checkBoxes1.setText(getString(R.string.benign_transposition_use));
+                            checkBox1_1.setVisibility(View.VISIBLE);
+                        }
+                        break;
+                    case "School of Divination":
+                        editTextTextView.setVisibility(View.VISIBLE);
+                        editTextTextView.setText(getString(R.string.portent_uses));
+                        subclassInfoEditText.setVisibility(View.VISIBLE);
+                        subclassInfoEditText.setText("20, 20");
+                        break;
+                }
                 /*if(level >= 18){
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText(getString(R.string.spell_mastery) + spell mastery choice 1 + ", " + spell mastery choice 2);
-                }
+                }*/
                 if(level == 20){
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(getString(R.string.signature_spells_choice));
+                    checkBoxes2.setText(getString(R.string.signature_spells_choice));
                     checkBox1_1.setVisibility(View.VISIBLE);
                     checkBox2_1.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(Signature spell choice 1);
-                    checkboxes2.setText(Signature spell choice 2);
-                    set checkbox text to actual spell, set textview to R.string.signature_spell_choice??
-                }*/
+                    //checkBox1_1.setText(signature spell choice 1);
+                    //checkBox2_1.setText(signature spell choice 2);
+                    //set checkbox text to actual spell, set textview to R.string.signature_spell_choice??
+                }
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
