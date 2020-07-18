@@ -610,6 +610,9 @@ public class SpellcastingFragment extends Fragment {
                     spellAttackBonus.setText(getString(R.string.spell_attack_bonus_label) + (proficiencyBonus + calculateModifier(character.getStatValues().get(3))));
                     spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
                     cantripCount = 3;
+                    if(character.getSubclass().equals("School of Illusion")){
+                        cantripCount += 1;
+                    }
                     break;
             }
             if(spellCount<1){
