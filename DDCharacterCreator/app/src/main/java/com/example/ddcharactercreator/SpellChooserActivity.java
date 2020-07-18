@@ -209,6 +209,9 @@ public class SpellChooserActivity extends AppCompatActivity{
             case "Wizard":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(3));
                 cantripMax = 3;
+                if(character.getSubclass().equals("School of Illusion")){
+                    cantripMax += 1;
+                }
                 break;
         }
         if(spellMax < 1){
