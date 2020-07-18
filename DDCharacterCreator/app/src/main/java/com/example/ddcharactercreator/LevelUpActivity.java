@@ -1791,6 +1791,9 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("School of Abjuration");
                         subclassChoices.add("School of Conjuration");
                         subclassChoices.add("School of Divination");
+                        subclassChoices.add("School of Enchantment");
+                        subclassChoices.add("School of Evocation");
+                        subclassChoices.add("School of Illusion");
                         choice1.setAdapter(subclassAdapter);
                         break;
                     case 3:
@@ -1814,6 +1817,18 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats1.setText(getString(R.string.expert_divination));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.expert_divination));
                                 break;
+                            case "School of Enchantment":
+                                bonusStats1.setText(getString(R.string.instinctive_charm));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.instinctive_charm));
+                                break;
+                            case "School of Evocation":
+                                bonusStats1.setText(getString(R.string.potent_cantrip));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.potent_cantrip));
+                                break;
+                            case "School of Illusion":
+                                bonusStats1.setText(getString(R.string.malleable_illusions));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.malleable_illusions));
+                                break;
                         }
                         break;
                     case 7:
@@ -1836,6 +1851,18 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats1.setText(getString(R.string.the_third_eye));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.the_third_eye));
                                 break;
+                            case "School of Enchantment":
+                                bonusStats1.setText(getString(R.string.split_enchantment));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.split_enchantment));
+                                break;
+                            case "School of Evocation":
+                                bonusStats1.setText(getString(R.string.empowered_evocation));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.empowered_evocation));
+                                break;
+                            case "School of Illusion":
+                                bonusStats1.setText(getString(R.string.illusory_self));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.illusory_self));
+                                break;
                         }
                         break;
                     case 11:
@@ -1857,6 +1884,18 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "School of Divination":
                                 bonusStats1.setText(getString(R.string.greater_portent));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.greater_portent));
+                                break;
+                            case "School of Enchantment":
+                                bonusStats1.setText(getString(R.string.alter_memories));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.alter_memories));
+                                break;
+                            case "School of Evocation":
+                                bonusStats1.setText(getString(R.string.overchannel));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.overchannel));
+                                break;
+                            case "School of Illusion":
+                                bonusStats1.setText(getString(R.string.illusory_reality));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.illusory_reality));
                                 break;
                         }
                         break;
