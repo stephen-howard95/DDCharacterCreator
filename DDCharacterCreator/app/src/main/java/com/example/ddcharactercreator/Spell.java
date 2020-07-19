@@ -31,6 +31,8 @@ public class Spell implements Serializable {
     private int mLevel;
     @SerializedName("dnd_class")
     private String mClassList;
+    @SerializedName("school")
+    private String mSchool;
 
     @Ignore
     public Spell(){
@@ -41,7 +43,8 @@ public class Spell implements Serializable {
         mLevel = level;
     }
 
-    public Spell(String spellName, String description, String higherLevel, String range, String duration, String concentration, String castingTime, int level, String classList){
+    public Spell(String spellName, String description, String higherLevel, String range, String duration,
+                 String concentration, String castingTime, int level, String classList, String school){
         mSpellName = spellName;
         mDescription = description;
         mHigherLevel = higherLevel;
@@ -51,6 +54,7 @@ public class Spell implements Serializable {
         mCastingTime = castingTime;
         mLevel = level;
         mClassList = classList;
+        mSchool = school;
     }
 
     public String getSpellName(){
@@ -76,6 +80,9 @@ public class Spell implements Serializable {
     }
     public int getLevel(){
         return mLevel;
+    }
+    public String getSchool(){
+        return mSchool;
     }
     public String getClassList(){
         return mClassList;
