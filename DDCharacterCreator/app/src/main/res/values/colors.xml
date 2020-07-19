@@ -22,5 +22,15 @@
     <color name="electrum">#e6c799</color>
     <color name="gold">#D4AF37</color>
     <color name="platinum">#e5e4e2</color>
+    
+    //Spell school colors
+    <color name="abjuration">#A6CFF7</color>
+    <color name="conjuration">#CA1EF7</color>
+    <color name="divination">#E9F77E</color>
+    <color name="enchantment">#F07AD1</color>
+    <color name="evocation">#E50B00</color>
+    <color name="illusion">#62F0F0</color>
+    <color name="necromancy">#085C01</color>
+    <color name="transmutation">#94500A</color>
 
 </resources>
