@@ -277,6 +277,27 @@ public class LevelUpActivity extends AppCompatActivity {
                                         character.getRaceAndClassBonusStats().add(getString(R.string.divination_savant));
                                         character.getRaceAndClassBonusStats().add(getString(R.string.portent));
                                         break;
+                                    case "School of Enchantment":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.enchantment_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.hypnotic_gaze));
+                                        break;
+                                    case "School of Evocation":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.evocation_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.sculpt_spells));
+                                        break;
+                                    case "School of Illusion":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.illusion_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.improved_minor_illusion));
+                                        getSubclassSpells("minor illusion");
+                                        break;
+                                    case "School of Necromancy":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.necromancy_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.grim_harvest));
+                                        break;
+                                    case "School of Transmutation":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.transmutation_savant));
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.minor_alchemy));
+                                        break;
                                 }
                             } else if(finalLevel == 20){
                                 getSubclassSpells(choice1.getSelectedItem().toString());
@@ -1794,6 +1815,8 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("School of Enchantment");
                         subclassChoices.add("School of Evocation");
                         subclassChoices.add("School of Illusion");
+                        subclassChoices.add("School of Necromancy");
+                        subclassChoices.add("School of Transmutation");
                         choice1.setAdapter(subclassAdapter);
                         break;
                     case 3:
@@ -1829,6 +1852,15 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats1.setText(getString(R.string.malleable_illusions));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.malleable_illusions));
                                 break;
+                            case "School of Necromancy":
+                                bonusStats1.setText(getString(R.string.undead_thralls));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.undead_thralls));
+                                getSubclassSpells("animate dead");
+                                break;
+                            case "School of Transmutation":
+                                bonusStats1.setText(getString(R.string.transmuters_stone));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.transmuters_stone));
+                                break;
                         }
                         break;
                     case 7:
@@ -1863,6 +1895,15 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats1.setText(getString(R.string.illusory_self));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.illusory_self));
                                 break;
+                            case "School of Necromancy":
+                                bonusStats1.setText(getString(R.string.inured_to_undeath));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.inured_to_undeath));
+                                break;
+                            case "School of Transmutation":
+                                bonusStats1.setText(getString(R.string.shapechanger));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.shapechanger));
+                                getSubclassSpells("polymorph");
+                                break;
                         }
                         break;
                     case 11:
@@ -1896,6 +1937,14 @@ public class LevelUpActivity extends AppCompatActivity {
                             case "School of Illusion":
                                 bonusStats1.setText(getString(R.string.illusory_reality));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.illusory_reality));
+                                break;
+                            case "School of Necromancy":
+                                bonusStats1.setText(getString(R.string.command_undead));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.command_undead));
+                                break;
+                            case "School of Transmutation":
+                                bonusStats1.setText(getString(R.string.master_transmuter));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.master_transmuter));
                                 break;
                         }
                         break;
