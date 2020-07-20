@@ -659,6 +659,14 @@ public class CharacterFragment extends Fragment {
                             checkBoxes1.setText(getString(R.string.illusory_self_use));
                             checkBox1_1.setVisibility(View.VISIBLE);
                         }
+                        break;
+                    case "School of Transmutation":
+                        if(level >= 10){
+                            checkBoxes1.setVisibility(View.VISIBLE);
+                            checkBoxes1.setText(getString(R.string.shapechanger_use));
+                            checkBox1_1.setVisibility(View.VISIBLE);
+                        }
+                        break;
                 }
                 /*if(level >= 18){
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
