@@ -101,7 +101,7 @@ public class CharacterFragment extends Fragment {
             } else {
                 subraceInfoTextView1.setText("Breath Weapon Damage: 5d6");
             }
-            subraceInfoTextView2.setText("Breath Weapon save DC: " + String.valueOf(8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2))));
+            subraceInfoTextView2.setText(String.format("Breath Weapon save DC: %s", (8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2)))));
             subraceCheckboxTextView.setText("Breath Weapon");
         }
         if(character.getRace().equals("Half-Orc")){
