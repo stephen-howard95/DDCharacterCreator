@@ -57,6 +57,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
+        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -73,8 +74,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final ArrayList<String> proficiencyChoices = new ArrayList<String>();
 
         TextView otherProficienciesTextView = findViewById(R.id.other_proficiencies);
-        StringBuilder otherProficiencies = new StringBuilder();
-        otherProficiencies.append(getString(R.string.other_proficiency_beginning));
 
         switch(character.getRace()){
             //TODO: This is where certain sub-races with Dwarf, Elf, Halfling, Gnome, etc. would be added.
@@ -101,8 +100,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         TextView startingHPAndHitDieTextView = findViewById(R.id.starting_hp);
 
         final EditText startingGoldEditText = findViewById(R.id.starting_gold_edit_text);
-        StringBuilder startingGoldHint = new StringBuilder();
-        startingGoldHint.append(getString(R.string.starting_gp_roll));
 
         List<String> equipmentSpinnerArray1 = new ArrayList<String>();
         List<String> equipmentSpinnerArray2 = new ArrayList<String>();
@@ -124,9 +121,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Handaxe x2");
                 equipmentSpinnerArray2.add("Greatclub");
                 startingHPAndHitDieTextView.setText(R.string.barbarian_hit_die);
-                otherProficiencies.append(getString(R.string.barbarian_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "an explorer's pack and 4 javelins");
-                startingGoldHint.append("2d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.barbarian_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s an explorer's pack and 4 javelins", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 2d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Bard":
                 skillProficiencySpinner4.setVisibility(View.GONE);
@@ -138,9 +135,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Diplomat's Pack");
                 equipmentSpinnerArray2.add("Entertainer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.bard_hit_die);
-                otherProficiencies.append(getString(R.string.bard_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor and a dagger");
-                startingGoldHint.append("5d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.bard_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s leather armor and a dagger", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Cleric":
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
@@ -164,9 +161,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Light Crossbow with bolts x20");
                 equipmentSpinnerArray3.add("Greatclub");
                 startingHPAndHitDieTextView.setText(R.string.cleric_hit_die);
-                otherProficiencies.append(getString(R.string.cleric_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a shield and a holy symbol");
-                startingGoldHint.append("5d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.cleric_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s a shield and a holy symbol", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Druid":
                 skillProficiencySpinner3.setVisibility(View.GONE);
@@ -178,9 +175,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Scimitar");
                 equipmentSpinnerArray2.add("Quarterstaff");
                 startingHPAndHitDieTextView.setText(R.string.druid_hit_die);
-                otherProficiencies.append(getString(R.string.druid_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, an explorer's pack, and a druidic focus");
-                startingGoldHint.append("2d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.druid_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s leather armor, an explorer's pack, and a druidic focus", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 2d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Fighter":
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
@@ -203,9 +200,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray4.add("Dungeoneer's Pack");
                 equipmentSpinnerArray4.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.fighter_hit_die);
-                otherProficiencies.append(getString(R.string.fighter_other_proficiencies));
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.fighter_other_proficiencies)));
                 extraStartingEquipmentTextView.setVisibility(View.GONE);
-                startingGoldHint.append("5d4 x10");
+                startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Monk":
                 skillProficiencySpinner3.setVisibility(View.GONE);
@@ -217,9 +214,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Dungeoneer's Pack");
                 equipmentSpinnerArray2.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.monk_hit_die);
-                otherProficiencies.append(getString(R.string.monk_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "10 darts");
-                startingGoldHint.append("5d4");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.monk_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s 10 darts", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 5d4", getString(R.string.starting_gp_roll)));
                 break;
             case "Paladin":
                 skillProficiencySpinner3.setVisibility(View.GONE);
@@ -232,9 +229,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Priest's Pack");
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.paladin_hit_die);
-                otherProficiencies.append(getString(R.string.paladin_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "chain mail and a holy symbol");
-                startingGoldHint.append("5d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.paladin_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s chain mail and a holy symbol", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Ranger":
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
@@ -273,11 +270,12 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Dungeoneer's Pack");
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.ranger_hit_die);
-                otherProficiencies.append(getString(R.string.ranger_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a longbow and a quiver of 20 arrows");
-                startingGoldHint.append("5d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.ranger_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s a longbow and a quiver of 20 arrows", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Rogue":
+                //TODO: Add in level one expertise choices
                 startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
@@ -287,9 +285,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Dungeoneer's Pack");
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.rogue_hit_die);
-                otherProficiencies.append(getString(R.string.rogue_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, 2 daggers, and thieves' tools");
-                startingGoldHint.append("4d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.rogue_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s leather armor, 2 daggers, and thieves' tools", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 4d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Sorcerer":
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
@@ -309,9 +307,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Dungeoneer's Pack");
                 equipmentSpinnerArray3.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.sorcerer_hit_die);
-                otherProficiencies.append(getString(R.string.sorcerer_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "2 daggers");
-                startingGoldHint.append("3d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.sorcerer_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s 2 daggers", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 3d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Warlock":
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
@@ -330,9 +328,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray3.add("Scholar's Pack");
                 equipmentSpinnerArray3.add("Dungeoneer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.warlock_hit_die);
-                otherProficiencies.append(getString(R.string.warlock_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "leather armor, a handaxe, and 2 daggers");
-                startingGoldHint.append("4d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.warlock_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s leather armor, a handaxe, and 2 daggers", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 4d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Wizard":
                 skillProficiencySpinner3.setVisibility(View.GONE);
@@ -344,14 +342,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 equipmentSpinnerArray2.add("Scholar's Pack");
                 equipmentSpinnerArray2.add("Explorer's Pack");
                 startingHPAndHitDieTextView.setText(R.string.wizard_hit_die);
-                otherProficiencies.append(getString(R.string.wizard_other_proficiencies));
-                extraStartingEquipmentTextView.setText(getString(R.string.starting_equipment_info) + "a spellbook");
-                startingGoldHint.append("4d4 x10");
+                otherProficienciesTextView.setText(String.format("You also have proficiency with %s", getString(R.string.wizard_other_proficiencies)));
+                extraStartingEquipmentTextView.setText(String.format("%s a spellbook", getString(R.string.starting_equipment_info)));
+                startingGoldEditText.setHint(String.format("%s 4d4 x10", getString(R.string.starting_gp_roll)));
                 break;
         }
-        otherProficienciesTextView.setText(otherProficiencies.toString());
-        startingGoldEditText.setHint(startingGoldHint);
-
         ArrayAdapter<String> equipmentArrayAdapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, equipmentSpinnerArray1);
         ArrayAdapter<String> equipmentArrayAdapter2 = new ArrayAdapter<String>(this,
@@ -568,9 +563,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Ranger":
                             bonusStats.add(getString(R.string.favored_enemy_description));
-                            bonusStats.add("Favored Enemy: " + levelOneChoiceSpinner1.getSelectedItem().toString());
+                            bonusStats.add(String.format("Favored Enemy: %s", levelOneChoiceSpinner1.getSelectedItem().toString()));
                             bonusStats.add(getString(R.string.favored_terrain_description));
-                            bonusStats.add("Favored Terrain: " + levelOneChoiceSpinner2.getSelectedItem().toString());
+                            bonusStats.add(String.format("Favored Terrain: %s", levelOneChoiceSpinner2.getSelectedItem().toString()));
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
