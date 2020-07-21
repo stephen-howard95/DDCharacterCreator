@@ -115,7 +115,6 @@
     <string name="sorcerer_hit_die">As a Sorcerer, your hit die is a D6</string>
     <string name="warlock_hit_die">As a Warlock, your hit die is a D8</string>
     <string name="wizard_hit_die">As a Wizard, your hit die is a D6</string>
-    <string name="starting_hp_and_hit_die">Your Starting HP will be X. Your Hit die is a dX</string>
     <string name="starting_gp_roll">For your starting gold, roll </string>
     <string name="proficiency_text">Choose from the following Skills to be proficient in</string>
     <string name="starting_equipment">Choose your starting equipment below</string>
@@ -136,8 +135,6 @@
     <string name="hit_die_label">Hit Die: </string>
     <string name="current_hit_points_label">Current Hit Points: </string>
     <string name="max_hit_points_label">Max Hit Points: </string>
-    <string name="passive_perception_label">Passive Perception: </string>
-    <string name="speed_label">Speed: </string>
     <string name="armor_class">Armor Class:</string>
     <string name="current_max_hp">current/max HP:</string>
     <string name="proficiencies">Proficiencies</string>
@@ -189,9 +186,6 @@
     <string name="ninth_level_spell">9th Level</string>
     <string name="spells_known">Spells</string>
     <string name="cantrips_known">Cantrips</string>
-    <string name="spellcasting_ability_label">Spellcasting Ability:</string>
-    <string name="spell_save_dc_label">Spell Save DC:</string>
-    <string name="spell_attack_bonus_label">Spell Attack Bonus:</string>
 
     // Inventory screen strings
     <string name="cp_label">CP:</string>
@@ -315,7 +309,6 @@
     <string name="battle_magic">Battle Magic: When you use your action to cast a Bard spell, you may make 1 weapon attack as a bonus action.</string>
 
     //Cleric leveling up/subclass bonuses
-    <string name="divine_domain">Divine Domain: </string>
     <string name="channel_divinity">Channel Divinity: You gain the ability to channel divine energy from your deity and use it to produce magical effects. This can be used a number of times per long rest as shown above.</string>
     <string name="channel_divinity_uses">Channel Divinity Uses:</string>
     <string name="channel_divinity_abilities">Channel Divinity Abilities: </string>
@@ -481,9 +474,8 @@
     <string name="versatile_trickster">Versatile Trickster: As a bonus action on your turn, you can designate a creature within 5ft of your mage hand. Doing so will cause the hand to distract that creature, giving you advantage on any attack rolls against that creature until the end of the turn.</string>
     <string name="spell_thief">Spell Thief: When a creature attacks you with a spell or you are in the effective radius of the spell, you can use your reaction to force the caster to make a saving throw with it\'s spellcasting ability modifier. The DC is your spell save DC. On a failed save, the spells effects are negated for you and you steal the knowledge of the spell if it is at least 1st level and of a level you can cast. For the next 8 hours, you can cast the spell using your own spell slots and the creature that originally casted the spell cannot. This ability can be done once per long rest.</string>
     <string name="spell_thief_use">Spell Thief: </string>
-    
+
     //Sorcerer leveling up/subclass bonuses
-    <string name="sorcerous_origin">Sorcerous Origin: </string>
     <string name="font_of_magic">Font of Magic: You have a pool of Sorcery Points that you can expend to alter the effects of your spells, or swapping them to retrieve used spell slots. you regain all used Sorcery Points when you finish a long rest.</string>
     <string name="sorcery_points">Sorcery Points: </string>
     <string name="metamagic_options">Metamagic Options: </string>
@@ -511,7 +503,6 @@
 
     //Warlock leveling up/subclass bonuses
     <string name="warlock_spell_slot_improvement">Your Spell Slots are now level </string>
-    <string name="otherworldly_patron">Otherworldly Patron: </string>
     <string name="eldritch_invocations_known">Eldritch Invocations Known: </string>
     <string name="mystic_arcanum_choice">Choose a Mystic Arcanum spell</string>
     <string name="eldritch_master">Eldritch Master: Once per long rest, you can spend 1 minute entreating your patron to regain all your expended spell slots.</string>
