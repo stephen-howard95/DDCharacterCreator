@@ -78,32 +78,18 @@ public class MainStatsFragment extends Fragment {
         wisdomModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4))));
         charismaModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5))));
 
-        //Setting Proficiency Bonus value
-        StringBuilder proficiencyBonusString = new StringBuilder().append(getString(R.string.proficiency_bonus_label));
-        if(character.getLevel() <= 4){
-            proficiencyBonusString.append("+2");
-        } else if (character.getLevel() <= 8){
-            proficiencyBonusString.append("+3");
-        }else if(character.getLevel() <= 12){
-            proficiencyBonusString.append("+4");
-        } else if(character.getLevel() <= 16){
-            proficiencyBonusString.append("+5");
-        } else if(character.getLevel() <= 20){
-            proficiencyBonusString.append("+6");
-        }
-        proficiencyBonus.setText(proficiencyBonusString.toString());
-
-        //Setting Speed value
+        //Setting Proficiency Bonus and speed values
+        proficiencyBonus.setText(String.format("Proficiency Bonus: %s", DetailActivity.proficiencyBonus));
         if(character.getRace().equals("Dwarf")  || character.getRace().equals("Halfling")  || character.getRace().equals("Gnome")){
-            speedTextView.setText(getString(R.string.speed_label) + "25 FT");
+            speedTextView.setText("Speed: 25ft");
         } else if (character.getRace().equals("Elf")) {
-            speedTextView.setText(getString(R.string.speed_label) + "35 FT");
+            speedTextView.setText("Speed: 35ft");
         } else {
-            speedTextView.setText(getString(R.string.speed_label) + "30 FT");
+            speedTextView.setText("Speed: 30ft");
         }
 
         //Setting Passive Perception and Armor Class
-        passivePerception.setText(getString(R.string.passive_perception_label) + (10 + calculateModifier(character.getStatValues().get(4))));
+        passivePerception.setText(String.format("Passive Perception: %s", (10 + calculateModifier(character.getStatValues().get(4)))));
         armorClassEditText.setText(String.valueOf(character.getCurrency().get(6)));
         armorClassEditText.addTextChangedListener(new TextWatcher() {
             @Override
