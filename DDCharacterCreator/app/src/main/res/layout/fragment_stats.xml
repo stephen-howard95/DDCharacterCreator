@@ -270,16 +270,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/armor_class_value"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/passive_perception_label"/>
+            android:layout_marginBottom="8dp"/>
         <TextView
             android:id="@+id/speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/passive_perception"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp"
-            android:text="@string/speed_label"/>
+            android:textSize="16sp"/>
     </RelativeLayout>
 
     <RelativeLayout
