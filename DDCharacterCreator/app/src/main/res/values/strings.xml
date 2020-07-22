@@ -90,6 +90,33 @@
         <item name="undercommon">Undercommon</item>
     </string-array>
 
+    <string-array name="favored_terrain_array">
+        <item name="arctic">Arctic</item>
+        <item name="coast">Coast</item>
+        <item name="desert">Desert</item>
+        <item name="forest">Forest</item>
+        <item name="grassland">Grassland</item>
+        <item name="mountain">Mountain</item>
+        <item name="swamp">Swamp</item>
+        <item name="Underdark">Underdark</item>
+    </string-array>
+
+    <string-array name="favored_enemies_array">
+        <item name="aberrations">Aberrations</item>
+        <item name="beasts">Beasts</item>
+        <item name="celestials">Celestials</item>
+        <item name="constructs">Constructs</item>
+        <item name="dragons">Dragons</item>
+        <item name="elementals">Elementals</item>
+        <item name="fey">Fey</item>
+        <item name="fiends">Fiends</item>
+        <item name="giants">Giants</item>
+        <item name="monstrosities">Monstrosities</item>
+        <item name="oozes">Oozes</item>
+        <item name="plants">Plants</item>
+        <item name="undead">Undead</item>
+    </string-array>
+
     // Questionnaire 1 strings
     <string name="strength_label">STR</string>
     <string name="dexterity_label">DEX</string>
@@ -446,6 +473,19 @@
     <string name="vanish">Vanish: You can now take the Hide action as a bonus action on your turn. You also cannot be tracked by nonmagical means, unless you allow it.</string>
     <string name="feral_senses">Feral Senses: When you attack a creature you cannot see, that does not impose disadvantage on your attack rolls. You are also aware of any invisible creatures within 30ft of you, as long as it isn\'t hidden, and you aren\'t blinded or deafened.</string>
     <string name="foe_slayer">Foe Slayer: Once oer turn, you can choose to add your WIS modifier to an attack or damage roll you make against one of your favored enemies.</string>
+    <string name="colossus_slayer">Colossus Slayer: When you hit a creature with a weapon attack, it takes an extra 1d8 damage if they are below their HP max</string>
+    <string name="giant_killer">Giant Killer: When a Large or larger creature within 5ft of you misses you with an attack, you can use your reaction to attack them, provided you can see them.</string>
+    <string name="horde_breaker">Horde Breaker: Once per turn, when you make a weapon attack, you can make another attack with the same weapon against a different creature within 5ft of the original target.</string>
+    <string name="escape_the_horde">Escape the Horde: Opportunity attacks made against you have disadvantage</string>
+    <string name="multiattack_defense">Multiattack Defense: When a creature hits you with an attack, you gain a +4 bonus to AC against all subsequent attacks made by that creature for the rest of the turn.</string>
+    <string name="steel_will">Steel Will: You have advantage on saving throws against being frightened.</string>
+    <string name="volley">Volley: As an action, you can make a ranged attack against any number of creatures within 10ft of a point you can see within your weapons range. You must have ammunition for each target and make a separate attack roll for each target.</string>
+    <string name="whirlwind_attack">Whirlwind Attack: As an action, you can make a melee attack against any number of creatures within 5ft of you, making a separate attack roll for each target.</string>
+    <string name="stand_against_the_tide">Stand Against the Tide: When a hostile creature misses you with a melee attack, you can use your reaction to force that creature to repeat the same attack against another creature of your choice within it\'s range.</string>
+    <string name="rangers_companion">Ranger\'s Companion: Choose a beast no larger than Medium and with a challenge rating of .25 or lower. Add your proficiency bonus to the beast\'s AC, attack rolls, and damage rolls and any saving throws and skills it is proficient in. The beast takes its turn on your initiative and obeys your orders to the best of its ability. When you have the Extra attack feature, you can attack once and have the beast attack once. If the beast dies, you can gain a new companion by spending 8 hours magically bonding with a beast that meets the requirements.</string>
+    <string name="exceptional_training">Exceptional Training: On a turn where your beast does not attack, you can use your bonus action to command the beast to Dash, Disengage, Dodge, or Help on its turn. The beasts attacks also now count as magical for the purposes of overcoming resistance/immunity to nonmagical attacks</string>
+    <string name="bestial_fury">Bestial Fury: When you command your beast to take the attack action, it can make 2 attacks instead of one or, if available, it can take the multiattack action.</string>
+    <string name="share_spells">Share Spells: When you cast a spell targeting yourself, it can also affect your beast companion if they are within 30ft.</string>
 
     //Rogue leveling up/subclass bonuses
     <string name="roguish_archetype">Roguish Archetype: </string>
