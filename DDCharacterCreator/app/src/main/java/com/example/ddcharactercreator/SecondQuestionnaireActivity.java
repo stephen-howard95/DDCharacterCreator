@@ -403,6 +403,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     currency.add(10 + calculateModifier(character.getStatValues().get(1)));
                     //Any class-specific changes to HP and/or AC, as well as raceAndClassBonusStats
                     ArrayList<String> bonusStats = new ArrayList<String>();
+                    ArrayList<String> bonusStats2 = new ArrayList<String>();
                     StringBuilder languages = new StringBuilder();
                     languages.append(getString(R.string.languages_known));
                     switch (character.getRace()){
@@ -562,10 +563,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Ranger":
-                            bonusStats.add(getString(R.string.favored_enemy_description));
-                            bonusStats.add(String.format("Favored Enemy: %s", levelOneChoiceSpinner1.getSelectedItem().toString()));
                             bonusStats.add(getString(R.string.favored_terrain_description));
-                            bonusStats.add(String.format("Favored Terrain: %s", levelOneChoiceSpinner2.getSelectedItem().toString()));
+                            bonusStats.add(getString(R.string.favored_enemy_description));
+                            bonusStats2.add(levelOneChoiceSpinner2.getSelectedItem().toString());
+                            bonusStats2.add(levelOneChoiceSpinner1.getSelectedItem().toString());
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
@@ -622,7 +623,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     }
                     launchDetailActivity(new Character(1, race, characterClass, alignment, name,
                             statValuesList, proficiencyChoices, instantiateInventory(startingEquipmentChoices),
-                            currency, characterSubclass, new ArrayList<Spell>(), spellSlotsClicked, bonusStats));
+                            currency, characterSubclass, new ArrayList<Spell>(), spellSlotsClicked, bonusStats, bonusStats2));
                 }
             }
         });
