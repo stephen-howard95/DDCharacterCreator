@@ -247,6 +247,7 @@ public class LevelUpActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //possibly save the character??
                 if(moreHP.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
                 } else{
@@ -423,6 +424,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         case "Paladin":
                         case "Ranger":
                             if(finalLevel == 2){
+                                subclass = choice2.getSelectedItem().toString();
                                 switch(choice1.getSelectedItem().toString()){
                                     case "Archery":
                                         character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
@@ -444,7 +446,53 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                 }
                             }
-
+                            if(finalLevel == 6 && character.getCharacterClass().equals("Ranger")){
+                                character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
+                                character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
+                            }
+                            if(finalLevel == 10){
+                                character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
+                            }
+                            if(finalLevel == 14){
+                                character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
+                            }
+                            if(finalLevel == 3 || finalLevel == 7 || finalLevel == 11 || finalLevel == 15){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Colossus Slayer":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.colossus_slayer));
+                                        break;
+                                    case "Giant Killer":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.giant_killer));
+                                        break;
+                                    case "Horde Breaker":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.horde_breaker));
+                                        break;
+                                    case "Escape the Horde":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.escape_the_horde));
+                                        break;
+                                    case "Multiattack Defense":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.multiattack_defense));
+                                        break;
+                                    case "Steel Will":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.steel_will));
+                                        break;
+                                    case "Volley":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.volley));
+                                        break;
+                                    case "Whirlwind Attack":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.whirlwind_attack));
+                                        break;
+                                    case "Evasion":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.evasion));
+                                        break;
+                                    case "Stand Against the Tide":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.stand_against_the_tide));
+                                        break;
+                                    case "Uncanny Dodge":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
+                                        break;
+                                }
+                            }
                     }
                    /* if(character.getCharacterClass().equals("Warlock") && choice1.getVisibility() == View.VISIBLE){
                         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
@@ -467,7 +515,8 @@ public class LevelUpActivity extends AppCompatActivity {
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                             character.getAlignment(), character.getName(), newStatValues,
                             character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
-                            subclass, character.getSpellsKnown(), character.getSpellSlotsClicked(), character.getRaceAndClassBonusStats()));
+                            subclass, character.getSpellsKnown(), character.getSpellSlotsClicked(),
+                            character.getRaceAndClassBonusStats(), character.getClassBasedBonusStats2()));
                 }
             }
         });
@@ -498,6 +547,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("Path of the Wolf Totem Warrior");
                         subclassChoices.add("Path of the Tiger Totem Warrior");
                         choice1.setAdapter(subclassAdapter);
+                        //TODO: When the subclass spinner is on a certain choice, a textbox will display the first bonus you get.
                         break;
                     case 4:
                         break;
@@ -645,6 +695,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         subclassChoices.add("College of Lore");
                         subclassChoices.add("College of Valor");
                         choice1.setAdapter(subclassAdapter);
+                        //TODO: Display the initial bonuses depending on the chosen subclass.
                         //expertise choices
                         break;
                     case 4:
@@ -1340,6 +1391,11 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Ranger":
+                List<String> hunterSubclassChoice = new ArrayList<String>();
+                ArrayAdapter<String> favoredTerrainAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.favored_terrain_array));
+                ArrayAdapter<String> favoredEnemyAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.favored_enemies_array));
                 switch (level){
                     case 2:
                         List<String> fightingStyles = new ArrayList<String>();
@@ -1353,10 +1409,37 @@ public class LevelUpActivity extends AppCompatActivity {
                         choiceHeader1.setText("Choose a Fighting Style");
                         choice1.setVisibility(View.VISIBLE);
                         choice1.setAdapter(fightingStyleAdapter);
+                        ArrayList<String> subclassChoices = new ArrayList<>();
+                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        choiceHeader2.setVisibility(View.VISIBLE);
+                        choiceHeader2.setText("Choose a Ranger Archetype");
+                        choice2.setVisibility(View.VISIBLE);
+                        subclassChoices.add("Hunter");
+                        subclassChoices.add("Beast Master");
+                        choice2.setAdapter(subclassAdapter);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You now have the ability to cast spells");
                         break;
                     case 3:
+                        switch(character.getSubclass()){
+                            case "Hunter":
+                                ArrayAdapter<String> hunterSubclassAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, hunterSubclassChoice);
+                                hunterSubclassChoice.add("Colossus Slayer");
+                                hunterSubclassChoice.add("Giant Killer");
+                                hunterSubclassChoice.add("Horde Breaker");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a subclass option");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(hunterSubclassAdapter);
+                                break;
+                            case "Beast Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText(getString(R.string.rangers_companion));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.rangers_companion));
+                                break;
+                        }
                         break;
                     case 4:
                         break;
@@ -1366,8 +1449,34 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack));
                         break;
                     case 6:
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Favored Terrain");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(favoredTerrainAdapter);
+                        choiceHeader2.setVisibility(View.VISIBLE);
+                        choiceHeader2.setText("Choose another Favored Enemy");
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(favoredEnemyAdapter);
                         break;
                     case 7:
+                        switch(character.getSubclass()){
+                            case "Hunter":
+                                ArrayAdapter<String> hunterSubclassAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, hunterSubclassChoice);
+                                hunterSubclassChoice.add("Escape the Horde");
+                                hunterSubclassChoice.add("Multiattack Defense");
+                                hunterSubclassChoice.add("Steel Will");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a subclass option");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(hunterSubclassAdapter);
+                                break;
+                            case "Beast Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText(getString(R.string.exceptional_training));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.exceptional_training));
+                                break;
+                        }
                         break;
                     case 8:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1377,22 +1486,65 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         break;
                     case 10:
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Favored Terrain");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(favoredTerrainAdapter);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.hide_in_plain_sight));
                         character.getRaceAndClassBonusStats().add(getString(R.string.hide_in_plain_sight));
                         break;
                     case 11:
+                        switch(character.getSubclass()){
+                            case "Hunter":
+                                ArrayAdapter<String> hunterSubclassAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, hunterSubclassChoice);
+                                hunterSubclassChoice.add("Volley");
+                                hunterSubclassChoice.add("Whirlwind Attack");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a subclass option");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(hunterSubclassAdapter);
+                                break;
+                            case "Beast Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText(getString(R.string.bestial_fury));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.bestial_fury));
+                                break;
+                        }
                         break;
                     case 12:
                         break;
                     case 13:
                         break;
                     case 14:
+                        choiceHeader2.setVisibility(View.VISIBLE);
+                        choiceHeader2.setText("Choose another Favored Enemy");
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(favoredEnemyAdapter);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.vanish));
                         character.getRaceAndClassBonusStats().add(getString(R.string.vanish));
                         break;
                     case 15:
+                        switch(character.getSubclass()){
+                            case "Hunter":
+                                ArrayAdapter<String> hunterSubclassAdapter = new ArrayAdapter<String>(this,
+                                        android.R.layout.simple_spinner_dropdown_item, hunterSubclassChoice);
+                                hunterSubclassChoice.add("Evasion");
+                                hunterSubclassChoice.add("Stand Against the Tide");
+                                hunterSubclassChoice.add("Uncanny Dodge");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a subclass option");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(hunterSubclassAdapter);
+                                break;
+                            case "Beast Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText(getString(R.string.share_spells));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.share_spells));
+                                break;
+                        }
                         break;
                     case 16:
                         break;
