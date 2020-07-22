@@ -535,9 +535,19 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Ranger":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.favored_enemy));
+                subclassInfoTextView1.setText(String.format("Favored Terrain: %s", character.getClassBasedBonusStats2().get(0)));
                 subclassInfoTextView2.setVisibility(View.VISIBLE);
-                subclassInfoTextView2.setText(getString(R.string.favored_terrain));
+                subclassInfoTextView2.setText(String.format("Favored Enemies: %s", character.getClassBasedBonusStats2().get(1)));
+                if(level >= 6){
+                    subclassInfoTextView1.setText(String.format("Favored Terrain: %s, %s", character.getClassBasedBonusStats2().get(0), character.getClassBasedBonusStats2().get(2)));
+                    subclassInfoTextView2.setText(String.format("Favored Enemies: %s, %s", character.getClassBasedBonusStats2().get(1), character.getClassBasedBonusStats2().get(3)));
+                }
+                if(level >= 10){
+                    subclassInfoTextView1.setText(String.format("Favored Terrain: %s, %s, %s", character.getClassBasedBonusStats2().get(0), character.getClassBasedBonusStats2().get(2), character.getClassBasedBonusStats2().get(4)));
+                }
+                if(level >= 14){
+                    subclassInfoTextView2.setText(String.format("Favored Enemies: %s, %s, %s", character.getClassBasedBonusStats2().get(1), character.getClassBasedBonusStats2().get(3), character.getClassBasedBonusStats2().get(5)));
+                }
                 break;
             case "Rogue":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
