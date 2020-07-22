@@ -25,7 +25,8 @@ public class Character implements Serializable {
     private ArrayList<Spell> mSpellsKnown;
     private ArrayList<String> mSpellSlotsClicked;
     private ArrayList<String> mRaceAndClassBonusStats;
-    
+    private ArrayList<String> mClassBasedBonusStats2;
+
     @Ignore
     public Character(){
     }
@@ -55,7 +56,8 @@ public class Character implements Serializable {
 
     public Character(int level, String race, String characterClass, String alignment, String name, ArrayList<Integer> statValues,
                      ArrayList<String> proficiencyChoices, ArrayList<String> inventoryList, ArrayList<Integer> currency,
-                     String subclass, ArrayList<Spell> spellsKnown, ArrayList<String> spellSlotsClicked, ArrayList<String> raceAndClassBonusStats){
+                     String subclass, ArrayList<Spell> spellsKnown, ArrayList<String> spellSlotsClicked,
+                     ArrayList<String> raceAndClassBonusStats, ArrayList<String> classBasedBonusStats2){
         mLevel = level;
         mRace = race;
         mCharacterClass = characterClass;
@@ -69,6 +71,7 @@ public class Character implements Serializable {
         mSpellsKnown = spellsKnown;
         mSpellSlotsClicked = spellSlotsClicked;
         mRaceAndClassBonusStats = raceAndClassBonusStats;
+        mClassBasedBonusStats2 = classBasedBonusStats2;
     }
 
     public int getLevel(){
@@ -110,5 +113,7 @@ public class Character implements Serializable {
     public ArrayList<String> getRaceAndClassBonusStats(){
         return mRaceAndClassBonusStats;
     }
-
+    public ArrayList<String> getClassBasedBonusStats2(){
+        return mClassBasedBonusStats2;
+    }
 }
