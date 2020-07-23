@@ -15,6 +15,7 @@
 
     //stat saving throws/skill proficiencies
     <color name="proficiency_blue">#310CE8</color>
+    <color name="expertise_blue">#0FEBE9</color>
 
     //currency colors
     <color name="copper">#b87333</color>
