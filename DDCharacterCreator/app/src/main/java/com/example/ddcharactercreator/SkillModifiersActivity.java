@@ -332,69 +332,175 @@ public class SkillModifiersActivity extends AppCompatActivity {
         if(character.getCharacterClass().equals("Bard") && character.getLevel() >= 2){
             List<String> skillsList = Arrays.asList(getResources().getStringArray(R.array.skill_proficiencies_array));
             for(int i=0; i<skillsList.size(); i++){
-                if(!character.getProficiencyChoices().contains(skillsList.get(i))){
+                if(!character.getProficiencyChoices().contains(skillsList.get(i)) && !character.getClassBasedBonusStats2().contains(skillsList.get(i))){
                     switch(skillsList.get(i)){
                         case "Acrobatics":
-                            acrobaticsModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            acrobaticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2)));
                             break;
                         case "Animal Handling":
-                            animalHandlingModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            animalHandlingModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2)));
                             break;
                         case "Arcana":
-                            arcanaModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            arcanaModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2)));
                             break;
                         case "Athletics":
-                            athleticsModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(0)) + (proficiencyBonus/2))));
+                            athleticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(0)) + (proficiencyBonus/2)));
                             break;
                         case "Deception":
-                            deceptionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            deceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2)));
                             break;
                         case "History":
-                            historyModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            historyModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2)));
                             break;
                         case "Insight":
-                            insightModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2)));
                             break;
                         case "Intimidation":
-                            intimidationModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            intimidationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2)));
                             break;
                         case "Investigation":
-                            investigationModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            investigationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2)));
                             break;
                         case "Medicine":
-                            medicineModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            medicineModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2)));
                             break;
                         case "Nature":
-                            natureModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            natureModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2)));
                             break;
                         case "Perception":
-                            perceptionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2)));
                             break;
                         case "Performance":
-                            performanceModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            performanceModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2)));
                             break;
                         case "Persuasion":
-                            persuasionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2))));
+                            persuasionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus/2)));
                             break;
                         case "Religion":
-                            religionModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2))));
+                            religionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus/2)));
                             break;
                         case "Sleight of Hand":
-                            sleightOfHandModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            sleightOfHandModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2)));
                             break;
                         case "Stealth":
-                            stealthModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2))));
+                            stealthModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus/2)));
                             break;
                         case "Survival":
-                            survivalModifier.setText(String.valueOf(Math.floor(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2))));
+                            survivalModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus/2)));
                             break;
                     }
                 }
             }
         }
-        ListAdapter adapter = new ListAdapter(getApplicationContext(), weaponArmorProficiencies);
+        //Expertise
+        if(character.getCharacterClass().equals("Bard") || character.getCharacterClass().equals("Rogue")){
+            ArrayList<String> skillsList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.skill_proficiencies_array)));
+            skillsList.add("Thieve's Tools");
+            for(int i=0; i<skillsList.size(); i++){
+                if(character.getClassBasedBonusStats2().contains(skillsList.get(i))){
+                    switch(skillsList.get(i)){
+                        case "Acrobatics":
+                            acrobaticsLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            acrobaticsModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            acrobaticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus*2)));
+                            break;
+                        case "Animal Handling":
+                            animalHandlingLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            animalHandlingModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            animalHandlingModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus*2)));
+                            break;
+                        case "Arcana":
+                            arcanaLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            arcanaModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            arcanaModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus*2)));
+                            break;
+                        case "Athletics":
+                            athleticsLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            athleticsModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            athleticsModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(0)) + (proficiencyBonus*2)));
+                            break;
+                        case "Deception":
+                            deceptionLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            deceptionModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            deceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus*2)));
+                            break;
+                        case "History":
+                            historyLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            historyModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            historyModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus*2)));
+                            break;
+                        case "Insight":
+                            insightLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            insightModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            insightModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus*2)));
+                            break;
+                        case "Intimidation":
+                            intimidationLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            intimidationModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            intimidationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus*2)));
+                            break;
+                        case "Investigation":
+                            investigationLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            investigationModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            investigationModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus*2)));
+                            break;
+                        case "Medicine":
+                            medicineLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            medicineModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            medicineModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus*2)));
+                            break;
+                        case "Nature":
+                            natureLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            natureModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            natureModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus*2)));
+                            break;
+                        case "Perception":
+                            perceptionLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            perceptionModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            perceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus*2)));
+                            break;
+                        case "Performance":
+                            performanceLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            performanceModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            performanceModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus*2)));
+                            break;
+                        case "Persuasion":
+                            persuasionLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            persuasionModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            persuasionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + (proficiencyBonus*2)));
+                            break;
+                        case "Religion":
+                            religionLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            religionModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            religionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(3)) + (proficiencyBonus*2)));
+                            break;
+                        case "Sleight of Hand":
+                            sleightOfHandLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            sleightOfHandModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            sleightOfHandModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus*2)));
+                            break;
+                        case "Stealth":
+                            stealthLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            stealthModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            stealthModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + (proficiencyBonus*2)));
+                            break;
+                        case "Survival":
+                            survivalLabel.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            survivalModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            survivalModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(4)) + (proficiencyBonus*2)));
+                            break;
+                        case "Thieve's Tools":
+                            toolProficienciesTextView.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            toolProficienciesModifier.setTextColor(getResources().getColor(R.color.expertise_blue));
+                            toolProficienciesModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(1)) + proficiencyBonus*2));
+                            break;
+                    }
+                }
+            }
+        }
 
         //Weapon/armor/tool proficiencies
+        ListAdapter adapter = new ListAdapter(getApplicationContext(), weaponArmorProficiencies);
         switch(character.getCharacterClass()){
             case "Barbarian":
                 toolProficienciesModifier.setVisibility(View.GONE);
@@ -415,6 +521,11 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Longswords");
                 weaponArmorProficiencies.add("Rapiers");
                 weaponArmorProficiencies.add("Shortswords");
+                if(character.getSubclass().equals("College of Valor")){
+                    weaponArmorProficiencies.add("Medium Armor");
+                    weaponArmorProficiencies.add("Shields");
+                    weaponArmorProficiencies.add("Martial Weapons");
+                }
                 break;
             case "Cleric":
                 toolProficienciesModifier.setVisibility(View.GONE);
@@ -424,6 +535,15 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Medium Armor");
                 weaponArmorProficiencies.add("Shields");
                 weaponArmorProficiencies.add("Simple Weapons");
+                switch(character.getSubclass()){
+                    case "Tempest":
+                    case "War":
+                        weaponArmorProficiencies.add("Martial Weapons");
+                    case "Life":
+                    case "Nature":
+                        weaponArmorProficiencies.add("Heavy Armor");
+                        break;
+                }
                 break;
             case "Druid":
                 toolProficienciesTextView.setText("Herbalism Kit");
@@ -452,6 +572,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Martial Weapons");
                 break;
             case "Monk":
+                //TODO: This involves a choice. It's actually one type of musical instrument or artisan's tools
                 toolProficienciesModifier.setVisibility(View.GONE);
                 toolProficienciesTextView.setVisibility(View.GONE);
                 toolProficiencyLabel.setVisibility(View.GONE);
@@ -522,20 +643,22 @@ public class SkillModifiersActivity extends AppCompatActivity {
 
     //Allows for skill proficiencies to change.
     public void changeProficiencyStatus(TextView label, TextView modifier, String skill, int statValue) {
-        if(!character.getProficiencyChoices().contains(skill)){
-            label.setTextColor(getResources().getColor(R.color.proficiency_blue));
-            modifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
-            modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus));
-            character.getProficiencyChoices().add(skill);
-        }else{
-            label.setTextColor(getResources().getColor(R.color.defaultTextColor));
-            modifier.setTextColor(getResources().getColor(R.color.defaultTextColor));
-            if(character.getCharacterClass().equals("Bard") && character.getLevel() >= 2){
-                modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus/2));
+        if(!character.getClassBasedBonusStats2().contains(skill)){
+            if(!character.getProficiencyChoices().contains(skill)){
+                label.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                modifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus));
+                character.getProficiencyChoices().add(skill);
             }else{
-                modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue))));
+                label.setTextColor(getResources().getColor(R.color.defaultTextColor));
+                modifier.setTextColor(getResources().getColor(R.color.defaultTextColor));
+                if(character.getCharacterClass().equals("Bard") && character.getLevel() >= 2){
+                    modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue)) + proficiencyBonus/2));
+                }else{
+                    modifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(statValue))));
+                }
+                character.getProficiencyChoices().remove(skill);
             }
-            character.getProficiencyChoices().remove(skill);
         }
     }
 }
