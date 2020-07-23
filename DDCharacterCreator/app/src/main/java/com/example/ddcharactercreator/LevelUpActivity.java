@@ -262,52 +262,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     }
                     String subclass = character.getSubclass();
                     switch(character.getCharacterClass()){
-                        case "Wizard":
-                            if(finalLevel == 2){
-                                subclass = choice1.getSelectedItem().toString();
-                                switch(choice1.getSelectedItem().toString()){
-                                    case "School of Abjuration":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.abjuration_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.arcane_ward));
-                                        break;
-                                    case "School of Conjuration":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.conjuration_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.minor_conjuration));
-                                        break;
-                                    case "School of Divination":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.divination_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.portent));
-                                        break;
-                                    case "School of Enchantment":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.enchantment_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.hypnotic_gaze));
-                                        break;
-                                    case "School of Evocation":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.evocation_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.sculpt_spells));
-                                        break;
-                                    case "School of Illusion":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.illusion_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.improved_minor_illusion));
-                                        getSubclassSpells("minor illusion");
-                                        break;
-                                    case "School of Necromancy":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.necromancy_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.grim_harvest));
-                                        break;
-                                    case "School of Transmutation":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.transmutation_savant));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.minor_alchemy));
-                                        break;
-                                }
-                            } else if(finalLevel == 20){
-                                getSubclassSpells(choice1.getSelectedItem().toString());
-                                getSubclassSpells(choice2.getSelectedItem().toString());
-                            }
-                            break;
                         case "Barbarian":
-                            if(finalLevel == 6 || finalLevel == 14){
+                            if((finalLevel == 3 || finalLevel == 6 || finalLevel == 14) && character.getSubclass().equals("Path of the Totem Warrior")){
                                 switch(choice1.getSelectedItem().toString()){
+                                    case "Bear Totem Spirit":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_bear));
+                                        break;
+                                    case "Eagle Totem Spirit":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_eagle));
+                                        break;
+                                    case "Wolf Totem Spirit":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_wolf));
+                                        break;
+                                    case "Tiger Totem Spirit":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_tiger));
+                                        break;
                                     case "Aspect of the Bear":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.aspect_of_the_bear));
                                         break;
@@ -334,97 +303,25 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                 }
                             }
+                            break;
                         case "Bard":
-                        case "Fighter":
-                        case "Rogue":
-                            if(finalLevel == 3){
-                                subclass = choice1.getSelectedItem().toString();
-                                switch(subclass){
-                                    case "Path of the Berserker":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.frenzy));
-                                        break;
-                                    case "Path of the Bear Totem Warrior":
-                                        subclass = "Path of the Totem Warrior";
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_bear));
-                                        break;
-                                    case "Path of the Eagle Totem Warrior":
-                                        subclass = "Path of the Totem Warrior";
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_eagle));
-                                        break;
-                                    case "Path of the Wolf Totem Warrior":
-                                        subclass = "Path of the Totem Warrior";
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_wolf));
-                                        break;
-                                    case "Path of the Tiger Totem Warrior":
-                                        subclass = "Path of the Totem Warrior";
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.totem_spirit_tiger));
-                                        break;
-                                    case "College of Lore":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.cutting_words));
-                                        break;
-                                    case "College of Valor":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.combat_inspiration));
-                                        break;
-                                    case "Champion":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.improved_critical));
-                                        break;
-                                    case "Eldritch Knight":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.weapon_bond));
-                                        break;
-                                    case "Thief":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.fast_hands));
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.second_story_work));
-                                        break;
-                                    case "Assassin":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.assassinate));
-                                        break;
-                                    case "Arcane Trickster":
-                                        character.getRaceAndClassBonusStats().add(getString(R.string.mage_hand_legerdemain));
-                                        break;
-                                }
-                            }
-                            if(character.getSubclass().equals("Champion") && finalLevel == 10){
-                                switch(choice1.getSelectedItem().toString()){
-                                    case "Archery":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
-                                        break;
-                                    case "Defense":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
-                                        break;
-                                    case "Dueling":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
-                                        break;
-                                    case "Great Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
-                                        break;
-                                    case "Protection":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
-                                        break;
-                                    case "Two-Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
-                                        break;
-                                }
+                            if(finalLevel == 3 || finalLevel == 10){
+                                character.getProficiencyChoices().remove(choice1.getSelectedItem().toString());
+                                character.getProficiencyChoices().remove(choice2.getSelectedItem().toString());
+                                character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
+                                character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
                             break;
                         case "Druid":
-                            if(finalLevel == 2){
-                                subclass = choice1.getSelectedItem().toString();
-                            } else if(finalLevel == 3 && character.getSubclass().equals("Circle of the Land")){
+                            if(finalLevel == 3 && character.getSubclass().equals("Circle of the Land")){
                                 subclass = subclass + ", " + choice1.getSelectedItem().toString();
                             }
-                            switch(subclass){
-                                case "Circle of the Land":
-                                    character.getRaceAndClassBonusStats().add(getString(R.string.natural_recovery));
-                                    break;
-                                case "Circle of the Moon":
-                                    character.getRaceAndClassBonusStats().add(getString(R.string.combat_wild_shape));
-                                    break;
-                            }
                             break;
+                        case "Fighter":
                         case "Paladin":
                         case "Ranger":
-                            if(finalLevel == 2){
-                                subclass = choice2.getSelectedItem().toString();
+                            if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
+                                    || (character.getSubclass().equals("Champion") && finalLevel == 10)){
                                 switch(choice1.getSelectedItem().toString()){
                                     case "Archery":
                                         character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
@@ -456,7 +353,7 @@ public class LevelUpActivity extends AppCompatActivity {
                             if(finalLevel == 14){
                                 character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
-                            if(finalLevel == 3 || finalLevel == 7 || finalLevel == 11 || finalLevel == 15){
+                            if(character.getSubclass().equals("Hunter") && (finalLevel == 3 || finalLevel == 7 || finalLevel == 11 || finalLevel == 15)){
                                 switch(choice1.getSelectedItem().toString()){
                                     case "Colossus Slayer":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.colossus_slayer));
@@ -493,6 +390,20 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                 }
                             }
+                            break;
+                        case "Rogue":
+                            if(finalLevel == 2 || finalLevel == 6){
+                                character.getProficiencyChoices().remove(choice1.getSelectedItem().toString());
+                                character.getProficiencyChoices().remove(choice2.getSelectedItem().toString());
+                                character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
+                                character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
+                            }
+                        case "Wizard":
+                            if(finalLevel == 20){
+                                getSubclassSpells(choice1.getSelectedItem().toString());
+                                getSubclassSpells(choice2.getSelectedItem().toString());
+                            }
+                            break;
                     }
                    /* if(character.getCharacterClass().equals("Warlock") && choice1.getVisibility() == View.VISIBLE){
                         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
@@ -533,21 +444,30 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.danger_sense));
                         break;
                     case 3:
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+                        ArrayList<String> totemChoices = new ArrayList<>();
+                        ArrayAdapter<String> totemAdapter = new ArrayAdapter<String>(this,
+                                android.R.layout.simple_spinner_dropdown_item, totemChoices);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You have an extra usage of Rage");
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a Primal Path");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("Path of the Berserker");
-                        subclassChoices.add("Path of the Bear Totem Warrior");
-                        subclassChoices.add("Path of the Eagle Totem Warrior");
-                        subclassChoices.add("Path of the Wolf Totem Warrior");
-                        subclassChoices.add("Path of the Tiger Totem Warrior");
-                        choice1.setAdapter(subclassAdapter);
-                        //TODO: When the subclass spinner is on a certain choice, a textbox will display the first bonus you get.
+                        switch(character.getSubclass()){
+                            case "Path of the Berserker":
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText(getString(R.string.frenzy));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.frenzy));
+                                break;
+                            case "Path of the Totem Warrior":
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText("You can now cast Beast Sense and Speak with Animals as a ritual");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose a Totem Spirit");
+                                choice1.setVisibility(View.VISIBLE);
+                                totemChoices.add("Bear Totem Spirit");
+                                totemChoices.add("Eagle Totem Spirit");
+                                totemChoices.add("Wolf Totem Spirit");
+                                totemChoices.add("Tiger Totem Spirit");
+                                choice1.setAdapter(totemAdapter);
+                                break;
+                        }
                         break;
                     case 4:
                         break;
@@ -676,6 +596,9 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Bard":
+                ArrayList<String> bardExpertiseChoices = new ArrayList<>();
+                ArrayAdapter<String> bardExpertiseAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, bardExpertiseChoices);
                 switch (level){
                     case 2:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -686,17 +609,28 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.jack_of_all_trades));
                         break;
                     case 3:
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a Bard Subclass");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("College of Lore");
-                        subclassChoices.add("College of Valor");
-                        choice1.setAdapter(subclassAdapter);
-                        //TODO: Display the initial bonuses depending on the chosen subclass.
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "College of Lore":
+                                bonusStats1.setText(getString(R.string.cutting_words));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.cutting_words));
+                                bonusStats2.setText("You now have proficiency in 3 more skills of your choice");
+                                break;
+                            case "College of Valor":
+                                bonusStats1.setText(getString(R.string.combat_inspiration));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.combat_inspiration));
+                                bonusStats2.setText("You now have proficiency with Medium Armor, Shields, and Martial Weapons");
+                                break;
+                        }
                         //expertise choices
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose two of your proficiencies. Your proficiency bonus will be doubled for any ability checks you make with that skill");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice2.setVisibility(View.VISIBLE);
+                        bardExpertiseChoices.addAll(character.getProficiencyChoices());
+                        choice1.setAdapter(bardExpertiseAdapter);
+                        choice2.setAdapter(bardExpertiseAdapter);
                         break;
                     case 4:
                         break;
@@ -735,6 +669,13 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setText("Your Bardic Inspiration die is now a d10");
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.magical_secrets));
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose two of your proficiencies. Your proficiency bonus will be doubled for any ability checks you make with that skill");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice2.setVisibility(View.VISIBLE);
+                        bardExpertiseChoices.addAll(character.getProficiencyChoices());
+                        choice1.setAdapter(bardExpertiseAdapter);
+                        choice2.setAdapter(bardExpertiseAdapter);
                         break;
                     case 11:
                         break;
@@ -987,32 +928,36 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
                         character.getRaceAndClassBonusStats().add(getString(R.string.wild_shape));
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a Druid Circle");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("Circle of the Land");
-                        subclassChoices.add("Circle of the Moon");
-                        choice1.setAdapter(subclassAdapter);
+                        bonusStats3.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Circle of the Land":
+                                bonusStats3.setText(getString(R.string.natural_recovery));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.natural_recovery));
+                                break;
+                            case "Circle of the Moon":
+                                bonusStats3.setText(getString(R.string.combat_wild_shape));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.combat_wild_shape));
+                                break;
+                        }
                         break;
                     case 3:
-                        ArrayList<String> landCircleChoices = new ArrayList<>();
-                        ArrayAdapter<String> landCircleAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, landCircleChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a type of land. This will provide you with more spells");
-                        choice1.setVisibility(View.VISIBLE);
-                        landCircleChoices.add("Arctic");
-                        landCircleChoices.add("Coast");
-                        landCircleChoices.add("Desert");
-                        landCircleChoices.add("Forest");
-                        landCircleChoices.add("Grassland");
-                        landCircleChoices.add("Mountain");
-                        landCircleChoices.add("Swamp");
-                        landCircleChoices.add("Underdark");
-                        choice1.setAdapter(landCircleAdapter);
+                        if(character.getSubclass().equals("Circle of the Land")){
+                            ArrayList<String> landCircleChoices = new ArrayList<>();
+                            ArrayAdapter<String> landCircleAdapter = new ArrayAdapter<String>(this,
+                                    android.R.layout.simple_spinner_dropdown_item, landCircleChoices);
+                            choiceHeader1.setVisibility(View.VISIBLE);
+                            choiceHeader1.setText("Choose a type of land. This will provide you with more spells");
+                            choice1.setVisibility(View.VISIBLE);
+                            landCircleChoices.add("Arctic");
+                            landCircleChoices.add("Coast");
+                            landCircleChoices.add("Desert");
+                            landCircleChoices.add("Forest");
+                            landCircleChoices.add("Grassland");
+                            landCircleChoices.add("Mountain");
+                            landCircleChoices.add("Swamp");
+                            landCircleChoices.add("Underdark");
+                            choice1.setAdapter(landCircleAdapter);
+                        }
                         break;
                     case 4:
                         break;
@@ -1093,15 +1038,19 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.action_surge));
                         break;
                     case 3:
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a Martial Archetype");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("Champion");
-                        subclassChoices.add("Eldritch Knight");
-                        choice1.setAdapter(subclassAdapter);
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Champion":
+                                bonusStats1.setText(getString(R.string.improved_critical));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_critical));
+                                break;
+                            case "Eldritch Knight":
+                                bonusStats1.setText("You now have the ability to cast spells. Go to the Spellcasting tab for more information");
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText(getString(R.string.weapon_bond));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.weapon_bond));
+                                break;
+                        }
                         break;
                     case 4:
                         break;
@@ -1565,25 +1514,46 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Rogue":
+                ArrayList<String> rogueExpertiseChoices = new ArrayList<>();
+                ArrayAdapter<String> rogueExpertiseAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, rogueExpertiseChoices);
                 switch (level){
                     case 2:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.cunning_action));
                         character.getRaceAndClassBonusStats().add(getString(R.string.cunning_action));
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose two of your proficiencies. Your proficiency bonus will be doubled for any ability checks you make with that skill");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice2.setVisibility(View.VISIBLE);
+                        rogueExpertiseChoices.addAll(character.getProficiencyChoices());
+                        rogueExpertiseChoices.add("Thieve's Tools");
+                        choice1.setAdapter(rogueExpertiseAdapter);
+                        choice2.setAdapter(rogueExpertiseAdapter);
                         break;
                     case 3:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your sneak attack now does 2d6 damage");
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a Roguish Archetype");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("Thief");
-                        subclassChoices.add("Assassin");
-                        subclassChoices.add("Arcane Trickster");
-                        choice1.setAdapter(subclassAdapter);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Thief":
+                                bonusStats2.setText(getString(R.string.fast_hands));
+                                bonusStats3.setVisibility(View.VISIBLE);
+                                bonusStats3.setText(getString(R.string.second_story_work));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.fast_hands));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.second_story_work));
+                                break;
+                            case "Assassin":
+                                bonusStats2.setText(getString(R.string.assassinate));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.assassinate));
+                                break;
+                            case "Arcane Trickster":
+                                bonusStats2.setText("You now have the ability to cast spells. Go to the Spellcasting tab for more information");
+                                bonusStats3.setVisibility(View.VISIBLE);
+                                bonusStats3.setText(getString(R.string.mage_hand_legerdemain));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.mage_hand_legerdemain));
+                                break;
+                        }
                         break;
                     case 4:
                         break;
@@ -1595,17 +1565,16 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
                         break;
                     case 6:
-                        /*bonusStats1.setVisibility(View.VISIBLE);
-                        bonusStats1.setText(getString(R.string.expertise));
-                        List<String> expertiseChoices = new ArrayList<String>();
-                        ArrayAdapter<String> expertiseAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, expertiseChoices);
-                        expertiseChoices.addAll(character.getProficiencyChoices());
-                        expertiseChoices.add("Thieve's Tools");
                         choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a skill proficiency.");
+                        choiceHeader1.setText("Choose two of your proficiencies. Your proficiency bonus will be doubled for any ability checks you make with that skill");
                         choice1.setVisibility(View.VISIBLE);
-                        choice1.setAdapter(expertiseAdapter);*/
+                        choice2.setVisibility(View.VISIBLE);
+                        rogueExpertiseChoices.addAll(character.getProficiencyChoices());
+                        if(!character.getClassBasedBonusStats2().contains("Thieve's Tools")){
+                            rogueExpertiseChoices.add("Thieve's Tools");
+                        }
+                        choice1.setAdapter(rogueExpertiseAdapter);
+                        choice2.setAdapter(rogueExpertiseAdapter);
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1955,21 +1924,59 @@ public class LevelUpActivity extends AppCompatActivity {
                 ArrayAdapter<String> signatureSpellAdapter2;
                 switch (level){
                     case 2:
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText("Choose a School of Magic");
-                        choice1.setVisibility(View.VISIBLE);
-                        subclassChoices.add("School of Abjuration");
-                        subclassChoices.add("School of Conjuration");
-                        subclassChoices.add("School of Divination");
-                        subclassChoices.add("School of Enchantment");
-                        subclassChoices.add("School of Evocation");
-                        subclassChoices.add("School of Illusion");
-                        subclassChoices.add("School of Necromancy");
-                        subclassChoices.add("School of Transmutation");
-                        choice1.setAdapter(subclassAdapter);
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "School of Abjuration":
+                                bonusStats1.setText(getString(R.string.abjuration_savant));
+                                bonusStats2.setText(getString(R.string.arcane_ward));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.abjuration_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.arcane_ward));
+                                break;
+                            case "School of Conjuration":
+                                bonusStats1.setText(getString(R.string.conjuration_savant));
+                                bonusStats2.setText(getString(R.string.minor_conjuration));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.conjuration_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.minor_conjuration));
+                                break;
+                            case "School of Divination":
+                                bonusStats1.setText(getString(R.string.divination_savant));
+                                bonusStats2.setText(getString(R.string.portent));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.divination_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.portent));
+                                break;
+                            case "School of Enchantment":
+                                bonusStats1.setText(getString(R.string.enchantment_savant));
+                                bonusStats2.setText(getString(R.string.hypnotic_gaze));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.enchantment_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.hypnotic_gaze));
+                                break;
+                            case "School of Evocation":
+                                bonusStats1.setText(getString(R.string.evocation_savant));
+                                bonusStats2.setText(getString(R.string.sculpt_spells));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.evocation_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.sculpt_spells));
+                                break;
+                            case "School of Illusion":
+                                bonusStats1.setText(getString(R.string.illusion_savant));
+                                bonusStats2.setText(getString(R.string.improved_minor_illusion));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.illusion_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.improved_minor_illusion));
+                                getSubclassSpells("minor illusion");
+                                break;
+                            case "School of Necromancy":
+                                bonusStats1.setText(getString(R.string.necromancy_savant));
+                                bonusStats2.setText(getString(R.string.grim_harvest));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.necromancy_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.grim_harvest));
+                                break;
+                            case "School of Transmutation":
+                                bonusStats1.setText(getString(R.string.transmutation_savant));
+                                bonusStats2.setText(getString(R.string.minor_alchemy));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.transmutation_savant));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.minor_alchemy));
+                                break;
+                        }
                         break;
                     case 3:
                         break;
