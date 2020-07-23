@@ -34,11 +34,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
 
     @BindView(R.id.level_one_choice_text_1) TextView levelOneChoiceHeader1;
     @BindView(R.id.level_one_choice_text_2) TextView levelOneChoiceHeader2;
-    @BindView(R.id.level_one_choice_text_3) TextView levelOneChoiceHeader3;
+    @BindView(R.id.subclass_choice_label) TextView subclassHeader;
     @BindView(R.id.level_one_choice_spinner_1) Spinner levelOneChoiceSpinner1;
     @BindView(R.id.level_one_choice_spinner_2) Spinner levelOneChoiceSpinner2;
-    @BindView(R.id.level_one_choice_spinner_3) Spinner levelOneChoiceSpinner3;
-
+    @BindView(R.id.subclass_choice_spinner) Spinner subclassSpinner;
 
     public SecondQuestionnaireActivity(){
     }
@@ -57,7 +56,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         final Spinner skillProficiencySpinner3 = findViewById(R.id.skill_proficiency_choices_spinner_3);
         final Spinner skillProficiencySpinner4 = findViewById(R.id.skill_proficiency_choices_spinner_4);
 
-        //TODO: remove this, add in each individual skill for each different class??
         ArrayAdapter<CharSequence> skillArrayAdapter = ArrayAdapter.createFromResource(this,
                 R.array.skill_proficiencies_array, android.R.layout.simple_spinner_item);
         skillArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -76,7 +74,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         TextView otherProficienciesTextView = findViewById(R.id.other_proficiencies);
 
         switch(character.getRace()){
-            //TODO: This is where certain sub-races with Dwarf, Elf, Halfling, Gnome, etc. would be added.
             case "Human":
                 raceSpecificBonusTextView.setVisibility(View.VISIBLE);
                 raceSpecificBonusSpinner.setVisibility(View.VISIBLE);
@@ -108,10 +105,13 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
 
         List<String> levelOneChoices1 = new ArrayList<String>();
         List<String> levelOneChoices2 = new ArrayList<String>();
+        List<String> subclassChoices = new ArrayList<String>();
 
         switch (character.getCharacterClass()){
-            //TODO: Change the skill spinner's arrays to reflect their learnable skills
             case "Barbarian":
+                subclassHeader.setText("Choose a Primal Path");
+                subclassChoices.add("Path of the Berserker");
+                subclassChoices.add("Path of the Totem Warrior");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
@@ -126,6 +126,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 2d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Bard":
+                subclassHeader.setText("Choose a Bard College");
+                subclassChoices.add("College of Lore");
+                subclassChoices.add("College of Valor");
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -140,16 +143,14 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Cleric":
-                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader1.setText("Choose a Divine Domain");
-                levelOneChoices1.add("Knowledge");
-                levelOneChoices1.add("Life");
-                levelOneChoices1.add("Light");
-                levelOneChoices1.add("Nature");
-                levelOneChoices1.add("Tempest");
-                levelOneChoices1.add("Trickery");
-                levelOneChoices1.add("War");
+                subclassHeader.setText("Choose a Divine Domain");
+                subclassChoices.add("Knowledge");
+                subclassChoices.add("Life");
+                subclassChoices.add("Light");
+                subclassChoices.add("Nature");
+                subclassChoices.add("Tempest");
+                subclassChoices.add("Trickery");
+                subclassChoices.add("War");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -166,6 +167,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Druid":
+                subclassHeader.setText("Choose a Druid Circle");
+                subclassChoices.add("Circle of the Land");
+                subclassChoices.add("Circle of the Moon");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
@@ -180,6 +184,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 2d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Fighter":
+                subclassHeader.setText("Choose a Martial Archetype");
+                subclassChoices.add("Champion");
+                subclassChoices.add("Eldritch Knight");
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
                 levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
                 levelOneChoiceHeader1.setText("Choose a Fighting Style");
@@ -205,6 +212,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Monk":
+                subclassHeader.setText("Choose a Monastic Tradition");
+                subclassChoices.add("Way of the Open Hand");
+                subclassChoices.add("Way of Shadow");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
@@ -219,6 +229,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4", getString(R.string.starting_gp_roll)));
                 break;
             case "Paladin":
+                subclassHeader.setText("Choose a Sacred Oath");
+                subclassChoices.add("Oath of Devotion");
+                subclassChoices.add("Oath of the Ancients");
+                subclassChoices.add("Oath of Vengeance");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -234,6 +248,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Ranger":
+                subclassHeader.setText("Choose a Ranger Archetype");
+                subclassChoices.add("Hunter");
+                subclassChoices.add("Beast Master");
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
                 levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
                 levelOneChoiceHeader1.setText("Choose a Favored Enemy");
@@ -275,7 +292,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 5d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Rogue":
-                //TODO: Add in level one expertise choices
+                subclassHeader.setText("Choose a Roguish Archetype");
+                subclassChoices.add("Thief");
+                subclassChoices.add("Assassin");
+                subclassChoices.add("Arcane Trickster");
                 startingEquipmentSpinner4.setVisibility(View.GONE);
                 equipmentSpinnerArray1.add("Rapier");
                 equipmentSpinnerArray1.add("Shortsword");
@@ -290,13 +310,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 4d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Sorcerer":
-                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader1.setText("Choose a Sorcerous Origin");
-                levelOneChoices1.add("Draconic Bloodline");
-                levelOneChoices1.add("Wild Magic");
-                levelOneChoices1.add("Phoenix Sorcery");
-                levelOneChoices1.add("Stone Sorcery");
+                subclassHeader.setText("Choose a Sorcerous Origin");
+                subclassChoices.add("Draconic Bloodline");
+                subclassChoices.add("Wild Magic");
+                subclassChoices.add("Phoenix Sorcery");
+                subclassChoices.add("Stone Sorcery");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -312,12 +330,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 3d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Warlock":
-                levelOneChoiceHeader1.setVisibility(View.VISIBLE);
-                levelOneChoiceSpinner1.setVisibility(View.VISIBLE);
-                levelOneChoiceHeader1.setText("Choose an Otherworldly Patron");
-                levelOneChoices1.add("The Archfey");
-                levelOneChoices1.add("The Fiend");
-                levelOneChoices1.add("The Great Old One");
+                subclassHeader.setText("Choose an Otherworldly Patron");
+                subclassChoices.add("The Archfey");
+                subclassChoices.add("The Fiend");
+                subclassChoices.add("The Great Old One");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner4.setVisibility(View.GONE);
@@ -333,6 +349,15 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 startingGoldEditText.setHint(String.format("%s 4d4 x10", getString(R.string.starting_gp_roll)));
                 break;
             case "Wizard":
+                subclassHeader.setText("Choose an Arcane Tradition");
+                subclassChoices.add("School of Abjuration");
+                subclassChoices.add("School of Conjuration");
+                subclassChoices.add("School of Divination");
+                subclassChoices.add("School of Enchantment");
+                subclassChoices.add("School of Evocation");
+                subclassChoices.add("School of Illusion");
+                subclassChoices.add("School of Necromancy");
+                subclassChoices.add("School of Transmutation");
                 skillProficiencySpinner3.setVisibility(View.GONE);
                 skillProficiencySpinner4.setVisibility(View.GONE);
                 startingEquipmentSpinner3.setVisibility(View.GONE);
@@ -367,6 +392,9 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         ArrayAdapter<String> levelOneChoicesAdapter2 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, levelOneChoices2);
         levelOneChoiceSpinner2.setAdapter(levelOneChoicesAdapter2);
+        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
+        subclassSpinner.setAdapter(subclassAdapter);
 
         Button finishButton = findViewById(R.id.button_finished_character_creation);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -388,7 +416,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     String alignment = character.getAlignment();
                     String name = character.getName();
                     ArrayList<Integer> statValuesList = getStatBonuses(character, character.getStatValues());
-                    String characterSubclass = new String();
+                    String characterSubclass = subclassSpinner.getSelectedItem().toString();
                     ArrayList<Integer> currency = new ArrayList<>();
                     int startingGold = Integer.parseInt(startingGoldEditText.getText().toString());
                     //Initial Current HP
@@ -502,7 +530,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add(getString(R.string.bardic_inspiration_description));
                             break;
                         case "Cleric":
-                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             switch(characterSubclass){
                                 case "Knowledge":
                                     //learn 2 languages and gain double proficiency in 2 of the following: Arcana, History, Religion or Nature.
@@ -574,7 +601,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add(getString(R.string.sneak_attack_description));
                             break;
                         case "Sorcerer":
-                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
                             switch(characterSubclass){
                                 case "Draconic Bloodline":
@@ -599,7 +625,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             }
                             break;
                         case "Warlock":
-                            characterSubclass = levelOneChoiceSpinner1.getSelectedItem().toString();
                             switch(characterSubclass){
                                 case "The Archfey":
                                     bonusStats.add(getString(R.string.fey_presence));
