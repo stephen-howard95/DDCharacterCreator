@@ -424,10 +424,9 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Monk":
-                ArrayList<String> kiPointUsages = new ArrayList<String>();
-                ListAdapter kiPointAdapter = new ListAdapter(getContext(), kiPointUsages);
+                ListAdapter kiPointAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2());
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d4");
+                subclassInfoTextView1.setText(String.format("%s 1d4", getString(R.string.unarmed_strike_damage)));
                 if(level >= 2){
                     editTextTextView.setVisibility(View.VISIBLE);
                     editTextTextView.setText(getString(R.string.ki_points) + " " + character.getLevel());
@@ -436,39 +435,44 @@ public class CharacterFragment extends Fragment {
                     subclassInfoHeader.setVisibility(View.VISIBLE);
                     subclassInfoHeader.setText(getString(R.string.ki_point_abilities));
                     subclassInfoListView.setVisibility(View.VISIBLE);
-                    kiPointUsages.add(getString(R.string.flurry_of_blows));
-                    kiPointUsages.add(getString(R.string.patient_defense));
-                    kiPointUsages.add(getString(R.string.step_of_the_wind));
+                    character.getClassBasedBonusStats2().add(getString(R.string.flurry_of_blows));
+                    character.getClassBasedBonusStats2().add(getString(R.string.patient_defense));
+                    character.getClassBasedBonusStats2().add(getString(R.string.step_of_the_wind));
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
-                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +10ft");
+                    subclassInfoTextView2.setText(String.format("%s +10ft", getString(R.string.unarmored_movement)));
                 }
                 if(level >= 3){
-                    kiPointUsages.add(getString(R.string.deflect_missiles_ki));
+                    character.getClassBasedBonusStats2().add(getString(R.string.deflect_missiles_ki));
                 }
                 if(level >= 5){
-                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d6");
-                    kiPointUsages.add(getString(R.string.stunning_strike));
+                    subclassInfoTextView1.setText(String.format("%s 1d6", getString(R.string.unarmed_strike_damage)));
+                    character.getClassBasedBonusStats2().add(getString(R.string.stunning_strike));
                 }
                 if(level >= 6){
-                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +15ft");
+                    subclassInfoTextView2.setText(String.format("%s +15ft", getString(R.string.unarmored_movement)));
+                    if(character.getSubclass().equals("Way of the Open Hand")){
+                        checkBoxes1.setVisibility(View.VISIBLE);
+                        checkBoxes1.setText(getString(R.string.wholeness_of_body_use));
+                        checkBox1_1.setVisibility(View.VISIBLE);
+                    }
                 }
                 if(level >= 10){
-                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +20ft");
+                    subclassInfoTextView2.setText(String.format("%s +20ft", getString(R.string.unarmored_movement)));
                 }
                 if(level >= 11){
-                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d8");
+                    subclassInfoTextView1.setText(String.format("%s 1d8", getString(R.string.unarmed_strike_damage)));
                 }
                 if(level >= 14){
-                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +25ft");
-                    kiPointUsages.add(getString(R.string.diamond_soul_ki));
+                    subclassInfoTextView2.setText(String.format("%s +25ft", getString(R.string.unarmored_movement)));
+                    character.getClassBasedBonusStats2().add(getString(R.string.diamond_soul_ki));
                 }
                 if(level >= 17){
-                    subclassInfoTextView1.setText(getString(R.string.unarmed_strike_damage) + "1d10");
+                    subclassInfoTextView1.setText(String.format("%s 1d10", getString(R.string.unarmed_strike_damage)));
                 }
                 if(level >= 18){
-                    subclassInfoTextView2.setText(getString(R.string.unarmored_movement) + " +30ft");
-                    kiPointUsages.add(getString(R.string.empty_body));
-                    kiPointUsages.add(getString(R.string.empty_body_2));
+                    subclassInfoTextView2.setText(String.format("%s +30ft", getString(R.string.unarmored_movement)));
+                    character.getClassBasedBonusStats2().add(getString(R.string.empty_body));
+                    character.getClassBasedBonusStats2().add(getString(R.string.empty_body_2));
                 }
                 subclassInfoListView.setAdapter(kiPointAdapter);
                 break;
