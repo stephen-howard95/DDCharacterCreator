@@ -1180,6 +1180,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.deflect_missiles));
                         character.getRaceAndClassBonusStats().add(getString(R.string.deflect_missiles));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Way of the Open Hand":
+                                bonusStats2.setText(getString(R.string.open_hand_technique));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.open_hand_technique));
+                                break;
+                            case "Way of Shadow":
+                                bonusStats2.setText(getString(R.string.shadow_arts));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.shadow_arts));
+                                break;
+                        }
                         break;
                     case 4:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1199,6 +1210,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         bonusStats2.setVisibility(View.VISIBLE);
                         bonusStats2.setText(getString(R.string.ki_empowered_strikes));
                         character.getRaceAndClassBonusStats().add(getString(R.string.ki_empowered_strikes));
+                        bonusStats3.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Way of the Open Hand":
+                                bonusStats3.setText(getString(R.string.wholeness_of_body));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.wholeness_of_body));
+                                break;
+                            case "Way of Shadow":
+                                bonusStats3.setText(getString(R.string.shadow_step));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.shadow_step));
+                                break;
+                        }
                         break;
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1222,6 +1244,17 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 11:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your unarmed strikes now deal 1d8 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Way of the Open Hand":
+                                bonusStats2.setText(getString(R.string.tranquility));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.tranquility));
+                                break;
+                            case "Way of Shadow":
+                                bonusStats2.setText(getString(R.string.cloak_of_shadows));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.cloak_of_shadows));
+                                break;
+                        }
                         break;
                     case 12:
                         break;
@@ -1247,6 +1280,17 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 17:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("Your unarmed strikes now deal 1d10 damage");
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Way of the Open Hand":
+                                bonusStats2.setText(getString(R.string.quivering_palm));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.quivering_palm));
+                                break;
+                            case "Way of Shadow":
+                                bonusStats2.setText(getString(R.string.opportunist));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.opportunist));
+                                break;
+                        }
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
