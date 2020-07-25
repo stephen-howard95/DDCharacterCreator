@@ -98,7 +98,7 @@ public class SpellcastingFragment extends Fragment {
             }
         }
 
-        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || (character.getCharacterClass().equals("Fighter") && !character.getSubclass().equals("Eldritch Knight")) || character.getCharacterClass().equals("Monk") || (character.getCharacterClass().equals("Rogue") && !character.getSubclass().equals("Arcane Trickster"))){
+        if((character.getCharacterClass().equals("Barbarian") && !character.getSubclass().equals("Path of the Totem Warrior")) || (character.getCharacterClass().equals("Fighter") && !character.getSubclass().equals("Eldritch Knight")) || (character.getCharacterClass().equals("Monk") && !character.getSubclass().equals("Way of Shadow")) || (character.getCharacterClass().equals("Rogue") && !character.getSubclass().equals("Arcane Trickster"))){
             spellcastingAbility.setVisibility(View.GONE);
             spellSaveDC.setVisibility(View.GONE);
             spellAttackBonus.setVisibility(View.GONE);
@@ -109,7 +109,18 @@ public class SpellcastingFragment extends Fragment {
             cantripsKnownLabel.setVisibility(View.GONE);
             addSpellsTextView.setText("This character class does not have access to Spellcasting features");
             addSpellsTextView.setTextSize(48);
-        }else {
+        }else if((((character.getSubclass().equals("Path of the Totem Warrior")) || (character.getSubclass().equals("Eldritch Knight")) || (character.getSubclass().equals("Way of Shadow")) || (character.getSubclass().equals("Arcane Trickster"))) && character.getLevel() < 3)){
+            spellcastingAbility.setVisibility(View.GONE);
+            spellSaveDC.setVisibility(View.GONE);
+            spellAttackBonus.setVisibility(View.GONE);
+            spellSlots.setVisibility(View.GONE);
+            spellsKnown.setVisibility(View.GONE);
+            spellsKnownLabel.setVisibility(View.GONE);
+            cantripsKnown.setVisibility(View.GONE);
+            cantripsKnownLabel.setVisibility(View.GONE);
+            addSpellsTextView.setText("This character class does not have access to Spellcasting features");
+            addSpellsTextView.setTextSize(48);
+        } else {
             mDb = SpellDatabase.getInstance(getContext());
             completeSpellsList = mDb.spellDao().loadAllSpells();
             Collections.sort(completeSpellsList, Spell.spellNameComparator);
@@ -518,6 +529,17 @@ public class SpellcastingFragment extends Fragment {
                         spellCount = character.getLevel()-7;
                     }
                     cantripCount = 2;
+                    break;
+                case "Monk":
+                    spellSlot1.setVisibility(View.GONE);
+                    spellSlot2.setVisibility(View.GONE);
+                    spellcastingAbility.setText("Spellcasting Ability: WIS");
+                    spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
+                    spellAttackBonus.setVisibility(View.GONE);
+                    getSubclassSpells("minor illusion");
+                    getSubclassSpells("darkness");
+                    getSubclassSpells("pass without trace");
+                    getSubclassSpells("silence");
                     break;
                 case "Paladin":
                     secondarySpellcasterSlotsPerLevel();
