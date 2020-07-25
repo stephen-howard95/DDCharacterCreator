@@ -446,6 +446,15 @@
     <string name="diamond_soul">Diamond Soul: You have proficiency in all saving throws</string>
     <string name="timeless_body_monk">Timeless Body: Your Ki sustains you and you no longer need food or water and suffer none of the frailty of old age. You cannot be aged magically, but you can still die of old age.</string>
     <string name="perfect_self">When you roll for initiative and have no Ki points remaining, you regain 4 Ki points.</string>
+    <string name="open_hand_technique">Open Hand Technique: When you hit a creature with your Flurry of Blows, you can impose one of the following effects on the opponent: They must succeed on a DEX saving throw or be knocked prone. They must succeed on a STR saving throw or be pushed up to 15ft away form you. They cannot take reactions until the end of your next turn.</string>
+    <string name="wholeness_of_body">Wholeness of Body: Once per long rest, as an action, you can heal yourself HP equal to 3 times your level.</string>
+    <string name="wholeness_of_body_use">Wholeness of Body: </string>
+    <string name="tranquility">Tranquility: After a Long Rest, you gain the effect of a Sanctuary spell that lasts until the start of your next long rest. The DC is 8 + your WIS modifier + your proficiency bonus</string>
+    <string name="quivering_palm">Quivering Palm: When you hit a creature with an unarmed strike, you can spend 3 ki points to start imperceptible vibrations which last for a number of days equal to your level.The vibrations are harmless unless you use your action to end them if you are on the same plane of existence. When you end them in this way, the creature must make a CON saving throw or be reduced to 0 HP. On a successful save, they take 10d10 Necrotic damage. You can only have 1 creature under the effects at one time and can also end the vibrations harmlessly.</string>
+    <string name="shadow_arts">Shadow Arts: You can spend 2 Ki points to cast Darkness, Pass Without Trace, or Silence without providing material components. You also know the Minor Illusion cantrip.</string>
+    <string name="shadow_step">Shadow Step: While in dim light or darkness, you can use a bonus action to teleport up to 60ft to an unoccupied space in dim light or darkness. You then have advantage on the first melee attack you make before the end of your turn.</string>
+    <string name="cloak_of_shadows">Cloak of Shadows: While in dim light or darkness, you can use an action to become invisible, remaining invisible until you attack, cast a spell, or enter an area of bright light.</string>
+    <string name="opportunist">Opportunist: When a creature within 5ft of you is hit by an attack made by a creature other than you, you can use your reaction to make a melee attack against that creature.</string>
 
     //Paladin leveling up/subclass bonuses
     <string name="sacred_oath">Sacred Oath: </string>
