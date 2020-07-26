@@ -317,33 +317,8 @@ public class LevelUpActivity extends AppCompatActivity {
                                 subclass = subclass + ", " + choice1.getSelectedItem().toString();
                             }
                             break;
-                        case "Fighter":
-                        case "Paladin":
                         case "Ranger":
-                            if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
-                                    || (character.getSubclass().equals("Champion") && finalLevel == 10)){
-                                switch(choice1.getSelectedItem().toString()){
-                                    case "Archery":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
-                                        break;
-                                    case "Defense":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
-                                        break;
-                                    case "Dueling":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
-                                        break;
-                                    case "Great Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
-                                        break;
-                                    case "Protection":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
-                                        break;
-                                    case "Two-Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
-                                        break;
-                                }
-                            }
-                            if(finalLevel == 6 && character.getCharacterClass().equals("Ranger")){
+                            if(finalLevel == 6){
                                 character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
                                 character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
@@ -387,6 +362,31 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                     case "Uncanny Dodge":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
+                                        break;
+                                }
+                            }
+                        case "Fighter":
+                        case "Paladin":
+                            if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
+                                    || (character.getSubclass().equals("Champion") && finalLevel == 10)){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Archery":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                        break;
+                                    case "Defense":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                        break;
+                                    case "Dueling":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                        break;
+                                    case "Great Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                        break;
+                                    case "Protection":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                        break;
+                                    case "Two-Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
                                         break;
                                 }
                             }
