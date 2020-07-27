@@ -570,8 +570,9 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Sorcerer":
+                ListAdapter metamagicAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2());
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.sorcerous_origin) + character.getSubclass());
+                subclassInfoTextView1.setText(String.format("Sorcerous Origin: %s", character.getSubclass()));
                 switch(character.getSubclass()){
                     case "Wild Magic":
                         checkBoxes1.setVisibility(View.VISIBLE);
@@ -591,11 +592,11 @@ public class CharacterFragment extends Fragment {
                     subclassInfoEditText.setText(String.valueOf(character.getLevel()));
                 }
                 if(level >= 3){
-                    /* 
                     subclassInfoHeader.setVisibility(View.VISIBLE);
                     subclassInfoHeader.setText(getString(R.string.metamagic_options));
-                    subclassInfoListView.setVisibility(View.VISIBLE); */
+                    subclassInfoListView.setVisibility(View.VISIBLE);
                 }
+                subclassInfoListView.setAdapter(metamagicAdapter);
                 break;
             case "Warlock":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
