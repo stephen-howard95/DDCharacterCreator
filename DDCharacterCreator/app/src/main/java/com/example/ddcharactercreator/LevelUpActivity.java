@@ -398,6 +398,91 @@ public class LevelUpActivity extends AppCompatActivity {
                                 character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
                                 character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
+                            break;
+                        case "Sorcerer":
+                            if(finalLevel == 3){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Careful Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.careful_spell));
+                                        break;
+                                    case "Distant Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.distant_spell));
+                                        break;
+                                    case "Empowered Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.empowered_spell));
+                                        break;
+                                    case "Extended Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.extended_spell));
+                                        break;
+                                    case "Heightened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.heightened_spell));
+                                        break;
+                                    case "Quickened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.quickened_spell));
+                                        break;
+                                    case "Subtle Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.subtle_spell));
+                                        break;
+                                    case "Twinned Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.twinned_spell));
+                                        break;
+                                }
+                                switch(choice2.getSelectedItem().toString()){
+                                    case "Careful Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.careful_spell));
+                                        break;
+                                    case "Distant Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.distant_spell));
+                                        break;
+                                    case "Empowered Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.empowered_spell));
+                                        break;
+                                    case "Extended Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.extended_spell));
+                                        break;
+                                    case "Heightened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.heightened_spell));
+                                        break;
+                                    case "Quickened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.quickened_spell));
+                                        break;
+                                    case "Subtle Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.subtle_spell));
+                                        break;
+                                    case "Twinned Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.twinned_spell));
+                                        break;
+                                }
+                            }
+                            if(finalLevel == 10 || finalLevel == 17){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Careful Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.careful_spell));
+                                        break;
+                                    case "Distant Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.distant_spell));
+                                        break;
+                                    case "Empowered Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.empowered_spell));
+                                        break;
+                                    case "Extended Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.extended_spell));
+                                        break;
+                                    case "Heightened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.heightened_spell));
+                                        break;
+                                    case "Quickened Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.quickened_spell));
+                                        break;
+                                    case "Subtle Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.subtle_spell));
+                                        break;
+                                    case "Twinned Spell":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.twinned_spell));
+                                        break;
+                                }
+                            }
+                            break;
                         case "Wizard":
                             if(finalLevel == 20){
                                 getSubclassSpells(choice1.getSelectedItem().toString());
@@ -1727,6 +1812,17 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Sorcerer":
+                List<String> metamagicOptions = new ArrayList<String>();
+                ArrayAdapter<String> metamagicAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, metamagicOptions);
+                metamagicOptions.add("Careful Spell");
+                metamagicOptions.add("Distant Spell");
+                metamagicOptions.add("Empowered Spell");
+                metamagicOptions.add("Extended Spell");
+                metamagicOptions.add("Heightened Spell");
+                metamagicOptions.add("Quickened Spell");
+                metamagicOptions.add("Subtle Spell");
+                metamagicOptions.add("Twinned Spell");
                 switch (level){
                     case 2:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1734,6 +1830,12 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.font_of_magic));
                         break;
                     case 3:
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose 2 Metamagic Options");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(metamagicAdapter);
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(metamagicAdapter);
                         break;
                     case 4:
                         break;
@@ -1767,7 +1869,10 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 9:
                         break;
                     case 10:
-                        //extra metamagic option
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a new Metamagic Option");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(metamagicAdapter);
                         break;
                     case 11:
                         break;
@@ -1801,7 +1906,10 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 16:
                         break;
                     case 17:
-                        //extra metamagic option
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose a new Metamagic Option");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(metamagicAdapter);
                         break;
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
