@@ -30,7 +30,6 @@ public class LevelUpActivity extends AppCompatActivity {
     @BindView(R.id.ability_score_improvement_header) TextView abilityScoreImprovementHeader;
     @BindView(R.id.ability_score_improvement_1) Spinner abilityScoreImprovement1;
     @BindView(R.id.ability_score_improvement_2) Spinner abilityScoreImprovement2;
-    @BindView(R.id.more_hp_header) TextView moreHPHeader;
     @BindView(R.id.more_hp) EditText moreHP;
 
     @BindView(R.id.bonus_stats_addition_1) TextView bonusStats1;
@@ -87,51 +86,51 @@ public class LevelUpActivity extends AppCompatActivity {
         // Health restrictions
         switch (character.getCharacterClass()){
             case "Barbarian":
-                moreHPHeader.setText(getString(R.string.barbarian_hit_die));
+                moreHP.setHint(getString(R.string.barbarian_hit_die));
                 hitPointMax = 12;
                 break;
             case "Bard":
-                moreHPHeader.setText(getString(R.string.bard_hit_die));
+                moreHP.setHint(getString(R.string.bard_hit_die));
                 hitPointMax = 8;
                 break;
             case "Cleric":
-                moreHPHeader.setText(getString(R.string.cleric_hit_die));
+                moreHP.setHint(getString(R.string.cleric_hit_die));
                 hitPointMax = 8;
                 break;
             case "Druid":
-                moreHPHeader.setText(getString(R.string.druid_hit_die));
+                moreHP.setHint(getString(R.string.druid_hit_die));
                 hitPointMax = 8;
                 break;
             case "Fighter":
-                moreHPHeader.setText(getString(R.string.fighter_hit_die));
+                moreHP.setHint(getString(R.string.fighter_hit_die));
                 hitPointMax = 10;
                 break;
             case "Monk":
-                moreHPHeader.setText(getString(R.string.monk_hit_die));
+                moreHP.setHint(getString(R.string.monk_hit_die));
                 hitPointMax = 8;
                 break;
             case "Paladin":
-                moreHPHeader.setText(getString(R.string.paladin_hit_die));
+                moreHP.setHint(getString(R.string.paladin_hit_die));
                 hitPointMax = 10;
                 break;
             case "Ranger":
-                moreHPHeader.setText(getString(R.string.ranger_hit_die));
+                moreHP.setHint(getString(R.string.ranger_hit_die));
                 hitPointMax = 10;
                 break;
             case "Rogue":
-                moreHPHeader.setText(getString(R.string.rogue_hit_die));
+                moreHP.setHint(getString(R.string.rogue_hit_die));
                 hitPointMax = 8;
                 break;
             case "Sorcerer":
-                moreHPHeader.setText(getString(R.string.sorcerer_hit_die));
+                moreHP.setHint(getString(R.string.sorcerer_hit_die));
                 hitPointMax = 6;
                 break;
             case "Warlock":
-                moreHPHeader.setText(getString(R.string.warlock_hit_die));
+                moreHP.setHint(getString(R.string.warlock_hit_die));
                 hitPointMax = 8;
                 break;
             case "Wizard":
-                moreHPHeader.setText(getString(R.string.wizard_hit_die));
+                moreHP.setHint(getString(R.string.wizard_hit_die));
                 hitPointMax = 6;
                 break;
         }
