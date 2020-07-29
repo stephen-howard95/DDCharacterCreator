@@ -419,16 +419,18 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     String characterSubclass = subclassSpinner.getSelectedItem().toString();
                     ArrayList<Integer> currency = new ArrayList<>();
                     int startingGold = Integer.parseInt(startingGoldEditText.getText().toString());
-                    //Initial Current HP
-                    currency.add(8 + calculateModifier(character.getStatValues().get(2)));
+                    //Initial Armor Class
+                    currency.add(10 + calculateModifier(character.getStatValues().get(1)));
                     //5 kinds of currency
                     currency.add(0);
                     currency.add(0);
                     currency.add(0);
                     currency.add(startingGold);
                     currency.add(0);
-                    //Initial Armor Class
-                    currency.add(10 + calculateModifier(character.getStatValues().get(1)));
+                    //Initial Current HP
+                    currency.add(8 + calculateModifier(character.getStatValues().get(2)));
+                    //Temporary HP
+                    currency.add(0);
                     //Any class-specific changes to HP and/or AC, as well as raceAndClassBonusStats
                     ArrayList<String> bonusStats = new ArrayList<String>();
                     ArrayList<String> bonusStats2 = new ArrayList<String>();
@@ -515,15 +517,15 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add("You are immune to disease, and you don't need to eat, drink, breathe, or sleep, and magic cannot put you to sleep.");
                             bonusStats.add("Sentry's Rest: When you take a long rest, you must spend at least 6 hours in an inactive state rather than sleeping. You are not unconscious and you can see/hear as normal");
                             bonusStats.add("Integrated Protection: To don/doff armor, you must spend 1 hour incorporating/unincorporating it with your armor.");
-                            currency.set(6, currency.get(6) + 1);
+                            currency.set(0, currency.get(0) + 1);
                             proficiencyChoices.add(raceSpecificBonusSpinner.getSelectedItem().toString());
                             break;
                     }
                     switch (character.getCharacterClass()){
                         case "Barbarian":
                             bonusStats.add(getString(R.string.rage_description));
-                            currency.set(0, 12 + calculateModifier(character.getStatValues().get(2)));
-                            currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
+                            currency.set(6, 12 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Bard":
@@ -577,35 +579,35 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                     break;
                             }
                             bonusStats.add(getString(R.string.second_wind));
-                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Monk":
                             bonusStats.add(getString(R.string.martial_arts));
-                            currency.set(6, 10 + calculateModifier(character.getStatValues().get(1))
+                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(4)));
                             break;
                         case "Paladin":
                             bonusStats.add(getString(R.string.divine_sense));
                             bonusStats.add(getString(R.string.lay_on_hands));
-                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Ranger":
                             bonusStats.add(getString(R.string.favored_terrain_description));
                             bonusStats.add(getString(R.string.favored_enemy_description));
                             bonusStats2.add(levelOneChoiceSpinner2.getSelectedItem().toString());
                             bonusStats2.add(levelOneChoiceSpinner1.getSelectedItem().toString());
-                            currency.set(0, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
                             languages.append("Thieve's Cant, ");
                             bonusStats.add(getString(R.string.sneak_attack_description));
                             break;
                         case "Sorcerer":
-                            currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(6, 6 + calculateModifier(character.getStatValues().get(2)));
                             switch(characterSubclass){
                                 case "Draconic Bloodline":
-                                    currency.set(0, (currency.get(0) +1));
-                                    currency.set(6, (13 + calculateModifier(character.getStatValues().get(1))));
+                                    currency.set(6, (currency.get(6) +1));
+                                    currency.set(0, (13 + calculateModifier(character.getStatValues().get(1))));
                                     if(!character.getRace().equals("Dragonborn")){
                                         languages.append("Draconic");
                                     }
@@ -619,7 +621,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                     bonusStats.add(getString(R.string.mantle_of_flame));
                                     break;
                                 case "Stone Sorcery":
-                                    currency.set(0, (currency.get(0) +1));
+                                    currency.set(6, (currency.get(6) +1));
                                     bonusStats.add(getString(R.string.stones_durability));
                                     break;
                             }
@@ -639,7 +641,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Wizard":
                             bonusStats.add(getString(R.string.arcane_recovery));
-                            currency.set(0, 6 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(6, 6 + calculateModifier(character.getStatValues().get(2)));
                             break;
                     }
                     ArrayList<String> spellSlotsClicked = new ArrayList<String>();
