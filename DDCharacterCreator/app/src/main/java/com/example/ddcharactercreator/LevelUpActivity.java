@@ -505,7 +505,7 @@ public class LevelUpActivity extends AppCompatActivity {
                         //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
                         // as cantrips, at level 20, they can be cast as cantrips once per long rest.
                     }*/
-                    character.getCurrency().set(0, addToHP + (Integer) character.getCurrency().get(0)
+                    character.getCurrency().set(6, addToHP + (Integer) character.getCurrency().get(6)
                             + calculateModifier(character.getStatValues().get(2)));
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                             character.getAlignment(), character.getName(), newStatValues,
