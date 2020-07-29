@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 
 public class MainStatsFragment extends Fragment {
@@ -46,6 +45,7 @@ public class MainStatsFragment extends Fragment {
     @BindView(R.id.armor_class_value) EditText armorClassEditText;
     @BindView(R.id.skill_modifiers) TextView skillModifiers;
 
+    @BindView(R.id.temporary_hit_points) EditText temporaryHitPoints;
     @BindView(R.id.current_hit_points) EditText currentHitPoints;
     @BindView(R.id.max_hit_points) TextView maxHitPoints;
     @BindView(R.id.hit_die) TextView hitDieTextView;
@@ -90,7 +90,7 @@ public class MainStatsFragment extends Fragment {
 
         //Setting Passive Perception and Armor Class
         passivePerception.setText(String.format("Passive Perception: %s", (10 + calculateModifier(character.getStatValues().get(4)))));
-        armorClassEditText.setText(String.valueOf(character.getCurrency().get(6)));
+        armorClassEditText.setText(String.valueOf(character.getCurrency().get(0)));
         armorClassEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -106,7 +106,7 @@ public class MainStatsFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 if(!armorClassEditText.getText().toString().equals("")){
                     //noinspection unchecked
-                    character.getCurrency().set(6, Integer.parseInt(armorClassEditText.getText().toString()));
+                    character.getCurrency().set(0, Integer.parseInt(armorClassEditText.getText().toString()));
                 }
             }
         });
@@ -121,12 +121,13 @@ public class MainStatsFragment extends Fragment {
             }
         });
 
-        //Setting Current/Max HP, hit die values, and saving throw proficiencies.
-        currentHitPoints.setText(String.valueOf(character.getCurrency().get(0)));
-        maxHitPoints.setText(String.valueOf(character.getCurrency().get(0)));
+        //Setting Temporary/Current/Max HP, hit die values, and saving throw proficiencies.
+        temporaryHitPoints.setText(String.valueOf(character.getCurrency().get(7)));
+        currentHitPoints.setText(String.valueOf(character.getCurrency().get(6)));
+        maxHitPoints.setText(String.valueOf(character.getCurrency().get(6)));
         switch (character.getCharacterClass()){
             case "Barbarian":
-                hitDieTextView.setText("d12");
+                hitDieTextView.setText(String.format("d12 (%s)", character.getLevel()));
                 strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -135,7 +136,7 @@ public class MainStatsFragment extends Fragment {
                 constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Bard":
-                hitDieTextView.setText("d8");
+                hitDieTextView.setText(String.format("d8 (%s)", character.getLevel()));
                 dexterityLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -144,7 +145,7 @@ public class MainStatsFragment extends Fragment {
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Druid":
-                hitDieTextView.setText("d8");
+                hitDieTextView.setText(String.format("d8 (%s)", character.getLevel()));
                 intelligenceLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -153,7 +154,7 @@ public class MainStatsFragment extends Fragment {
                 wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Fighter":
-                hitDieTextView.setText("d10");
+                hitDieTextView.setText(String.format("d10 (%s)", character.getLevel()));
                 strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -162,7 +163,7 @@ public class MainStatsFragment extends Fragment {
                 constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Monk":
-                hitDieTextView.setText("d8");
+                hitDieTextView.setText(String.format("d8 (%s)", character.getLevel()));
                 strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -185,7 +186,7 @@ public class MainStatsFragment extends Fragment {
                 }
                 break;
             case "Paladin":
-                hitDieTextView.setText("d10");
+                hitDieTextView.setText(String.format("d10 (%s)", character.getLevel()));
                 wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -194,7 +195,7 @@ public class MainStatsFragment extends Fragment {
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Ranger":
-                hitDieTextView.setText("d10");
+                hitDieTextView.setText(String.format("d10 (%s)", character.getLevel()));
                 strengthLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 strengthModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -203,7 +204,7 @@ public class MainStatsFragment extends Fragment {
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Rogue":
-                hitDieTextView.setText("d8");
+                hitDieTextView.setText(String.format("d8 (%s)", character.getLevel()));
                 dexterityLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 dexterityModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -217,7 +218,7 @@ public class MainStatsFragment extends Fragment {
                 }
                 break;
             case "Sorcerer":
-                hitDieTextView.setText("d6");
+                hitDieTextView.setText(String.format("d6 (%s)", character.getLevel()));
                 constitutionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 constitutionValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 constitutionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -227,7 +228,7 @@ public class MainStatsFragment extends Fragment {
                 break;
             case "Cleric":
             case "Warlock":
-                hitDieTextView.setText("d8");
+                hitDieTextView.setText(String.format("d8 (%s)", character.getLevel()));
                 wisdomLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 wisdomValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 wisdomModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -236,7 +237,7 @@ public class MainStatsFragment extends Fragment {
                 charismaModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 break;
             case "Wizard":
-                hitDieTextView.setText("d6");
+                hitDieTextView.setText(String.format("d6 (%s)", character.getLevel()));
                 intelligenceLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceValue.setTextColor(getResources().getColor(R.color.proficiency_blue));
                 intelligenceModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
@@ -256,7 +257,24 @@ public class MainStatsFragment extends Fragment {
                 currentHitPoints.setTextColor(getResources().getColor(R.color.red));
             }
         }
+        temporaryHitPoints.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!temporaryHitPoints.getText().toString().equals("")){
+                    character.getCurrency().set(7, Integer.parseInt(temporaryHitPoints.getText().toString()));
+                }
+            }
+        });
         //Changes the color of the Text to denote how much/little health the character has remaining.
         currentHitPoints.addTextChangedListener(new TextWatcher() {
             @Override
@@ -268,8 +286,7 @@ public class MainStatsFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (!currentHitPoints.getText().toString().equals("")){
-                    //noinspection unchecked
-                    character.getCurrency().set(0, Integer.parseInt(currentHitPoints.getText().toString()));
+                    character.getCurrency().set(6, Integer.parseInt(currentHitPoints.getText().toString()));
                     if (Integer.parseInt(currentHitPoints.getText().toString()) > Integer.parseInt(maxHitPoints.getText().toString()) * .5) {
                         currentHitPoints.setTextColor(getResources().getColor(R.color.green));
                     } else if (Integer.parseInt(currentHitPoints.getText().toString()) > Integer.parseInt(maxHitPoints.getText().toString()) * .3) {
