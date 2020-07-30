@@ -130,7 +130,7 @@
         android:text="@string/inventory_rules"
         style="text-decoration: underline;"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inventory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
