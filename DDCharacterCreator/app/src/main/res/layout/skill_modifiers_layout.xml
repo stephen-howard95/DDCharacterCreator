@@ -335,7 +335,7 @@
         android:textSize="18sp"
         android:paddingVertical="4dp"
         android:text="Weapon/Armor Proficiencies"/>
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/weapon_armor_proficiencies"
         style="@style/SkillModifiersStyle"
         android:layout_below="@+id/weapon_armor_proficiencies_label"
