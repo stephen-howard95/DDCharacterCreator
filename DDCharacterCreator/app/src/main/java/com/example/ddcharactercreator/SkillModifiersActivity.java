@@ -37,7 +37,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
         TextView toolProficiencyLabel = findViewById(R.id.tool_proficiencies_label);
         TextView toolProficienciesTextView = findViewById(R.id.tool_proficiencies);
         TextView toolProficienciesModifier = findViewById(R.id.tool_proficiency_modifier);
-        ListView weaponArmorProficienciesListView = findViewById(R.id.weapon_armor_proficiencies);
+        RecyclerView weaponArmorProficienciesListView = findViewById(R.id.weapon_armor_proficiencies);
         ArrayList<String> weaponArmorProficiencies = new ArrayList<>();
 
         //Skill Proficiencies
@@ -638,6 +638,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Light Crossbows");
                 break;
         }
+        weaponArmorProficienciesListView.setLayoutManager(new LinearLayoutManager(getContext()));
         weaponArmorProficienciesListView.setAdapter(adapter);
     }
 
