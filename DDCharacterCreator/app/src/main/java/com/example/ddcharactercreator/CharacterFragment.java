@@ -59,9 +59,9 @@ public class CharacterFragment extends Fragment {
     @BindView(R.id.subclass_info_edittext_textview) TextView editTextTextView;
     @BindView(R.id.subclass_info_edittext) EditText subclassInfoEditText;
     @BindView(R.id.subclass_info_listview_header) TextView subclassInfoHeader;
-    @BindView(R.id.subclass_info_listview) ListView subclassInfoListView;
+    @BindView(R.id.subclass_info_listview) RecyclerView subclassInfoListView;
     @BindView(R.id.extra_info_listview_header) TextView extraInfoHeader;
-    @BindView(R.id.extra_info_listview) ListView bonusStatsList;
+    @BindView(R.id.extra_info_listview) RecyclerView bonusStatsList;
 
     public CharacterFragment(){
     }
@@ -354,6 +354,7 @@ public class CharacterFragment extends Fragment {
                 if(level == 20){
                     subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + "Guaranteed Success");
                 }
+                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 subclassInfoListView.setAdapter(channelDivinityAdapter);
                 break;
             case "Druid":
@@ -474,6 +475,7 @@ public class CharacterFragment extends Fragment {
                     character.getClassBasedBonusStats2().add(getString(R.string.empty_body));
                     character.getClassBasedBonusStats2().add(getString(R.string.empty_body_2));
                 }
+                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 subclassInfoListView.setAdapter(kiPointAdapter);
                 break;
             case "Paladin":
@@ -535,6 +537,7 @@ public class CharacterFragment extends Fragment {
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText("Aura Radius: 30ft");
                 }
+                //subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 //subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
                 break;
             case "Ranger":
@@ -596,6 +599,7 @@ public class CharacterFragment extends Fragment {
                     subclassInfoHeader.setText(getString(R.string.metamagic_options));
                     subclassInfoListView.setVisibility(View.VISIBLE);
                 }
+                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 subclassInfoListView.setAdapter(metamagicAdapter);
                 break;
             case "Warlock":
@@ -701,6 +705,7 @@ public class CharacterFragment extends Fragment {
                 break;
         }
         ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
+        bonusStatsList.setLayoutManager(new LinearLayoutManager(getContext()));
         bonusStatsList.setAdapter(adapter);
 
         return rootView;
