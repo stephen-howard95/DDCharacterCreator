@@ -28,7 +28,7 @@ public class InventoryFragment extends Fragment {
     @BindView(R.id.gold_piece_amount) EditText goldPieceAmount;
     @BindView(R.id.platinum_piece_amount) EditText platinumPieceAmount;
 
-    @BindView(R.id.inventory) ListView inventoryList;
+    @BindView(R.id.inventory) RecyclerView inventoryList;
     @BindView(R.id.add_to_inventory) EditText addItemEditText;
     @BindView(R.id.add_item_button) Button addItemButton;
 
@@ -54,6 +54,7 @@ public class InventoryFragment extends Fragment {
         //Setting initial character inventory list.
         inventory = character.getInventoryList();
         final ListAdapter adapter = new ListAdapter(getContext(), inventory);
+        inventoryList.setLayoutManager(new LinearLayoutManager(getContext()));
         inventoryList.setAdapter(adapter);
 
         //Add items to the list
