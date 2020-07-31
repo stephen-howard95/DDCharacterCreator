@@ -3,10 +3,12 @@ package com.example.ddcharactercreator;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -500,7 +502,7 @@ public class SkillModifiersActivity extends AppCompatActivity {
         }
 
         //Weapon/armor/tool proficiencies
-        ListAdapter adapter = new ListAdapter(getApplicationContext(), weaponArmorProficiencies);
+        ListAdapter adapter = new ListAdapter(getApplicationContext(), weaponArmorProficiencies, false);
         switch(character.getCharacterClass()){
             case "Barbarian":
                 toolProficienciesModifier.setVisibility(View.GONE);
@@ -638,7 +640,11 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 weaponArmorProficiencies.add("Light Crossbows");
                 break;
         }
-        weaponArmorProficienciesListView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
+                layoutManager.getOrientation());
+        weaponArmorProficienciesListView.setLayoutManager(layoutManager);
+        weaponArmorProficienciesListView.addItemDecoration(dividerItemDecoration);
         weaponArmorProficienciesListView.setAdapter(adapter);
     }
 
