@@ -76,12 +76,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/spells_known"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"/>
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cantrips_known"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
