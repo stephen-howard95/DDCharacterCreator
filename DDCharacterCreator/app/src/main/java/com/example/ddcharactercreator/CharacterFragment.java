@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 import static com.example.ddcharactercreator.DetailActivity.character;
@@ -77,6 +79,18 @@ public class CharacterFragment extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
+        //Setting RecyclerView LayoutManager and Dividers
+        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
+        DividerItemDecoration dividerItemDecoration1 = new DividerItemDecoration(getContext(),
+                layoutManager1.getOrientation());
+        DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(getContext(),
+                layoutManager2.getOrientation());
+        subclassInfoListView.setLayoutManager(layoutManager1);
+        subclassInfoListView.addItemDecoration(dividerItemDecoration1);
+        bonusStatsList.setLayoutManager(layoutManager2);
+        bonusStatsList.addItemDecoration(dividerItemDecoration2);
+
         //Setting Character name, level, character class, race, and alignment
         characterName.setText(character.getName());
         characterLevel.setText("Level " + level);
@@ -114,7 +128,7 @@ public class CharacterFragment extends Fragment {
         switch(character.getCharacterClass()){
             case "Barbarian":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+2");
+                subclassInfoTextView1.setText(String.format("%s +2", getString(R.string.rage_damage)));
                 checkBoxes1.setVisibility(View.VISIBLE);
                 checkBoxes1.setText(R.string.rage_uses);
                 checkBox1_1.setVisibility(View.VISIBLE);
@@ -126,7 +140,7 @@ public class CharacterFragment extends Fragment {
                     checkBox1_4.setVisibility(View.VISIBLE);
                 }
                 if(level >= 9){
-                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+3");
+                    subclassInfoTextView1.setText(String.format("%s +3", getString(R.string.rage_damage)));
                 }
                 if(level >= 11){
                     final int[] relentlessRage = {10};
@@ -137,7 +151,6 @@ public class CharacterFragment extends Fragment {
                         public void onClick(View v) {
                             relentlessRage[0] += 5;
                             subclassInfoTextView2.setText(getString(R.string.relentless_rage_DC) + String.valueOf(relentlessRage[0]));
-                            //TODO: reset via long rest
                         }
                     });
                 }
@@ -145,7 +158,7 @@ public class CharacterFragment extends Fragment {
                     checkBox1_5.setVisibility(View.VISIBLE);
                 }
                 if(level >= 16){
-                    subclassInfoTextView1.setText(getString(R.string.rage_damage) + "+4");
+                    subclassInfoTextView1.setText(String.format("%s +4", getString(R.string.rage_damage)));
                 }
                 if(level >= 17){
                     checkBox1_6.setVisibility(View.VISIBLE);
@@ -157,12 +170,12 @@ public class CharacterFragment extends Fragment {
                     checkBox1_4.setVisibility(View.INVISIBLE);
                     checkBox1_5.setVisibility(View.INVISIBLE);
                     checkBox1_6.setVisibility(View.INVISIBLE);
-                    checkBoxes1.setText(getString(R.string.rage_uses) + "infinite");
+                    checkBoxes1.setText("Rage Uses: Infinite");
                 }
                 break;
             case "Bard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d6");
+                subclassInfoTextView1.setText(String.format("%s d6", getString(R.string.bardic_inspiration_die)));
                 checkBoxes1.setVisibility(View.VISIBLE);
                 checkBoxes1.setText(getString(R.string.bardic_inspiration_uses));
                 checkBox1_1.setVisibility(View.VISIBLE);
@@ -183,36 +196,32 @@ public class CharacterFragment extends Fragment {
                 }
                 if(level >= 2){
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
-                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d6");
-                }
-                if(level >= 3){
-                    //TODO: Bards choose 2 proficient skills. They double their proficiency bonus for these choices.
+                    subclassInfoTextView2.setText(String.format("%s d6", getString(R.string.song_of_rest_die)));
                 }
                 if(level >= 5){
-                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d8");
+                    subclassInfoTextView1.setText(String.format("%s d8", getString(R.string.bardic_inspiration_die)));
                 }
                 if(level >= 9){
-                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d8");
+                    subclassInfoTextView2.setText(String.format("%s d8", getString(R.string.song_of_rest_die)));
                 }
                 if(level >= 10){
-                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d10");
-                    //TODO: Bards choose 2 more proficient skills. They double their proficiency bonus for these choices.
+                    subclassInfoTextView1.setText(String.format("%s d10", getString(R.string.bardic_inspiration_die)));
                 }
                 if(level >= 13){
-                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d10");
+                    subclassInfoTextView2.setText(String.format("%s d10", getString(R.string.song_of_rest_die)));
                 }
                 if(level >= 15){
-                    subclassInfoTextView1.setText(getString(R.string.bardic_inspiration_die) + "d12");
+                    subclassInfoTextView1.setText(String.format("%s d12", getString(R.string.bardic_inspiration_die)));
                 }
                 if(level >= 17){
-                    subclassInfoTextView2.setText(getString(R.string.song_of_rest_die) + "d12");
+                    subclassInfoTextView2.setText(String.format("%s d12", getString(R.string.song_of_rest_die)));
                 }
                 break;
             case "Cleric":
                 ArrayList<String> channelDivinityUses = new ArrayList<String>();
-                ListAdapter channelDivinityAdapter = new ListAdapter(getContext(), channelDivinityUses);
+                ListAdapter channelDivinityAdapter = new ListAdapter(getContext(), channelDivinityUses, false);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.divine_domain) + character.getSubclass());
+                subclassInfoTextView1.setText(String.format("Divine Domain: %s", character.getSubclass()));
                 switch(character.getSubclass()){
                     case "Light":
                         checkBoxes2.setVisibility(View.VISIBLE);
@@ -323,7 +332,7 @@ public class CharacterFragment extends Fragment {
                     }
                 }
                 if(level >= 8){
-                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "1 or lower");
+                    subclassInfoTextView2.setText(String.format("%s 1 or lower", getString(R.string.destroy_undead_threshold)));
                 }
                 if(level >= 10){
                     checkBoxes3.setVisibility(View.VISIBLE);
@@ -333,13 +342,13 @@ public class CharacterFragment extends Fragment {
                     subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + character.getLevel() + " or lower");
                 }
                 if(level >= 11){
-                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "2 or lower");
+                    subclassInfoTextView2.setText(String.format("%s 2 or lower", getString(R.string.destroy_undead_threshold)));
                 }
                 if(level >= 14){
-                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "3 or lower");
+                    subclassInfoTextView2.setText(String.format("%s 3 or lower", getString(R.string.destroy_undead_threshold)));
                 }
                 if(level >= 17){
-                    subclassInfoTextView2.setText(getString(R.string.destroy_undead_threshold) + "4 or lower");
+                    subclassInfoTextView2.setText(String.format("%s 4 or lower", getString(R.string.destroy_undead_threshold)));
                     switch(character.getSubclass()){
                         case "Knowledge":
                             checkBoxes4.setVisibility(View.VISIBLE);
@@ -352,9 +361,8 @@ public class CharacterFragment extends Fragment {
                     checkBox1_3.setVisibility(View.VISIBLE);
                 }
                 if(level == 20){
-                    subclassInfoTextView3.setText(getString(R.string.divine_intervention_success_range) + "Guaranteed Success");
+                    subclassInfoTextView3.setText(String.format("%s Guaranteed Success", getString(R.string.divine_intervention_success_range)));
                 }
-                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 subclassInfoListView.setAdapter(channelDivinityAdapter);
                 break;
             case "Druid":
@@ -364,7 +372,7 @@ public class CharacterFragment extends Fragment {
                     checkBox1_1.setVisibility(View.VISIBLE);
                     checkBox1_2.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
-                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/4, No Flying/Swimming Speed");
+                    subclassInfoTextView1.setText(String.format("%s Max CR = 1/4, No Flying/Swimming Speed", getString(R.string.wild_shape_limits)));
                     subclassInfoTextView2.setVisibility(View.VISIBLE);
                     subclassInfoTextView2.setText(getString(R.string.wild_shape_time_limit) + level/2 + "hours");
                     if(character.getSubclass().contains("Circle of the Land")){
@@ -374,13 +382,13 @@ public class CharacterFragment extends Fragment {
                         checkBoxes2.setText("Natural Recovery: ");
                         checkBox2_1.setVisibility(View.VISIBLE);
                     } else if(character.getSubclass().equals("Circle of the Moon")){
-                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1, No Flying/Swimming Speed");
+                        subclassInfoTextView1.setText(String.format("%s Max CR = 1, No Flying/Swimming Speed", getString(R.string.wild_shape_limits)));
                     }
                 }
                 if(level >= 4){
-                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1/2, No Flying Speed");
+                    subclassInfoTextView1.setText(String.format("%s Max CR = 1/2, No Flying Speed", getString(R.string.wild_shape_limits)));
                     if(character.getSubclass().equals("Circle of the Moon")){
-                        subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1, No Flying Speed");
+                        subclassInfoTextView1.setText(String.format("%s Max CR = 1, No Flying Speed", getString(R.string.wild_shape_limits)));
                     }
                 }
                 if(level >= 6){
@@ -389,7 +397,7 @@ public class CharacterFragment extends Fragment {
                     }
                 }
                 if(level >= 8){
-                    subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = 1");
+                    subclassInfoTextView1.setText(String.format("%s Max CR = 1", getString(R.string.wild_shape_limits)));
                     if(character.getSubclass().equals("Circle of the Moon")){
                         subclassInfoTextView1.setText(getString(R.string.wild_shape_limits) + "Max CR = " + level/3);
                     }
@@ -397,7 +405,7 @@ public class CharacterFragment extends Fragment {
                 if(level == 20){
                     checkBox1_2.setVisibility(View.GONE);
                     checkBox1_1.setVisibility(View.GONE);
-                    checkBoxes1.setText(getString(R.string.wild_shape_uses) + "Infinite");
+                    checkBoxes1.setText("Wild Shape Uses: Infinite");
                 }
                 break;
             case "Fighter":
@@ -425,7 +433,7 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Monk":
-                ListAdapter kiPointAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2());
+                ListAdapter kiPointAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2(), false);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(String.format("%s 1d4", getString(R.string.unarmed_strike_damage)));
                 if(level >= 2){
@@ -475,7 +483,6 @@ public class CharacterFragment extends Fragment {
                     character.getClassBasedBonusStats2().add(getString(R.string.empty_body));
                     character.getClassBasedBonusStats2().add(getString(R.string.empty_body_2));
                 }
-                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 subclassInfoListView.setAdapter(kiPointAdapter);
                 break;
             case "Paladin":
@@ -502,7 +509,7 @@ public class CharacterFragment extends Fragment {
                 subclassInfoEditText.setVisibility(View.VISIBLE);
                 subclassInfoEditText.setText(String.valueOf(character.getLevel()*5));
                 //ArrayList<String> channelDivinityUsesPaladin = new ArrayList<String>();
-                //ListAdapter channelDivinityAdapterPaladin = new ListAdapter(getContext(), channelDivinityUsesPaladin);
+                //ListAdapter channelDivinityAdapterPaladin = new ListAdapter(getContext(), channelDivinityUsesPaladin, false);
                 if(level >= 3){
                     //subclassInfoHeader.setVisibility(View.VISIBLE);
                     //subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
@@ -537,7 +544,6 @@ public class CharacterFragment extends Fragment {
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText("Aura Radius: 30ft");
                 }
-                //subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
                 //subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
                 break;
             case "Ranger":
@@ -573,7 +579,7 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Sorcerer":
-                ListAdapter metamagicAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2());
+                ListAdapter metamagicAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2(), false);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(String.format("Sorcerous Origin: %s", character.getSubclass()));
                 switch(character.getSubclass()){
@@ -604,7 +610,7 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Warlock":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.otherworldly_patron) + character.getSubclass());
+                subclassInfoTextView1.setText(String.format("Otherworldly Patron: %s", character.getSubclass()));
                 if(character.getSubclass().equals("The Archfey")){
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(getString(R.string.fey_presence_use));
@@ -651,7 +657,7 @@ public class CharacterFragment extends Fragment {
                 break;
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
-                subclassInfoTextView1.setText(getString(R.string.arcane_recovery_amount) + (level+ 1)/2);
+                subclassInfoTextView1.setText(String.format("Arcane Recovery Amount: %s", (level+1)/2));
                 switch(character.getSubclass()){
                     case "School of Abjuration":
                         editTextTextView.setVisibility(View.VISIBLE);
@@ -700,12 +706,10 @@ public class CharacterFragment extends Fragment {
                     checkBox2_1.setVisibility(View.VISIBLE);
                     //checkBox1_1.setText(signature spell choice 1);
                     //checkBox2_1.setText(signature spell choice 2);
-                    //set checkbox text to actual spell, set textview to R.string.signature_spell_choice??
                 }
                 break;
         }
-        ListAdapter adapter = new ListAdapter(getContext(), bonusStats);
-        bonusStatsList.setLayoutManager(new LinearLayoutManager(getContext()));
+        ListAdapter adapter = new ListAdapter(getContext(), bonusStats, false);
         bonusStatsList.setAdapter(adapter);
 
         return rootView;
