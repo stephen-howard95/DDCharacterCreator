@@ -1,20 +1,18 @@
 package com.example.ddcharactercreator;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -53,8 +51,12 @@ public class InventoryFragment extends Fragment {
 
         //Setting initial character inventory list.
         inventory = character.getInventoryList();
-        final ListAdapter adapter = new ListAdapter(getContext(), inventory);
-        inventoryList.setLayoutManager(new LinearLayoutManager(getContext()));
+        final ListAdapter adapter = new ListAdapter(getContext(), inventory, true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getContext(),
+                layoutManager.getOrientation());
+        inventoryList.setLayoutManager(layoutManager);
+        inventoryList.addItemDecoration(dividerItemDecoration);
         inventoryList.setAdapter(adapter);
 
         //Add items to the list
@@ -67,25 +69,6 @@ public class InventoryFragment extends Fragment {
             }
         });
 
-        //Delete items from the list
-        inventoryList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
-                adb.setTitle("Delete?");
-                adb.setMessage("Are you sure you want to delete " + inventory.get(position));
-                final int positionToRemove = position;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        inventory.remove(positionToRemove);
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-                adb.show();
-                return true;
-            }
-        });
         return rootView;
     }
 
