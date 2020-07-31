@@ -1,23 +1,22 @@
 package com.example.ddcharactercreator;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -46,9 +45,9 @@ public class SpellcastingFragment extends Fragment {
 
     @BindView(R.id.spell_slots) ScrollView spellSlots;
     @BindView(R.id.add_spells_to_list) TextView addSpellsTextView;
-    @BindView(R.id.spells_known) ListView spellsKnown;
+    @BindView(R.id.spells_known) RecyclerView spellsKnown;
     @BindView(R.id.spells_known_label) TextView spellsKnownLabel;
-    @BindView(R.id.cantrips_known) ListView cantripsKnown;
+    @BindView(R.id.cantrips_known) RecyclerView cantripsKnown;
     @BindView(R.id.cantrips_known_label) TextView cantripsKnownLabel;
 
     @BindView(R.id.spell_slot_1) CheckBox spellSlot1;
@@ -127,6 +126,9 @@ public class SpellcastingFragment extends Fragment {
 
             switch (character.getCharacterClass()) {
                 case "Barbarian":
+                    spellcastingAbility.setVisibility(View.GONE);
+                    spellSaveDC.setVisibility(View.GONE);
+                    spellAttackBonus.setVisibility(View.GONE);
                     spellSlot1.setVisibility(View.GONE);
                     spellSlot2.setVisibility(View.GONE);
                     getSubclassSpells("beast sense");
@@ -648,8 +650,14 @@ public class SpellcastingFragment extends Fragment {
                 cantripCount += 1;
             }
 
-            spellsAdapter = new SpellAdapter(getContext(), spellsList);
-            cantripsAdapter = new SpellAdapter(getContext(), cantripsList);
+            LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+            DividerItemDecoration dividerItemDecoration1 = new DividerItemDecoration(getContext(),
+                    layoutManager1.getOrientation());
+            LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
+            DividerItemDecoration dividerItemDecoration2 = new DividerItemDecoration(getContext(),
+                    layoutManager2.getOrientation());
+            spellsAdapter = new SpellAdapter(getContext(), spellsList, false);
+            cantripsAdapter = new SpellAdapter(getContext(), cantripsList, false);
             addSpellsTextView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -657,7 +665,7 @@ public class SpellcastingFragment extends Fragment {
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
                     } else if(character.getCharacterClass().equals("Ranger") && character.getLevel() < 2){
                         Toast.makeText(getContext(), "You do not have access to the Spellcasting feature yet", Toast.LENGTH_SHORT).show();
-                    } else if(character.getSubclass().equals("Path of the Totem Warrior")){
+                    } else if(character.getSubclass().equals("Path of the Totem Warrior") || character.getSubclass().equals("Way of Shadow")){
                         Toast.makeText(getContext(), "Due to your class, you cannot learn any spells.", Toast.LENGTH_SHORT).show();
                     } else if (spellsList.size() >= spellCount && cantripsList.size() >= cantripCount) {
                         Toast.makeText(getContext(), "You cannot learn any more spells or cantrips", Toast.LENGTH_SHORT).show();
@@ -667,56 +675,12 @@ public class SpellcastingFragment extends Fragment {
                 }
             });
 
-            spellsKnown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    launchSpellDetailActivity((Spell) parent.getItemAtPosition(position));
-                }
-            });
-            spellsKnown.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
-                    adb.setTitle("Delete?");
-                    adb.setMessage("Are you sure you want to delete " + spellsList.get(position).getSpellName());
-                    final int positionToRemove = position;
-                    adb.setNegativeButton("Cancel", null);
-                    adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            fullSpellsList.remove(spellsList.get(positionToRemove));
-                            spellsList.remove(positionToRemove);
-                            spellsAdapter.notifyDataSetChanged();
-                        }});
-                    adb.show();
-                    return true;
-                }
-            });
-            cantripsKnown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    launchSpellDetailActivity((Spell) parent.getItemAtPosition(position));
-                }
-            });
-            cantripsKnown.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    AlertDialog.Builder adb=new AlertDialog.Builder(getContext());
-                    adb.setTitle("Delete?");
-                    adb.setMessage("Are you sure you want to delete " + cantripsList.get(position).getSpellName());
-                    final int positionToRemove = position;
-                    adb.setNegativeButton("Cancel", null);
-                    adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            fullSpellsList.remove(cantripsList.get(positionToRemove));
-                            cantripsList.remove(positionToRemove);
-                            cantripsAdapter.notifyDataSetChanged();
-                        }});
-                    adb.show();
-                    return true;
-                }
-            });
             spellsKnown.setAdapter(spellsAdapter);
+            spellsKnown.addItemDecoration(dividerItemDecoration1);
+            spellsKnown.setLayoutManager(layoutManager1);
             cantripsKnown.setAdapter(cantripsAdapter);
+            cantripsKnown.addItemDecoration(dividerItemDecoration2);
+            cantripsKnown.setLayoutManager(layoutManager2);
 
             //Spell Slots
             spellSlot1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -944,12 +908,6 @@ public class SpellcastingFragment extends Fragment {
     }
     private void addSpellToList(){
         Intent intent = new Intent(getActivity(), SpellChooserActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchSpellDetailActivity(Spell spell){
-        Intent intent = new Intent(getActivity(), SpellDetailActivity.class);
-        intent.putExtra(SpellDetailActivity.SPELL, spell);
         startActivity(intent);
     }
 
