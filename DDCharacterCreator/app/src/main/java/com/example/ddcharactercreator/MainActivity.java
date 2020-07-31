@@ -5,18 +5,16 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import android.util.Log;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
-import java.util.ArrayList;
 import java.util.List;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String SPELL_API_BASE_URL = "https://api.open5e.com/";
     private SpellDatabase mSpellDb;
+    private CharacterViewModel characterViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        characterViewModel = ViewModelProviders.of(this).get(CharacterViewModel.class);
 
         AdView mAdView = findViewById(R.id.adView);
         //noinspection deprecation
@@ -91,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                     @Override
                     public void onFailure(Call<SpellContainer> call, Throwable t) {
                         Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -100,30 +100,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        mCharacterAdapter = new CharacterAdapter(this, new ArrayList<Character>());
-        ListView characterListView = findViewById(R.id.character_list);
+        RecyclerView characterListView = findViewById(R.id.character_list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this,
+                layoutManager.getOrientation());
+        characterListView.addItemDecoration(dividerItemDecoration);
+        characterListView.setLayoutManager(layoutManager);
+        mCharacterAdapter = new CharacterAdapter(this, listOfCharacters.getValue());
         characterListView.setAdapter(mCharacterAdapter);
-        characterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                launchDetailActivity((Character) parent.getItemAtPosition(position));
-            }
-        });
-
-        CharacterDatabase mCharacterDb = CharacterDatabase.getInstance(getApplicationContext());
-        LiveData<List<Character>> savedCharacterList = mCharacterDb.characterDao().loadAllCharacters();
-        savedCharacterList.observe(this, new Observer<List<Character>>() {
+        characterViewModel.loadAllCharacters().observe(this, new Observer<List<Character>>() {
             @Override
             public void onChanged(List<Character> characters) {
-                listOfCharacters.postValue(characters);
-            }
-        });
-
-        listOfCharacters.observe(this, new Observer<List<Character>>() {
-            @Override
-            public void onChanged(List<Character> characters) {
-                mCharacterAdapter.clear();
-                mCharacterAdapter.addAll(characters);
+                mCharacterAdapter.setCharacters(characters);
             }
         });
 
@@ -134,30 +122,11 @@ public class MainActivity extends AppCompatActivity {
                 createNewCharacter();
             }
         });
-        retrieveCharacters();
     }
 
     private void createNewCharacter(){
         Intent intent = new Intent(this, FirstQuestionnaireActivity.class);
         startActivity(intent);
-    }
-
-    private void launchDetailActivity(Character character){
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(DetailActivity.CHARACTER, character);
-        startActivity(intent);
-    }
-
-    private void retrieveCharacters(){
-        CharacterViewModel viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory
-                .getInstance(this.getApplication())).get(CharacterViewModel.class);
-        viewModel.getCharacters().observe(this, new Observer<List<Character>>() {
-            @Override
-            public void onChanged(List<Character> characters) {
-                Log.d(TAG, "Receiving database update from LiveData");
-                mCharacterAdapter.setCharacters(characters);
-            }
-        });
     }
 
     @Override
