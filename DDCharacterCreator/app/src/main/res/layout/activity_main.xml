@@ -21,11 +21,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/character_list"
-        android:paddingTop="?attr/actionBarSize"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/character_list_item"/>
 
     <include layout="@layout/content_main" />
 
