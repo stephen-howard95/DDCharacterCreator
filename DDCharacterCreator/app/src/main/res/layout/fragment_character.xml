@@ -66,7 +66,8 @@
             android:hint="@string/languages_known"
             android:text="@string/languages_known"
             android:importantForAutofill="no" />
-        
+        <!-- The below TextView is the only one guaranteed to be visible.
+        everything else should start invisible. Except for the bonusStats listView-->
         <TextView
             android:id="@+id/subrace_textview_1"
             android:visibility="gone"
