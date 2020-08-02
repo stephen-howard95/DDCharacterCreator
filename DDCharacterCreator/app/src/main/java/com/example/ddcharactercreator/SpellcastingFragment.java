@@ -545,6 +545,80 @@ public class SpellcastingFragment extends Fragment {
                     break;
                 case "Paladin":
                     secondarySpellcasterSlotsPerLevel();
+                    switch(character.getSubclass()){
+                        case "Oath of Devotion":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("protection from evil and good");
+                                    getSubclassSpells("sanctuary");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("lesser restoration");
+                                    getSubclassSpells("zone of truth");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("beacon of hope");
+                                    getSubclassSpells("dispel magic");
+                                    break;
+                                case 13:
+                                    getSubclassSpells("freedom of movement");
+                                    getSubclassSpells("guardian of faith");
+                                    break;
+                                case 17:
+                                    getSubclassSpells("commune");
+                                    getSubclassSpells("flame strike");
+                                    break;
+                            }
+                            break;
+                        case "Oath of the Ancients":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("ensnaring strike");
+                                    getSubclassSpells("speak with animals");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("misty step");
+                                    getSubclassSpells("moonbeam");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("plant growth");
+                                    getSubclassSpells("protection from energy");
+                                    break;
+                                case 13:
+                                    getSubclassSpells("ice storm");
+                                    getSubclassSpells("stoneskin");
+                                    break;
+                                case 17:
+                                    getSubclassSpells("commune with nature");
+                                    getSubclassSpells("tree stride");
+                                    break;
+                            }
+                            break;
+                        case "Oath of Vengeance":
+                            switch(character.getLevel()){
+                                case 3:
+                                    getSubclassSpells("bane");
+                                    getSubclassSpells("hunter's mark");
+                                    break;
+                                case 5:
+                                    getSubclassSpells("hold person");
+                                    getSubclassSpells("misty step");
+                                    break;
+                                case 9:
+                                    getSubclassSpells("haste");
+                                    getSubclassSpells("protection from energy");
+                                    break;
+                                case 13:
+                                    getSubclassSpells("banishment");
+                                    getSubclassSpells("dimension door");
+                                    break;
+                                case 17:
+                                    getSubclassSpells("hold monster");
+                                    getSubclassSpells("scrying");
+                                    break;
+                            }
+                            break;
+                    }
                     spellcastingAbility.setText("Spellcasting Ability: CHA");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
