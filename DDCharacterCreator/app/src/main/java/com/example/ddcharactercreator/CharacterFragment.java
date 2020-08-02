@@ -508,13 +508,29 @@ public class CharacterFragment extends Fragment {
                 editTextTextView.setText(R.string.lay_on_hands_pool);
                 subclassInfoEditText.setVisibility(View.VISIBLE);
                 subclassInfoEditText.setText(String.valueOf(character.getLevel()*5));
-                //ArrayList<String> channelDivinityUsesPaladin = new ArrayList<String>();
-                //ListAdapter channelDivinityAdapterPaladin = new ListAdapter(getContext(), channelDivinityUsesPaladin, false);
+                ArrayList<String> channelDivinityUsesPaladin = new ArrayList<String>();
+                ListAdapter channelDivinityAdapterPaladin = new ListAdapter(getContext(), channelDivinityUsesPaladin, false);
                 if(level >= 3){
-                    //subclassInfoHeader.setVisibility(View.VISIBLE);
-                    //subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
-                    //subclassInfoListView.setVisibility(View.VISIBLE);
-                    //This is where the channel divinity abilities will be added to the list when subclasses are added in.
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText(getString(R.string.channel_divinity_abilities));
+                    subclassInfoListView.setVisibility(View.VISIBLE);
+                    checkBoxes5.setVisibility(View.VISIBLE);
+                    checkBoxes5.setText(getString(R.string.channel_divinity_paladin_use));
+                    checkBox5_1.setVisibility(View.VISIBLE);
+                    switch(character.getSubclass()){
+                        case "Oath of Devotion":
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_sacred_weapon));
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_turn_the_unholy));
+                            break;
+                        case "Oath of the Ancients":
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_natures_wrath));
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_turn_the_faithless));
+                            break;
+                        case "Oath of Vengeance":
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_abjure_enemy));
+                            channelDivinityUsesPaladin.add(getString(R.string.channel_divinity_vow_of_enmity));
+                            break;
+                    }
                 }
                 if(level >= 6){
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
@@ -540,11 +556,39 @@ public class CharacterFragment extends Fragment {
                         checkBox2_6.setVisibility(View.VISIBLE);
                     }
                 }
+                if(level >= 15){
+                    switch(character.getSubclass()){
+                        case "Oath of the Ancients":
+                            checkBoxes3.setVisibility(View.VISIBLE);
+                            checkBox3_1.setVisibility(View.VISIBLE);
+                            checkBoxes3.setText(getString(R.string.undying_sentinel_use));
+                            break;
+                    }
+                }
                 if(level >= 18){
                     subclassInfoTextView1.setVisibility(View.VISIBLE);
                     subclassInfoTextView1.setText("Aura Radius: 30ft");
                 }
-                //subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
+                if(level == 20){
+                    switch(character.getSubclass()){
+                        case "Oath of Devotion":
+                            checkBoxes3.setVisibility(View.VISIBLE);
+                            checkBox3_1.setVisibility(View.VISIBLE);
+                            checkBoxes3.setText(getString(R.string.holy_nimbus_use));
+                            break;
+                        case "Oath of the Ancients":
+                            checkBoxes4.setVisibility(View.VISIBLE);
+                            checkBox4_1.setVisibility(View.VISIBLE);
+                            checkBoxes4.setText(getString(R.string.elder_champion_use));
+                            break;
+                        case "Oath of Vengeance":
+                            checkBoxes3.setVisibility(View.VISIBLE);
+                            checkBox3_1.setVisibility(View.VISIBLE);
+                            checkBoxes3.setText(getString(R.string.avenging_angel_use));
+                            break;
+                    }
+                }
+                subclassInfoListView.setAdapter(channelDivinityAdapterPaladin);
                 break;
             case "Ranger":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
