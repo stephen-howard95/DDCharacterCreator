@@ -1412,6 +1412,25 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 3:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.divine_health));
+                        bonusStats2.setVisibility(View.VISIBLE);
+                        bonusStats2.setText(getString(R.string.channel_divinity_paladin));
+                        bonusStats3.setVisibility(View.VISIBLE);
+                        bonusStats4.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Oath of Devotion":
+                                bonusStats3.setText(getString(R.string.channel_divinity_sacred_weapon));
+                                bonusStats4.setText(getString(R.string.channel_divinity_turn_the_unholy));
+                                break;
+                            case "Oath of the Ancients":
+                                bonusStats3.setText(getString(R.string.channel_divinity_natures_wrath));
+                                bonusStats4.setText(getString(R.string.channel_divinity_turn_the_faithless));
+                                break;
+                            case "Oath of Vengeance":
+                                bonusStats3.setText(getString(R.string.channel_divinity_abjure_enemy));
+                                bonusStats4.setText(getString(R.string.channel_divinity_vow_of_enmity));
+                                break;
+                        }
+                        character.getRaceAndClassBonusStats().add(getString(R.string.channel_divinity_paladin));
                         character.getRaceAndClassBonusStats().add(getString(R.string.divine_health));
                         break;
                     case 4:
@@ -1427,6 +1446,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_protection));
                         break;
                     case 7:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Oath of Devotion":
+                                bonusStats1.setText(getString(R.string.aura_of_devotion));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_devotion));
+                                break;
+                            case "Oath of the Ancients":
+                                bonusStats3.setText(getString(R.string.aura_of_warding));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_warding));
+                                break;
+                            case "Oath of Vengeance":
+                                bonusStats3.setText(getString(R.string.relentless_avenger));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.relentless_avenger));
+                                break;
+                        }
                         break;
                     case 8:
                         break;
@@ -1452,6 +1486,21 @@ public class LevelUpActivity extends AppCompatActivity {
                         character.getRaceAndClassBonusStats().add(getString(R.string.cleansing_touch));
                         break;
                     case 15:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Oath of Devotion":
+                                bonusStats1.setText(getString(R.string.purity_of_spirit));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.purity_of_spirit));
+                                break;
+                            case "Oath of the Ancients":
+                                bonusStats3.setText(getString(R.string.undying_sentinel));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.undying_sentinel));
+                                break;
+                            case "Oath of Vengeance":
+                                bonusStats3.setText(getString(R.string.soul_of_vengeance));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.soul_of_vengeance));
+                                break;
+                        }
                         break;
                     case 16:
                         break;
@@ -1464,6 +1513,21 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 19:
                         break;
                     case 20:
+                        bonusStats1.setVisibility(View.VISIBLE);
+                        switch(character.getSubclass()){
+                            case "Oath of Devotion":
+                                bonusStats1.setText(getString(R.string.holy_nimbus));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.holy_nimbus));
+                                break;
+                            case "Oath of the Ancients":
+                                bonusStats3.setText(getString(R.string.elder_champion));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.elder_champion));
+                                break;
+                            case "Oath of Vengeance":
+                                bonusStats3.setText(getString(R.string.avenging_angel));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.avenging_angel));
+                                break;
+                        }
                         break;
                 }
                 break;
