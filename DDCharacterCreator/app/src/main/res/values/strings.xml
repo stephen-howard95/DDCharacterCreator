@@ -285,7 +285,7 @@
 
     //Barbarian leveling up/subclass bonuses
     <string name="primal_path">Primal Path: </string>
-    <string name="rage_description">As a bonus action, you can enter a rage. While raging and not wearing heavy armor, you have advantage on STR checks and saving throws, you deal bonus damage(listed above) on all STR-based melee attacks, and you have resistance to bludgeoning, piercing and slashing damage. The rage lasts for 1 minute or can end early if you end your turn without having dealt or taken damage since your previous turn, if you are knocked unconscious, or if you choose to end it as a bonus action.</string>
+    <string name="rage_description">Rage: As a bonus action, you can enter a rage. While raging and not wearing heavy armor, you have advantage on STR checks and saving throws, you deal bonus damage(listed above) on all STR-based melee attacks, and you have resistance to bludgeoning, piercing and slashing damage. The rage lasts for 1 minute or can end early if you end your turn without having dealt or taken damage since your previous turn, if you are knocked unconscious, or if you choose to end it as a bonus action.</string>
     <string name="rage_uses">Rage Uses:</string>
     <string name="rage_damage">Rage Damage:</string>
     <string name="reckless_attack">Reckless Attack: When you make a melee attack, you may choose to make it reckless, giving you advantage on any attack rolls this turn, but until the start of your next turn, attacks against you have advantage</string>
