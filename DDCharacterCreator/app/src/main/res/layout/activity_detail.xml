@@ -96,10 +96,11 @@
         android:visibility="invisible"
         app:backgroundTint="#ffffff"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/long_rest_icon"
+        app:srcCompat="@drawable/level_up_icon"
         android:layout_alignParentRight="true"
         android:layout_marginRight="24dp"
-        tools:targetApi="lollipop" />
+        tools:targetApi="lollipop"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/save_character"
@@ -138,7 +139,8 @@
         app:srcCompat="@drawable/save_icon"
         android:layout_alignParentRight="true"
         android:layout_marginRight="24dp"
-        tools:targetApi="lollipop" />
+        tools:targetApi="lollipop"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:id="@+id/delete_character"
@@ -178,7 +180,8 @@
         app:srcCompat="@drawable/delete_icon"
         android:layout_marginRight="24dp"
         android:layout_alignParentRight="true"
-        tools:targetApi="lollipop" />
+        tools:targetApi="lollipop"
+        tools:ignore="VectorDrawableCompat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:contentDescription="@string/display_options"
