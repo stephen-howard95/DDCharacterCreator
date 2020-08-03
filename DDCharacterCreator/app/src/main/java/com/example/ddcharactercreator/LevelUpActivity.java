@@ -1453,11 +1453,11 @@ public class LevelUpActivity extends AppCompatActivity {
                                 character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_devotion));
                                 break;
                             case "Oath of the Ancients":
-                                bonusStats3.setText(getString(R.string.aura_of_warding));
+                                bonusStats1.setText(getString(R.string.aura_of_warding));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.aura_of_warding));
                                 break;
                             case "Oath of Vengeance":
-                                bonusStats3.setText(getString(R.string.relentless_avenger));
+                                bonusStats1.setText(getString(R.string.relentless_avenger));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.relentless_avenger));
                                 break;
                         }
