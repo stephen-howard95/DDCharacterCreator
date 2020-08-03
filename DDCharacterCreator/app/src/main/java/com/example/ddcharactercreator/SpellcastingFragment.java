@@ -624,7 +624,8 @@ public class SpellcastingFragment extends Fragment {
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellCount = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
                     cantripCount = -2;
-                    cantripsKnown.setVisibility(View.INVISIBLE);
+                    cantripsKnown.setVisibility(View.GONE);
+                    cantripsKnownLabel.setVisibility(View.GONE);
                     break;
                 case "Ranger":
                     secondarySpellcasterSlotsPerLevel();
@@ -632,7 +633,8 @@ public class SpellcastingFragment extends Fragment {
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
                     spellCount = (character.getLevel()/2) + 1;
-                    cantripsKnown.setVisibility(View.INVISIBLE);
+                    cantripsKnown.setVisibility(View.GONE);
+                    cantripsKnownLabel.setVisibility(View.GONE);
                     cantripCount = -2;
                     break;
                 case "Rogue":
