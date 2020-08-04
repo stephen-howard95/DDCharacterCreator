@@ -26,7 +26,6 @@ public abstract class CharacterDatabase extends RoomDatabase {
                 Log.d(LOG_TAG, "Creating new database instance");
                 sInstance = Room.databaseBuilder(context.getApplicationContext(),
                         CharacterDatabase.class, CharacterDatabase.DATABASE_NAME)
-                        .allowMainThreadQueries()
                         .addCallback(roomCallback)
                         .build();
             }
