@@ -49,6 +49,13 @@ public class MainStatsFragment extends Fragment {
     @BindView(R.id.current_hit_points) EditText currentHitPoints;
     @BindView(R.id.max_hit_points) TextView maxHitPoints;
     @BindView(R.id.hit_die) TextView hitDieTextView;
+    
+    @BindView(R.id.advantage) RadioButton advantageRb;
+    @BindView(R.id.disadvantage) RadioButton disadvantageRb;
+    @BindView(R.id.normal_roll) RadioButton normalRollRb;
+    @BindView(R.id.plus_amount) EditText plusAmount;
+    @BindView(R.id.minus_amount) EditText minusAmount;
+    @BindView(R.id.final_roll) TextView finalRoll;
 
     public MainStatsFragment(){
     }
@@ -295,6 +302,40 @@ public class MainStatsFragment extends Fragment {
                         currentHitPoints.setTextColor(getResources().getColor(R.color.orange));
                     } else {
                         currentHitPoints.setTextColor(getResources().getColor(R.color.red));
+                    }
+                }
+            }
+        });
+        
+
+        //Dice Roller
+        normalRollRb.setChecked(true);
+        finalRoll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(plusAmount.getText().toString().equals(null)){
+                    plusAmount.setText("0");
+                }
+                if(minusAmount.getText().toString().equals(null)){
+                    minusAmount.setText("0");
+                }
+                if(normalRollRb.isChecked()){
+                    finalRoll.setText(String.valueOf((int) (Math.random()*20)+1 + Integer.parseInt(plusAmount.getText().toString()) - Integer.parseInt(minusAmount.getText().toString())));
+                } else if(advantageRb.isChecked()){
+                    int roll1 = (int) (Math.random()*20)+1 + Integer.parseInt(plusAmount.getText().toString()) - Integer.parseInt(minusAmount.getText().toString());
+                    int roll2 = (int) (Math.random()*20)+1 + Integer.parseInt(plusAmount.getText().toString()) - Integer.parseInt(minusAmount.getText().toString());
+                    if(roll1 >= roll2){
+                        finalRoll.setText(String.valueOf(roll1));
+                    } else{
+                        finalRoll.setText(String.valueOf(roll2));
+                    }
+                } else if(disadvantageRb.isChecked()){
+                    int roll1 = (int) (Math.random()*20)+1 + Integer.parseInt(plusAmount.getText().toString()) - Integer.parseInt(minusAmount.getText().toString());
+                    int roll2 = (int) (Math.random()*20)+1 + Integer.parseInt(plusAmount.getText().toString()) - Integer.parseInt(minusAmount.getText().toString());
+                    if(roll1 <= roll2){
+                        finalRoll.setText(String.valueOf(roll1));
+                    } else{
+                        finalRoll.setText(String.valueOf(roll2));
                     }
                 }
             }
