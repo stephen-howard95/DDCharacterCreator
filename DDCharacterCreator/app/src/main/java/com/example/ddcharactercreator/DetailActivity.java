@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -22,14 +23,9 @@ public class DetailActivity extends AppCompatActivity{
     public static final String CHARACTER = "character";
     public static Character character;
     public static int proficiencyBonus;
-
-    public static Boolean canLongRest;
-
     private FirebaseAnalytics mFirebaseAnalytics;
-
     private Boolean isOpen = false;
-
-    private static CharacterDatabase mDb;
+    private CharacterViewModel characterViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,8 +34,10 @@ public class DetailActivity extends AppCompatActivity{
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        characterViewModel = ViewModelProviders.of(this).get(CharacterViewModel.class);
+
         character = (Character) getIntent().getExtras().getSerializable(CHARACTER);
-        
+
         if(character.getLevel() <= 4){
             proficiencyBonus = 2;
         } else if(character.getLevel() <= 8){
@@ -142,8 +140,6 @@ public class DetailActivity extends AppCompatActivity{
                 }
             }
         });
-
-        mDb = CharacterDatabase.getInstance(getApplicationContext());
     }
     public static int calculateModifier(int statValue){
         if(statValue == 1){
@@ -166,14 +162,18 @@ public class DetailActivity extends AppCompatActivity{
             return +3;
         }else if(statValue <= 19){
             return +4;
-        }else{
+        }else if(statValue <= 21){
             return +5;
+        } else if(statValue <= 23){
+            return +6;
+        } else{
+            return +7;
         }
     }
 
     private void onSaveButtonClicked(){
         Character thisCharacter = DetailActivity.character;
-        mDb.characterDao().insertCharacter(thisCharacter);
+        characterViewModel.insertCharacter(thisCharacter);
         Toast.makeText(getApplicationContext(), "Character saved", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -187,7 +187,7 @@ public class DetailActivity extends AppCompatActivity{
         adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Character thisCharacter = DetailActivity.character;
-                mDb.characterDao().deleteCharacter(thisCharacter);
+                characterViewModel.deleteCharacter(thisCharacter);
                 Toast.makeText(getApplicationContext(), "Character deleted", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -200,22 +200,4 @@ public class DetailActivity extends AppCompatActivity{
         Intent intent = new Intent(this, LevelUpActivity.class);
         startActivity(intent);
     }
-
-    /*private void onLongRestButtonClicked(){
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle("Long Rest");
-        adb.setMessage("Taking a Long Rest will set your health back to maximum and reset your spell slots");
-        adb.setNegativeButton("Cancel", null);
-        adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                MainStatsFragment mainStatsFragment = (MainStatsFragment) getSupportFragmentManager().getFragments().get(0);
-                mainStatsFragment.resetHealth();
-                if(!character.getCharacterClass().equals("Barbarian") && !character.getCharacterClass().equals("Monk") && !character.getCharacterClass().equals("Fighter") && !character.getCharacterClass().equals("Rogue")){
-                    SpellcastingFragment spellcastingFragment = (SpellcastingFragment) getSupportFragmentManager().getFragments().get(1);
-                    spellcastingFragment.resetSpellSlots();
-                }
-            }
-        });
-        adb.show();
-    }*/
 }
