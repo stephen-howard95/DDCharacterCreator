@@ -482,6 +482,24 @@ public class LevelUpActivity extends AppCompatActivity {
                                 }
                             }
                             break;
+                        case "Warlock":
+                            if(finalLevel == 3){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Pact of the Blade":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.pact_of_the_blade));
+                                        break;
+                                    case "Pact of the Chain":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.pact_of_the_chain));
+                                        break;
+                                    case "Pact of the Talisman":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.pact_of_the_talisman));
+                                        break;
+                                    case "Pact of the Tome":
+                                        character.getRaceAndClassBonusStats().add(getString(R.string.pact_of_the_tome));
+                                        break;
+                                }
+                            }
+                            break;
                         case "Wizard":
                             if(finalLevel == 20){
                                 getSubclassSpells(choice1.getSelectedItem().toString());
@@ -2012,7 +2030,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         //choose 2 eldritch invocations
                         break;
                     case 3:
-                        //choose a pact boon
+                        ArrayList<String> pactBoonChoices = new ArrayList<>();
+                        ArrayAdapter<String> pactBoonAdapter = new ArrayAdapter<>(this,
+                                android.R.layout.simple_spinner_dropdown_item, pactBoonChoices);
+                        pactBoonChoices.add("Pact of the Blade");
+                        pactBoonChoices.add("Pact of the Chain");
+                        pactBoonChoices.add("Pact of the Talisman");
+                        pactBoonChoices.add("Pact of the Tome");
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Your Patron bestows a gift upon you for your loyal service. Choose your Pact Boon");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(pactBoonAdapter);
                         break;
                     case 4:
                         break;
