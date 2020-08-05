@@ -203,6 +203,10 @@ public class SpellChooserActivity extends AppCompatActivity{
                         addSpellsToClassList("telekinesis");
                         break;
                 }
+                if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_tome))){
+                    cantripMax += 3;
+                    getSpellsPerLevel(0);
+                }
                 break;
             case "Wizard":
                 spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(3));
@@ -298,6 +302,22 @@ public class SpellChooserActivity extends AppCompatActivity{
                 completeSpellsList.get(i).setClassList(classList + spellcastingClass);
             }
         }
+    }
+    //Allows certain character classes access to several spells outside their class list
+    public ArrayList<String> getSpellsPerLevel(int spellLevel){
+        ArrayList<String> spellChoices = new ArrayList<>();
+        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+
+        for(int i=0; i<spellsList.size(); i++){
+            if(!spellsList.get(i).getClassList().contains(character.getCharacterClass()) || spellsList.get(i).getLevel() != spellLevel){
+                spellsList.remove(i);
+                i--;
+            } else{
+                spellChoices.add(spellsList.get(i).getSpellName());
+            }
+        }
+        return spellChoices;
     }
     //Allows bards access to spells outside of their character class list per the Magical Secrets Feature
     private void getMagicalSecrets(){
