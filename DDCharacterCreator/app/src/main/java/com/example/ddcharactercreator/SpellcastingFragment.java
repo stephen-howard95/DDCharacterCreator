@@ -683,6 +683,9 @@ public class SpellcastingFragment extends Fragment {
                 case "Warlock":
                     spellSlot2.setVisibility(View.GONE);
                     warlockSpellSlotsPerLevel();
+                    if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_chain))){
+                        getSubclassSpells("find familiar");
+                    }
                     spellcastingAbility.setText("Spellcasting Ability: CHA");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
