@@ -59,6 +59,22 @@ public class LevelUpActivity extends AppCompatActivity {
         newLevel.setText(getString(R.string.new_level) + " " + level);
 
         // Ability Score/proficiency Bonus improvements
+        ArrayList<String> abilityScoreList1 = new ArrayList<>();
+        ArrayList<String> abilityScoreList2 = new ArrayList<>();
+        abilityScoreList1.add("Strength");
+        abilityScoreList1.add("Dexterity");
+        abilityScoreList1.add("Constitution");
+        abilityScoreList1.add("Intelligence");
+        abilityScoreList1.add("Wisdom");
+        abilityScoreList1.add("Charisma");
+        abilityScoreList2.add("Strength");
+        abilityScoreList2.add("Dexterity");
+        abilityScoreList2.add("Constitution");
+        abilityScoreList2.add("Intelligence");
+        abilityScoreList2.add("Wisdom");
+        abilityScoreList2.add("Charisma");
+        ArrayAdapter<String> abilityScoreAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, abilityScoreList1);
+        ArrayAdapter<String> abilityScoreAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, abilityScoreList2);
         switch (level){
             case 4:
             case 8:
@@ -82,6 +98,45 @@ public class LevelUpActivity extends AppCompatActivity {
             abilityScoreImprovement1.setVisibility(View.VISIBLE);
             abilityScoreImprovement2.setVisibility(View.VISIBLE);
         }
+        //Prevents a stat from going above 20
+        if(character.getStatValues().get(0) == 20){
+            abilityScoreAdapter1.remove("Strength");
+            abilityScoreAdapter2.remove("Strength");
+        } else if(character.getStatValues().get(0) == 19){
+            abilityScoreAdapter2.remove("Strength");
+        }
+        if(character.getStatValues().get(1) == 20){
+            abilityScoreAdapter1.remove("Dexterity");
+            abilityScoreAdapter2.remove("Dexterity");
+        }else if(character.getStatValues().get(1) == 19){
+            abilityScoreAdapter2.remove("Dexterity");
+        }
+        if(character.getStatValues().get(2) == 20){
+            abilityScoreAdapter1.remove("Constitution");
+            abilityScoreAdapter2.remove("Constitution");
+        }else if(character.getStatValues().get(2) == 19){
+            abilityScoreAdapter2.remove("Constitution");
+        }
+        if(character.getStatValues().get(3) == 20){
+            abilityScoreAdapter1.remove("Intelligence");
+            abilityScoreAdapter2.remove("Intelligence");
+        }else if(character.getStatValues().get(3) == 19){
+            abilityScoreAdapter2.remove("Intelligence");
+        }
+        if(character.getStatValues().get(4) == 20){
+            abilityScoreAdapter1.remove("Wisdom");
+            abilityScoreAdapter2.remove("Wisdom");
+        }else if(character.getStatValues().get(4) == 19){
+            abilityScoreAdapter2.remove("Wisdom");
+        }
+        if(character.getStatValues().get(5) == 20){
+            abilityScoreAdapter1.remove("Charisma");
+            abilityScoreAdapter2.remove("Charisma");
+        }else if(character.getStatValues().get(5) == 19){
+            abilityScoreAdapter2.remove("Charisma");
+        }
+        abilityScoreImprovement1.setAdapter(abilityScoreAdapter1);
+        abilityScoreImprovement2.setAdapter(abilityScoreAdapter2);
 
         // Health restrictions
         switch (character.getCharacterClass()){
@@ -243,10 +298,10 @@ public class LevelUpActivity extends AppCompatActivity {
         }
 
         int finalLevel = level;
+        int previousConModifier = calculateModifier(character.getStatValues().get(2));
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //possibly save the character??
                 if(moreHP.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
                 } else{
@@ -259,6 +314,11 @@ public class LevelUpActivity extends AppCompatActivity {
                     if(character.getSubclass().equals("Draconic Bloodline") || character.getSubclass().equals("Stone Sorcery")){
                         addToHP += 1;
                     }
+                    if(calculateModifier(character.getStatValues().get(2)) > previousConModifier){
+                        addToHP += finalLevel;
+                    }
+                    character.getCurrency().set(6, addToHP + character.getCurrency().get(6)
+                            + calculateModifier(character.getStatValues().get(2)));
                     String subclass = character.getSubclass();
                     switch(character.getCharacterClass()){
                         case "Barbarian":
@@ -327,6 +387,31 @@ public class LevelUpActivity extends AppCompatActivity {
                             if(finalLevel == 14){
                                 character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
+                        case "Fighter":
+                        case "Paladin":
+                            if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
+                                    || (character.getSubclass().equals("Champion") && finalLevel == 10)){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Archery":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
+                                        break;
+                                    case "Defense":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
+                                        break;
+                                    case "Dueling":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
+                                        break;
+                                    case "Great Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
+                                        break;
+                                    case "Protection":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
+                                        break;
+                                    case "Two-Weapon Fighting":
+                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
+                                        break;
+                                }
+                            }
                             if(character.getSubclass().equals("Hunter") && (finalLevel == 3 || finalLevel == 7 || finalLevel == 11 || finalLevel == 15)){
                                 switch(choice1.getSelectedItem().toString()){
                                     case "Colossus Slayer":
@@ -361,31 +446,6 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                     case "Uncanny Dodge":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.uncanny_dodge));
-                                        break;
-                                }
-                            }
-                        case "Fighter":
-                        case "Paladin":
-                            if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
-                                    || (character.getSubclass().equals("Champion") && finalLevel == 10)){
-                                switch(choice1.getSelectedItem().toString()){
-                                    case "Archery":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.archery));
-                                        break;
-                                    case "Defense":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.defense));
-                                        break;
-                                    case "Dueling":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.dueling));
-                                        break;
-                                    case "Great Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.great_weapon_fighting));
-                                        break;
-                                    case "Protection":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.protection));
-                                        break;
-                                    case "Two-Weapon Fighting":
-                                        character.getRaceAndClassBonusStats().add("Fighting Style: " + getString(R.string.two_weapon_fighting));
                                         break;
                                 }
                             }
@@ -523,8 +583,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
                         // as cantrips, at level 20, they can be cast as cantrips once per long rest.
                     }*/
-                    character.getCurrency().set(6, addToHP + (Integer) character.getCurrency().get(6)
-                            + calculateModifier(character.getStatValues().get(2)));
                     returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                             character.getAlignment(), character.getName(), newStatValues,
                             character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
@@ -1266,6 +1324,8 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 20:
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText(getString(R.string.extra_attack_4));
+                        character.getRaceAndClassBonusStats().remove(getString(R.string.extra_attack_3));
+                        character.getRaceAndClassBonusStats().add(getString(R.string.extra_attack_4));
                         break;
                 }
                 break;
