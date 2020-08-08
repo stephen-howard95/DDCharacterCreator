@@ -88,6 +88,7 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
                     adb.setNegativeButton("Cancel", null);
                     adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+                            character.getSpellsKnown().remove(spell);
                             spells.remove(positionToRemove);
                             notifyDataSetChanged();
                         }});
