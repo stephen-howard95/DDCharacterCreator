@@ -1240,21 +1240,37 @@ public class SpellcastingFragment extends Fragment {
             spellSlot3.setVisibility(View.VISIBLE);
             spellSlot3.setText(getString(R.string.fifth_level_spell));
             spellSlot17.setVisibility(View.VISIBLE);
-            //SetText to 6th level mystic arcanum??
+            for(int i=0; i<character.getSpellsKnown().size(); i++){
+                if(character.getSpellsKnown().get(i).getLevel() == 6){
+                    spellSlot17.setText(character.getSpellsKnown().get(i).getSpellName());
+                }
+            }
         }
         if(character.getLevel() >= 13){
             spellSlot19.setVisibility(View.VISIBLE);
-            //setText to 7th level mystic arcanum??
+            for(int i=0; i<character.getSpellsKnown().size(); i++){
+                if(character.getSpellsKnown().get(i).getLevel() == 7){
+                    spellSlot19.setText(character.getSpellsKnown().get(i).getSpellName());
+                }
+            }
         }
         if(character.getLevel() >= 15){
             spellSlot21.setVisibility(View.VISIBLE);
-            //setText to 8th level mystic arcanum??
+            for(int i=0; i<character.getSpellsKnown().size(); i++){
+                if(character.getSpellsKnown().get(i).getLevel() == 8){
+                    spellSlot21.setText(character.getSpellsKnown().get(i).getSpellName());
+                }
+            }
         }
         if(character.getLevel() >= 17){
             spellSlot4.setVisibility(View.VISIBLE);
             spellSlot4.setText(getString(R.string.fifth_level_spell));
             spellSlot22.setVisibility(View.VISIBLE);
-            //setText to 9th level mystic arcanum??
+            for(int i=0; i<character.getSpellsKnown().size(); i++){
+                if(character.getSpellsKnown().get(i).getLevel() == 9){
+                    spellSlot22.setText(character.getSpellsKnown().get(i).getSpellName());
+                }
+            }
         }
     }
     private void getSubclassSpells(String spellName){
