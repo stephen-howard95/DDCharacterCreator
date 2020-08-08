@@ -302,9 +302,12 @@ public class LevelUpActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //possibly save the character??
                 if(moreHP.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
-                } else{
+                }else if(choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE && choice1.getSelectedItem().toString().equals(choice2.getSelectedItem().toString())){
+                    Toast.makeText(getApplicationContext(), "Make sure you choose 2 different options", Toast.LENGTH_SHORT).show();
+                }else {
                     ArrayList<Integer> newStatValues = character.getStatValues();
                     if(abilityScoreImprovementHeader.getVisibility() == View.VISIBLE){
                         improveAbilityScore(abilityScoreImprovement1.getSelectedItem().toString(), newStatValues);
@@ -543,6 +546,54 @@ public class LevelUpActivity extends AppCompatActivity {
                             }
                             break;
                         case "Warlock":
+                            if(finalLevel == 2){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Agonizing Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.agonizing_blast));
+                                        break;
+                                    case "Beguiling Influence":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.beguiling_influence));
+                                        break;
+                                    case "Devil's Sight":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.devils_sight));
+                                        break;
+                                    case "Eldritch Spear":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eldritch_spear));
+                                        break;
+                                    case "Eyes of the Rune Keeper":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eyes_of_the_rune_keeper));
+                                        break;
+                                    case "Gaze of Two Minds":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.gaze_of_two_minds));
+                                        break;
+                                    case "Repelling Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.repelling_blast));
+                                        break;
+                                }
+                                switch(choice2.getSelectedItem().toString()){
+                                    case "Agonizing Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.agonizing_blast));
+                                        break;
+                                    case "Beguiling Influence":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.beguiling_influence));
+                                        break;
+                                    case "Devil's Sight":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.devils_sight));
+                                        break;
+                                    case "Eldritch Spear":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eldritch_spear));
+                                        break;
+                                    case "Eyes of the Rune Keeper":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eyes_of_the_rune_keeper));
+                                        break;
+                                    case "Gaze of Two Minds":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.gaze_of_two_minds));
+                                        break;
+                                    case "Repelling Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.repelling_blast));
+                                        break;
+                                }
+                            }
                             if(finalLevel == 3){
                                 switch(choice1.getSelectedItem().toString()){
                                     case "Pact of the Blade":
@@ -556,6 +607,61 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                     case "Pact of the Tome":
                                         character.getRaceAndClassBonusStats().add(getString(R.string.pact_of_the_tome));
+                                        break;
+                                }
+                            }
+                            if(finalLevel == 5 || finalLevel == 7 || finalLevel == 9 || finalLevel == 12 || finalLevel == 15 || finalLevel == 18){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Agonizing Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.agonizing_blast));
+                                        break;
+                                    case "Beguiling Influence":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.beguiling_influence));
+                                        break;
+                                    case "Book of Ancient Secrets":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.book_of_ancient_secrets));
+                                        break;
+                                    case "Devil's Sight":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.devils_sight));
+                                        break;
+                                    case "Eldritch Spear":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eldritch_spear));
+                                        break;
+                                    case "Eye of Yog-Sothoth":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eye_of_yog_sothoth));
+                                        break;
+                                    case "Eyes of the Rune Keeper":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.eyes_of_the_rune_keeper));
+                                        break;
+                                    case "Gaze of Two Minds":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.gaze_of_two_minds));
+                                        break;
+                                    case "Lifedrinker":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.lifedrinker));
+                                        break;
+                                    case "One With Shadows":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.one_with_shadows));
+                                        break;
+                                    case "Reality Tear":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.reality_tear));
+                                        break;
+                                    case "Repelling Blast":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.repelling_blast));
+                                        break;
+                                    case "Thirsting Blade":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.thirsting_blade));
+                                        break;
+                                    case "Trickster's Step":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.tricksters_step));
+                                        break;
+                                    case "Unbreakable Tether":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.unbreakable_tether));
+                                        break;
+                                    case "Voice of the Chain Master":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.voice_of_the_chain_master));
+                                        break;
+                                    case "Witch Sight":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.witch_sight));
                                         break;
                                 }
                             }
@@ -783,7 +889,6 @@ public class LevelUpActivity extends AppCompatActivity {
                                 bonusStats2.setText("You now have proficiency with Medium Armor, Shields, and Martial Weapons");
                                 break;
                         }
-                        //expertise choices
                         choiceHeader1.setVisibility(View.VISIBLE);
                         choiceHeader1.setText("Choose two of your proficiencies. Your proficiency bonus will be doubled for any ability checks you make with that skill");
                         choice1.setVisibility(View.VISIBLE);
@@ -2085,9 +2190,64 @@ public class LevelUpActivity extends AppCompatActivity {
             case "Warlock":
                 ArrayList<String> mysticArcanumChoices;
                 ArrayAdapter<String> mysticArcanumAdapter;
+                ArrayList<String> eldritchInvocations = new ArrayList<>();
+                eldritchInvocations.add("Beguiling Influence");
+                eldritchInvocations.add("Devil's Sight");
+                eldritchInvocations.add("Eyes of the Rune Keeper");
+                eldritchInvocations.add("Gaze of Two Minds");
+                for(int i=0; i<character.getSpellsKnown().size(); i++){
+                    if(character.getSpellsKnown().get(i).getSpellName().equalsIgnoreCase("Eldritch Blast")){
+                        eldritchInvocations.add("Agonizing Blast");
+                        eldritchInvocations.add("Eldritch Spear");
+                        eldritchInvocations.add("Repelling Blast");
+                    }
+                }
+                if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_tome))){
+                    eldritchInvocations.add("Book of Ancient Secrets");
+                }else if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_chain))){
+                    eldritchInvocations.add("Voice of the Chain Master");
+                } else if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_talisman))){
+                    eldritchInvocations.add("Reality Tear");
+                }
+                if(finalLevel >= 5){
+                    eldritchInvocations.add("One With Shadows");
+                    if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_blade))){
+                        eldritchInvocations.add("Thirsting Blade");
+                    } else if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_talisman))){
+                        eldritchInvocations.add("Trickster's Step");
+                        eldritchInvocations.add("Eye of Yog-Sothoth");
+                    }
+                }
+                if(finalLevel >= 12){
+                    if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_blade))){
+                        eldritchInvocations.add("Lifedrinker");
+                    }
+                }
+                if(finalLevel >= 15){
+                    eldritchInvocations.add("Witch Sight");
+                    if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_chain))){
+                        eldritchInvocations.add("Unbreakable Tether");
+                    }
+                }
+                for(int i=0; i<eldritchInvocations.size(); i++){
+                    for(int j=0; j<character.getClassBasedBonusStats2().size(); j++){
+                        if(character.getClassBasedBonusStats2().get(j).contains(eldritchInvocations.get(i))){
+                            eldritchInvocations.remove(i);
+                            i--;
+                            break;
+                        }
+                    }
+                }
+                ArrayAdapter<String> eldritchInvocationsAdapter = new ArrayAdapter<>(this,
+                        android.R.layout.simple_spinner_dropdown_item, eldritchInvocations);
                 switch (level){
                     case 2:
-                        //choose 2 eldritch invocations
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose two Eldritch Invocations");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
+                        choice2.setVisibility(View.VISIBLE);
+                        choice2.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 3:
                         ArrayList<String> pactBoonChoices = new ArrayList<>();
@@ -2105,7 +2265,10 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 4:
                         break;
                     case 5:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 6:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -2125,12 +2288,18 @@ public class LevelUpActivity extends AppCompatActivity {
                         }
                         break;
                     case 7:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 8:
                         break;
                     case 9:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 10:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -2159,7 +2328,10 @@ public class LevelUpActivity extends AppCompatActivity {
                         choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 12:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 13:
                         mysticArcanumChoices = getSpellsPerLevel(7);
@@ -2188,14 +2360,17 @@ public class LevelUpActivity extends AppCompatActivity {
                         }
                         break;
                     case 15:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         mysticArcanumChoices = getSpellsPerLevel(8);
                         mysticArcanumAdapter = new ArrayAdapter<String>(this,
                                 android.R.layout.simple_spinner_dropdown_item, mysticArcanumChoices);
-                        choiceHeader1.setVisibility(View.VISIBLE);
-                        choice1.setVisibility(View.VISIBLE);
-                        choiceHeader1.setText(getString(R.string.mystic_arcanum_choice));
-                        choice1.setAdapter(mysticArcanumAdapter);
+                        choiceHeader2.setVisibility(View.VISIBLE);
+                        choice2.setVisibility(View.VISIBLE);
+                        choiceHeader2.setText(getString(R.string.mystic_arcanum_choice));
+                        choice2.setAdapter(mysticArcanumAdapter);
                         break;
                     case 16:
                         break;
@@ -2209,7 +2384,10 @@ public class LevelUpActivity extends AppCompatActivity {
                         choice1.setAdapter(mysticArcanumAdapter);
                         break;
                     case 18:
-                        //new eldritch invocation
+                        choiceHeader1.setVisibility(View.VISIBLE);
+                        choiceHeader1.setText("Choose another Eldritch Invocation");
+                        choice1.setVisibility(View.VISIBLE);
+                        choice1.setAdapter(eldritchInvocationsAdapter);
                         break;
                     case 19:
                         break;
@@ -2480,7 +2658,7 @@ public class LevelUpActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<String> getSpellsPerLevel(int spellLevel){
+    public ArrayList<String> getSpellsPerLevel(int spellLevel){
         ArrayList<String> spellChoices = new ArrayList<>();
         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
         List<Spell> spellsList = mDb.spellDao().loadAllSpells();
