@@ -96,7 +96,11 @@ public class MainStatsFragment extends Fragment {
         }
 
         //Setting Passive Perception and Armor Class
-        passivePerception.setText(String.format("Passive Perception: %s", (10 + calculateModifier(character.getStatValues().get(4)))));
+        if(character.getProficiencyChoices().contains("Perception")){
+            passivePerception.setText(String.format("Passive Perception: %s", (10 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
+        } else {
+            passivePerception.setText(String.format("Passive Perception: %s", (10 + calculateModifier(character.getStatValues().get(4)))));
+        }
         armorClassEditText.setText(String.valueOf(character.getCurrency().get(0)));
         armorClassEditText.addTextChangedListener(new TextWatcher() {
             @Override
