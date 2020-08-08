@@ -665,6 +665,29 @@ public class LevelUpActivity extends AppCompatActivity {
                                         break;
                                 }
                             }
+                            if(finalLevel == 11 || finalLevel == 13 || finalLevel == 17){
+                                SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+                                List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+                                Spell spell = new Spell();
+                                for(int i=0; i<spellsList.size(); i++){
+                                    if(spellsList.get(i).getSpellName().equals(choice1.getSelectedItem().toString())){
+                                        spell = spellsList.get(i);
+                                        break;
+                                    }
+                                }
+                                character.getSpellsKnown().add(spell);
+                            } else if(finalLevel == 15){
+                                SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
+                                List<Spell> spellsList = mDb.spellDao().loadAllSpells();
+                                Spell spell = new Spell();
+                                for(int i=0; i<spellsList.size(); i++){
+                                    if(spellsList.get(i).getSpellName().equals(choice2.getSelectedItem().toString())){
+                                        spell = spellsList.get(i);
+                                        break;
+                                    }
+                                }
+                                character.getSpellsKnown().add(spell);
+                            }
                             break;
                         case "Wizard":
                             if(finalLevel == 20){
@@ -673,14 +696,7 @@ public class LevelUpActivity extends AppCompatActivity {
                             }
                             break;
                     }
-                   /* if(character.getCharacterClass().equals("Warlock") && choice1.getVisibility() == View.VISIBLE){
-                        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
-                        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
-                        Spell spell = spellsList.get(The spell who's name is the one chosen in choice1);
-
-                        character.getSpellsKnown().add(spell);
-                    }
-                    if(character.getCharacterClass().equals("Wizard") && choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE){
+                   /* if(character.getCharacterClass().equals("Wizard") && choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE){
                         SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
                         List<Spell> spellsList = mDb.spellDao().loadAllSpells();
                         Spell spell1 = spellsList.get(The spell who's name is the one chosen in choice1);
