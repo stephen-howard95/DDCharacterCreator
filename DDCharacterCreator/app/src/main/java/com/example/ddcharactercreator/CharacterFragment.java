@@ -653,8 +653,14 @@ public class CharacterFragment extends Fragment {
                 subclassInfoListView.setAdapter(metamagicAdapter);
                 break;
             case "Warlock":
+                ListAdapter eldritchInvocationsAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2(), false);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(String.format("Otherworldly Patron: %s", character.getSubclass()));
+                if(level >= 2){
+                    subclassInfoListView.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText("Eldritch Invocations");
+                }
                 if(character.getSubclass().equals("The Archfey")){
                     checkBoxes1.setVisibility(View.VISIBLE);
                     checkBoxes1.setText(getString(R.string.fey_presence_use));
@@ -698,6 +704,8 @@ public class CharacterFragment extends Fragment {
                     checkBox4_1.setVisibility(View.VISIBLE);
                     checkBoxes4.setText(getString(R.string.eldritch_master_use));
                 }
+                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
+                subclassInfoListView.setAdapter(eldritchInvocationsAdapter);
                 break;
             case "Wizard":
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
