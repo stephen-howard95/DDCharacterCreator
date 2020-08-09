@@ -628,6 +628,14 @@ public class SkillModifiersActivity extends AppCompatActivity {
                 toolProficiencyLabel.setVisibility(View.GONE);
                 weaponArmorProficiencies.add("Light Armor");
                 weaponArmorProficiencies.add("Simple Weapons");
+                if(character.getClassBasedBonusStats2().contains(getString(R.string.beguiling_influence))){
+                    deceptionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
+                    deceptionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    deceptionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    persuasionModifier.setText(String.valueOf(calculateModifier(character.getStatValues().get(5)) + proficiencyBonus));
+                    persuasionLabel.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                    persuasionModifier.setTextColor(getResources().getColor(R.color.proficiency_blue));
+                }
                 break;
             case "Wizard":
                 toolProficienciesModifier.setVisibility(View.GONE);
