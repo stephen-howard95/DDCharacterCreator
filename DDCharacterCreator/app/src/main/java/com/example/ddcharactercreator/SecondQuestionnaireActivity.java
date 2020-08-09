@@ -185,6 +185,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 break;
             case "Fighter":
                 subclassHeader.setText("Choose a Martial Archetype");
+                subclassChoices.add("Battle Master");
                 subclassChoices.add("Champion");
                 subclassChoices.add("Eldritch Knight");
                 levelOneChoiceHeader1.setVisibility(View.VISIBLE);
