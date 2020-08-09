@@ -250,7 +250,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
         //Subclass choices
         onView(withId(R.id.subclass_choice_spinner)).perform(click());
-        onData(anything()).atPosition((int) (Math.random()*2)).perform(click());
+        onData(anything()).atPosition((int) (Math.random()*3)).perform(click());
         onView(withId(R.id.starting_gold_edit_text)).perform(typeText("80"));
         //Fighting Style
         onView(withId(R.id.level_one_choice_spinner_1)).perform(scrollTo(), click());
