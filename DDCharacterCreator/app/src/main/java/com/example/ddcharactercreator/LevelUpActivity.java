@@ -391,6 +391,108 @@ public class LevelUpActivity extends AppCompatActivity {
                                 character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                             }
                         case "Fighter":
+                            if(character.getSubclass().equals("Battle Master") && (finalLevel == 3 || finalLevel == 7 || finalLevel == 10 || finalLevel == 15)){
+                                switch(choice1.getSelectedItem().toString()){
+                                    case "Commander's Strike":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.commanders_strike));
+                                        break;
+                                    case "Disarming Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.disarming_attack));
+                                        break;
+                                    case "Distracting Strike":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.distracting_strike));
+                                        break;
+                                    case "Evasive Footwork":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.evasive_footwork));
+                                        break;
+                                    case "Feinting Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.feinting_attack));
+                                        break;
+                                    case "Goading Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.goading_attack));
+                                        break;
+                                    case "Lunging Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.lunging_attack));
+                                        break;
+                                    case "Maneuvering Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.maneuvering_attack));
+                                        break;
+                                    case "Menacing Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.menacing_attack));
+                                        break;
+                                    case "Parry":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.parry));
+                                        break;
+                                    case "Precision Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.precision_attack));
+                                        break;
+                                    case "Pushing Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.pushing_attack));
+                                        break;
+                                    case "Rally":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.rally));
+                                        break;
+                                    case "Riposte":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.riposte));
+                                        break;
+                                    case "Sweeping Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.sweeping_attack));
+                                        break;
+                                    case "Trip Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.trip_attack));
+                                        break;
+                                }
+                                switch(choice2.getSelectedItem().toString()){
+                                    case "Commander's Strike":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.commanders_strike));
+                                        break;
+                                    case "Disarming Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.disarming_attack));
+                                        break;
+                                    case "Distracting Strike":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.distracting_strike));
+                                        break;
+                                    case "Evasive Footwork":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.evasive_footwork));
+                                        break;
+                                    case "Feinting Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.feinting_attack));
+                                        break;
+                                    case "Goading Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.goading_attack));
+                                        break;
+                                    case "Lunging Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.lunging_attack));
+                                        break;
+                                    case "Maneuvering Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.maneuvering_attack));
+                                        break;
+                                    case "Menacing Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.menacing_attack));
+                                        break;
+                                    case "Parry":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.parry));
+                                        break;
+                                    case "Precision Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.precision_attack));
+                                        break;
+                                    case "Pushing Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.pushing_attack));
+                                        break;
+                                    case "Rally":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.rally));
+                                        break;
+                                    case "Riposte":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.riposte));
+                                        break;
+                                    case "Sweeping Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.sweeping_attack));
+                                        break;
+                                    case "Trip Attack":
+                                        character.getClassBasedBonusStats2().add(getString(R.string.trip_attack));
+                                        break;
+                                }
+                            }
                         case "Paladin":
                             if(((character.getCharacterClass().equals("Paladin") || character.getCharacterClass().equals("Ranger")) && finalLevel == 2)
                                     || (character.getSubclass().equals("Champion") && finalLevel == 10)){
@@ -1312,6 +1414,32 @@ public class LevelUpActivity extends AppCompatActivity {
                 }
                 break;
             case "Fighter":
+                List<String> maneuvers = new ArrayList<String>();
+                ArrayAdapter<String> maneuverAdapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item, maneuvers);
+                maneuvers.add("Commander's Strike");
+                maneuvers.add("Disarming Attack");
+                maneuvers.add("Distracting Strike");
+                maneuvers.add("Evasive Footwork");
+                maneuvers.add("Feinting Attack");
+                maneuvers.add("Goading Attack");
+                maneuvers.add("Lunging Attack");
+                maneuvers.add("Maneuvering Attack");
+                maneuvers.add("Menacing Attack");
+                maneuvers.add("Parry");
+                maneuvers.add("Precision Attack");
+                maneuvers.add("Pushing Attack");
+                maneuvers.add("Rally");
+                maneuvers.add("Riposte");
+                maneuvers.add("Sweeping Attack");
+                maneuvers.add("Trip Attack");
+                for(int i=0; i<character.getClassBasedBonusStats2().size(); i++){
+                    for(int j=0; j<maneuvers.size(); j++){
+                        if(character.getClassBasedBonusStats2().get(i).contains(maneuvers.get(j))){
+                            maneuvers.remove(maneuvers.get(j));
+                        }
+                    }
+                }
                 switch (level){
                     case 2:
                         bonusStats1.setVisibility(View.VISIBLE);
@@ -1321,6 +1449,16 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 3:
                         bonusStats1.setVisibility(View.VISIBLE);
                         switch(character.getSubclass()){
+                            case "Battle Master":
+                                bonusStats1.setText(getString(R.string.battle_master_description));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.battle_master_description));
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose 2 starting Maneuvers");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(maneuverAdapter);
+                                choice2.setVisibility(View.VISIBLE);
+                                choice2.setAdapter(maneuverAdapter);
+                                break;
                             case "Champion":
                                 bonusStats1.setText(getString(R.string.improved_critical));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.improved_critical));
@@ -1345,6 +1483,18 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 7:
                         bonusStats1.setVisibility(View.VISIBLE);
                         switch(character.getSubclass()){
+                            case "Battle Master":
+                                bonusStats1.setText(getString(R.string.know_your_enemy));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.know_your_enemy));
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText("You have another Superiority Die");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose 2 more Maneuvers");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(maneuverAdapter);
+                                choice2.setVisibility(View.VISIBLE);
+                                choice2.setAdapter(maneuverAdapter);
+                                break;
                             case "Champion":
                                 bonusStats1.setText(getString(R.string.remarkable_athlete));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.remarkable_athlete));
@@ -1364,6 +1514,16 @@ public class LevelUpActivity extends AppCompatActivity {
                         break;
                     case 10:
                         switch(character.getSubclass()){
+                            case "Battle Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText("Your Superiority dice are now d10s");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose 2 more Maneuvers");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(maneuverAdapter);
+                                choice2.setVisibility(View.VISIBLE);
+                                choice2.setAdapter(maneuverAdapter);
+                                break;
                             case "Champion":
                                 List<String> fightingStyles = new ArrayList<String>();
                                 ArrayAdapter<String> fightingStyleAdapter = new ArrayAdapter<String>(this,
@@ -1387,6 +1547,7 @@ public class LevelUpActivity extends AppCompatActivity {
                                 choice1.setAdapter(fightingStyleAdapter);
                                 break;
                             case "Eldritch Knight":
+                                bonusStats1.setVisibility(View.VISIBLE);
                                 bonusStats1.setText(getString(R.string.eldritch_strike));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.eldritch_strike));
                         }
@@ -1408,6 +1569,18 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 15:
                         bonusStats1.setVisibility(View.VISIBLE);
                         switch(character.getSubclass()){
+                            case "Battle Master":
+                                bonusStats1.setText(getString(R.string.relentless));
+                                character.getRaceAndClassBonusStats().add(getString(R.string.relentless));
+                                bonusStats2.setVisibility(View.VISIBLE);
+                                bonusStats2.setText("You have another Superiority Die");
+                                choiceHeader1.setVisibility(View.VISIBLE);
+                                choiceHeader1.setText("Choose 2 more Maneuvers");
+                                choice1.setVisibility(View.VISIBLE);
+                                choice1.setAdapter(maneuverAdapter);
+                                choice2.setVisibility(View.VISIBLE);
+                                choice2.setAdapter(maneuverAdapter);
+                                break;
                             case "Champion":
                                 bonusStats1.setText(getString(R.string.superior_critical));
                                 character.getRaceAndClassBonusStats().remove(getString(R.string.improved_critical));
@@ -1430,6 +1603,10 @@ public class LevelUpActivity extends AppCompatActivity {
                     case 18:
                         bonusStats1.setVisibility(View.VISIBLE);
                         switch(character.getSubclass()){
+                            case "Battle Master":
+                                bonusStats1.setVisibility(View.VISIBLE);
+                                bonusStats1.setText("Your Superiority dice are now d12s");
+                                break;
                             case "Champion":
                                 bonusStats1.setText(getString(R.string.survivor));
                                 character.getRaceAndClassBonusStats().add(getString(R.string.survivor));
@@ -1749,15 +1926,6 @@ public class LevelUpActivity extends AppCompatActivity {
                         choiceHeader1.setText("Choose a Fighting Style");
                         choice1.setVisibility(View.VISIBLE);
                         choice1.setAdapter(fightingStyleAdapter);
-                        ArrayList<String> subclassChoices = new ArrayList<>();
-                        ArrayAdapter<String> subclassAdapter = new ArrayAdapter<String>(this,
-                                android.R.layout.simple_spinner_dropdown_item, subclassChoices);
-                        choiceHeader2.setVisibility(View.VISIBLE);
-                        choiceHeader2.setText("Choose a Ranger Archetype");
-                        choice2.setVisibility(View.VISIBLE);
-                        subclassChoices.add("Hunter");
-                        subclassChoices.add("Beast Master");
-                        choice2.setAdapter(subclassAdapter);
                         bonusStats1.setVisibility(View.VISIBLE);
                         bonusStats1.setText("You now have the ability to cast spells");
                         break;
