@@ -409,28 +409,57 @@ public class CharacterFragment extends Fragment {
                 }
                 break;
             case "Fighter":
+                ListAdapter maneuverAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2(), false);
                 subclassInfoTextView1.setVisibility(View.VISIBLE);
                 subclassInfoTextView1.setText(getString(R.string.fighting_style));
-                checkBoxes1.setVisibility(View.VISIBLE);
-                checkBox1_1.setVisibility(View.VISIBLE);
-                checkBoxes1.setText(getString(R.string.second_wind_amount) + "1d10 + " + character.getLevel());
+                checkBoxes4.setVisibility(View.VISIBLE);
+                checkBox4_1.setVisibility(View.VISIBLE);
+                checkBoxes4.setText(getString(R.string.second_wind_amount) + "1d10 + " + character.getLevel());
+                String superiorityDice = "d8";
                 if(level >= 2){
-                    checkBoxes2.setVisibility(View.VISIBLE);
-                    checkBoxes2.setText(getString(R.string.action_surge_uses));
-                    checkBox2_1.setVisibility(View.VISIBLE);
-                }
-                if(level >= 9){
                     checkBoxes3.setVisibility(View.VISIBLE);
-                    checkBoxes3.setText(getString(R.string.indomitable_uses));
+                    checkBoxes3.setText(getString(R.string.action_surge_uses));
                     checkBox3_1.setVisibility(View.VISIBLE);
                 }
+                if(level >= 3 && character.getSubclass().equals("Battle Master")){
+                    subclassInfoHeader.setVisibility(View.VISIBLE);
+                    subclassInfoHeader.setText("Maneuvers");
+                    subclassInfoListView.setVisibility(View.VISIBLE);
+                    checkBoxes1.setVisibility(View.VISIBLE);
+                    checkBox1_1.setVisibility(View.VISIBLE);
+                    checkBox1_2.setVisibility(View.VISIBLE);
+                    checkBox1_3.setVisibility(View.VISIBLE);
+                    checkBox1_4.setVisibility(View.VISIBLE);
+                    checkBoxes1.setText(String.format("%s Superiority Dice: ", superiorityDice));
+                }
+                if(level >= 7 && character.getSubclass().equals("Battle Master")){
+                    checkBox1_5.setVisibility(View.VISIBLE);
+                }
+                if(level >= 9){
+                    checkBoxes2.setVisibility(View.VISIBLE);
+                    checkBoxes2.setText(getString(R.string.indomitable_uses));
+                    checkBox2_1.setVisibility(View.VISIBLE);
+                }
+                if(level >= 10 && character.getSubclass().equals("Battle Master")){
+                    superiorityDice = "d10";
+                    checkBoxes1.setText(String.format("%s Superiority Dice: ", superiorityDice));
+                }
                 if(level >= 13){
-                    checkBox3_2.setVisibility(View.VISIBLE);
+                    checkBox2_2.setVisibility(View.VISIBLE);
+                }
+                if(level >= 15 && character.getSubclass().equals("Battle Master")){
+                    checkBox1_6.setVisibility(View.VISIBLE);
                 }
                 if(level >= 17){
-                    checkBox2_2.setVisibility(View.VISIBLE);
-                    checkBox3_3.setVisibility(View.VISIBLE);
+                    checkBox3_2.setVisibility(View.VISIBLE);
+                    checkBox2_3.setVisibility(View.VISIBLE);
                 }
+                if(level >= 18 && character.getSubclass().equals("Battle Master")){
+                    superiorityDice = "d12";
+                    checkBoxes1.setText(String.format("%s Superiority Dice: ", superiorityDice));
+                }
+                subclassInfoListView.setLayoutManager(new LinearLayoutManager(getContext()));
+                subclassInfoListView.setAdapter(maneuverAdapter);
                 break;
             case "Monk":
                 ListAdapter kiPointAdapter = new ListAdapter(getContext(), character.getClassBasedBonusStats2(), false);
