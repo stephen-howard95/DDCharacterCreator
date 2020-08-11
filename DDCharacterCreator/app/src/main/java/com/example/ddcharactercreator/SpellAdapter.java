@@ -1,26 +1,29 @@
 package com.example.ddcharactercreator;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 import android.app.AlertDialog;
 import android.widget.Toast;
 
 public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHolder> {
 
     private Context context;
-    private ArrayList<Spell> spells;
+    private List<Spell> spells = new ArrayList<>();
     private Boolean isDatabaseSpell;
+    private Character character = DetailActivity.character;
 
-    public SpellAdapter(@NonNull Context context, ArrayList<Spell> spells, Boolean isDatabaseSpell) {
+    public SpellAdapter(@NonNull Context context, List<Spell> spells, Boolean isDatabaseSpell) {
         this.context = context;
         this.spells = spells;
         this.isDatabaseSpell = isDatabaseSpell;
@@ -51,6 +54,7 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
         });
         if(isDatabaseSpell){
             holder.parentView.setOnLongClickListener(new View.OnLongClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public boolean onLongClick(View v) {
                     Character character = DetailActivity.character;
@@ -71,7 +75,9 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
                     } while(i<character.getSpellsKnown().size());
                     if(spellIsUnique){
                         character.getSpellsKnown().add(spell);
-                        ((Activity) context).finish();
+                        Intent intent = new Intent(context, DetailActivity.class);
+                        intent.putExtra(DetailActivity.CHARACTER, character);
+                        context.startActivity(intent);
                         return true;
                     }
                     return false;
@@ -102,6 +108,11 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
     @Override
     public int getItemCount() {
         return spells.size();
+    }
+
+    public void setSpells(List<Spell> spells) {
+        this.spells = spells;
+        notifyDataSetChanged();
     }
 
     public class SpellViewHolder extends RecyclerView.ViewHolder{
