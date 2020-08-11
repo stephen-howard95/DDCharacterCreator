@@ -1,7 +1,6 @@
 package com.example.ddcharactercreator;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,17 +13,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 import static com.example.ddcharactercreator.DetailActivity.character;
 import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
+import static com.example.ddcharactercreator.DetailActivity.spellViewModel;
 
 public class SpellcastingFragment extends Fragment {
 
@@ -36,8 +37,6 @@ public class SpellcastingFragment extends Fragment {
     private int spellCount;
     private int cantripCount;
     private ArrayList<String> spellSlotsClicked = DetailActivity.character.getSpellSlotsClicked();
-    private SpellDatabase mDb;
-    private List<Spell> completeSpellsList;
 
     @BindView(R.id.spellcasting_ability) TextView spellcastingAbility;
     @BindView(R.id.spell_save_dc) TextView spellSaveDC;
@@ -84,6 +83,7 @@ public class SpellcastingFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_spellcasting, container, false);
 
         final Character character = DetailActivity.character;
+        SpellViewModel spellViewModel = DetailActivity.spellViewModel;
 
         ButterKnife.bind(this, rootView);
 
@@ -120,9 +120,6 @@ public class SpellcastingFragment extends Fragment {
             addSpellsTextView.setText("This character class does not have access to Spellcasting features");
             addSpellsTextView.setTextSize(48);
         } else {
-            mDb = SpellDatabase.getInstance(getContext());
-            completeSpellsList = mDb.spellDao().loadAllSpells();
-            Collections.sort(completeSpellsList, Spell.spellNameComparator);
 
             switch (character.getCharacterClass()) {
                 case "Barbarian":
@@ -985,9 +982,16 @@ public class SpellcastingFragment extends Fragment {
         }
         return rootView;
     }
+
     private void addSpellToList(){
-        Intent intent = new Intent(getActivity(), SpellChooserActivity.class);
-        startActivity(intent);
+        TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
+        tabLayout.setVisibility(View.INVISIBLE);
+        SpellChooserFragment nextFrag= new SpellChooserFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .remove(getActivity().getSupportFragmentManager().getFragments().get(1))
+                .replace(R.id.tabsLayout, nextFrag, "spellChooser")
+                .addToBackStack(null)
+                .commit();
     }
 
     public void resetSpellSlots(){
@@ -1274,16 +1278,21 @@ public class SpellcastingFragment extends Fragment {
         }
     }
     private void getSubclassSpells(String spellName){
-        for(int i=0; i<completeSpellsList.size(); i++){
-            if(completeSpellsList.get(i).getSpellName().equalsIgnoreCase(spellName)){
-                Spell subclassSpell = completeSpellsList.get(i);
-                character.getSpellsKnown().add(subclassSpell);
-                for(int j=0; j<character.getSpellsKnown().size()-1; j++){
-                    if(character.getSpellsKnown().get(j).getSpellName().equals(subclassSpell.getSpellName())){
-                        character.getSpellsKnown().remove(subclassSpell);
+        spellViewModel.loadAllSpells().observe(this, new Observer<List<Spell>>() {
+            @Override
+            public void onChanged(List<Spell> spells) {
+                for(int i=0; i<spells.size(); i++){
+                    if(spells.get(i).getSpellName().equalsIgnoreCase(spellName)){
+                        Spell subclassSpell = spells.get(i);
+                        character.getSpellsKnown().add(subclassSpell);
+                        for(int j=0; j<character.getSpellsKnown().size()-1; j++){
+                            if(character.getSpellsKnown().get(j).getSpellName().equals(subclassSpell.getSpellName())){
+                                character.getSpellsKnown().remove(subclassSpell);
+                            }
+                        }
                     }
                 }
             }
-        }
+        });
     }
 }
