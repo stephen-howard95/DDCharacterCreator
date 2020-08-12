@@ -44,6 +44,32 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
         } else{
             holder.spellLevelTextView.setVisibility(View.GONE);
         }
+        switch(spell.getSchool()){
+            case "Abjuration":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.abjuration));
+                break;
+            case "Conjuration":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.conjuration));
+                break;
+            case "Divination":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.divination));
+                break;
+            case "Enchantment":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.enchantment));
+                break;
+            case "Evocation":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.evocation));
+                break;
+            case "Illusion":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.illusion));
+                break;
+            case "Necromancy":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.necromancy));
+                break;
+            case "Transmutation":
+                holder.spellNameTextView.setTextColor(context.getResources().getColor(R.color.transmutation));
+                break;
+        }
         holder.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
