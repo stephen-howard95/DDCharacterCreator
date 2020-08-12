@@ -19,6 +19,11 @@ public class SpellDetailActivity extends AppCompatActivity{
 
         spell = (Spell) getIntent().getExtras().getSerializable(SPELL);
 
+        String spellLevel = String.valueOf(spell.getLevel());
+        if(spellLevel.equals("0")){
+            spellLevel = "Cantrip";
+        }
+
         TextView nameTextView = findViewById(R.id.spell_name);
         TextView levelTextView = findViewById(R.id.spell_level);
         TextView durationTextView = findViewById(R.id.spell_duration);
@@ -28,7 +33,7 @@ public class SpellDetailActivity extends AppCompatActivity{
         TextView schoolTextView = findViewById(R.id.spell_school);
 
         nameTextView.setText(spell.getSpellName());
-        levelTextView.setText(String.format("Level: %s", spell.getLevel()));
+        levelTextView.setText(String.format("Level: %s", spellLevel));
         if(spell.getConcentration().equals("yes")){
             durationTextView.setText(String.format("Duration: Concentration, %s", spell.getDuration()));
         } else{
