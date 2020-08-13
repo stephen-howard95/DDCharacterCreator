@@ -4,6 +4,7 @@
     <string-array name="race_array">
         <item name="Dwarf">Dwarf</item>
         <item name="Elf">Elf</item>
+        <item name="Goliath">Goliath</item>
         <item name="Halfling">Halfling</item>
         <item name="Human">Human</item>
         <item name="Dragonborn">Dragonborn</item>
