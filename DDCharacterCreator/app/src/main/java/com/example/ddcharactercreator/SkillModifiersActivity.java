@@ -214,6 +214,11 @@ public class SkillModifiersActivity extends AppCompatActivity {
                     character.getProficiencyChoices().add("Perception");
                 }
                 break;
+            case "Goliath":
+                if(!character.getProficiencyChoices().contains("Athletics")){
+                    character.getProficiencyChoices().add("Athletics");
+                }
+                break;
             case "Half-Elf":
                 if(!character.getProficiencyChoices().contains("Perception")){
                     character.getProficiencyChoices().add("Perception");
