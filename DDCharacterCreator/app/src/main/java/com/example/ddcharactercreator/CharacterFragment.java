@@ -117,10 +117,13 @@ public class CharacterFragment extends Fragment {
             }
             subraceInfoTextView2.setText(String.format("Breath Weapon save DC: %s", (8 + DetailActivity.proficiencyBonus + calculateModifier(character.getStatValues().get(2)))));
             subraceCheckboxTextView.setText("Breath Weapon");
-        }
-        if(character.getRace().equals("Half-Orc")){
+        }else if(character.getRace().equals("Half-Orc")){
             subraceCheckboxTextView.setVisibility(View.VISIBLE);
             subraceCheckboxTextView.setText("Relentless Endurance: ");
+            subraceCheckBox.setVisibility(View.VISIBLE);
+        }else if(character.getRace().equals("Goliath")){
+            subraceCheckboxTextView.setVisibility(View.VISIBLE);
+            subraceCheckboxTextView.setText("Stone's Endurance: ");
             subraceCheckBox.setVisibility(View.VISIBLE);
         }
 
