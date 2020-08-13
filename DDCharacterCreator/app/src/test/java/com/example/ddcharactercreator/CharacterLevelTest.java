@@ -27,7 +27,7 @@ public class CharacterLevelTest {
 
     @Test
     public void testCreateCharacter(){
-        int randomRaceChoice = (int) (Math.random()*11);
+        int randomRaceChoice = (int) (Math.random()*12);
         int randomClassChoice = (int) (Math.random()*12);
         int randomAlignment = (int) (Math.random()*9);
 
@@ -50,7 +50,7 @@ public class CharacterLevelTest {
 
     @Test
     public void testFullyLevelUpRandomCharacter(){
-        int randomRaceChoice = (int) (Math.random()*11);
+        int randomRaceChoice = (int) (Math.random()*12);
         int randomClassChoice = (int) (Math.random()*12);
         int randomAlignment = (int) (Math.random()*9);
 
@@ -92,7 +92,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Barbarian"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(7).perform(click());
+        onData(anything()).atPosition(2).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(0).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -130,7 +130,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Bard"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(2).perform(click());
+        onData(anything()).atPosition(3).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(1).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -168,7 +168,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Cleric"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(5).perform(click());
+        onData(anything()).atPosition(6).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(2).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -206,7 +206,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Druid"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(6).perform(click());
+        onData(anything()).atPosition(7).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(3).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -244,13 +244,13 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Fighter"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(10).perform(click());
+        onData(anything()).atPosition(11).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(4).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
         //Subclass choices
-        onView(withId(R.id.subclass_choice_spinner)).perform(click());
-        onData(anything()).atPosition((int) (Math.random()*3)).perform(click());
+        //onView(withId(R.id.subclass_choice_spinner)).perform(click());
+        //onData(anything()).atPosition((int) (Math.random()*3)).perform(click());
         onView(withId(R.id.starting_gold_edit_text)).perform(typeText("80"));
         //Fighting Style
         onView(withId(R.id.level_one_choice_spinner_1)).perform(scrollTo(), click());
@@ -286,7 +286,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Monk"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(1).perform(click());
+        onData(anything()).atPosition(8).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(5).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -400,7 +400,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Rogue"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(8).perform(click());
+        onData(anything()).atPosition(9).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(8).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -438,7 +438,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Sorcerer"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(4).perform(click());
+        onData(anything()).atPosition(5).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(9).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -488,7 +488,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Warlock"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(9).perform(click());
+        onData(anything()).atPosition(10).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(10).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
@@ -526,7 +526,7 @@ public class CharacterLevelTest {
         onView(withId(R.id.add_character)).perform(click());
         onView(withId(R.id.character_name_edit_text)).perform(typeText("Test Wizard"));
         onView(withId(R.id.race_spinner)).perform(click());
-        onData(anything()).atPosition(3).perform(click());
+        onData(anything()).atPosition(4).perform(click());
         onView(withId(R.id.class_spinner)).perform(click());
         onData(anything()).atPosition(11).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
