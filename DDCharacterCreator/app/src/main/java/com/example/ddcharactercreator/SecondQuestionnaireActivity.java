@@ -455,6 +455,12 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add("Fey Ancestry: Magic effects cannot put you to sleep");
                             bonusStats.add("Trance: You can get a full Long Rest by only meditating for 4 hours");
                             break;
+                        case "Goliath":
+                            languages.append(" Common, Giant, ");
+                            bonusStats.add(languages.toString());
+                            bonusStats.add("Stone's Endurance: Once per short/long rest, you can use your reaction after taking damage to reduce the damage by 1d12 + your CON modifier");
+                            bonusStats.add("Powerful Build: You count for 1 size larger when determining your carrying capacity and the weight you can carry/push/lift/etc.");
+                            break;
                         case "Halfling":
                             //Stout Halfling is chosen for this
                             languages.append(" Common, Halfling, ");
@@ -679,6 +685,10 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 dexterity += 2;
                 //Wood Elf is chosen for this
                 wisdom += 1;
+                break;
+            case "Goliath":
+                strength += 2;
+                constitution += 1;
                 break;
             case "Halfling":
                 dexterity += 2;
