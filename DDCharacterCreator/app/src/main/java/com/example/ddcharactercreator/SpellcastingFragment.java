@@ -23,8 +23,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
+import static com.example.ddcharactercreator.DetailActivity.cantripCount;
 import static com.example.ddcharactercreator.DetailActivity.character;
 import static com.example.ddcharactercreator.DetailActivity.proficiencyBonus;
+import static com.example.ddcharactercreator.DetailActivity.spellCount;
 import static com.example.ddcharactercreator.DetailActivity.spellViewModel;
 
 public class SpellcastingFragment extends Fragment {
@@ -34,8 +36,6 @@ public class SpellcastingFragment extends Fragment {
     private final ArrayList<Spell> fullSpellsList = DetailActivity.character.getSpellsKnown();
     private ArrayList<Spell> spellsList = new ArrayList<Spell>();
     private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
-    private int spellCount;
-    private int cantripCount;
     private ArrayList<String> spellSlotsClicked = DetailActivity.character.getSpellSlotsClicked();
 
     @BindView(R.id.spellcasting_ability) TextView spellcastingAbility;
@@ -83,7 +83,6 @@ public class SpellcastingFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_spellcasting, container, false);
 
         final Character character = DetailActivity.character;
-        SpellViewModel spellViewModel = DetailActivity.spellViewModel;
 
         ButterKnife.bind(this, rootView);
 
@@ -135,24 +134,11 @@ public class SpellcastingFragment extends Fragment {
                     }
                     break;
                 case "Bard":
+                case "Sorcerer":
                     primarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText("Spellcasting Ability: CHA");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
-                    if(character.getLevel() <= 9){
-                        spellCount = character.getLevel() + 3;
-                    } else if(character.getLevel() <= 11){
-                        spellCount = character.getLevel() + 4;
-                    } else if(character.getLevel() <= 13){
-                        spellCount = character.getLevel() + 3;
-                    } else if(character.getLevel() <= 15){
-                        spellCount = character.getLevel() + 4;
-                    } else if(character.getLevel() <= 17){
-                        spellCount = character.getLevel() + 3;
-                    } else if(character.getLevel() <= 20){
-                        spellCount = 22;
-                    }
-                    cantripCount = 2;
                     break;
                 case "Cleric":
                     primarySpellcasterSlotsPerLevel();
@@ -329,8 +315,6 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: WIS");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
-                    cantripCount = 3;
                     break;
                 case "Druid":
                     primarySpellcasterSlotsPerLevel();
@@ -499,35 +483,12 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: WIS");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
-                    cantripCount = 2;
-                    if(character.getSubclass().contains("Circle of the Land")){
-                        cantripCount += 1;
-                    }
                     break;
                 case "Fighter":
                     tertiarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText("Spellcasting Ability: INT");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
-                    if(character.getLevel() <= 4){
-                        spellCount = character.getLevel();
-                    } else if(character.getLevel() <= 6){
-                        spellCount = 4;
-                    } else if(character.getLevel() <= 8){
-                        spellCount = character.getLevel()-2;
-                    } else if(character.getLevel() <= 11){
-                        spellCount = character.getLevel()-3;
-                    }else if(character.getLevel() <= 14){
-                        spellCount = character.getLevel()-4;
-                    }else if(character.getLevel() == 15){
-                        spellCount = 10;
-                    } else if(character.getLevel() <= 18){
-                        spellCount = 11;
-                    } else if(character.getLevel() <= 20){
-                        spellCount = character.getLevel()-7;
-                    }
-                    cantripCount = 2;
                     break;
                 case "Monk":
                     spellSlot1.setVisibility(View.GONE);
@@ -619,8 +580,6 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: CHA");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
-                    spellCount = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
-                    cantripCount = -2;
                     cantripsKnown.setVisibility(View.GONE);
                     cantripsKnownLabel.setVisibility(View.GONE);
                     break;
@@ -629,10 +588,8 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: WIS");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(4)))));
-                    spellCount = (character.getLevel()/2) + 1;
                     cantripsKnown.setVisibility(View.GONE);
                     cantripsKnownLabel.setVisibility(View.GONE);
-                    cantripCount = -2;
                     break;
                 case "Rogue":
                     tertiarySpellcasterSlotsPerLevel();
@@ -640,42 +597,6 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: INT");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
-                    if(character.getLevel() <= 4){
-                        spellCount = character.getLevel();
-                    } else if(character.getLevel() <= 6){
-                        spellCount = 4;
-                    } else if(character.getLevel() <= 8){
-                        spellCount = character.getLevel()-2;
-                    } else if(character.getLevel() <= 11){
-                        spellCount = character.getLevel()-3;
-                    }else if(character.getLevel() <= 14){
-                        spellCount = character.getLevel()-4;
-                    }else if(character.getLevel() == 15){
-                        spellCount = 10;
-                    } else if(character.getLevel() <= 18){
-                        spellCount = 11;
-                    } else if(character.getLevel() <= 20){
-                        spellCount = character.getLevel()-7;
-                    }
-                    cantripCount = 3;
-                    break;
-                case "Sorcerer":
-                    primarySpellcasterSlotsPerLevel();
-                    spellcastingAbility.setText("Spellcasting Ability: CHA");
-                    spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
-                    spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
-                    if(character.getLevel() <= 11){
-                        spellCount = character.getLevel() + 1;
-                    } else if(character.getLevel() <= 13){
-                        spellCount = character.getLevel();
-                    } else if(character.getLevel() <= 15){
-                        spellCount = character.getLevel() - 1;
-                    } else if(character.getLevel() <= 17){
-                        spellCount = character.getLevel() - 2;
-                    } else if(character.getLevel() <= 20){
-                        spellCount = 15;
-                    }
-                    cantripCount = 4;
                     break;
                 case "Warlock":
                     spellSlot2.setVisibility(View.GONE);
@@ -686,44 +607,13 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: CHA");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(5)))));
-                    if(character.getLevel() <= 9){
-                        spellCount = character.getLevel() + 1;
-                    } else if(character.getLevel() <= 11){
-                        spellCount = character.getLevel();
-                    } else if(character.getLevel() <= 13){
-                        spellCount = character.getLevel() - 1;
-                    } else if(character.getLevel() <= 15){
-                        spellCount = character.getLevel() - 2;
-                    } else if(character.getLevel() <= 17){
-                        spellCount = character.getLevel() - 3;
-                    } else if(character.getLevel() == 18){
-                        spellCount = 14;
-                    } else if(character.getLevel() <= 20){
-                        spellCount = 15;
-                    }
-                    cantripCount = 2;
-                    break;
+                   break;
                 case "Wizard":
                     primarySpellcasterSlotsPerLevel();
                     spellcastingAbility.setText("Spellcasting Ability: INT");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
-                    spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
-                    cantripCount = 3;
-                    if(character.getSubclass().equals("School of Illusion")){
-                        cantripCount += 1;
-                    }
-                    break;
-            }
-            if(spellCount<1){
-                spellCount = 1;
-            }
-            if(character.getLevel() >= 10 && (character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster"))){
-                cantripCount += 1;
-            } else if(character.getLevel() >= 10){
-                cantripCount += 2;
-            } else if(character.getLevel() >= 4){
-                cantripCount += 1;
+                   break;
             }
 
             LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
@@ -1022,6 +912,8 @@ public class SpellcastingFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
+        tabLayout.setVisibility(View.VISIBLE);
         DetailActivity.canLongRest = true;
 
         if(fullSpellsList.size() > 0){
