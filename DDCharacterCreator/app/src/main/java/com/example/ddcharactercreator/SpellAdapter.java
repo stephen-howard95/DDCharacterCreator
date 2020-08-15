@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.AlertDialog;
 import android.widget.Toast;
+import static com.example.ddcharactercreator.DetailActivity.cantripCount;
+import static com.example.ddcharactercreator.DetailActivity.spellCount;
 
 public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHolder> {
 
@@ -22,6 +24,8 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
     private List<Spell> spells = new ArrayList<>();
     private Boolean isDatabaseSpell;
     private Character character = DetailActivity.character;
+    private ArrayList<Spell> cantripsList = new ArrayList<>();
+    private ArrayList<Spell> spellsList = new ArrayList<>();
 
     public SpellAdapter(@NonNull Context context, List<Spell> spells, Boolean isDatabaseSpell) {
         this.context = context;
@@ -37,6 +41,14 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
 
     @Override
     public void onBindViewHolder(@NonNull SpellViewHolder holder, int position) {
+        for(int i=0; i<character.getSpellsKnown().size(); i++){
+            Spell thisSpell = character.getSpellsKnown().get(i);
+            if(thisSpell.getLevel() == 0 && !cantripsList.contains(thisSpell)){
+                cantripsList.add(thisSpell);
+            } else if(!cantripsList.contains(thisSpell) && !spellsList.contains(thisSpell)){
+                spellsList.add(thisSpell);
+            }
+        }
         Spell spell = spells.get(position);
         holder.spellNameTextView.setText(spell.getSpellName());
         if(spell.getLevel() > 0){
@@ -83,30 +95,36 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public boolean onLongClick(View v) {
-                    Character character = DetailActivity.character;
-                    //prevents duplicate spells from being added to the list and warns the user
                     int i=0;
-                    boolean spellIsUnique = true;
+                    Boolean alreadyKnowsSpell = false;
                     do{
                         if(character.getSpellsKnown().size() == 0){
                             break;
                         }
                         Spell knownSpell = character.getSpellsKnown().get(i);
                         if(spell.getSpellName().equals(knownSpell.getSpellName())){
-                            Toast.makeText(context, "You already know this spell", Toast.LENGTH_SHORT).show();
-                            spellIsUnique = false;
+                            alreadyKnowsSpell = true;
+                            deleteSpell(spell);
                             break;
                         }
                         i++;
                     } while(i<character.getSpellsKnown().size());
-                    if(spellIsUnique){
-                        character.getSpellsKnown().add(spell);
-                        Intent intent = new Intent(context, DetailActivity.class);
-                        intent.putExtra(DetailActivity.CHARACTER, character);
-                        context.startActivity(intent);
-                        return true;
+                    if(!alreadyKnowsSpell){
+                        if(spell.getLevel() == 0){
+                            if(cantripsList.size() >= cantripCount){
+                                Toast.makeText(context, "You are at your max cantrip count. You cannot add any more cantrips", Toast.LENGTH_SHORT).show();
+                            }else{
+                                addSpell(spell);
+                            }
+                        } else if(spell.getLevel() > 0){
+                            if(spellsList.size() >= spellCount){
+                                Toast.makeText(context, "You are at your max spell count. You cannot add any more spells", Toast.LENGTH_SHORT).show();
+                            }else{
+                                addSpell(spell);
+                            }
+                        }
                     }
-                    return false;
+                    return true;
                 }
             });
         }else{
@@ -152,5 +170,43 @@ public class SpellAdapter extends RecyclerView.Adapter<SpellAdapter.SpellViewHol
             this.spellNameTextView = view.findViewById(R.id.spell_name);
             this.spellLevelTextView = view.findViewById(R.id.spell_level);
         }
+    }
+
+    private void addSpell(Spell spell){
+        AlertDialog.Builder adb=new AlertDialog.Builder(context);
+        adb.setTitle("Add " + spell.getSpellName());
+        adb.setMessage(String.format("Are you sure you want to add %s to your prepared spells?", spell.getSpellName()));
+        adb.setNegativeButton("Cancel", null);
+        adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                character.getSpellsKnown().add(spell);
+                if(spell.getLevel() == 0){
+                    cantripsList.add(spell);
+                }else{
+                    spellsList.add(spell);
+                }
+                notifyDataSetChanged();
+                Toast.makeText(context, String.format("%s added to spell list", spell.getSpellName()), Toast.LENGTH_SHORT).show();
+            }});
+        adb.show();
+    }
+
+    private void deleteSpell(Spell spell){
+        AlertDialog.Builder adb=new AlertDialog.Builder(context);
+        adb.setTitle("Delete?");
+        adb.setMessage(String.format("You already know %s. Do you want to delete it?", spell.getSpellName()));
+        adb.setNegativeButton("Cancel", null);
+        adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                character.getSpellsKnown().remove(spell);
+                if(spell.getLevel() == 0){
+                    cantripsList.remove(spell);
+                }else{
+                    spellsList.remove(spell);
+                }
+                notifyDataSetChanged();
+                Toast.makeText(context, String.format("%s removed from spell list", spell.getSpellName()), Toast.LENGTH_SHORT).show();
+            }});
+        adb.show();
     }
 }
