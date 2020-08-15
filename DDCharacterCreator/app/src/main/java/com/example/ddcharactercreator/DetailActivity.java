@@ -45,6 +45,8 @@ public class DetailActivity extends AppCompatActivity{
     public static String spellcastingClass;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    public static int spellCount;
+    public static int cantripCount;
 
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -73,6 +75,136 @@ public class DetailActivity extends AppCompatActivity{
             proficiencyBonus = 5;
         } else{
             proficiencyBonus = 6;
+        }
+
+        switch (character.getCharacterClass()) {
+            case "Bard":
+                cantripCount = 2;
+                if(character.getLevel() <= 9){
+                    spellCount = character.getLevel() + 3;
+                } else if(character.getLevel() <= 11){
+                    spellCount = character.getLevel() + 4;
+                } else if(character.getLevel() <= 13){
+                    spellCount = character.getLevel() + 3;
+                } else if(character.getLevel() <= 15){
+                    spellCount = character.getLevel() + 4;
+                } else if(character.getLevel() <= 17){
+                    spellCount = character.getLevel() + 3;
+                } else if(character.getLevel() <= 20){
+                    spellCount = 22;
+                }
+                break;
+            case "Cleric":
+                cantripCount = 3;
+                spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                break;
+            case "Druid":
+                cantripCount = 2;
+                if(character.getSubclass().contains("Circle of the Land")){
+                    cantripCount += 1;
+                }
+                spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(4));
+                break;
+            case "Fighter":
+                cantripCount = 2;
+                if(character.getLevel() <= 4){
+                    spellCount = character.getLevel();
+                } else if(character.getLevel() <= 6){
+                    spellCount = 4;
+                } else if(character.getLevel() <= 8){
+                    spellCount = character.getLevel()-2;
+                } else if(character.getLevel() <= 11){
+                    spellCount = character.getLevel()-3;
+                }else if(character.getLevel() <= 14){
+                    spellCount = character.getLevel()-4;
+                }else if(character.getLevel() == 15){
+                    spellCount = 10;
+                } else if(character.getLevel() <= 18){
+                    spellCount = 11;
+                } else if(character.getLevel() <= 20){
+                    spellCount = character.getLevel()-7;
+                }
+                break;
+            case "Paladin":
+                cantripCount = -2;
+                spellCount = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
+                break;
+            case "Ranger":
+                cantripCount = -2;
+                spellCount = (character.getLevel()/2) + 1;
+                break;
+            case "Rogue":
+                cantripCount = 3;
+                if(character.getLevel() <= 4){
+                    spellCount = character.getLevel();
+                } else if(character.getLevel() <= 6){
+                    spellCount = 4;
+                } else if(character.getLevel() <= 8){
+                    spellCount = character.getLevel()-2;
+                } else if(character.getLevel() <= 11){
+                    spellCount = character.getLevel()-3;
+                }else if(character.getLevel() <= 14){
+                    spellCount = character.getLevel()-4;
+                }else if(character.getLevel() == 15){
+                    spellCount = 10;
+                } else if(character.getLevel() <= 18){
+                    spellCount = 11;
+                } else if(character.getLevel() <= 20){
+                    spellCount = character.getLevel()-7;
+                }
+                break;
+            case "Sorcerer":
+                cantripCount = 4;
+                if(character.getLevel() <= 11){
+                    spellCount = character.getLevel() + 1;
+                } else if(character.getLevel() <= 13){
+                    spellCount = character.getLevel();
+                } else if(character.getLevel() <= 15){
+                    spellCount = character.getLevel() - 1;
+                } else if(character.getLevel() <= 17){
+                    spellCount = character.getLevel() - 2;
+                } else if(character.getLevel() <= 20){
+                    spellCount = 15;
+                }
+                break;
+            case "Warlock":
+                cantripCount = 2;
+                if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_tome))){
+                    cantripCount += 3;
+                }
+                if(character.getLevel() <= 9){
+                    spellCount = character.getLevel() + 1;
+                } else if(character.getLevel() <= 11){
+                    spellCount = character.getLevel();
+                } else if(character.getLevel() <= 13){
+                    spellCount = character.getLevel() - 1;
+                } else if(character.getLevel() <= 15){
+                    spellCount = character.getLevel() - 2;
+                } else if(character.getLevel() <= 17){
+                    spellCount = character.getLevel() - 3;
+                } else if(character.getLevel() == 18){
+                    spellCount = 14;
+                } else if(character.getLevel() <= 20){
+                    spellCount = 15;
+                }
+                break;
+            case "Wizard":
+                cantripCount = 3;
+                if(character.getSubclass().equals("School of Illusion")){
+                    cantripCount += 1;
+                }
+                spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3));
+                break;
+        }
+        if(spellCount<1){
+            spellCount = 1;
+        }
+        if(character.getLevel() >= 10 && (character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster"))){
+            cantripCount += 1;
+        } else if(character.getLevel() >= 10){
+            cantripCount += 2;
+        } else if(character.getLevel() >= 4){
+            cantripCount += 1;
         }
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
