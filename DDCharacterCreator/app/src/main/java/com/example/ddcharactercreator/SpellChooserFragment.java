@@ -1,9 +1,11 @@
 package com.example.ddcharactercreator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,18 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 import static com.example.ddcharactercreator.DetailActivity.character;
 import static com.example.ddcharactercreator.DetailActivity.spellViewModel;
 import static com.example.ddcharactercreator.DetailActivity.spellcastingClass;
+import static com.example.ddcharactercreator.DetailActivity.spellCount;
+import static com.example.ddcharactercreator.DetailActivity.cantripCount;
 
 public class SpellChooserFragment extends Fragment {
 
     LiveData<List<Spell>> completeSpellsList;
     private ArrayList<Spell> spellsList = new ArrayList<Spell>();
     private ArrayList<Spell> cantripsList = new ArrayList<Spell>();
-    private int spellMax;
-    private int cantripMax;
 
     public SpellChooserFragment(){
     }
@@ -37,6 +38,8 @@ public class SpellChooserFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_spell, container, false);
 
+        ImageButton imageButton = rootView.findViewById(R.id.end_button);
+
         completeSpellsList = spellViewModel.loadAllSpells();
         Collections.sort(completeSpellsList.getValue(), Spell.spellNameComparator);
 
@@ -45,20 +48,6 @@ public class SpellChooserFragment extends Fragment {
             public void onChanged(List<Spell> spells) {
                 switch(character.getCharacterClass()){
                     case "Bard":
-                        if(character.getLevel() <= 9){
-                            spellMax = character.getLevel() + 3;
-                        } else if(character.getLevel() <= 11){
-                            spellMax = character.getLevel() + 4;
-                        } else if(character.getLevel() <= 13){
-                            spellMax = character.getLevel() + 3;
-                        } else if(character.getLevel() <= 15){
-                            spellMax = character.getLevel() + 4;
-                        } else if(character.getLevel() <= 17){
-                            spellMax = character.getLevel() + 3;
-                        } else if(character.getLevel() <= 20){
-                            spellMax = 22;
-                        }
-                        cantripMax = 2;
                         switch(character.getLevel()){
                             case 6:
                                 if(character.getSubclass().equals("College of Lore")){
@@ -72,80 +61,11 @@ public class SpellChooserFragment extends Fragment {
                                 break;
                         }
                         break;
-                    case "Cleric":
-                        spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(4));
-                        cantripMax = 3;
-                        break;
-                    case "Druid":
-                        spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(4));
-                        cantripMax = 2;
-                        if(character.getSubclass().contains("Circle of the Land")){
-                            cantripMax += 1;
-                        }
-                        break;
                     case "Fighter":
-                        spellcastingClass = "Wizard";
-                        cantripMax = 2;
-                        if(character.getLevel() <= 4){
-                            spellMax = character.getLevel();
-                        } else if(character.getLevel() <= 6){
-                            spellMax = 4;
-                        } else if(character.getLevel() <= 8){
-                            spellMax = character.getLevel()-2;
-                        } else if(character.getLevel() <= 11){
-                            spellMax = character.getLevel()-3;
-                        }else if(character.getLevel() <= 14){
-                            spellMax = character.getLevel()-4;
-                        }else if(character.getLevel() == 15){
-                            spellMax = 10;
-                        } else if(character.getLevel() <= 18){
-                            spellMax = 11;
-                        } else if(character.getLevel() <= 20){
-                            spellMax = character.getLevel()-7;
-                        }
-                        break;
-                    case "Paladin":
-                        spellMax = character.getLevel()/2 + calculateModifier(character.getStatValues().get(5));
-                        cantripMax = -2;
-                        break;
-                    case "Ranger":
-                        spellMax = (character.getLevel()/2) + 1;
-                        cantripMax = -2;
-                        break;
                     case "Rogue":
                         spellcastingClass = "Wizard";
-                        cantripMax = 3;
-                        if(character.getLevel() <= 4){
-                            spellMax = character.getLevel();
-                        } else if(character.getLevel() <= 6){
-                            spellMax = 4;
-                        } else if(character.getLevel() <= 8){
-                            spellMax = character.getLevel()-2;
-                        } else if(character.getLevel() <= 11){
-                            spellMax = character.getLevel()-3;
-                        }else if(character.getLevel() <= 14){
-                            spellMax = character.getLevel()-4;
-                        }else if(character.getLevel() == 15){
-                            spellMax = 10;
-                        } else if(character.getLevel() <= 18){
-                            spellMax = 11;
-                        } else if(character.getLevel() <= 20){
-                            spellMax = character.getLevel()-7;
-                        }
                         break;
                     case "Sorcerer":
-                        if(character.getLevel() <= 11){
-                            spellMax = character.getLevel() + 1;
-                        } else if(character.getLevel() <= 13){
-                            spellMax = character.getLevel();
-                        } else if(character.getLevel() <= 15){
-                            spellMax = character.getLevel() - 1;
-                        } else if(character.getLevel() <= 17){
-                            spellMax = character.getLevel() - 2;
-                        } else if(character.getLevel() <= 20){
-                            spellMax = 15;
-                        }
-                        cantripMax = 4;
                         if(character.getSubclass().equals("Stone Sorcery")){
                             addSpellsToClassList("compelled duel", spells);
                             addSpellsToClassList("searing smite", spells);
@@ -159,22 +79,6 @@ public class SpellChooserFragment extends Fragment {
                         }
                         break;
                     case "Warlock":
-                        if(character.getLevel() <= 9){
-                            spellMax = character.getLevel() + 1;
-                        } else if(character.getLevel() <= 11){
-                            spellMax = character.getLevel();
-                        } else if(character.getLevel() <= 13){
-                            spellMax = character.getLevel() - 1;
-                        } else if(character.getLevel() <= 15){
-                            spellMax = character.getLevel() - 2;
-                        } else if(character.getLevel() <= 17){
-                            spellMax = character.getLevel() - 3;
-                        } else if(character.getLevel() == 18){
-                            spellMax = 14;
-                        } else if(character.getLevel() <= 20){
-                            spellMax = 15;
-                        }
-                        cantripMax = 2;
                         switch(character.getSubclass()){
                             case "The Archfey":
                                 addSpellsToClassList("faerie fire", spells);
@@ -214,29 +118,10 @@ public class SpellChooserFragment extends Fragment {
                                 break;
                         }
                         if(character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_tome))){
-                            cantripMax += 3;
                             getSpellsPerLevel(0, spells);
                         }
                         break;
-                    case "Wizard":
-                        spellMax = character.getLevel() + calculateModifier(character.getStatValues().get(3));
-                        cantripMax = 3;
-                        if(character.getSubclass().equals("School of Illusion")){
-                            cantripMax += 1;
-                        }
-                        break;
                 }
-                if(spellMax < 1){
-                    spellMax = 1;
-                }
-                if(character.getLevel() >= 10 && (character.getSubclass().equals("Eldritch Knight") || character.getSubclass().equals("Arcane Trickster"))){
-                    cantripMax += 1;
-                } else if(character.getLevel() >= 10){
-                    cantripMax += 2;
-                } else if(character.getLevel() >= 4){
-                    cantripMax += 1;
-                }
-
                 ArrayList<Spell> characterSpellsList = character.getSpellsKnown();
 
                 // Separates Cantrips and Spells
@@ -273,7 +158,7 @@ public class SpellChooserFragment extends Fragment {
                             }
                         }
                     }
-                    if(cantripsList.size() >= cantripMax){
+                    if(cantripsList.size() >= cantripCount){
                         for(int i = 0; i< spells.size(); i++){
                             if(spells.get(i).getLevel() == 0){
                                 spells.remove(i);
@@ -281,7 +166,7 @@ public class SpellChooserFragment extends Fragment {
                             }
                         }
                     }
-                    if(spellsList.size() >= spellMax){
+                    if(spellsList.size() >= spellCount){
                         for(int i = 0; i< spells.size(); i++){
                             if(spells.get(i).getLevel() >= 1){
                                 spells.remove(i);
@@ -301,6 +186,16 @@ public class SpellChooserFragment extends Fragment {
                 } else{
                     Toast.makeText(getContext(), "Spell Database is empty. Try again later", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        imageButton.setVisibility(View.VISIBLE);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                intent.putExtra(DetailActivity.CHARACTER, character);
+                startActivity(intent);
             }
         });
         return rootView;
