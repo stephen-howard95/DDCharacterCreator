@@ -104,7 +104,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
-        android:id="@+id/save_character"
+        android:id="@+id/save_delete_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -114,15 +114,15 @@
         android:layout_gravity="bottom|end"
         android:background="#212121"
         android:padding="8dp"
-        android:text="@string/save_character"
+        android:text="@string/save_delete_character"
         android:textColor="#ffffff"
         android:visibility="invisible"
         android:layout_marginRight="88dp"
         android:layout_alignParentRight="true" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:contentDescription="@string/save_character"
-        android:id="@+id/fab_save_character"
+        android:contentDescription="@string/save_delete_character"
+        android:id="@+id/fab_save_delete_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -144,7 +144,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
-        android:id="@+id/delete_character"
+        android:id="@+id/long_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -154,7 +154,7 @@
         android:layout_gravity="bottom|end"
         android:background="#212121"
         android:padding="8dp"
-        android:text="@string/delete_character"
+        android:text="@string/long_rest"
         android:textColor="#ffffff"
         android:visibility="invisible"
         android:layout_alignParentRight="true"
@@ -162,8 +162,8 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:contentDescription="@string/delete_character"
-        android:id="@+id/fab_delete_character"
+        android:contentDescription="@string/long_rest"
+        android:id="@+id/fab_long_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -178,7 +178,7 @@
         android:visibility="invisible"
         app:backgroundTint="#ffffff"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@drawable/delete_icon"
+        app:srcCompat="@drawable/long_rest_icon"
         android:layout_marginRight="24dp"
         android:layout_alignParentRight="true"
         tools:targetApi="lollipop"
