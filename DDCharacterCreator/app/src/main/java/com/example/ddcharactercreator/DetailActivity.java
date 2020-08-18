@@ -36,7 +36,6 @@ public class DetailActivity extends AppCompatActivity{
     public static final String CHARACTER = "character";
     public static Character character;
     public static int proficiencyBonus;
-    public static Boolean canLongRest;
     private FirebaseAnalytics mFirebaseAnalytics;
     private Boolean isOpen = false;
     private CharacterViewModel characterViewModel;
