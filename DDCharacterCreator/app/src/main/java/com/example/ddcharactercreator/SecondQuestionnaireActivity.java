@@ -398,7 +398,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         subclassSpinner.setAdapter(subclassAdapter);
 
         Button finishButton = findViewById(R.id.button_finished_character_creation);
-        finishButton.setOnClickListener(new View.OnClickListener() {
+                finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(startingGoldEditText.getText().toString().equals("")){
@@ -432,6 +432,8 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                     currency.add(8 + calculateModifier(character.getStatValues().get(2)));
                     //Temporary HP
                     currency.add(0);
+                    //Maximum HP
+                    currency.add(8 + calculateModifier(character.getStatValues().get(2)));
                     //Any class-specific changes to HP and/or AC, as well as raceAndClassBonusStats
                     ArrayList<String> bonusStats = new ArrayList<String>();
                     ArrayList<String> bonusStats2 = new ArrayList<String>();
@@ -532,6 +534,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                         case "Barbarian":
                             bonusStats.add(getString(R.string.rage_description));
                             currency.set(6, 12 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 12 + calculateModifier(character.getStatValues().get(2)));
                             currency.set(0, 10 + calculateModifier(character.getStatValues().get(1))
                                     + calculateModifier(character.getStatValues().get(2)));
                             break;
@@ -587,6 +590,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             }
                             bonusStats.add(getString(R.string.second_wind));
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Monk":
                             bonusStats.add(getString(R.string.martial_arts));
@@ -597,6 +601,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats.add(getString(R.string.divine_sense));
                             bonusStats.add(getString(R.string.lay_on_hands));
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Ranger":
                             bonusStats.add(getString(R.string.favored_terrain_description));
@@ -604,6 +609,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             bonusStats2.add(levelOneChoiceSpinner2.getSelectedItem().toString());
                             bonusStats2.add(levelOneChoiceSpinner1.getSelectedItem().toString());
                             currency.set(6, 10 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 10 + calculateModifier(character.getStatValues().get(2)));
                             break;
                         case "Rogue":
                             languages.append("Thieve's Cant, ");
@@ -611,9 +617,11 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                             break;
                         case "Sorcerer":
                             currency.set(6, 6 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 6 + calculateModifier(character.getStatValues().get(2)));
                             switch(characterSubclass){
                                 case "Draconic Bloodline":
                                     currency.set(6, (currency.get(6) +1));
+                                    currency.set(8, (currency.get(8) +1));
                                     currency.set(0, (13 + calculateModifier(character.getStatValues().get(1))));
                                     if(!character.getRace().equals("Dragonborn")){
                                         languages.append("Draconic");
@@ -629,6 +637,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                                     break;
                                 case "Stone Sorcery":
                                     currency.set(6, (currency.get(6) +1));
+                                    currency.set(8, (currency.get(8) +1));
                                     bonusStats.add(getString(R.string.stones_durability));
                                     break;
                             }
@@ -649,6 +658,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                         case "Wizard":
                             bonusStats.add(getString(R.string.arcane_recovery));
                             currency.set(6, 6 + calculateModifier(character.getStatValues().get(2)));
+                            currency.set(8, 6 + calculateModifier(character.getStatValues().get(2)));
                             break;
                     }
                     ArrayList<String> spellSlotsClicked = new ArrayList<String>();
@@ -668,7 +678,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private ArrayList<Integer> getStatBonuses(Character character, ArrayList<Integer> statArray){
+        private ArrayList<Integer> getStatBonuses(Character character, ArrayList<Integer> statArray){
         int strength = statArray.get(0);
         int dexterity = statArray.get(1);
         int constitution = statArray.get(2);
@@ -687,6 +697,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 wisdom += 1;
                 break;
             case "Goliath":
+            case "Half-Orc":
                 strength += 2;
                 constitution += 1;
                 break;
@@ -718,10 +729,6 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
                 dexterity += 1;
                 wisdom += 1;
                 break;
-            case "Half-Orc":
-                strength += 2;
-                constitution += 1;
-                break;
             case "Tabaxi":
                 dexterity += 2;
                 charisma += 1;
@@ -743,6 +750,7 @@ public class SecondQuestionnaireActivity extends AppCompatActivity {
         statArray.set(5, charisma);
         return statArray;
     }
+
 
     private ArrayList<String> instantiateInventory(ArrayList<String> inventory){
         inventory.add(startingEquipmentSpinner1.getSelectedItem().toString());
