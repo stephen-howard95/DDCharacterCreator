@@ -312,6 +312,7 @@ public class LevelUpFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     //possibly save the character??
+                    character.getCurrency().set(6, character.getCurrency().get(8));
                     if(moreHP.getText().toString().equals("")){
                         Toast.makeText(getContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
                     }else if(choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE && choice1.getSelectedItem().toString().equals(choice2.getSelectedItem().toString())){
@@ -330,6 +331,8 @@ public class LevelUpFragment extends Fragment {
                             addToHP += finalLevel;
                         }
                         character.getCurrency().set(6, addToHP + character.getCurrency().get(6)
+                                + calculateModifier(character.getStatValues().get(2)));
+                        character.getCurrency().set(8, addToHP + character.getCurrency().get(8)
                                 + calculateModifier(character.getStatValues().get(2)));
                         String subclass = character.getSubclass();
                         switch(character.getCharacterClass()){
