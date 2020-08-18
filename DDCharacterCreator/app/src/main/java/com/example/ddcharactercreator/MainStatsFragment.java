@@ -135,7 +135,7 @@ public class MainStatsFragment extends Fragment {
         //Setting Temporary/Current/Max HP, hit die values, and saving throw proficiencies.
         temporaryHitPoints.setText(String.valueOf(character.getCurrency().get(7)));
         currentHitPoints.setText(String.valueOf(character.getCurrency().get(6)));
-        maxHitPoints.setText(String.valueOf(character.getCurrency().get(6)));
+        maxHitPoints.setText(String.valueOf(character.getCurrency().get(8)));
         switch (character.getCharacterClass()){
             case "Barbarian":
                 hitDieTextView.setText(String.format("d12 (%s)", character.getLevel()));
@@ -345,15 +345,5 @@ public class MainStatsFragment extends Fragment {
             }
         });
         return rootView;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        DetailActivity.canLongRest = true;
-    }
-
-    public void resetHealth(){
-        currentHitPoints.setText(maxHitPoints.getText().toString());
     }
 }
