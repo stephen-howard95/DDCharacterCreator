@@ -276,7 +276,7 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="level_up">Level Up</string>
     <string name="long_rest">Long Rest</string>
-    <string name="save_character">Save Character</string>
+    <string name="save_delete_character">Save/Delete Character</string>
     <string name="delete_character">Delete Character</string>
     <string name="display_options">Display Options</string>
     <string name="add_new_character">Add New Character</string>
