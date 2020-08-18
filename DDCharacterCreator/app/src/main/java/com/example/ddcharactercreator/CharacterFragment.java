@@ -800,12 +800,6 @@ public class CharacterFragment extends Fragment {
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-        DetailActivity.canLongRest = false;
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
         character.getRaceAndClassBonusStats().set(0, languagesKnown.getText().toString());
