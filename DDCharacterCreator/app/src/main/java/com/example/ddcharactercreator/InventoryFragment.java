@@ -72,18 +72,10 @@ public class InventoryFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        DetailActivity.canLongRest = false;
-    }
-
     @SuppressWarnings("unchecked")
     @Override
     public void onPause(){
         super.onPause();
-        DetailActivity.canLongRest = true;
         Character character = DetailActivity.character;
 
         character.getCurrency().set(1, Integer.parseInt(copperPieceAmount.getText().toString()));
