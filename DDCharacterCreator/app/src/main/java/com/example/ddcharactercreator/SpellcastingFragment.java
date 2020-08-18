@@ -884,37 +884,11 @@ public class SpellcastingFragment extends Fragment {
                 .commit();
     }
 
-    public void resetSpellSlots(){
-        spellSlot1.setChecked(false);
-        spellSlot2.setChecked(false);
-        spellSlot3.setChecked(false);
-        spellSlot4.setChecked(false);
-        spellSlot5.setChecked(false);
-        spellSlot6.setChecked(false);
-        spellSlot7.setChecked(false);
-        spellSlot8.setChecked(false);
-        spellSlot9.setChecked(false);
-        spellSlot10.setChecked(false);
-        spellSlot11.setChecked(false);
-        spellSlot12.setChecked(false);
-        spellSlot13.setChecked(false);
-        spellSlot14.setChecked(false);
-        spellSlot15.setChecked(false);
-        spellSlot16.setChecked(false);
-        spellSlot17.setChecked(false);
-        spellSlot18.setChecked(false);
-        spellSlot19.setChecked(false);
-        spellSlot20.setChecked(false);
-        spellSlot21.setChecked(false);
-        spellSlot22.setChecked(false);
-    }
-
     @Override
     public void onResume() {
         super.onResume();
         TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
         tabLayout.setVisibility(View.VISIBLE);
-        DetailActivity.canLongRest = true;
 
         if(fullSpellsList.size() > 0){
             for(int i=0; i<fullSpellsList.size(); i++){
