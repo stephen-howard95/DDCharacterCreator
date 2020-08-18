@@ -217,13 +217,14 @@ public class DetailActivity extends AppCompatActivity{
         tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+        //TODO: Combine save/delete character (AlertDialog pops up, gives 2 options?) FAB and add a long rest one.
         FloatingActionButton fab = findViewById(R.id.fab_main);
         final FloatingActionButton levelUpFab = findViewById(R.id.fab_level_up);
-        final FloatingActionButton saveCharacterFab = findViewById(R.id.fab_save_character);
-        final FloatingActionButton deleteCharacterFab = findViewById(R.id.fab_delete_character);
+        final FloatingActionButton saveDeleteCharacterFab = findViewById(R.id.fab_save_delete_character);
+        final FloatingActionButton longRestFab = findViewById(R.id.fab_long_rest);
         final TextView levelUpTextView = findViewById(R.id.level_up);
-        final TextView saveCharacterTextView = findViewById(R.id.save_character);
-        final TextView deleteCharacterTextView = findViewById(R.id.delete_character);
+        final TextView saveDeleteCharacterTextView = findViewById(R.id.save_delete_character);
+        final TextView longRestTextView = findViewById(R.id.long_rest);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
@@ -231,46 +232,40 @@ public class DetailActivity extends AppCompatActivity{
             public void onClick(View v) {
                 if(isOpen){
                     levelUpFab.setVisibility(View.INVISIBLE);
-                    saveCharacterFab.setVisibility(View.INVISIBLE);
-                    deleteCharacterFab.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterFab.setVisibility(View.INVISIBLE);
+                    longRestFab.setVisibility(View.INVISIBLE);
                     levelUpFab.setClickable(false);
-                    saveCharacterFab.setClickable(false);
-                    deleteCharacterFab.setClickable(false);
+                    saveDeleteCharacterFab.setClickable(false);
+                    longRestFab.setClickable(false);
                     levelUpTextView.setVisibility(View.INVISIBLE);
-                    saveCharacterTextView.setVisibility(View.INVISIBLE);
-                    deleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    longRestTextView.setVisibility(View.INVISIBLE);
                     isOpen = false;
                 } else{
                     levelUpFab.setVisibility(View.VISIBLE);
-                    saveCharacterFab.setVisibility(View.VISIBLE);
-                    deleteCharacterFab.setVisibility(View.VISIBLE);
+                    saveDeleteCharacterFab.setVisibility(View.VISIBLE);
+                    longRestFab.setVisibility(View.VISIBLE);
                     levelUpFab.setClickable(true);
-                    saveCharacterFab.setClickable(true);
-                    deleteCharacterFab.setClickable(true);
+                    saveDeleteCharacterFab.setClickable(true);
+                    longRestFab.setClickable(true);
                     levelUpTextView.setVisibility(View.VISIBLE);
-                    saveCharacterTextView.setVisibility(View.VISIBLE);
-                    deleteCharacterTextView.setVisibility(View.VISIBLE);
+                    saveDeleteCharacterTextView.setVisibility(View.VISIBLE);
+                    longRestTextView.setVisibility(View.VISIBLE);
                     isOpen = true;
                 }
             }
         });
 
-        saveCharacterFab.setOnClickListener(new View.OnClickListener() {
+        saveDeleteCharacterFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("character_saved", character.getName());
-                mFirebaseAnalytics.logEvent("character_saved", bundle);
-                onSaveButtonClicked();
+                onSaveDeleteButtonClicked();
             }
         });
-        deleteCharacterFab.setOnClickListener(new View.OnClickListener() {
+        longRestFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("character_deleted", character.getName());
-                mFirebaseAnalytics.logEvent("character_deleted", bundle);
-                onDeleteButtonClicked();
+                onLongRestButtonClicked();
             }
         });
         levelUpFab.setOnClickListener(new View.OnClickListener() {
@@ -284,27 +279,27 @@ public class DetailActivity extends AppCompatActivity{
                     tabLayout.setVisibility(View.INVISIBLE);
                     fab.setVisibility(View.GONE);
                     levelUpFab.setVisibility(View.INVISIBLE);
-                    saveCharacterFab.setVisibility(View.INVISIBLE);
-                    deleteCharacterFab.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterFab.setVisibility(View.INVISIBLE);
+                    longRestFab.setVisibility(View.INVISIBLE);
                     levelUpFab.setClickable(false);
-                    saveCharacterFab.setClickable(false);
-                    deleteCharacterFab.setClickable(false);
+                    saveDeleteCharacterFab.setClickable(false);
+                    longRestFab.setClickable(false);
                     levelUpTextView.setVisibility(View.INVISIBLE);
-                    saveCharacterTextView.setVisibility(View.INVISIBLE);
-                    deleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    longRestTextView.setVisibility(View.INVISIBLE);
                     isOpen = false;
                     onLevelUpButtonClicked();
                 } else{
                     Toast.makeText(getApplicationContext(), "You are at Max Level", Toast.LENGTH_SHORT).show();
                     levelUpFab.setVisibility(View.INVISIBLE);
-                    saveCharacterFab.setVisibility(View.INVISIBLE);
-                    deleteCharacterFab.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterFab.setVisibility(View.INVISIBLE);
+                    longRestFab.setVisibility(View.INVISIBLE);
                     levelUpFab.setClickable(false);
-                    saveCharacterFab.setClickable(false);
-                    deleteCharacterFab.setClickable(false);
+                    saveDeleteCharacterFab.setClickable(false);
+                    longRestFab.setClickable(false);
                     levelUpTextView.setVisibility(View.INVISIBLE);
-                    saveCharacterTextView.setVisibility(View.INVISIBLE);
-                    deleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    saveDeleteCharacterTextView.setVisibility(View.INVISIBLE);
+                    longRestTextView.setVisibility(View.INVISIBLE);
                     isOpen = false;
                 }
             }
@@ -394,13 +389,6 @@ public class DetailActivity extends AppCompatActivity{
         });
     }
 
-    public void addSpellToList(){
-        SpellChooserFragment fragment = new SpellChooserFragment();
-        fragmentTransaction.remove(fragmentManager.getFragments().get(1))
-                .add(R.id.tabsLayout, fragment)
-                .commit();
-    }
-
     public static int calculateModifier(int statValue){
         if(statValue == 1){
             return -5;
@@ -431,22 +419,28 @@ public class DetailActivity extends AppCompatActivity{
         }
     }
 
-    private void onSaveButtonClicked(){
-        Character thisCharacter = DetailActivity.character;
-        characterViewModel.insertCharacter(thisCharacter);
-        Toast.makeText(getApplicationContext(), "Character saved", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    private void onDeleteButtonClicked(){
+    private void onSaveDeleteButtonClicked(){
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle("Delete?");
-        adb.setMessage("Are you sure you want to delete " + character.getName() + "? This will be permanent.");
-        adb.setNegativeButton("Cancel", null);
-        adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+        adb.setTitle("Save or Delete");
+        adb.setMessage("Deleting a character is permanent.");
+        adb.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Bundle bundle = new Bundle();
+                bundle.putString("character_saved", character.getName());
+                mFirebaseAnalytics.logEvent("character_saved", bundle);
+                Character thisCharacter = DetailActivity.character;
+                characterViewModel.insertCharacter(thisCharacter);
+                Toast.makeText(getApplicationContext(), "Character saved", Toast.LENGTH_SHORT).show();
+            }
+        });
+        adb.setNeutralButton("Cancel", null);
+        adb.setNegativeButton("Delete", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Character thisCharacter = DetailActivity.character;
+                Bundle bundle = new Bundle();
+                bundle.putString("character_deleted", character.getName());
+                mFirebaseAnalytics.logEvent("character_deleted", bundle);
                 characterViewModel.deleteCharacter(thisCharacter);
                 Toast.makeText(getApplicationContext(), "Character deleted", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -469,8 +463,22 @@ public class DetailActivity extends AppCompatActivity{
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    private void onLongRestButtonClicked(){
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle("Long Rest");
+        adb.setMessage("Taking a Long Rest will set your health back to maximum and reset your spell slots");
+        adb.setNegativeButton("Cancel", null);
+        adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                character.getCurrency().set(6, character.getCurrency().get(8));
+                for(int i=0; i<22; i++){
+                    character.getSpellSlotsClicked().set(i, "no");
+                }
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra(DetailActivity.CHARACTER, character);
+                startActivity(intent);
+            }
+        });
+        adb.show();
     }
 }
