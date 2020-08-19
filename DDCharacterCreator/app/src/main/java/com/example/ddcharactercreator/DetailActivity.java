@@ -475,6 +475,7 @@ public class DetailActivity extends AppCompatActivity{
                 }
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                 intent.putExtra(DetailActivity.CHARACTER, character);
+                finish();
                 startActivity(intent);
             }
         });
