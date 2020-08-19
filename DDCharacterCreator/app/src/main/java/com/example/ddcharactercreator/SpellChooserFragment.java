@@ -195,6 +195,7 @@ public class SpellChooserFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DetailActivity.class);
                 intent.putExtra(DetailActivity.CHARACTER, character);
+                getActivity().finish();
                 startActivity(intent);
             }
         });
