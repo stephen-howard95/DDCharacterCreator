@@ -2650,6 +2650,7 @@ public class LevelUpFragment extends Fragment {
     private void returnToDetailActivity(Character character){
         Intent intent = new Intent(getContext(), DetailActivity.class);
         intent.putExtra(DetailActivity.CHARACTER, character);
+        getActivity().finish();
         startActivity(intent);
     }
 
