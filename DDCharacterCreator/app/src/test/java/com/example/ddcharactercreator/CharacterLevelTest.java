@@ -17,6 +17,7 @@ import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 
@@ -45,7 +46,8 @@ public class CharacterLevelTest {
         onView(withId(R.id.starting_gold_edit_text)).perform(typeText("80"));
         onView(withId(R.id.button_finished_character_creation)).perform(scrollTo(), click());
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
 
     @Test
@@ -84,7 +86,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
 
     @Test
@@ -123,7 +126,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelBard(){
@@ -161,7 +165,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelCleric(){
@@ -199,7 +204,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelDruid(){
@@ -237,7 +243,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelFighter(){
@@ -249,12 +256,12 @@ public class CharacterLevelTest {
         onData(anything()).atPosition(4).perform(click());
         onView(withId(R.id.next_questionnaire_button)).perform(scrollTo(), click());
         //Subclass choices
-        //onView(withId(R.id.subclass_choice_spinner)).perform(click());
-        //onData(anything()).atPosition((int) (Math.random()*3)).perform(click());
-        onView(withId(R.id.starting_gold_edit_text)).perform(typeText("80"));
+        onView(withId(R.id.subclass_choice_spinner)).perform(click());
+        onData(anything()).atPosition((int) (Math.random()*3)).perform(click());
+        onView(withId(R.id.starting_gold_edit_text)).perform(scrollTo(), typeText("80"));
         //Fighting Style
         onView(withId(R.id.level_one_choice_spinner_1)).perform(scrollTo(), click());
-        onData(anything()).atPosition((int) (Math.random()*6));
+        onData(anything()).atPosition((int) (Math.random()*6)).perform(click());
         pressBack();
         onView(withId(R.id.button_finished_character_creation)).perform(scrollTo(), click());
         for(int i=0; i<19; i++){
@@ -279,7 +286,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelMonk(){
@@ -317,7 +325,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelPaladin(){
@@ -355,7 +364,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelRanger(){
@@ -393,7 +403,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelRogue(){
@@ -431,7 +442,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelSorcerer(){
@@ -481,7 +493,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelWarlock(){
@@ -519,7 +532,8 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
     @Test
     public void testMaxLevelWizard(){
@@ -557,6 +571,7 @@ public class CharacterLevelTest {
             onView(withId(R.id.viewpager)).perform(swipeLeft());
         }
         onView(withId(R.id.fab_main)).perform(click());
-        onView(withId(R.id.fab_save_character)).perform(click());
+        onView(withId(R.id.fab_save_delete_character)).perform(click());
+        onView(withText("Save")).perform(click());
     }
 }
