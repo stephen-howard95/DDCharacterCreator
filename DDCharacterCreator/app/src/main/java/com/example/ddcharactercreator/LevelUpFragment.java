@@ -23,7 +23,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import static com.example.ddcharactercreator.DetailActivity.spellViewModel;
-
 import static com.example.ddcharactercreator.DetailActivity.calculateModifier;
 
 public class LevelUpFragment extends Fragment {
@@ -311,7 +310,6 @@ public class LevelUpFragment extends Fragment {
             finishButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //possibly save the character??
                     character.getCurrency().set(6, character.getCurrency().get(8));
                     if(moreHP.getText().toString().equals("")){
                         Toast.makeText(getContext(), "Make sure you roll for more health", Toast.LENGTH_SHORT).show();
@@ -804,21 +802,14 @@ public class LevelUpFragment extends Fragment {
                                 });
                                 break;
                             case "Wizard":
-                                if(finalLevel == 20){
+                                if(finalLevel == 18 || finalLevel == 20){
                                     getSubclassSpells(choice1.getSelectedItem().toString());
                                     getSubclassSpells(choice2.getSelectedItem().toString());
+                                    character.getClassBasedBonusStats2().add(choice1.getSelectedItem().toString());
+                                    character.getClassBasedBonusStats2().add(choice2.getSelectedItem().toString());
                                 }
                                 break;
                         }
-                   /* if(character.getCharacterClass().equals("Wizard") && choice1.getVisibility() == View.VISIBLE && choice2.getVisibility() == View.VISIBLE){
-                        SpellDatabase mDb = SpellDatabase.getInstance(getApplicationContext());
-                        List<Spell> spellsList = mDb.spellDao().loadAllSpells();
-                        Spell spell1 = spellsList.get(The spell who's name is the one chosen in choice1);
-                        Spell spell2 = spellsList.get(The spell who's name is the one chosen in choice2);
-
-                        //List both spells in Character Fragment the chosen spells. At level 18, they can be cast
-                        // as cantrips, at level 20, they can be cast at their lowest level once per long rest.
-                    }*/
                         returnToDetailActivity(new Character(finalLevel, character.getRace(), character.getCharacterClass(),
                                 character.getAlignment(), character.getName(), newStatValues,
                                 character.getProficiencyChoices(), character.getInventoryList(), character.getCurrency(),
@@ -2679,19 +2670,11 @@ public class LevelUpFragment extends Fragment {
 
     public ArrayList<String> getSpellsPerLevel(int spellLevel){
         ArrayList<String> spellChoices = new ArrayList<>();
-        spellViewModel.loadAllSpells().observe(this, new Observer<List<Spell>>() {
-            @Override
-            public void onChanged(List<Spell> spells) {
-                for(int i=0; i<spells.size(); i++){
-                    if(!spells.get(i).getClassList().contains(character.getCharacterClass()) || spells.get(i).getLevel() != spellLevel){
-                        spells.remove(i);
-                        i--;
-                    } else{
-                        spellChoices.add(spells.get(i).getSpellName());
-                    }
-                }
+        for(int i=0; i<spellViewModel.loadAllSpells().getValue().size(); i++){
+            if(spellViewModel.loadAllSpells().getValue().get(i).getClassList().contains(character.getCharacterClass()) && spellViewModel.loadAllSpells().getValue().get(i).getLevel() == spellLevel){
+                spellChoices.add(spellViewModel.loadAllSpells().getValue().get(i).getSpellName());
             }
-        });
+        }
         return spellChoices;
     }
 
