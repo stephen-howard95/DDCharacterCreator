@@ -230,7 +230,14 @@
                     style="@style/spellSlotsStyle"
                     android:visibility="gone"
                     android:text="@string/ninth_level_spell"/>
-
+                <CheckBox
+                    android:id="@+id/signature_spell_1"
+                    style="@style/spellSlotsStyle"
+                    android:visibility="gone"/>
+                <CheckBox
+                    android:id="@+id/signature_spell_2"
+                    style="@style/spellSlotsStyle"
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
