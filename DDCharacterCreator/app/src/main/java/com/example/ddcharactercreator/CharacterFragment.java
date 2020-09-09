@@ -777,19 +777,9 @@ public class CharacterFragment extends Fragment {
                         }
                         break;
                 }
-                /*if(level >= 18){
-                    subclassInfoTextView1.setVisibility(View.VISIBLE);
-                    subclassInfoTextView1.setText(getString(R.string.spell_mastery) + spell mastery choice 1 + ", " + spell mastery choice 2);
-                }*/
-                if(level == 20){
-                    checkBoxes1.setVisibility(View.VISIBLE);
-                    checkBoxes2.setVisibility(View.VISIBLE);
-                    checkBoxes1.setText(getString(R.string.signature_spells_choice));
-                    checkBoxes2.setText(getString(R.string.signature_spells_choice));
-                    checkBox1_1.setVisibility(View.VISIBLE);
-                    checkBox2_1.setVisibility(View.VISIBLE);
-                    //checkBox1_1.setText(signature spell choice 1);
-                    //checkBox2_1.setText(signature spell choice 2);
+                if(level >= 18){
+                    subclassInfoTextView2.setVisibility(View.VISIBLE);
+                    subclassInfoTextView2.setText(String.format("%s %s %s", getString(R.string.spell_mastery_choices), character.getClassBasedBonusStats2().get(0), character.getClassBasedBonusStats2().get(1)));
                 }
                 break;
         }
