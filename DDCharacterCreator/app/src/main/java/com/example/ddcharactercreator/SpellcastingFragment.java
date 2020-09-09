@@ -17,6 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,8 @@ public class SpellcastingFragment extends Fragment {
     @BindView(R.id.spell_slot_20) CheckBox spellSlot20;
     @BindView(R.id.spell_slot_21) CheckBox spellSlot21;
     @BindView(R.id.spell_slot_22) CheckBox spellSlot22;
+    @BindView(R.id.signature_spell_1) CheckBox signatureSpell1;
+    @BindView(R.id.signature_spell_2) CheckBox signatureSpell2;
 
     public SpellcastingFragment(){
     }
@@ -613,6 +616,12 @@ public class SpellcastingFragment extends Fragment {
                     spellcastingAbility.setText("Spellcasting Ability: INT");
                     spellSaveDC.setText(String.format("Spell Save DC: %s", (8 + proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
                     spellAttackBonus.setText(String.format("Spell Attack Bonus: %s", (proficiencyBonus + calculateModifier(character.getStatValues().get(3)))));
+                    if(character.getLevel() == 20){
+                        signatureSpell1.setVisibility(View.VISIBLE);
+                        signatureSpell2.setVisibility(View.VISIBLE);
+                        signatureSpell1.setText(character.getClassBasedBonusStats2().get(2));
+                        signatureSpell2.setText(character.getClassBasedBonusStats2().get(3));
+                    }
                    break;
             }
 
@@ -872,18 +881,6 @@ public class SpellcastingFragment extends Fragment {
         }
         return rootView;
     }
-
-    private void addSpellToList(){
-        TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
-        tabLayout.setVisibility(View.INVISIBLE);
-        SpellChooserFragment nextFrag= new SpellChooserFragment();
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .remove(getActivity().getSupportFragmentManager().getFragments().get(1))
-                .replace(R.id.tabsLayout, nextFrag, "spellChooser")
-                .addToBackStack(null)
-                .commit();
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -1160,5 +1157,17 @@ public class SpellcastingFragment extends Fragment {
                 }
             }
         });
+    }
+    private void addSpellToList(){
+        TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab_main);
+        tabLayout.setVisibility(View.INVISIBLE);
+        fab.setVisibility(View.INVISIBLE);
+        SpellChooserFragment nextFrag= new SpellChooserFragment();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .remove(getActivity().getSupportFragmentManager().getFragments().get(1))
+                .replace(R.id.tabsLayout, nextFrag, "spellChooser")
+                .addToBackStack(null)
+                .commit();
     }
 }
