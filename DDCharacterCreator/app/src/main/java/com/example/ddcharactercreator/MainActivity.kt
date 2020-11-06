@@ -58,16 +58,9 @@ class MainActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
-        //TODO: This video gives a good example of how to add menu items and how to play with
-        // that stuff. The whole playlist is very good tbh. Watch it for more info on menu
-        // items (snowman button). Menu stuff comes in at about 8:26
-        //https://www.youtube.com/watch?v=RhGMd8SsA14&list=PLrnPJCHvNZuDihTpkRs6SpZhqgBqPU118&index=7
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
         return if (id == R.id.action_settings) {
             true
