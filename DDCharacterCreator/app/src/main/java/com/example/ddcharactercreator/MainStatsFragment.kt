@@ -16,7 +16,6 @@ import butterknife.BindView
 import butterknife.ButterKnife
 
 class MainStatsFragment : Fragment() {
-    // TODO: (activity as DetailActivity?)!!.calculateModifier()
     @JvmField
     @BindView(R.id.strength_label)
     var strengthLabel: TextView? = null
