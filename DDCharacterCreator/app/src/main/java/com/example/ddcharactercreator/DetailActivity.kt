@@ -35,7 +35,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
     private var characterViewModel: CharacterViewModel? = null
     var spellViewModel: SpellViewModel = SpellViewModel(Application())
     var completeSpellsList: LiveData<List<Spell>>? = null
-    var spellcastingClass: String? = null
+    var spellcastingClass: String = ""
     private var tabLayout: TabLayout = TabLayout(this)
     private var viewPager: ViewPager = ViewPager(this)
     var spellCount = 0
