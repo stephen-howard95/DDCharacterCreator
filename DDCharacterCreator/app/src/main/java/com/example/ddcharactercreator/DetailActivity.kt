@@ -58,33 +58,46 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
 
         spellcastingClass = character.getCharacterClass()
 
-        if (character.getLevel() <= 4) {
-            proficiencyBonus = 2
-        } else if (character.getLevel() <= 8) {
-            proficiencyBonus = 3
-        } else if (character.getLevel() <= 12) {
-            proficiencyBonus = 4
-        } else if (character.getLevel() <= 16) {
-            proficiencyBonus = 5
-        } else {
-            proficiencyBonus = 6
+        proficiencyBonus = when {
+            character.getLevel() <= 4 -> {
+                2
+            }
+            character.getLevel() <= 8 -> {
+                3
+            }
+            character.getLevel() <= 12 -> {
+                4
+            }
+            character.getLevel() <= 16 -> {
+                5
+            }
+            else -> {
+                6
+            }
         }
 
         when (character.getCharacterClass()) {
             "Bard" -> {
                 cantripCount = 2
-                if (character.getLevel() <= 9) {
-                    spellCount = character.getLevel() + 3
-                } else if (character.getLevel() <= 11) {
-                    spellCount = character.getLevel() + 4
-                } else if (character.getLevel() <= 13) {
-                    spellCount = character.getLevel() + 3
-                } else if (character.getLevel() <= 15) {
-                    spellCount = character.getLevel() + 4
-                } else if (character.getLevel() <= 17) {
-                    spellCount = character.getLevel() + 3
-                } else if (character.getLevel() <= 20) {
-                    spellCount = 22
+                when {
+                    character.getLevel() <= 9 -> {
+                        spellCount = character.getLevel() + 3
+                    }
+                    character.getLevel() <= 11 -> {
+                        spellCount = character.getLevel() + 4
+                    }
+                    character.getLevel() <= 13 -> {
+                        spellCount = character.getLevel() + 3
+                    }
+                    character.getLevel() <= 15 -> {
+                        spellCount = character.getLevel() + 4
+                    }
+                    character.getLevel() <= 17 -> {
+                        spellCount = character.getLevel() + 3
+                    }
+                    character.getLevel() <= 20 -> {
+                        spellCount = 22
+                    }
                 }
             }
             "Cleric" -> {
@@ -100,22 +113,31 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
             }
             "Fighter" -> {
                 cantripCount = 2
-                if (character.getLevel() <= 4) {
-                    spellCount = character.getLevel()
-                } else if (character.getLevel() <= 6) {
-                    spellCount = 4
-                } else if (character.getLevel() <= 8) {
-                    spellCount = character.getLevel() - 2
-                } else if (character.getLevel() <= 11) {
-                    spellCount = character.getLevel() - 3
-                } else if (character.getLevel() <= 14) {
-                    spellCount = character.getLevel() - 4
-                } else if (character.getLevel() == 15) {
-                    spellCount = 10
-                } else if (character.getLevel() <= 18) {
-                    spellCount = 11
-                } else if (character.getLevel() <= 20) {
-                    spellCount = character.getLevel() - 7
+                when {
+                    character.getLevel() <= 4 -> {
+                        spellCount = character.getLevel()
+                    }
+                    character.getLevel() <= 6 -> {
+                        spellCount = 4
+                    }
+                    character.getLevel() <= 8 -> {
+                        spellCount = character.getLevel() - 2
+                    }
+                    character.getLevel() <= 11 -> {
+                        spellCount = character.getLevel() - 3
+                    }
+                    character.getLevel() <= 14 -> {
+                        spellCount = character.getLevel() - 4
+                    }
+                    character.getLevel() == 15 -> {
+                        spellCount = 10
+                    }
+                    character.getLevel() <= 18 -> {
+                        spellCount = 11
+                    }
+                    character.getLevel() <= 20 -> {
+                        spellCount = character.getLevel() - 7
+                    }
                 }
             }
             "Paladin" -> {
@@ -128,36 +150,51 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
             }
             "Rogue" -> {
                 cantripCount = 3
-                if (character.getLevel() <= 4) {
-                    spellCount = character.getLevel()
-                } else if (character.getLevel() <= 6) {
-                    spellCount = 4
-                } else if (character.getLevel() <= 8) {
-                    spellCount = character.getLevel() - 2
-                } else if (character.getLevel() <= 11) {
-                    spellCount = character.getLevel() - 3
-                } else if (character.getLevel() <= 14) {
-                    spellCount = character.getLevel() - 4
-                } else if (character.getLevel() == 15) {
-                    spellCount = 10
-                } else if (character.getLevel() <= 18) {
-                    spellCount = 11
-                } else if (character.getLevel() <= 20) {
-                    spellCount = character.getLevel() - 7
+                when {
+                    character.getLevel() <= 4 -> {
+                        spellCount = character.getLevel()
+                    }
+                    character.getLevel() <= 6 -> {
+                        spellCount = 4
+                    }
+                    character.getLevel() <= 8 -> {
+                        spellCount = character.getLevel() - 2
+                    }
+                    character.getLevel() <= 11 -> {
+                        spellCount = character.getLevel() - 3
+                    }
+                    character.getLevel() <= 14 -> {
+                        spellCount = character.getLevel() - 4
+                    }
+                    character.getLevel() == 15 -> {
+                        spellCount = 10
+                    }
+                    character.getLevel() <= 18 -> {
+                        spellCount = 11
+                    }
+                    character.getLevel() <= 20 -> {
+                        spellCount = character.getLevel() - 7
+                    }
                 }
             }
             "Sorcerer" -> {
                 cantripCount = 4
-                if (character.getLevel() <= 11) {
-                    spellCount = character.getLevel() + 1
-                } else if (character.getLevel() <= 13) {
-                    spellCount = character.getLevel()
-                } else if (character.getLevel() <= 15) {
-                    spellCount = character.getLevel() - 1
-                } else if (character.getLevel() <= 17) {
-                    spellCount = character.getLevel() - 2
-                } else if (character.getLevel() <= 20) {
-                    spellCount = 15
+                when {
+                    character.getLevel() <= 11 -> {
+                        spellCount = character.getLevel() + 1
+                    }
+                    character.getLevel() <= 13 -> {
+                        spellCount = character.getLevel()
+                    }
+                    character.getLevel() <= 15 -> {
+                        spellCount = character.getLevel() - 1
+                    }
+                    character.getLevel() <= 17 -> {
+                        spellCount = character.getLevel() - 2
+                    }
+                    character.getLevel() <= 20 -> {
+                        spellCount = 15
+                    }
                 }
             }
             "Warlock" -> {
@@ -165,20 +202,28 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
                 if (character.getRaceAndClassBonusStats().contains(getString(R.string.pact_of_the_tome))) {
                     cantripCount += 3
                 }
-                if (character.getLevel() <= 9) {
-                    spellCount = character.getLevel() + 1
-                } else if (character.getLevel() <= 11) {
-                    spellCount = character.getLevel()
-                } else if (character.getLevel() <= 13) {
-                    spellCount = character.getLevel() - 1
-                } else if (character.getLevel() <= 15) {
-                    spellCount = character.getLevel() - 2
-                } else if (character.getLevel() <= 17) {
-                    spellCount = character.getLevel() - 3
-                } else if (character.getLevel() == 18) {
-                    spellCount = 14
-                } else if (character.getLevel() <= 20) {
-                    spellCount = 15
+                when {
+                    character.getLevel() <= 9 -> {
+                        spellCount = character.getLevel() + 1
+                    }
+                    character.getLevel() <= 11 -> {
+                        spellCount = character.getLevel()
+                    }
+                    character.getLevel() <= 13 -> {
+                        spellCount = character.getLevel() - 1
+                    }
+                    character.getLevel() <= 15 -> {
+                        spellCount = character.getLevel() - 2
+                    }
+                    character.getLevel() <= 17 -> {
+                        spellCount = character.getLevel() - 3
+                    }
+                    character.getLevel() == 18 -> {
+                        spellCount = 14
+                    }
+                    character.getLevel() <= 20 -> {
+                        spellCount = 15
+                    }
                 }
             }
             "Wizard" -> {
@@ -186,7 +231,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
                 if (character.getSubclass() == "School of Illusion") {
                     cantripCount += 1
                 }
-                spellCount = character.getLevel() + calculateModifier(character.getStatValues().get(3))
+                spellCount = character.getLevel() + calculateModifier(character.getStatValues()[3])
             }
         }
 
@@ -207,7 +252,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
 
         viewPager = findViewById(R.id.viewpager)
         val adapter = TabAdapter(this, supportFragmentManager)
-        viewPager.setAdapter(adapter)
+        viewPager.adapter = adapter
         tabLayout = findViewById(R.id.tabs)
         tabLayout.setupWithViewPager(viewPager)
 
@@ -295,7 +340,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
                             if (!response.isSuccessful) {
                                 Toast.makeText(applicationContext, "Code: " + response.code(), Toast.LENGTH_SHORT).show()
                             } else {
-                                if (response.body() != null && !response.body()!!.results.isEmpty()) {
+                                if (response.body() != null && response.body()!!.results.isNotEmpty()) {
                                     for (j in response.body()!!.results.indices) {
                                         spellViewModel.insertSpell(response.body()!!.results[j])
                                         //There is a duplicate spell in the API. This deletes one of the copies.
@@ -348,7 +393,6 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
                                 }
                             }
                         }
-
                         override fun onFailure(call: Call<SpellContainer?>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
                         }
@@ -407,7 +451,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
         val adb = AlertDialog.Builder(this)
         adb.setTitle("Save or Delete")
         adb.setMessage("Deleting a character is permanent.")
-        adb.setPositiveButton("Save") { dialog, which ->
+        adb.setPositiveButton("Save") { _, _ ->
             val bundle = Bundle()
             bundle.putString("character_saved", character.getName())
             mFirebaseAnalytics!!.logEvent("character_saved", bundle)
@@ -416,7 +460,7 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
             Toast.makeText(applicationContext, "Character saved", Toast.LENGTH_SHORT).show()
         }
         adb.setNeutralButton("Cancel", null)
-        adb.setNegativeButton("Delete") { dialog, which ->
+        adb.setNegativeButton("Delete") { _, _ ->
             val thisCharacter: Character = character
             val bundle = Bundle()
             bundle.putString("character_deleted", character.getName())
@@ -446,10 +490,10 @@ class DetailActivity(contentLayoutId: Int) : AppCompatActivity(contentLayoutId) 
         adb.setTitle("Long Rest")
         adb.setMessage("Taking a Long Rest will set your health back to maximum and reset your spell slots")
         adb.setNegativeButton("Cancel", null)
-        adb.setPositiveButton("Ok") { dialog, which ->
-            character.getCurrency().set(6, character.getCurrency().get(8))
+        adb.setPositiveButton("Ok") { _, _ ->
+            character.getCurrency()[6] = character.getCurrency()[8]
             for (i in 0..21) {
-                character.getSpellSlotsClicked().set(i, "no")
+                character.getSpellSlotsClicked()[i] = "no"
             }
             val intent = Intent(applicationContext, DetailActivity::class.java)
             intent.putExtra(CHARACTER, character)
